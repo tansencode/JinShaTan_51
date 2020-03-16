@@ -1,0 +1,7 @@
+"STARTUP.obj",
+"DS1302.obj",
+"keyboard.obj",
+"Lcd1602.obj",
+"main.obj" 
+TO "2" 
+RAMSIZE(256) 

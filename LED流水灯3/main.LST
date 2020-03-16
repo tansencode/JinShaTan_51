@@ -1,0 +1,55 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 04/11/2018 11:24:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN main.OBJ
+ASSEMBLER INVOKED BY: D:\Keil4\C51\BIN\A51.EXE main.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1            ORG 0000H   ;程序开始地址
+0000 75807F            2                MOV P0,#7FH          ;将P0口赋值为0000 0001
+0003 747F              3     START: MOV A,#7FH               ;赋初始值，A为0000 00001
+0005 C3                4            CLR C                      ;将标志位清0
+0006 7A07              5                MOV R2,#7
+0008 33                6     LOOP:  RLC A            ;带进位左移
+0009 F580              7            MOV P0,A
+000B 111A              8                CALL DELAY
+000D DAF9              9                DJNZ R2,LOOP
+000F 7A07             10                MOV R2,#7
+                      11     
+0011 13               12     LOOP1: RRC A              ;带进位右移
+0012 F580             13            MOV P0,A
+0014 111A             14                CALL DELAY
+0016 DAF9             15                DJNZ R2,LOOP1
+0018 80E9             16                JMP START
+                      17            
+001A 7BFA             18     DELAY: MOV R3,#250
+001C 7C64             19     D1:    MOV R4,#100
+001E 7D0A             20     D2:    MOV R5,#10
+0020 DDFE             21            DJNZ R5,$
+0022 DCFA             22                DJNZ R4,D2
+0024 DBF6             23                DJNZ R3,D1
+0026 22               24                RET
+                      25                END
+A51 MACRO ASSEMBLER  MAIN                                                                 04/11/2018 11:24:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   001CH   A   
+D2 . . . . . . . .  C ADDR   001EH   A   
+DELAY. . . . . . .  C ADDR   001AH   A   
+LOOP . . . . . . .  C ADDR   0008H   A   
+LOOP1. . . . . . .  C ADDR   0011H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+START. . . . . . .  C ADDR   0003H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

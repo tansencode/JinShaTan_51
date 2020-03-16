@@ -1,0 +1,87 @@
+C51 COMPILER V9.01   MAIN                                                                  07/07/2018 19:58:15 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<intrins.h>
+   3          
+   4              /***********宏定义*******************/
+   5              #define uint unsigned int   
+   6              #define uchar unsigned char 
+   7              #define long_time0 40    //定时器0定时时间，每次50ms
+   8          
+   9          sbit ADDR0=P1^0;
+  10          sbit ADDR1=P1^1;
+  11          sbit ADDR2=P1^2;
+  12          
+  13          sbit ADDR3=P1^3;
+  14          sbit ENLED=P1^4;
+  15              /************定义全局变量************/
+  16              uint n=0;                //循环移位变量
+  17          
+  18              /************子函数声明**************/
+  19              void init_time0(void);   //定时器0初始化子函数
+  20          
+  21              /*************主函数*****************/
+  22              void main(void)
+  23              {
+  24   1                      ENLED=0;
+  25   1          ADDR3=1;
+  26   1      
+  27   1          ADDR2=1;
+  28   1          ADDR1=1;
+  29   1          ADDR0=0;
+  30   1              //P0=0xFF;
+  31   1              init_time0();
+  32   1      
+  33   1          }
+  34          
+  35              /*********定时器0初始化函数**********/
+  36              void init_time0(void)
+  37              {
+  38   1                  EA=1;                   //开总中断
+  39   1                  ET0=1;                  //开定时器0中断
+  40   1                  TMOD=0X01;              //选择方式1
+  41   1                  TH0=(65536-50000)/256;  //每次定时50ms
+  42   1                  TL0=(65526-50000)%256;
+  43   1                  TR0=1;                  //开启定时器
+  44   1                  while(1);               //等待定时器0中断
+  45   1          }
+  46              /************定时器中断函数**********/
+  47              void time0(void) interrupt 1 using 0
+  48              {
+  49   1              static uint i=0;
+  50   1              i++;
+  51   1              if(long_time0==i)
+  52   1              {
+  53   2                  P0=~(0x01<<n);          //P1=~(0xfe<<n);
+  54   2                  if(++n==8)
+  55   2                              
+C51 COMPILER V9.01   MAIN                                                                  07/07/2018 19:58:15 PAGE 2   
+
+  56   2                              n=0;
+  57   2                  i=0;                    //定时时间到清零
+  58   2                              
+  59   2              }
+  60   1              TH0=(65536-50000)/256;      //重新装入初值
+  61   1              TL0=(65526-50000)%256;
+  62   1          }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    101    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

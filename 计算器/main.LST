@@ -1,0 +1,213 @@
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 00:08:39 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          sbit ADDR0 = P1^0;
+   3          sbit ADDR1 = P1^1;
+   4          sbit ADDR2 = P1^2;
+   5          sbit ADDR3 = P1^3;
+   6          sbit ENLED = P1^4;
+   7          sbit KEY_IN_1 = P2^4;
+   8          sbit KEY_IN_2 = P2^5;
+   9          sbit KEY_IN_3 = P2^6;
+  10          sbit KEY_IN_4 = P2^7;
+  11          sbit KEY_OUT_1 = P2^3;
+  12          sbit KEY_OUT_2 = P2^2;
+  13          sbit KEY_OUT_3 = P2^1;
+  14          sbit KEY_OUT_4 = P2^0;
+  15          unsigned char code LedChar[] = { //数码管显示字符转换表
+  16          0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8,
+  17          0x80, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E
+  18          };
+  19          unsigned char LedBuff[6] = { //数码管显示缓冲区
+  20          0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  21          };
+  22          unsigned char code KeyCodeMap[4][4] = { //矩阵按键编号到标准键盘键码的映射表
+  23          { 0x31, 0x32, 0x33, 0x26 }, //数字键 1、数字键 2、数字键 3、向上键
+  24          { 0x34, 0x35, 0x36, 0x25 }, //数字键 4、数字键 5、数字键 6、向左键
+  25          { 0x37, 0x38, 0x39, 0x28 }, //数字键 7、数字键 8、数字键 9、向下键
+  26          { 0x30, 0x1B, 0x0D, 0x27 } //数字键 0、ESC 键、 回车键、 向右键
+  27          };
+  28          unsigned char KeySta[4][4] = { //全部矩阵按键的当前状态
+  29          {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}
+  30          };
+  31          void KeyDriver();
+  32          void main()
+  33          {
+  34   1      EA = 1; //使能总中断
+  35   1      ENLED = 0; //选择数码管进行显示
+  36   1      ADDR3 = 1;
+  37   1      TMOD = 0x01; //设置 T0 为模式 1
+  38   1      TH0 = 0xFC; //为 T0 赋初值 0xFC67，定时 1ms
+  39   1      TL0 = 0x67;
+  40   1      ET0 = 1; //使能 T0 中断
+  41   1      TR0 = 1; //启动 T0
+  42   1      LedBuff[0] = LedChar[0]; //上电显示 0
+  43   1      while (1)
+  44   1      {
+  45   2      KeyDriver(); //调用按键驱动函数
+  46   2      }
+  47   1      }
+  48          /* 将一个无符号长整型的数字显示到数码管上，num-待显示数字 */
+  49          void ShowNumber(unsigned long num)
+  50          {
+  51   1      signed char i;
+  52   1      unsigned char buf[6];
+  53   1      for (i=0; i<6; i++) //把长整型数转换为 6 位十进制的数组
+  54   1      {
+  55   2      buf[i] = num % 10;
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 00:08:39 PAGE 2   
+
+  56   2      num = num / 10;
+  57   2      }
+  58   1      for (i=5; i>=1; i--) //从最高位起，遇到 0 转换为空格，遇到非 0 则退出循环
+  59   1      {
+  60   2      if (buf[i] == 0)
+  61   2      LedBuff[i] = 0xFF;
+  62   2      else
+  63   2      break;
+  64   2      }
+  65   1      for ( ; i>=0; i--) //剩余低位都如实转换为数码管显示字符
+  66   1      {
+  67   2      LedBuff[i] = LedChar[buf[i]];
+  68   2      }
+  69   1      }
+  70          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+  71          void KeyAction(unsigned char keycode)
+  72          {
+  73   1      static unsigned long result = 0; //用于保存运算结果
+  74   1      static unsigned long addend = 0; //用于保存输入的加数
+  75   1      if ((keycode>=0x30) && (keycode<=0x39)) //输入 0-9 的数字
+  76   1      {
+  77   2      addend = (addend*10)+(keycode-0x30); //整体十进制左移，新数字进入个位
+  78   2      ShowNumber(addend); //运算结果显示到数码管
+  79   2      }
+  80   1      else if (keycode == 0x26) //向上键用作加号，执行加法或连加运算
+  81   1      {
+  82   2      result += addend; //进行加法运算
+  83   2      addend = 0;
+  84   2      ShowNumber(result); //运算结果显示到数码管
+  85   2      }
+  86   1      else if (keycode == 0x0D) //回车键，执行加法运算(实际效果与加号相同)
+  87   1      {
+  88   2      result += addend; //进行加法运算
+  89   2      addend = 0;
+  90   2      ShowNumber(result); //运算结果显示到数码管
+  91   2      
+  92   2      }
+  93   1      else if (keycode == 0x1B) //Esc 键，清零结果
+  94   1      {
+  95   2      addend = 0;
+  96   2      result = 0;
+  97   2      ShowNumber(addend); //清零后的加数显示到数码管
+  98   2      }
+  99   1      }
+ 100          /* 按键驱动函数，检测按键动作，调度相应动作函数，需在主循环中调用 */
+ 101          void KeyDriver()
+ 102          {
+ 103   1      unsigned char i, j;
+ 104   1      static unsigned char backup[4][4] = { //按键值备份，保存前一次的值
+ 105   1      {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}
+ 106   1      };
+ 107   1      for (i=0; i<4; i++) //循环检测 4*4 的矩阵按键
+ 108   1      {
+ 109   2      for (j=0; j<4; j++)
+ 110   2      {
+ 111   3      if (backup[i][j] != KeySta[i][j]) //检测按键动作
+ 112   3      {
+ 113   4      if (backup[i][j] != 0) //按键按下时执行动作
+ 114   4      {
+ 115   5      KeyAction(KeyCodeMap[i][j]); //调用按键动作函数
+ 116   5      }
+ 117   4      backup[i][j] = KeySta[i][j]; //刷新前一次的备份值
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 00:08:39 PAGE 3   
+
+ 118   4      }
+ 119   3      }
+ 120   2      }
+ 121   1      }
+ 122          /* 按键扫描函数，需在定时中断中调用，推荐调用间隔 1ms */
+ 123          void KeyScan()
+ 124          {
+ 125   1      unsigned char i;
+ 126   1      static unsigned char keyout = 0; //矩阵按键扫描输出索引
+ 127   1      static unsigned char keybuf[4][4] = { //矩阵按键扫描缓冲区
+ 128   1      {0xFF, 0xFF, 0xFF, 0xFF}, {0xFF, 0xFF, 0xFF, 0xFF},
+ 129   1      {0xFF, 0xFF, 0xFF, 0xFF}, {0xFF, 0xFF, 0xFF, 0xFF}
+ 130   1      };
+ 131   1      //将一行的 4 个按键值移入缓冲区
+ 132   1      keybuf[keyout][0] = (keybuf[keyout][0] << 1) | KEY_IN_1;
+ 133   1      keybuf[keyout][1] = (keybuf[keyout][1] << 1) | KEY_IN_2;
+ 134   1      keybuf[keyout][2] = (keybuf[keyout][2] << 1) | KEY_IN_3;
+ 135   1      keybuf[keyout][3] = (keybuf[keyout][3] << 1) | KEY_IN_4;
+ 136   1      //消抖后更新按键状态
+ 137   1      for (i=0; i<4; i++) //每行 4 个按键，所以循环 4 次
+ 138   1      {
+ 139   2      if ((keybuf[keyout][i] & 0x0F) == 0x00)
+ 140   2      { //连续 4 次扫描值为 0，即 4*4ms 内都是按下状态时，可认为按键已稳定的按下
+ 141   3      KeySta[keyout][i] = 0;
+ 142   3      }
+ 143   2      else if ((keybuf[keyout][i] & 0x0F) == 0x0F)
+ 144   2      { //连续 4 次扫描值为 1，即 4*4ms 内都是弹起状态时，可认为按键已稳定的弹起
+ 145   3      KeySta[keyout][i] = 1;
+ 146   3      }
+ 147   2      }
+ 148   1      //执行下一次的扫描输出
+ 149   1      keyout++; //输出索引递增
+ 150   1      keyout = keyout & 0x03; //索引值加到 4 即归零
+ 151   1      switch (keyout) //根据索引，释放当前输出引脚，拉低下次的输出引脚
+ 152   1      {
+ 153   2      case 0: KEY_OUT_4 = 1; KEY_OUT_1 = 0; break;
+ 154   2      case 1: KEY_OUT_1 = 1; KEY_OUT_2 = 0; break;
+ 155   2      case 2: KEY_OUT_2 = 1; KEY_OUT_3 = 0; break;
+ 156   2      case 3: KEY_OUT_3 = 1; KEY_OUT_4 = 0; break;
+ 157   2      default: break;
+ 158   2      }
+ 159   1      }
+ 160          /* 数码管动态扫描刷新函数，需在定时中断中调用 */
+ 161          void LedScan()
+ 162          {
+ 163   1      static unsigned char i = 0; //动态扫描的索引
+ 164   1      P0 = 0xFF; //显示消隐
+ 165   1      switch (i)
+ 166   1      {
+ 167   2      case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 168   2      case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 169   2      case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 170   2      case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 171   2      case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 172   2      case 5: ADDR2=1; ADDR1=0; ADDR0=1; i=0; P0=LedBuff[5]; break;
+ 173   2      default: break;
+ 174   2      }
+ 175   1      }
+ 176          /* T0 中断服务函数，用于数码管显示扫描与按键扫描 */
+ 177          
+ 178          void InterruptTimer0() interrupt 1
+ 179          {
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 00:08:39 PAGE 4   
+
+ 180   1      TH0 = 0xFC; //重新加载初值
+ 181   1      TL0 = 0x67;
+ 182   1      LedScan(); //调用数码管显示扫描函数
+ 183   1      KeyScan(); //调用按键扫描函数
+ 184   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    820    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     64      14
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

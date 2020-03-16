@@ -1,0 +1,9 @@
+"STARTUP.obj",
+"main.obj",
+"keyboard.obj",
+"I2C.obj",
+"Uart.obj",
+"Lcd1602.obj",
+"Infrared.obj" 
+TO "1" 
+RAMSIZE(256) 

@@ -1,0 +1,168 @@
+C51 COMPILER V9.01   MAIN                                                                  06/27/2018 18:02:54 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          /*********************第一部分*********************/ 
+   3          //以下是电机驱动芯片L298N 管脚位声明 
+   4          sbit PWM1=P1^0;              //电机A/B使能端 
+   5          sbit PWM2=P1^1; 
+   6          sbit IN1=P1^2;                 //电机控制端 
+   7          sbit IN2=P1^3;
+   8          sbit IN3=P1^4; 
+   9          sbit IN4=P1^5; 
+  10          sbit RP1=P2^0;                //传感器管脚位声明
+  11          sbit RP2=P2^1; 
+  12          sbit RP3=P2^2; 
+  13          sbit RP4=P2^3;
+  14          int count1,count2;              //用于中断计数
+  15          //延时函数，延时z秒
+  16          void delay(int z) 
+  17          { 
+  18   1      int x,y; 
+  19   1      for(x=z;x>0;x--); 
+  20   1      for(y=124;y>0;y--); 
+  21   1      } 
+  22          /*********************第二部分 电机控制子函数*********************/
+  23          void forward1()                //电机1前进 
+  24          { 
+  25   1      IN1=0; 
+  26   1      IN2=1; 
+  27   1      } 
+  28          void forward2()                //电机2前进 
+  29          { 
+  30   1      IN3=0; 
+  31   1      IN4=1; 
+  32   1      }
+  33          void back1()                  //电机1后退
+  34          { 
+  35   1      IN1=1; 
+  36   1      IN2=0; 
+  37   1      } 
+  38          void back2()                  //电机2后退
+  39          { 
+  40   1      IN3=1; 
+  41   1      IN4=0; 
+  42   1      } 
+  43          /*********************电机的速度控制 用PWM调速*********************/
+  44          void speed(int cnt1,int sd1,int cnt2,int sd2) 
+  45          { 
+  46   1      if(cnt1<sd1)                  //电机1 PWM调速 
+  47   1      PWM1=1; 
+  48   1      else 
+  49   1      PWM1=1; 
+  50   1      if(cnt2<sd2)                  //电机2 PWM调速
+  51   1      PWM2=1;  
+  52   1      else 
+  53   1      PWM2=1; 
+  54   1      }
+  55          /**************电机的前进、左转、右转控制***************/
+C51 COMPILER V9.01   MAIN                                                                  06/27/2018 18:02:54 PAGE 2   
+
+  56          void turn(int cnt1,int sd1,int cnt2,int sd2)
+  57          { 
+  58   1      forward1(); 
+  59   1      forward2(); 
+  60   1      speed(cnt1,sd1,cnt2,sd2); 
+  61   1      } 
+  62          /*********************电机的后退控制*********************/
+  63          void back(int cnt1,int sd1,int cnt2,int sd2) 
+  64          { 
+  65   1      back1(); 
+  66   1      back2(); 
+  67   1      speed(cnt1,sd1,cnt2,sd2); 
+  68   1      } 
+  69          /*********************第三部分 主函数*********************/
+  70          void main() 
+  71          { 
+  72   1      int num=0;
+  73   1      TMOD=0x01;                    //中断模式设置 
+  74   1      EA=1; 
+  75   1      TH0=(65536-1000)/256;            //定时 1ms 
+  76   1      TL0=(65536-1000)%256;  
+  77   1      ET0=1; 
+  78   1      TR0=1; 
+  79   1      turn(count1,250,count2,250);         //使小车冲上黑色轨道 
+  80   1      delay(350);                       //延时等待小车冲上黑色轨道
+  81   1      while(1) 
+  82   1      { 
+  83   2      if(RP1==1&&RP2==1&&RP3==1&&RP4==1) 
+  84   2      back(count1,50,count2,50);           //1111 当四个LED都没检测到黑线时，小车后退 
+  85   2      if(RP1==1&&RP2==0&&RP3==0&&RP4==1) 
+  86   2      turn(count1,200,count2,200);         //1001 当第二、第三个LED检测到黑线时，小车前进
+  87   2      if(RP1==0&&RP2==1&&RP3==1&&RP4==0)
+  88   2      turn(count1,150,count2,150);         // 0110 当第一、第四个LED检测到黑线时，小车减速前进 
+  89   2      /*********************小车左转*********************/
+  90   2      if(RP1==0&&RP2==1&&RP3==1&&RP4==1) 
+  91   2      turn(count1,0,count2,150);          // 0111 当只有第一个LED检测到黑线时，小车左转
+  92   2      if(RP1==1&&RP2==0&&RP3==1&&RP4==1)
+  93   2      turn(count1,80,count2,150);         // 1011 当第二个LED检测到黑线时，小车偏左转 
+  94   2      if(RP1==0&&RP2==0&&RP3==1&&RP4==1) 
+  95   2      turn(count1,0,count2,100);          // 0011 当第一、二个LED检测到黑线时，小车左转
+  96   2      if(RP1==0&&RP2==0&&RP3==0&&RP4==1) 
+  97   2      turn(count1,0,count2,200);          // 0001 当第一、二、三个LED检测到黑线时，小车左大转 
+  98   2      /*********************小车右转*********************/
+  99   2      if(RP1==1&&RP2==1&&RP3==0&&RP4==1)
+ 100   2      turn(count1,150,count2,80);          // 1101 当第三个LED检测到黑线时，小车偏右转
+ 101   2      if(RP1==1&&RP2==1&&RP3==1&&RP4==0) 
+ 102   2      turn(count1,180,count2,0);          // 1110 当第四个LED检测到黑线时，小车右转 
+ 103   2      if(RP1==1&&RP2==1&&RP3==0&&RP4==0) 
+ 104   2      turn(count1,100,count2,0);          // 1100 当第三、四个LED检测到黑线时，小车右转 
+ 105   2      if(RP1==1&&RP2==0&&RP3==0&&RP4==0)
+ 106   2      turn(count1,200,count2,0);          // 1000当第二、三、四个LED检测到黑线时，小车右大转 
+ 107   2      /****************小车检测到全黑情况的处理****************/
+ 108   2      if(RP1==0&&RP2==0&&RP3==0&&RP4==0) 
+ 109   2      { 
+ 110   3      if(num==0)
+ 111   3      { 
+ 112   4      back1();                        // 0000 当四个LED第一次检测到黑线时，左轮后退右轮前进，小车左转 
+ 113   4      forward2(); 
+ 114   4      delay(100);                      //延时100ms，等待小车转过弯道
+ 115   4      } 
+ 116   3      if(num>0 && num<6) 
+ 117   3      { 
+C51 COMPILER V9.01   MAIN                                                                  06/27/2018 18:02:54 PAGE 3   
+
+ 118   4      turn(count1,200,count2,200);     // 0000 当四个LED再次检测到黑线的次数小于6次时                           
+             -  //即到达黑线时小车前进速度大于后退速度 
+ 119   4      } 
+ 120   3      if(num>=6)
+ 121   3      { 
+ 122   4      PWM1=0; 
+ 123   4      PWM2=0;                      //当四个LED第六次检测到黑线时，小车停止
+ 124   4      } 
+ 125   3      num++; 
+ 126   3      } 
+ 127   2      } 
+ 128   1      }
+ 129          /*************第四部分 中断服务函数*************/ 
+ 130          void time0()interrupt 1 
+ 131          { 
+ 132   1      TH0=(65536-1000)/256;            //定时1ms 
+ 133   1      TL0=(65536-1000)%256; 
+ 134   1      count1++; 
+ 135   1      count2++; 
+ 136   1      if(count1>=500)                  //周期是500ms 
+ 137   1      count1=0; 
+ 138   1      if(count2>=500)                  //周期是500ms 
+ 139   1      count2=0; 
+ 140   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    619    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4      24
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

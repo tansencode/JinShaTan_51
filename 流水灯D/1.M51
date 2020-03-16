@@ -1,0 +1,224 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/10/2018  21:16:52  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL4\C51\BIN\BL51.EXE STARTUP.obj, main.obj TO 1 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  main.obj (MAIN)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C?LMUL)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C?ULDIV)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C?ULSHR)
+
+
+LINK MAP OF MODULE:  1 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0006H     UNIT         _DATA_GROUP_
+                    000EH     0012H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?MAIN
+                    0020H.1   0000H.7                *** GAP ***
+            DATA    0021H     0026H     UNIT         ?DT?MAIN
+            IDATA   0047H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0130H     UNIT         ?C?LIB_CODE
+            CODE    013EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    01CAH     0079H     UNIT         ?PR?_CONFIGTIMER0?MAIN
+            CODE    0243H     0037H     UNIT         ?C_INITSEG
+            CODE    027AH     002FH     UNIT         ?PR?INTERRUPTTIMER0?MAIN
+            CODE    02A9H     0026H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   1 (?C_STARTUP)
+
+
+SEGMENT                            DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                    0008H    0002H
+  +--> ?PR?_CONFIGTIMER0?MAIN
+
+?PR?_CONFIGTIMER0?MAIN           000AH    0004H
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/10/2018  21:16:52  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  1 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:013EH         SEGMENT       ?C_C51STARTUP
+  I:0047H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0141H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:013EH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:013EH         LINE#         133
+  C:0140H         LINE#         134
+  C:0141H         LINE#         135
+  C:0142H         LINE#         136
+  C:0144H         LINE#         185
+  C:0147H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:027AH         PUBLIC        InterruptTimer0
+  D:00A8H         PUBLIC        IE
+  C:01CAH         PUBLIC        _ConfigTimer0
+  B:0020H.0       PUBLIC        flag300ms
+  D:00B8H         PUBLIC        IP
+  D:0022H         PUBLIC        ledd
+  D:0040H         PUBLIC        T0RH
+  D:0041H         PUBLIC        T0RL
+  C:02A9H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/10/2018  21:16:52  PAGE 3
+
+
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:0042H         SYMBOL        cnt
+  D:0044H         PUBLIC        RxdByte
+  B:00A8H.1       PUBLIC        ET0
+  B:0090H.0       PUBLIC        ADDR0
+  D:008CH         PUBLIC        TH0
+  B:0090H.1       PUBLIC        ADDR1
+  B:0090H.2       PUBLIC        ADDR2
+  B:0090H.3       PUBLIC        ADDR3
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  B:0090H.4       PUBLIC        ENLED
+  D:0045H         SYMBOL        n
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:02A9H         LINE#         26
+  C:02A9H         LINE#         27
+  C:02A9H         LINE#         28
+  C:02AEH         LINE#         29
+  C:02B0H         LINE#         32
+  C:02B2H         LINE#         33
+  C:02B4H         LINE#         35
+  C:02B6H         LINE#         36
+  C:02B8H         LINE#         37
+  C:02BAH         LINE#         38
+  C:02C0H         LINE#         42
+  C:02C0H         LINE#         44
+  C:02C0H         LINE#         46
+  C:02C3H         LINE#         47
+  C:02C3H         LINE#         48
+  C:02C5H         LINE#         51
+  C:02CDH         LINE#         59
+  C:02CDH         LINE#         61
+  -------         ENDPROC       MAIN
+  -------         PROC          _CONFIGTIMER0
+  D:0002H         SYMBOL        ms
+  -------         DO            
+  D:000AH         SYMBOL        tmp
+  -------         ENDDO         
+  C:01CAH         LINE#         65
+  C:01CAH         LINE#         66
+  C:01CAH         LINE#         68
+  C:01D6H         LINE#         69
+  C:01F6H         LINE#         70
+  C:020CH         LINE#         71
+  C:0221H         LINE#         72
+  C:022FH         LINE#         73
+  C:0232H         LINE#         74
+  C:0235H         LINE#         75
+  C:0238H         LINE#         76
+  C:023BH         LINE#         77
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/10/2018  21:16:52  PAGE 4
+
+
+  C:023EH         LINE#         78
+  C:0240H         LINE#         79
+  C:0242H         LINE#         80
+  -------         ENDPROC       _CONFIGTIMER0
+  -------         PROC          INTERRUPTTIMER0
+  -------         DO            
+  D:0021H         SYMBOL        tmr300ms
+  -------         ENDDO         
+  C:027AH         LINE#         83
+  C:027EH         LINE#         88
+  C:0281H         LINE#         89
+  C:0284H         LINE#         91
+  C:0286H         LINE#         92
+  C:028DH         LINE#         93
+  C:028DH         LINE#         95
+  C:0295H         LINE#         96
+  C:0298H         LINE#         97
+  C:029AH         LINE#         98
+  C:02A0H         LINE#         99
+  C:02A0H         LINE#         100
+  C:02A4H         LINE#         101
+  C:02A4H         LINE#         102
+  C:02A4H         LINE#         103
+  -------         ENDPROC       INTERRUPTTIMER0
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?LMUL
+  C:000EH         PUBLIC        ?C?LMUL
+  -------         ENDMOD        ?C?LMUL
+
+  -------         MODULE        ?C?ULDIV
+  C:0099H         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+  -------         MODULE        ?C?ULSHR
+  C:012BH         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+Program Size: data=53.1 xdata=0 code=711
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,382 @@
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:57:35 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          extern bit irflag;
+   3          extern unsigned char ircode[4];
+   4          extern void InitInfrared();
+   5          signed char i = 0;
+   6          unsigned char len = 0;
+   7          unsigned char str[16];
+   8          
+   9          unsigned char code SinWave[] = {  //正弦波波表
+  10              127, 152, 176, 198, 217, 233, 245, 252,
+  11              255, 252, 245, 233, 217, 198, 176, 152,
+  12              127, 102,  78,  56,  37,  21,   9,   2,
+  13                0,   2,   9,  21,  37,  56,  78, 102,
+  14                    127,152,176,198,217,233,245,252,255,252,
+  15                    245, 233, 217, 198, 176, 152,
+  16              127, 102,  78,  56,  37,  21,   9,   2,
+  17                0,2,   9,  21,  37,  56,  78, 102,
+  18          
+  19                    127,152,176,198,217,233,245,252,255,252,
+  20                    245, 233, 217, 198, 176, 152,
+  21              127, 102,  78,  56,  37,  21,   9,   2,
+  22                0,   2,   9,  21,  37,  56,  78, 102, 
+  23          };
+  24          unsigned char code SquWave[] = {  //方波波表
+  25              255, 255, 255, 255,255, 255, 255, 255,
+  26             0, 0, 0, 0,  0,  0,  0,   0,
+  27                255, 255, 255, 255,255, 255, 255, 255, 
+  28                    0, 0, 0, 0,  0,  0,  0,   0,
+  29                    255, 255, 255, 255,255, 255, 255, 255,
+  30             0, 0, 0, 0,  0,  0,  0,   0,
+  31                255, 255, 255, 255,255, 255, 255, 255, 
+  32                    0, 0, 0, 0,  0,  0,  0,   0,
+  33                    255, 255, 255, 255,255, 255, 255, 255,
+  34             0, 0, 0, 0,  0,  0,  0,   0,
+  35                255, 255, 255, 255,255, 255, 255, 255, 
+  36                    0, 0, 0, 0,  0,  0,  0,   0,
+  37          
+  38          };
+  39          unsigned char code TriWave[] = {  //三角波波表
+  40                0,  16,  32,  48,  64,  80,  96, 112,
+  41              128, 144, 160, 176, 192, 208, 224, 240,
+  42              255, 240, 224, 208, 192, 176, 160, 144,
+  43              128, 112,  96,  80,  64,  48,  32,  16,
+  44                   0,  16,  32,  48,  64,  80,  96, 112,
+  45              128, 144, 160, 176, 192, 208, 224, 240,
+  46              255, 240, 224, 208, 192, 176, 160, 144,
+  47              128, 112,  96,  80,  64,  48,  32,  16,
+  48                   0,  16,  32,  48,  64,  80,  96, 112,
+  49              128, 144, 160, 176, 192, 208, 224, 240,
+  50              255, 240, 224, 208, 192, 176, 160, 144,
+  51              128, 112,  96,  80,  64,  48,  32,  16,
+  52          };
+  53          unsigned char code SawWave[] = {  //锯齿波表
+  54                0,   8,  16,  24,  32,  40,  48,  56,
+  55               64,  72,  80,  88,  96, 104, 112, 120,
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:57:35 PAGE 2   
+
+  56              128, 136, 144, 152, 160, 168, 176, 184,
+  57              192, 200, 208, 216, 224, 232, 240, 248,
+  58                  0,   8,  16,  24,  32,  40,  48,  56,
+  59               64,  72,  80,  88,  96, 104, 112, 120,
+  60              128, 136, 144, 152, 160, 168, 176, 184,
+  61              192, 200, 208, 216, 224, 232, 240, 248,
+  62                  0,   8,  16,  24,  32,  40,  48,  56,
+  63               64,  72,  80,  88,  96, 104, 112, 120,
+  64              128, 136, 144, 152, 160, 168, 176, 184,
+  65              192, 200, 208, 216, 224, 232, 240, 248,
+  66          };
+  67          unsigned char fWave = 10;   //波形频率
+  68          unsigned char code *pWave;  //波表指针
+  69          unsigned char T0RH = 0;  //T0重载值的高字节
+  70          unsigned char T0RL = 0;  //T0重载值的低字节
+  71          unsigned char T1RH = 1;  //T1重载值的高字节
+  72          unsigned char T1RL = 1;  //T1重载值的低字节
+  73          
+  74          void ConfigTimer0(unsigned int ms);
+  75          void SetWaveFreq(unsigned char freq);
+  76          
+  77          void NumKeyAction(unsigned char n);
+  78          unsigned char LongToString(unsigned char *str, signed long dat);
+  79          extern void KeyScan();
+  80          extern void KeyDriver();
+  81          extern void I2CStart();
+  82          extern void I2CStop();
+  83          extern bit I2CWrite(unsigned char dat);
+  84          extern void InitLcd1602();
+  85          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  86          extern void LcdAreaClear(unsigned char x, unsigned char y, unsigned char len);
+  87          extern void LcdFullClear();
+  88          extern void LcdWriteDat(unsigned char dat);
+  89          void main()
+  90          {    
+  91   1          EA = 1;           //开总中断
+  92   1              InitInfrared();   //初始化红外功能
+  93   1          ConfigTimer0(1);  //配置T0定时1ms
+  94   1          pWave = SinWave;  //默认正弦波
+  95   1          SetWaveFreq(10);  //默认频率10Hz
+  96   1              fWave=10;
+  97   1          InitLcd1602();    //初始化液晶
+  98   1              LcdShowStr(0,0,"SinWave");
+  99   1          LcdShowStr(0, 1, "10");  //初始显示一个数字10
+ 100   1              LcdShowStr(2, 1, "Hz");  //初始显示一个数字10
+ 101   1          while (1)
+ 102   1          {
+ 103   2              KeyDriver();  //调用按键驱动
+ 104   2                      if (irflag)  //接收到红外数据时刷新显示
+ 105   2              {
+ 106   3                  irflag = 0;
+ 107   3                  if (ircode[2] == 0x09)  //0x09为+键码
+ 108   3                  {
+ 109   4                        if (fWave < 25) //达到最大值25之前可递增频率值
+ 110   4                        {
+ 111   5                              fWave++;
+ 112   5                               SetWaveFreq(fWave);
+ 113   5      
+ 114   5                         }
+ 115   4                  }
+ 116   3                  else if (ircode[2] == 0x15)  //0x15为-键码
+ 117   3                  {
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:57:35 PAGE 3   
+
+ 118   4                         if (fWave > 2) //达到最小值2之前可递减频率值
+ 119   4                         {
+ 120   5                              fWave--;
+ 121   5                              SetWaveFreq(fWave);
+ 122   5                                                      len = LongToString(str, fWave);  //新数值转换为字符串
+ 123   5                                      LcdAreaClear(0, 1, str);        //清除第二行中间的字符位
+*** WARNING C214 IN LINE 123 OF MAIN.C: 'Argument': conversion: pointer to non-pointer
+ 124   5                              LcdShowStr(6, 1, str);     //显示到液晶第二行上
+ 125   5                          }
+ 126   4                  }
+ 127   3                                      if (ircode[2] == 0x16) //  0
+ 128   3                              {
+ 129   4                                 //num=ircode[2];
+ 130   4                                 NumKeyAction(0x00);
+ 131   4                              }
+ 132   3                               else if (ircode[2] == 0x0C) //  1
+ 133   3                              {
+ 134   4                                 //num=0;
+ 135   4                                 NumKeyAction(0x01);
+ 136   4                              }
+ 137   3                              else if (ircode[2] == 0x18)       //  2
+ 138   3                              {
+ 139   4                                 NumKeyAction(0x02);
+ 140   4                              }
+ 141   3                                      else if (ircode[2] == 0x5E)             //  3
+ 142   3                              {
+ 143   4                                 NumKeyAction(0x03);
+ 144   4                              }
+ 145   3                                      else if (ircode[2] == 0x08)             //  4
+ 146   3                              {
+ 147   4                                 NumKeyAction(0x04);
+ 148   4                              }
+ 149   3                                      else if (ircode[2] == 0x1C)        //  5
+ 150   3                              {
+ 151   4                                 NumKeyAction(0x05);
+ 152   4                              }
+ 153   3                                      else if (ircode[2] == 0x5A)        //  6
+ 154   3                              {
+ 155   4                                 NumKeyAction(0x06);
+ 156   4                              }
+ 157   3                                      else if (ircode[2] == 0x42)             //  7
+ 158   3                              {
+ 159   4                                 NumKeyAction(0x07);
+ 160   4                              }
+ 161   3                                      else if (ircode[2] == 0x52)       //  8
+ 162   3                              {
+ 163   4                                 NumKeyAction(0x08);
+ 164   4                              }
+ 165   3                              else if (ircode[2] == 0x4A)             //  9
+ 166   3                              {
+ 167   4                                 NumKeyAction(0x09);
+ 168   4                              }
+ 169   3              }
+ 170   2          }
+ 171   1      }
+ 172          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+ 173          void KeyAction(unsigned char keycode)
+ 174          {
+ 175   1          static unsigned char i = 0;
+ 176   1          
+ 177   1          if (keycode == 0x26)  //向上键，切换波形
+ 178   1          {
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:57:35 PAGE 4   
+
+ 179   2              //在4种波形间循环切换
+ 180   2              if (i == 0)
+ 181   2              {
+ 182   3                  i = 1;
+ 183   3                  pWave = SquWave;
+ 184   3                              LcdShowStr(0,0,"SquWave");
+ 185   3              }
+ 186   2                      else if (i == 1)
+ 187   2              {
+ 188   3                  i = 2;
+ 189   3                  pWave =TriWave;
+ 190   3                              LcdShowStr(0,0,"TriWave");
+ 191   3              }
+ 192   2              else if (i == 2)
+ 193   2              {
+ 194   3                  i = 3;
+ 195   3                  pWave = SawWave;
+ 196   3                              LcdShowStr(0,0,"SawWave");
+ 197   3              }
+ 198   2              else
+ 199   2              {
+ 200   3                  i = 0;
+ 201   3                  pWave = SinWave;
+ 202   3                              LcdShowStr(0,0,"SinWave");
+ 203   3              }
+ 204   2      
+ 205   2          }
+ 206   1      
+ 207   1               if (keycode == 0x28)  //向下键，切换波形
+ 208   1          {
+ 209   2              //在4种波形间循环切换
+ 210   2              if (i == 0)
+ 211   2              {
+ 212   3                  i = 1;
+ 213   3                  pWave = SquWave;
+ 214   3                              LcdShowStr(0,0,"SquWave");
+ 215   3              }
+ 216   2                      else if (i == 1)
+ 217   2              {
+ 218   3                  i = 2;
+ 219   3                  pWave =TriWave;
+ 220   3                              LcdShowStr(0,0,"TriWave");
+ 221   3              }
+ 222   2              else if (i == 2)
+ 223   2              {
+ 224   3                  i = 3;
+ 225   3                  pWave = SawWave;
+ 226   3                              LcdShowStr(0,0,"SawWave");
+ 227   3              }
+ 228   2              else
+ 229   2              {
+ 230   3                  i = 0;
+ 231   3                  pWave = SinWave;
+ 232   3                              LcdShowStr(0,0,"SinWave");
+ 233   3              }
+ 234   2      
+ 235   2          }
+ 236   1      }
+ 237          
+ 238          /* 长整型数转换为字符串，str-字符串指针，dat-待转换数，返回值-字符串长度 */
+ 239          unsigned char LongToString(unsigned char *str, signed long dat)
+ 240          {
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:57:35 PAGE 5   
+
+ 241   1          signed char i = 0;
+ 242   1          unsigned char len = 0;
+ 243   1          unsigned char buf[16];
+ 244   1          
+ 245   1          if (dat < 0)  //如果为负数，首先取绝对值，并在指针上添加负号
+ 246   1          {
+ 247   2              dat = -dat;
+ 248   2              *str++ = '-';
+ 249   2              len++;
+ 250   2          }
+ 251   1          do {          //先转换为低位在前的十进制数组
+ 252   2              buf[i++] = dat % 10;
+ 253   2              dat /= 10;
+ 254   2          } while (dat > 0);
+ 255   1          len += i;     //i最后的值就是有效字符的个数
+ 256   1          while (i-- > 0)   //将数组值转换为ASCII码反向拷贝到接收指针上
+ 257   1          {
+ 258   2              *str++ = buf[i] + '0';
+ 259   2          }
+ 260   1          *str = '\0';  //添加字符串结束符
+ 261   1          
+ 262   1          return len;   //返回字符串长度
+ 263   1      }
+ 264          void NumKeyAction(signed char n)
+ 265          {
+ 266   1          unsigned char len;
+ 267   1          unsigned char str[16];
+ 268   1          
+ 269   1          
+ 270   1             fWave = fWave*10 + n;             //输入数值累加到原操作数上
+ 271   1      
+ 272   1              len = LongToString(str, fWave);  //新数值转换为字符串
+ 273   1                       LcdAreaClear(0, 1, str);        //清除第二行中间的字符位
+*** WARNING C214 IN LINE 273 OF MAIN.C: 'Argument': conversion: pointer to non-pointer
+ 274   1              LcdShowStr(6, 1, str);     //显示到液晶第二行上
+ 275   1        
+ 276   1      }
+ 277          /* 设置DAC输出值，val-设定值 */
+ 278          void SetDACOut(unsigned char val)
+ 279          {
+ 280   1          I2CStart();
+ 281   1          if (!I2CWrite(0x48<<1)) //寻址PCF8591，如未应答，则停止操作并返回
+ 282   1          {
+ 283   2              I2CStop();
+ 284   2              return;
+ 285   2          }
+ 286   1          I2CWrite(0x40);         //写入控制字节
+ 287   1          I2CWrite(val);          //写入DA值  
+ 288   1          I2CStop();
+ 289   1      }
+ 290          /* 设置输出波形的频率，freq-设定频率 */
+ 291          void SetWaveFreq(unsigned char freq)
+ 292          {
+ 293   1          unsigned long tmp;
+ 294   1          
+ 295   1          tmp = (11059200/12) / (freq*96); //定时器计数频率，是波形频率的32倍
+ 296   1          tmp = 65536 - tmp;               //计算定时器重载值
+ 297   1          tmp = tmp + 36;                  //修正中断响应延时造成的误差
+ 298   1          T1RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 299   1          T1RL = (unsigned char)tmp;
+ 300   1          TMOD &= 0x0F;   //清零T1的控制位
+ 301   1          TMOD |= 0x10;   //配置T1为模式1
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:57:35 PAGE 6   
+
+ 302   1          TH1 = T1RH;     //加载T1重载值
+ 303   1          TL1 = T1RL;
+ 304   1          ET1 = 1;        //使能T1中断
+ 305   1          PT1 = 1;        //设置为高优先级
+ 306   1          TR1 = 1;        //启动T1
+ 307   1      }
+ 308          /* 配置并启动T0，ms-T0定时时间 */
+ 309          void ConfigTimer0(unsigned int ms)
+ 310          {
+ 311   1          unsigned long tmp;  //临时变量
+ 312   1          
+ 313   1          tmp = 11059200 / 12;      //定时器计数频率
+ 314   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 315   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 316   1          tmp = tmp + 28;           //补偿中断响应延时造成的误差
+ 317   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 318   1          T0RL = (unsigned char)tmp;
+ 319   1          TMOD &= 0xF0;   //清零T0的控制位
+ 320   1          TMOD |= 0x01;   //配置T0为模式1
+ 321   1          TH0 = T0RH;     //加载T0重载值
+ 322   1          TL0 = T0RL;
+ 323   1          ET0 = 1;        //使能T0中断
+ 324   1          TR0 = 1;        //启动T0
+ 325   1      }
+ 326          /* T0中断服务函数，执行按键扫描 */
+ 327          void InterruptTimer0() interrupt 1
+ 328          {
+ 329   1          TH0 = T0RH;  //重新加载重载值
+ 330   1          TL0 = T0RL;
+ 331   1          KeyScan();   //按键扫描
+ 332   1      }
+ 333          /* T1中断服务函数，执行波形输出 */
+ 334          void InterruptTimer1() interrupt 3
+ 335          {
+ 336   1          static unsigned char i = 0;
+ 337   1          
+ 338   1          TH1 = T1RH;  //重新加载重载值
+ 339   1          TL1 = T1RL;
+ 340   1          //循环输出波表中的数据
+ 341   1          SetDACOut(pWave[i]);
+ 342   1          i++;
+ 343   1          if (i >= 96)
+ 344   1          {
+ 345   2              i = 0;
+ 346   2          }
+ 347   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1085    ----
+   CONSTANT SIZE    =    422    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     27      52
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

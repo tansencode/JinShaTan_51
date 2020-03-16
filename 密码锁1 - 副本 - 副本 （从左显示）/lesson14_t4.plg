@@ -1,0 +1,20 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\密码锁1 - 副本 - 副本 （从左显示）\lesson14_t4.uvproj
+Project File Date:  02/20/2014
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLEARSCREEN?LCD1602
+Program Size: data=73.2 xdata=50 code=3194
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 3 Warning(s).

@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\电子时钟3\3.uvproj
+Project File Date:  05/03/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling DS1302.c...
+DS1302.C(19): error C141: syntax error near 'dat', expected ')'
+DS1302.C(21): error C141: syntax error near 'mask'
+DS1302.C(21): error C202: 'mask': undefined identifier
+DS1302.C(23): error C202: 'mask': undefined identifier
+DS1302.C(25): error C202: 'mask': undefined identifier
+DS1302.C(26): error C202: 'DS1302_IO': undefined identifier
+DS1302.C(28): error C202: 'DS1302_IO': undefined identifier
+DS1302.C(29): error C202: 'DS1302_CK': undefined identifier
+DS1302.C(30): error C202: 'DS1302_CK': undefined identifier
+DS1302.C(32): error C202: 'DS1302_IO': undefined identifier
+DS1302.C(35): error C129: missing ';' before 'DS1302ByteRead'
+compiling keyboard.c...
+keyboard.c(17): warning C318: can't open file 'config.h'
+keyboard.c(18): warning C318: can't open file 'keyboard.h'
+keyboard.c(19): warning C318: can't open file 'Time.h'
+KEYBOARD.C(21): error C129: missing ';' before 'code'
+compiling Lcd1602.c...
+LCD1602.C(10): error C129: missing ';' before 'tmpP0'
+compiling LED.c...
+LED.c(2): warning C318: can't open file 'config.h'
+LED.c(3): warning C318: can't open file 'LedBuzzer.h'
+LED.C(5): error C129: missing ';' before 'code'
+compiling main.c...
+MAIN.C(24): error C141: syntax error near '1'
+MAIN.C(27): error C129: missing ';' before 'T0RH'
+compiling Time.c...
+TIME.C(24): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling DS1302.c...
+DS1302.C(127): warning C280: 'dat': unreferenced local variable
+compiling keyboard.c...
+keyboard.c(3): warning C318: can't open file 'config.h'
+keyboard.c(4): warning C318: can't open file 'keyboard.h'
+keyboard.c(5): warning C318: can't open file 'Time.h'
+KEYBOARD.C(7): error C129: missing ';' before 'code'
+compiling Lcd1602.c...
+LCD1602.C(10): error C129: missing ';' before 'tmpP0'
+compiling LED.c...
+LED.C(4): error C129: missing ';' before 'code'
+compiling main.c...
+MAIN.C(24): error C141: syntax error near '1'
+MAIN.C(27): error C129: missing ';' before 'T0RH'
+compiling Time.c...
+TIME.C(24): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling keyboard.c...
+KEYBOARD.C(4): error C129: missing ';' before 'code'
+compiling Lcd1602.c...
+LCD1602.C(10): error C129: missing ';' before 'tmpP0'
+compiling LED.c...
+LED.C(4): error C129: missing ';' before 'code'
+compiling main.c...
+MAIN.C(24): error C141: syntax error near '1'
+MAIN.C(27): error C129: missing ';' before 'T0RH'
+compiling Time.c...
+TIME.C(24): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling keyboard.c...
+KEYBOARD.C(4): error C129: missing ';' before 'code'
+compiling Lcd1602.c...
+LCD1602.C(10): error C129: missing ';' before 'tmpP0'
+compiling LED.c...
+LED.C(4): error C129: missing ';' before 'code'
+compiling main.c...
+MAIN.C(24): error C141: syntax error near '1'
+MAIN.C(27): error C129: missing ';' before 'T0RH'
+compiling Time.c...
+TIME.C(24): error C129: missing ';' before 'code'
+Target not created

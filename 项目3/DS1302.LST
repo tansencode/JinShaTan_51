@@ -1,0 +1,165 @@
+C51 COMPILER V9.01   DS1302                                                                06/07/2018 16:37:38 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE DS1302
+OBJECT MODULE PLACED IN DS1302.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE DS1302.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          sbit DS1302_CE = P1^7;
+   4          sbit DS1302_CK = P3^5;
+   5          sbit DS1302_IO = P3^4;
+   6          
+   7          struct sTime {  //日期时间结构体定义
+   8              unsigned int  year;  //年
+   9              unsigned char mon;   //月
+  10              unsigned char day;   //日
+  11              unsigned char hour;  //时
+  12              unsigned char min;   //分
+  13              unsigned char sec;   //秒
+  14              unsigned char week;  //星期
+  15          };
+  16          
+  17          /* 发送一个字节到DS1302通信总线上 */
+  18          void DS1302ByteWrite(unsigned char dat)
+  19          {
+  20   1          unsigned char mask;
+  21   1          
+  22   1          for (mask=0x01; mask!=0; mask<<=1)  //低位在前，逐位移出
+  23   1          {
+  24   2              if ((mask&dat) != 0) //首先输出该位数据
+  25   2                  DS1302_IO = 1;
+  26   2              else
+  27   2                  DS1302_IO = 0;
+  28   2              DS1302_CK = 1;       //然后拉高时钟
+  29   2              DS1302_CK = 0;       //再拉低时钟，完成一个位的操作
+  30   2          }
+  31   1          DS1302_IO = 1;           //最后确保释放IO引脚
+  32   1      }
+  33          /* 由DS1302通信总线上读取一个字节 */
+  34          unsigned char DS1302ByteRead()
+  35          {
+  36   1          unsigned char mask;
+  37   1          unsigned char dat = 0;
+  38   1          
+  39   1          for (mask=0x01; mask!=0; mask<<=1)  //低位在前，逐位读取
+  40   1          {
+  41   2              if (DS1302_IO != 0)  //首先读取此时的IO引脚，并设置dat中的对应位
+  42   2              {
+  43   3                  dat |= mask;
+  44   3              }
+  45   2              DS1302_CK = 1;       //然后拉高时钟
+  46   2              DS1302_CK = 0;       //再拉低时钟，完成一个位的操作
+  47   2          }
+  48   1          return dat;              //最后返回读到的字节数据
+  49   1      }
+  50          /* 用单次写操作向某一寄存器写入一个字节，reg-寄存器地址，dat-待写入字节 */
+  51          void DS1302SingleWrite(unsigned char reg, unsigned char dat)
+  52          {
+  53   1          DS1302_CE = 1;                   //使能片选信号
+  54   1          DS1302ByteWrite((reg<<1)|0x80);  //发送写寄存器指令
+  55   1          DS1302ByteWrite(dat);            //写入字节数据
+C51 COMPILER V9.01   DS1302                                                                06/07/2018 16:37:38 PAGE 2   
+
+  56   1          DS1302_CE = 0;                   //除能片选信号
+  57   1      }
+  58          /* 用单次读操作从某一寄存器读取一个字节，reg-寄存器地址，返回值-读到的字节 */
+  59          unsigned char DS1302SingleRead(unsigned char reg)
+  60          {
+  61   1          unsigned char dat;
+  62   1          
+  63   1          DS1302_CE = 1;                   //使能片选信号
+  64   1          DS1302ByteWrite((reg<<1)|0x81);  //发送读寄存器指令
+  65   1          dat = DS1302ByteRead();          //读取字节数据
+  66   1          DS1302_CE = 0;                   //除能片选信号
+  67   1          
+  68   1          return dat;
+  69   1      }
+  70          /* 用突发模式连续写入8个寄存器数据，dat-待写入数据指针 */
+  71          void DS1302BurstWrite(unsigned char *dat)
+  72          {
+  73   1          unsigned char i;
+  74   1          
+  75   1          DS1302_CE = 1;
+  76   1          DS1302ByteWrite(0xBE);  //发送突发写寄存器指令
+  77   1          for (i=0; i<8; i++)     //连续写入8字节数据
+  78   1          {
+  79   2              DS1302ByteWrite(dat[i]);
+  80   2          }
+  81   1          DS1302_CE = 0;
+  82   1      }
+  83          /* 用突发模式连续读取8个寄存器的数据，dat-读取数据的接收指针 */
+  84          void DS1302BurstRead(unsigned char *dat)
+  85          {
+  86   1          unsigned char i;
+  87   1          
+  88   1          DS1302_CE = 1;
+  89   1          DS1302ByteWrite(0xBF);  //发送突发读寄存器指令
+  90   1          for (i=0; i<8; i++)     //连续读取8个字节
+  91   1          {
+  92   2              dat[i] = DS1302ByteRead();
+  93   2          }
+  94   1          DS1302_CE = 0;
+  95   1      }
+  96          /* 获取实时时间，即读取DS1302当前时间并转换为时间结构体格式 */
+  97          void GetRealTime(struct sTime *time)
+  98          {
+  99   1          unsigned char buf[8];
+ 100   1          
+ 101   1          DS1302BurstRead(buf);
+ 102   1          time->year = buf[6] + 0x2000;
+ 103   1          time->mon  = buf[4];
+ 104   1          time->day  = buf[3];
+ 105   1          time->hour = buf[2];
+ 106   1          time->min  = buf[1];
+ 107   1          time->sec  = buf[0];
+ 108   1          time->week = buf[5];
+ 109   1      }
+ 110          /* 设定实时时间，时间结构体格式的设定时间转换为数组并写入DS1302 */
+ 111          void SetRealTime(struct sTime *time)
+ 112          {
+ 113   1          unsigned char buf[8];
+ 114   1          
+ 115   1          buf[7] = 0;
+ 116   1          buf[6] = time->year;
+ 117   1          buf[5] = time->week;
+C51 COMPILER V9.01   DS1302                                                                06/07/2018 16:37:38 PAGE 3   
+
+ 118   1          buf[4] = time->mon;
+ 119   1          buf[3] = time->day;
+ 120   1          buf[2] = time->hour;
+ 121   1          buf[1] = time->min;
+ 122   1          buf[0] = time->sec;
+ 123   1          DS1302BurstWrite(buf);
+ 124   1      }
+ 125          /* DS1302初始化，如发生掉电则重新设置初始时间 */
+ 126          void InitDS1302()
+ 127          {
+ 128   1          unsigned char dat;
+ 129   1          struct sTime code InitTime[] = {  //2018年5月7日 21:00:00 星期一
+ 130   1              0x2018,0x05,0x07, 0x21,0x00,0x00, 0x01
+ 131   1          };
+ 132   1          
+ 133   1          DS1302_CE = 0;  //初始化DS1302通信引脚
+ 134   1          DS1302_CK = 0;
+ 135   1          dat = DS1302SingleRead(0);  //读取秒寄存器
+ 136   1              DS1302SingleWrite(7, 0x00);  //撤销写保护以允许写入数据
+ 137   1              SetRealTime(&InitTime);      //设置DS1302为默认的初始时间
+ 138   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    345    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      26
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

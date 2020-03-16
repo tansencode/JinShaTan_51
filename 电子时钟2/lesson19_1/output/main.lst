@@ -1,0 +1,163 @@
+C51 COMPILER V9.01   MAIN                                                                  05/03/2018 12:15:46 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\output\main.obj
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE ..\source\main.c BROWSE INCDIR(..\source) DEBUG OBJECTEXTEND PRINT(..\outp
+                    -ut\main.lst) OBJECT(..\output\main.obj)
+
+line level    source
+
+   1          /*
+   2          *******************************************************************************
+   3          *                     《手把手教你学51单片机(C语言版)》
+   4          *                    配套 KST-51 单片机开发板 示例源代码
+   5          *
+   6          *         (c) 版权所有 2014 金沙滩工作室/清华大学出版社 保留所有权利
+   7          *                 获取更多资料请访问：http://www.kingst.org
+   8          *
+   9          * 文件名：main.c
+  10          * 描  述：第19章 多功能电子钟 工程主文件
+  11          * 版本号：v1.0.0
+  12          * 备  注：详情见第19章19.4节
+  13          *******************************************************************************
+  14          */
+  15          
+  16          #define  _MAIN_C
+  17          #include "config.h"
+  18          #include "Lcd1602.h"
+  19          #include "LedBuzzer.h"
+  20          #include "keyboard.h"
+  21          #include "DS1302.h"
+  22          #include "DS18B20.h"
+  23          #include "Infrared.h"
+  24          #include "Time.h"
+  25          #include "main.h"
+  26          
+  27          bit flag2s = 0;    //2s定时标志位
+  28          bit flag200ms = 0; //200ms定时标志
+  29          uint8 T0RH = 0;    //T0重载值的高字节
+  30          uint8 T0RL = 0;    //T0重载值的低字节
+  31          enum eStaSystem staSystem = E_NORMAL;  //系统运行状态
+  32          
+  33          void main()
+  34          {
+  35   1          EA = 1;           //开总中断
+  36   1          ConfigTimer0(1);  //配置T0定时1ms
+  37   1          InitLed();        //初始化LED模块
+  38   1          InitDS1302();     //初始化实时时钟模块
+  39   1          InitInfrared();   //初始化红外接收模块
+  40   1          InitLcd1602();    //初始化液晶模块
+  41   1          Start18B20();     //启动首次温度转换
+  42   1          
+  43   1          while (!flag2s);  //上电后延时2秒
+  44   1          flag2s = 0;
+  45   1          RefreshTime();    //刷新当前时间
+  46   1          RefreshDate(1);   //立即刷新日期显示
+  47   1          RefreshTemp(1);   //立即刷新温度显示
+  48   1          RefreshAlarm();   //闹钟设定值显示
+  49   1          
+  50   1          while (1)  //进入主循环
+  51   1          {
+  52   2              KeyDriver();      //执行按键驱动
+  53   2              InfraredDriver(); //执行红外接收驱动
+  54   2              if (flag200ms)    //每隔200ms执行以下分支
+C51 COMPILER V9.01   MAIN                                                                  05/03/2018 12:15:46 PAGE 2   
+
+  55   2              {
+  56   3                  flag200ms = 0;
+  57   3                  FlowingLight();  //流水灯效果实现
+  58   3                  RefreshTime();   //刷新当前时间
+  59   3                  AlarmMonitor();  //监控闹钟
+  60   3                  if (staSystem == E_NORMAL)  //正常运行时刷新日期显示
+  61   3                  {
+  62   4                      RefreshDate(0);
+  63   4                  }
+  64   3              }
+  65   2              if (flag2s)  //每隔2s执行以下分支
+  66   2              {
+  67   3                  flag2s = 0;
+  68   3                  if (staSystem == E_NORMAL)  //正常运行时刷新温度显示
+  69   3                  {
+  70   4                      RefreshTemp(0);
+  71   4                  }
+  72   3              }
+  73   2          }
+  74   1      }
+  75          /* 温度刷新函数，读取当前温度并根据需要刷新液晶显示，
+  76          ** ops-刷新选项：为0时只当温度变化才刷新，非0则立即刷新 */
+  77          void RefreshTemp(uint8 ops)
+  78          {
+  79   1          int16 temp;
+  80   1          uint8 pdata str[8];
+  81   1          static int16 backup = 0;
+  82   1          
+  83   1          Get18B20Temp(&temp); //获取当前温度值
+  84   1          Start18B20();        //启动下一次转换
+  85   1          temp >>= 4;          //舍弃4bit小数位
+  86   1          if ((backup!=temp) || (ops!=0)) //按需要刷新液晶显示
+  87   1          {
+  88   2              str[0] = (temp/10) + '0';  //十位转为ASCII码
+  89   2              str[1] = (temp%10) + '0';  //个位转为ASCII码
+  90   2              str[2] = '\'';             //用'C代替℃
+  91   2              str[3] = 'C';
+  92   2              str[4] = '\0';             //字符串结束符
+  93   2              LcdShowStr(12, 0, str);    //显示到液晶上
+  94   2              backup = temp;             //刷新上次温度值
+  95   2          }
+  96   1      }
+  97          /* 配置并启动T0，ms-T0定时时间 */
+  98          void ConfigTimer0(uint16 ms)
+  99          {
+ 100   1          uint32 tmp;
+ 101   1          
+ 102   1          tmp = (SYS_MCLK*ms)/1000; //计算所需的计数值
+ 103   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 104   1          tmp = tmp + 33;           //补偿中断响应延时造成的误差   
+ 105   1          T0RH = (uint8)(tmp>>8);   //定时器重载值拆分为高低字节
+ 106   1          T0RL = (uint8)tmp;
+ 107   1          TMOD &= 0xF0;   //清零T0的控制位
+ 108   1          TMOD |= 0x01;   //配置T0为模式1
+ 109   1          TH0 = T0RH;     //加载T0重载值
+ 110   1          TL0 = T0RL;
+ 111   1          ET0 = 1;        //使能T0中断
+ 112   1          TR0 = 1;        //启动T0
+ 113   1      }
+ 114          /* T0中断服务函数，实现系统定时和按键扫描 */
+ 115          void InterruptTimer0() interrupt 1
+ 116          {
+C51 COMPILER V9.01   MAIN                                                                  05/03/2018 12:15:46 PAGE 3   
+
+ 117   1          static uint8 tmr2s = 0;
+ 118   1          static uint8 tmr200ms = 0;
+ 119   1          
+ 120   1          TH0 = T0RH;  //重新加载重载值
+ 121   1          TL0 = T0RL;
+ 122   1          tmr200ms++;  //定时200ms
+ 123   1          if (tmr200ms >= 200)
+ 124   1          {
+ 125   2              tmr200ms = 0;
+ 126   2              flag200ms = 1;
+ 127   2              tmr2s++;  //定时2s
+ 128   2              if (tmr2s >= 10)
+ 129   2              {
+ 130   3                  tmr2s = 0;
+ 131   3                  flag2s = 1;
+ 132   3              }
+ 133   2          }
+ 134   1          KeyScan();   //执行按键扫描
+ 135   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    395    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----       8
+   DATA SIZE        =      7       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

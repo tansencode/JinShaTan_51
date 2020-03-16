@@ -1,0 +1,79 @@
+C51 COMPILER V9.01   MOTOR                                                                 04/21/2018 20:35:26 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MOTOR
+OBJECT MODULE PLACED IN motor.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE motor.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          unsigned long beats = 0; //电机转动节拍总数
+   3          void StartMotor(unsigned long angle);
+   4          void motor()
+   5          {
+   6   1      EA = 1; //使能总中断
+   7   1      TMOD = 0x01; //设置 T0 为模式 1
+   8   1      TH0 = 0xF8; //为 T0 赋初值 0xF8CD，定时 2ms
+   9   1      TL0 = 0xCD;
+  10   1      ET0 = 1; //使能 T0 中断
+  11   1      TR0 = 1; //启动 T0
+  12   1      StartMotor(360*2+180); //控制电机转动 2 圈半
+  13   1      while (1);
+  14   1      }
+  15          /* 步进电机启动函数，angle-需转过的角度 */
+  16          void StartMotor(unsigned long angle)
+  17          {
+  18   1      //在计算前关闭中断，完成后再打开，以避免中断打断计算过程而造成错误
+  19   1      EA = 0;
+  20   1      beats = (angle * 4076) / 360; //实测为 4076 拍转动一圈
+  21   1      EA = 1;
+  22   1      }
+  23          
+  24          void StopMotor()
+  25          {
+  26   1      EA = 0;
+  27   1      beats = 0;
+  28   1      EA = 1;
+  29   1      }
+  30          /* T0 中断服务函数，用于驱动步进电机旋转 */
+  31          void InterruptTimer0() interrupt 1
+  32          {
+  33   1      unsigned char tmp; //临时变量
+  34   1      static unsigned char index = 0; //节拍输出索引
+  35   1      unsigned char code BeatCode[8] = { //步进电机节拍对应的 IO 控制代码
+  36   1      0xE, 0xC, 0xD, 0x9, 0xB, 0x3, 0x7, 0x6
+  37   1      };
+  38   1      TH0 = 0xF8; //重新加载初值
+  39   1      TL0 = 0xCD;
+  40   1      if (beats != 0) //节拍数不为 0 则产生一个驱动节拍
+  41   1      {
+  42   2      tmp = P1; //用 tmp 把 P1 口当前值暂存
+  43   2      tmp = tmp & 0xF0; //用&操作清零低 4 位
+  44   2      tmp = tmp | BeatCode[index]; //用|操作把节拍代码写到低 4 位
+  45   2      P1 = tmp; //把低 4 位的节拍代码和高 4 位的原值送回 P1
+  46   2      index++; //节拍输出索引递增
+  47   2      index = index & 0x07; //用&操作实现到 8 归零
+  48   2      beats--; //总节拍数-1
+  49   2      }
+  50   1      else //节拍数为 0 则关闭电机所有的相
+  51   1      {
+  52   2      P1 = P1 | 0x0F;
+  53   2      }
+  54   1      }
+
+C51 COMPILER V9.01   MOTOR                                                                 04/21/2018 20:35:26 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    221    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,126 @@
+C51 COMPILER V9.01   UART                                                                  04/21/2018 15:39:40 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN Uart.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE Uart.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          bit flagFrame = 0; //帧接收完成标志，即接收到一帧新数据
+   3          bit flagTxd = 0; //单字节发送完成标志，用来替代 TXD 中断标志位
+   4          unsigned char cntRxd = 0; //接收字节计数器
+   5          unsigned char pdata bufRxd[64]; //接收字节缓冲区
+   6          extern void UartAction(unsigned char *buf, unsigned char len);
+   7          /* 串口配置函数，baud-通信波特率 */
+   8          void ConfigUART(unsigned int baud)
+   9          {
+  10   1      SCON = 0x50; //配置串口为模式 1
+  11   1      TMOD &= 0x0F; //清零 T1 的控制位
+  12   1      TMOD |= 0x20; //配置 T1 为模式 2
+  13   1      TH1 = 256 - (11059200/12/32)/baud; //计算 T1 重载值
+  14   1      TL1 = TH1; //初值等于重载值
+  15   1      ET1 = 0; //禁止 T1 中断
+  16   1      ES = 1; //使能串口中断
+  17   1      TR1 = 1; //启动 T1
+  18   1      }
+  19          /* 串口数据写入，即串口发送函数，buf-待发送数据的指针，len-指定的发送长度 */
+  20          void UartWrite(unsigned char *buf, unsigned char len)
+  21          {
+  22   1      while (len--) //循环发送所有字节
+  23   1      {
+  24   2      flagTxd = 0; //清零发送标志
+  25   2      SBUF = *buf++; //发送一个字节数据
+  26   2      while (!flagTxd); //等待该字节发送完成
+  27   2      }
+  28   1      }
+  29          /* 串口数据读取函数，buf-接收指针，len-指定的读取长度，返回值-实际读到的长度 */
+  30          unsigned char UartRead(unsigned char *buf, unsigned char len)
+  31          {
+  32   1      unsigned char i;
+  33   1      if (len > cntRxd) //指定读取长度大于实际接收到的数据长度时，
+  34   1      { //读取长度设置为实际接收到的数据长度
+  35   2      len = cntRxd;
+  36   2      }
+  37   1      for (i=0; i<len; i++) //拷贝接收到的数据到接收指针上
+  38   1      {
+  39   2      *buf++ = bufRxd[i];
+  40   2      }
+  41   1      cntRxd = 0; //接收计数器清零
+  42   1      return len; //返回实际读取长度
+  43   1      }
+  44          /* 串口接收监控，由空闲时间判定帧结束，需在定时中断中调用，ms-定时间隔 */
+  45          void UartRxMonitor(unsigned char ms)
+  46          {
+  47   1      static unsigned char cntbkp = 0;
+  48   1      static unsigned char idletmr = 0;
+  49   1      if (cntRxd > 0) //接收计数器大于零时，监控总线空闲时间
+  50   1      {
+  51   2      if (cntbkp != cntRxd) //接收计数器改变，即刚接收到数据时，清零空闲计时
+  52   2      {
+  53   3      cntbkp = cntRxd;
+  54   3      idletmr = 0;
+  55   3      }
+C51 COMPILER V9.01   UART                                                                  04/21/2018 15:39:40 PAGE 2   
+
+  56   2      else //接收计数器未改变，即总线空闲时，累积空闲时间
+  57   2      {
+  58   3      if (idletmr < 30) //空闲计时小于 30ms 时，持续累加
+  59   3      {
+  60   4      idletmr += ms;
+  61   4      if (idletmr >= 30) //空闲时间达到 30ms 时，即判定为一帧接收完毕
+  62   4      {
+  63   5      flagFrame = 1; //设置帧接收完成标志
+  64   5      }
+  65   4      }
+  66   3      }
+  67   2      }
+  68   1      else
+  69   1      {
+  70   2      cntbkp = 0;
+  71   2      }
+  72   1      }
+  73          /* 串口驱动函数，监测数据帧的接收，调度功能函数，需在主循环中调用 */
+  74          void UartDriver()
+  75          {
+  76   1      unsigned char len;
+  77   1      unsigned char pdata buf[40];
+  78   1      if (flagFrame) //有命令到达时，读取处理该命令
+  79   1      {
+  80   2      flagFrame = 0;
+  81   2      len = UartRead(buf, sizeof(buf)); //将接收到的命令读取到缓冲区中
+  82   2      UartAction(buf, len); //传递数据帧，调用动作执行函数
+  83   2      }
+  84   1      }
+  85          /* 串口中断服务函数 */
+  86          void InterruptUART() interrupt 4
+  87          {
+  88   1      if (RI) //接收到新字节
+  89   1      {
+  90   2      RI = 0; //清零接收中断标志位
+  91   2      if (cntRxd < sizeof(bufRxd)) //接收缓冲区尚未用完时，
+  92   2      { //保存接收字节，并递增计数器
+  93   3      bufRxd[cntRxd++] = SBUF;
+  94   3      }
+  95   2      }
+  96   1      if (TI) //字节发送完毕
+  97   1      {
+  98   2      TI = 0; //清零发送中断标志位
+  99   2      flagTxd = 1; //设置字节发送完成标志
+ 100   2      }
+ 101   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    255    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =     64      40
+   DATA SIZE        =      3       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

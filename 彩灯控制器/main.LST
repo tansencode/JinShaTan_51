@@ -1,0 +1,386 @@
+C51 COMPILER V9.01   MAIN                                                                  07/08/2018 13:33:27 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          bit flag300ms = 1;       //300ms定时标志
+   4          unsigned char T0RH = 0;  //T0重载值的高字节
+   5          unsigned char T0RL = 0;  //T0重载值的低字节
+   6          unsigned char RxdByte = 0;  //串口接收到的字节
+   7          
+   8          void ConfigTimer0(unsigned int ms);
+   9          unsigned char GetADCValue(unsigned char chn);
+  10          void ValueToString(unsigned char *str, unsigned long val);
+  11          extern void KeyScan();
+  12          extern void KeyDriver();
+  13          
+  14          extern void I2CStart();
+  15          extern void I2CStop();
+  16          extern unsigned char I2CReadACK();
+  17          extern unsigned char I2CReadNAK();
+  18          extern bit I2CWrite(unsigned char dat);
+  19          
+  20          extern void Led1();
+  21          extern void Led2();
+  22          extern void Led3();
+  23          extern void Led4();
+  24          extern void Led5();
+  25          extern void Led6();
+  26          //extern void Led7();
+  27          //extern void Led8();
+  28          //extern void Led9();
+  29          
+  30          extern void InitLcd1602();
+  31          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  32          extern void UartDriver();
+  33          extern void ConfigUART(unsigned int baud);
+  34          extern void UartRxMonitor(unsigned char ms);
+  35          extern void UartWrite(unsigned char *buf, unsigned char len);
+  36          void UsartConfiguration();
+  37          //unsigned char CNCHAR[10] = "V  ";
+  38          //void ConfigUART(unsigned int baud);
+  39          
+  40          //unsigned char val;
+  41          static char str[10]={0,0,0,0,0,0,0,0};
+  42          void main()
+  43          {
+  44   1          unsigned char val;
+  45   1          //unsigned char str[10];
+  46   1          
+  47   1          EA = 1;            //开总中断
+  48   1          ConfigTimer0(10);  //配置T0定时10ms
+  49   1              ConfigUART(9600);   //配置波特率为9600
+  50   1          InitLcd1602();     //初始化液晶  
+  51   1          while (1)
+  52   1          {
+  53   2              if (flag300ms)
+  54   2              {
+  55   3                  flag300ms = 0;
+C51 COMPILER V9.01   MAIN                                                                  07/08/2018 13:33:27 PAGE 2   
+
+  56   3                              //显示通道0的电压
+  57   3                              LcdShowStr(9, 0, "TJ 50");  //显示通道指示
+  58   3                  val=GetADCValue(0);  //获取ADC通道0的转换值
+  59   3                              LcdShowStr(0, 0, "Mode=");  //显示通道指示
+  60   3                  ValueToString(str, val);  //转为字符串格式的电压值                   
+  61   3                              LcdShowStr(0, 1, "Voltage=");    //显示到液晶上
+  62   3                  LcdShowStr(8, 1, str);    //显示到液晶
+  63   3                              TI=1;
+  64   3      
+  65   3                              KeyDriver();  //调用按键驱动
+  66   3                              UartDriver();  //调用串口驱动
+  67   3                              //ValueToString();
+  68   3      
+  69   3                  //显示通道1的电压
+  70   3                  //val = GetADCValue(1);
+  71   3                  //ValueToString(str, val);
+  72   3                  //LcdShowStr(6, 1, str);
+  73   3                  //显示通道3的电压
+  74   3                 // val = GetADCValue(3);
+  75   3                  //ValueToString(str, val);
+  76   3                  //LcdShowStr(12, 1, str);
+  77   3              }
+  78   2          }
+  79   1      }
+  80          /* 读取当前的ADC转换值，chn-ADC通道号0~3 */
+  81          unsigned char GetADCValue(unsigned char chn)
+  82          {
+  83   1          signed long val;
+  84   1          
+  85   1          I2CStart();
+  86   1          if (!I2CWrite(0x48<<1))  //寻址PCF8591，如未应答，则停止操作并返回0
+  87   1          {
+  88   2              I2CStop();
+  89   2              return 0;
+  90   2          }
+  91   1          I2CWrite(0x40|chn);        //写入控制字节，选择转换通道
+  92   1          I2CStart();
+  93   1          I2CWrite((0x48<<1)|0x01);  //寻址PCF8591，指定后续为读操作    
+  94   1          I2CReadACK();              //先空读一个字节，提供采样转换时间
+  95   1          val = I2CReadNAK();        //读取刚刚转换完的值
+  96   1          I2CStop();
+  97   1          
+  98   1          return val;
+  99   1      }
+ 100          /* ADC转换值转为实际电压值的字符串形式，str-字符串指针，val-AD转换值 */
+ 101          void ValueToString(unsigned char *str, unsigned long val)
+ 102          {
+ 103   1          //电压值=转换结果*2.5V/255，式中的25隐含了一位十进制小数
+ 104   1          val = (val*2500) / 255;
+ 105   1          str[0] = (val/1000)%10 + '0';  //整数位字符
+ 106   1      
+ 107   1          str[1] = '.';             //小数点
+ 108   1      
+ 109   1          str[2] = (val/100)%10 + '0';  //小数位字符
+ 110   1              
+ 111   1              str[3] = (val/10)%10 +'0';
+ 112   1              
+ 113   1              str[4] = (val%10) + '0';
+ 114   1      
+ 115   1          str[5] = 'V';             //电压单位
+ 116   1      
+ 117   1          str[6] = '\0';            //结束符
+C51 COMPILER V9.01   MAIN                                                                  07/08/2018 13:33:27 PAGE 3   
+
+ 118   1      }
+ 119          
+ 120          /* 内存比较函数，比较两个指针所指向的内存数据是否相同，
+ 121             ptr1-待比较指针1，ptr2-待比较指针2，len-待比较长度
+ 122             返回值-两段内存数据完全相同时返回1，不同返回0 */
+ 123          bit CmpMemory(unsigned char *ptr1, unsigned char *ptr2, unsigned char len)
+ 124          {
+ 125   1          while (len--)
+ 126   1          {
+ 127   2              if (*ptr1++ != *ptr2++)  //遇到不相等数据时即刻返回0
+ 128   2              {
+ 129   3                  return 0;
+ 130   3              }
+ 131   2          }
+ 132   1          return 1;  //比较完全部长度数据都相等则返回1
+ 133   1      }
+ 134          /* 串口动作函数，根据接收到的命令帧执行响应的动作
+ 135             buf-接收到的命令帧指针，len-命令帧长度 */
+ 136          void UartAction(unsigned char *buf, unsigned char len)
+ 137          {
+ 138   1          unsigned char i;
+ 139   1          unsigned char code cmd0[] = "1";   //开蜂鸣器命令
+ 140   1          unsigned char code cmd1[] = "2";  //关蜂鸣器命令
+ 141   1          unsigned char code cmd2[] = "3";  //字符串显示命令
+ 142   1          unsigned char code cmdLen[] = {          //命令长度汇总表
+ 143   1              sizeof(cmd0)-1, sizeof(cmd1)-1, sizeof(cmd2)-1,
+ 144   1          };
+ 145   1          unsigned char code *cmdPtr[] = {         //命令指针汇总表
+ 146   1              &cmd0[0],  &cmd1[0],  &cmd2[0],
+ 147   1          };
+ 148   1      
+ 149   1          for (i=0; i<sizeof(cmdLen); i++)  //遍历命令列表，查找相同命令
+ 150   1          {
+ 151   2              if (len >= cmdLen[i])  //首先接收到的数据长度要不小于命令长度
+ 152   2              {
+ 153   3                  if (CmpMemory(buf, cmdPtr[i], cmdLen[i]))  //比较相同时退出循环
+ 154   3                  {
+ 155   4                      break;
+ 156   4                  }
+ 157   3              }
+ 158   2          }
+ 159   1          switch (i)  //循环退出时i的值即是当前命令的索引值
+ 160   1          {
+ 161   2              case 0:
+ 162   2                  //flagBuzzOn = 1; //开启蜂鸣器
+ 163   2                              Led1();
+ 164   2                  break;
+ 165   2              case 1:
+ 166   2                  //flagBuzzOn = 0; //关闭蜂鸣器
+ 167   2                              Led2();
+ 168   2                  break;
+ 169   2              case 2:
+ 170   2                 // buf[len] = '\0';  //为接收到的字符串添加结束符
+ 171   2                 // LcdShowStr(0, 0, buf+cmdLen[2]);  //显示命令后的字符串
+ 172   2                 // i = len - cmdLen[2];              //计算有效字符个数
+ 173   2                 // if (i < 16)  //有效字符少于16时，清除液晶上的后续字符位
+ 174   2                 // {
+ 175   2                 //     LcdAreaClear(i, 0, 16-i);
+ 176   2                 // }
+ 177   2                         Led3();
+ 178   2                  break;
+ 179   2              default:   //未找到相符命令时，给上机发送“错误命令”的提示
+C51 COMPILER V9.01   MAIN                                                                  07/08/2018 13:33:27 PAGE 4   
+
+ 180   2                  UartWrite("bad command.\r\n", sizeof("bad command.\r\n")-1);
+ 181   2                  return;
+ 182   2          }
+ 183   1          buf[len++] = '\r';  //有效命令被执行后，在原命令帧之后添加
+ 184   1          buf[len++] = '\n';  //回车换行符后返回给上位机，表示已执行
+ 185   1          UartWrite(buf, len);
+ 186   1      }
+ 187          
+ 188          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+ 189          void KeyAction(unsigned char keycode)
+ 190          {
+ 191   1          if  (keycode == 0x31)   //输入字符
+ 192   1          {
+ 193   2                  
+ 194   2                      LcdShowStr(5, 0,"1");
+ 195   2              Led1();
+ 196   2          }
+ 197   1               else if (keycode == 0x32)  //向上键，+
+ 198   1          {
+ 199   2                  LcdShowStr(5, 0,"2");
+ 200   2              Led2();
+ 201   2          }
+ 202   1               else if (keycode == 0x33)  //向上键，+
+ 203   1          {
+ 204   2                      LcdShowStr(5, 0,"3");
+ 205   2              Led3();
+ 206   2          }
+ 207   1              else if (keycode == 0x34)  //向上键，+
+ 208   1          {
+ 209   2                      LcdShowStr(5, 0,"4");
+ 210   2              Led4();
+ 211   2          }
+ 212   1              else if (keycode == 0x35)  //向上键，+
+ 213   1          {
+ 214   2                      LcdShowStr(5, 0,"5");
+ 215   2              Led5();
+ 216   2          }
+ 217   1              else if (keycode == 0x36)  //向上键，+
+ 218   1          {
+ 219   2                      LcdShowStr(5, 0,"6");
+ 220   2              Led6();
+ 221   2          }
+ 222   1              /*else if (keycode == 0x37)  //向上键，+
+ 223   1          {
+ 224   1                      LcdShowStr(5, 0,"7");
+ 225   1              Led7();
+ 226   1          }
+ 227   1              else if (keycode == 0x38)  //向上键，+
+ 228   1          {
+ 229   1                      LcdShowStr(5, 0,"8");
+ 230   1              Led8();
+ 231   1          }
+ 232   1                      else if (keycode == 0x39)  //向上键，+
+ 233   1          {
+ 234   1                      LcdShowStr(5, 0,"9");
+ 235   1              Led9();
+ 236   1          } */
+ 237   1          else if (keycode == 0x26)  //向上键，+
+ 238   1          {
+ 239   2              //OprtKeyAction(0);
+ 240   2          }
+ 241   1          else if (keycode == 0x28)  //向下键，-
+C51 COMPILER V9.01   MAIN                                                                  07/08/2018 13:33:27 PAGE 5   
+
+ 242   1          {
+ 243   2             // OprtKeyAction(1);
+ 244   2          }
+ 245   1          else if (keycode == 0x25)  //向左键，*
+ 246   1          {
+ 247   2              //OprtKeyAction(2);
+ 248   2          }
+ 249   1          else if (keycode == 0x27)  //向右键，÷
+ 250   1          {
+ 251   2             // OprtKeyAction(3);
+ 252   2          }
+ 253   1          else if (keycode == 0x0D)  //回车键，计算结果
+ 254   1          {
+ 255   2              //GetResult();
+ 256   2          }
+ 257   1          else if (keycode == 0x1B)  //Esc键，清除
+ 258   1          {
+ 259   2              P0=0xFF;
+ 260   2          }
+ 261   1      }
+ 262          /* 配置并启动T0，ms-T0定时时间 */
+ 263          void ConfigTimer0(unsigned int ms)
+ 264          {
+ 265   1          unsigned long tmp;  //临时变量
+ 266   1          
+ 267   1          tmp = 11059200 / 12;      //定时器计数频率
+ 268   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 269   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 270   1          tmp = tmp + 12;           //补偿中断响应延时造成的误差
+ 271   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 272   1          T0RL = (unsigned char)tmp;
+ 273   1          TMOD &= 0xF0;   //清零T0的控制位
+ 274   1          TMOD |= 0x01;   //配置T0为模式1
+ 275   1          TH0 = T0RH;     //加载T0重载值
+ 276   1          TL0 = T0RL;
+ 277   1          ET0 = 1;        //使能T0中断
+ 278   1          TR0 = 1;        //启动T0
+ 279   1      }
+ 280          
+ 281          /* 串口配置函数，baud-通信波特率 */
+ 282          /*void ConfigUART(unsigned int baud)
+ 283          {
+ 284              SCON  = 0x50;  //配置串口为模式1
+ 285              TMOD &= 0x0F;  //清零T1的控制位
+ 286              TMOD |= 0x20;  //配置T1为模式2
+ 287              TH1 = 256 - (11059200/12/32)/baud;  //计算T1重载值
+ 288              TL1 = TH1;     //初值等于重载值
+ 289              ET1 = 0;       //禁止T1中断
+ 290              ES  = 1;       //使能串口中断
+ 291              TR1 = 1;       //启动T1
+ 292          }  */
+ 293          
+ 294          /* T0中断服务函数，执行300ms定时 */
+ 295          void InterruptTimer0() interrupt 1
+ 296          {
+ 297   1          static unsigned char tmr300ms = 0;
+ 298   1          
+ 299   1          TH0 = T0RH;  //重新加载重载值
+ 300   1          TL0 = T0RL;
+ 301   1              KeyScan();   //按键扫描
+ 302   1              UartRxMonitor(1);  //串口接收监控
+ 303   1          tmr300ms++;
+C51 COMPILER V9.01   MAIN                                                                  07/08/2018 13:33:27 PAGE 6   
+
+ 304   1          if (tmr300ms >= 30)  //定时300ms
+ 305   1          {
+ 306   2              tmr300ms = 0;
+ 307   2              flag300ms = 1;
+ 308   2          }
+ 309   1      }
+ 310          
+ 311          /*void InterruptUART() interrupt 4
+ 312          {
+ 313                   //unsigned char i;
+ 314                   SBUF = ' ' ;//将接收到的数据放入到发送寄存器
+ 315                   while (!TI);                            //等待发送数据完成
+ 316                   TI = 0;
+ 317                   SBUF = ' ' ;//将接收到的数据放入到发送寄存器
+ 318                   while (!TI);                            //等待发送数据完成
+ 319                   TI = 0;
+ 320                   SBUF = str[0];//将接收到的数据放入到发送寄存器
+ 321                   while (!TI);                            //等待发送数据完成
+ 322                   TI = 0;
+ 323                   SBUF =str[1];//将接收到的数据放入到发送寄存器
+ 324                   while (!TI);                            //等待发送数据完成
+ 325                   TI = 0;
+ 326                   SBUF = str[2];//将接收到的数据放入到发送寄存器
+ 327                   while (!TI);                            //等待发送数据完成
+ 328                   TI = 0;
+ 329                   SBUF = str[3];//将接收到的数据放入到发送寄存器
+ 330                   while (!TI);                            //等待发送数据完成
+ 331                   TI = 0;
+ 332                   SBUF = str[4];//将接收到的数据放入到发送寄存器
+ 333                   while (!TI);                            //等待发送数据完成
+ 334                   TI = 0;
+ 335                   SBUF = str[5];//将接收到的数据放入到发送寄存器
+ 336                   while (!TI);                            //等待发送数据完成
+ 337                   TI = 0;
+ 338                   SBUF = ' ';//将接收到的数据放入到发送寄存器
+ 339                   while (!TI);                            //等待发送数据完成
+ 340                   TI = 0;                 
+ 341                   //for(i=0; i<6; i++)
+ 342                   //{
+ 343                   //     SBUF = CNCHAR[i];//将接收到的数据放入到发送寄存器
+ 344                  //      while (!TI);                             //等待发送数据完成
+ 345                  //      TI = 0;
+ 346                  // } 
+ 347              //SBUF ='0';  //接收到的数据又直接发回，叫作-"echo" 
+ 348                  //SBUF = str;//将接收到的数据放入到发送寄存器                 
+ 349              //if (TI)  //字节发送完毕
+ 350              //{
+ 351                 // TI = 0;  //手动清零发送中断标志位
+ 352              //}
+ 353          } */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    965    ----
+   CONSTANT SIZE    =     63    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14      35
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

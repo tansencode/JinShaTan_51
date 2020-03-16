@@ -1,0 +1,5 @@
+"STARTUP.obj",
+"main.obj",
+"DS18B20.obj" 
+TO "lesson16_2" 
+RAMSIZE(256) 

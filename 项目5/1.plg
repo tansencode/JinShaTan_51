@@ -1,0 +1,114 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\项目5\1.uvproj
+Project File Date:  06/02/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+MAIN.C(129): error C202: 'F6x8': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_CLER_6X8?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READY?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  MAIN
+    MODULE:  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  MAIN
+    MODULE:  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+    ADDRESS: 0383H
+Program Size: data=22.0 xdata=0 code=1395
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_CLER_6X8?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READY?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  MAIN
+    MODULE:  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  MAIN
+    MODULE:  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+    ADDRESS: 0383H
+Program Size: data=22.0 xdata=0 code=1395
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_CLER_6X8?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READY?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  MAIN
+    MODULE:  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  MAIN
+    MODULE:  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+    ADDRESS: 0383H
+Program Size: data=22.0 xdata=0 code=1395
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(1): error C202: 'P1': undefined identifier
+MAIN.C(2): error C202: 'P1': undefined identifier
+MAIN.C(3): error C202: 'P1': undefined identifier
+MAIN.C(4): error C202: 'P1': undefined identifier
+MAIN.C(6): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(1): error C202: 'P1': undefined identifier
+MAIN.C(2): error C202: 'P1': undefined identifier
+MAIN.C(4): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(5): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(5): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(103): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(134): error C129: missing ';' before 'code'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(237): error C129: missing ';' before 'LED_WrDat'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(29): warning C318: can't open file 'LQ12864.h'
+MAIN.C(45): warning C206: 'LCD_Init': missing function-prototype
+MAIN.C(48): warning C206: 'LCD_Fill': missing function-prototype
+MAIN.C(48): error C267: 'LCD_Fill': requires ANSI-style prototype
+Target not created

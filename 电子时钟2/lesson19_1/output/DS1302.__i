@@ -1,0 +1,1 @@
+"..\source\DS1302.c" BROWSE INCDIR(..\source) DEBUG OBJECTEXTEND PRINT(..\output\DS1302.lst) OBJECT(..\output\DS1302.obj)

@@ -1,0 +1,3098 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\彩灯控制器 - 副本 - 副本\1.uvproj
+Project File Date:  07/09/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: data=118.1 xdata=136 code=4380
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(713): warning C280: 'dir': unreferenced local variable
+MAIN.C(714): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=118.1 xdata=136 code=4364
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+MAIN.C(713): warning C280: 'dir': unreferenced local variable
+MAIN.C(714): warning C280: 'index': unreferenced local variable
+compiling keyboard.c...
+compiling I2C.c...
+compiling Uart.c...
+compiling Lcd1602.c...
+linking...
+Program Size: data=118.1 xdata=136 code=4364
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=118.1 xdata=136 code=4364
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(713): warning C280: 'dir': unreferenced local variable
+MAIN.C(714): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=118.1 xdata=136 code=4368
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(713): warning C280: 'dir': unreferenced local variable
+MAIN.C(714): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=118.1 xdata=136 code=4368
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(713): warning C280: 'dir': unreferenced local variable
+MAIN.C(714): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=118.1 xdata=136 code=4364
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C276: constant in condition expression
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=118.1 xdata=136 code=4364
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C276: constant in condition expression
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=116.1 xdata=136 code=4360
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C276: constant in condition expression
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=116.1 xdata=136 code=4360
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C276: constant in condition expression
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=116.1 xdata=136 code=4364
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C276: constant in condition expression
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=117.1 xdata=136 code=4431
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C276: constant in condition expression
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=117.1 xdata=136 code=4428
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+MAIN.C(686): warning C276: constant in condition expression
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+compiling keyboard.c...
+compiling I2C.c...
+compiling Uart.c...
+compiling Lcd1602.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=117.1 xdata=136 code=4417
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(533): error C237: 'Led0': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(701): warning C276: constant in condition expression
+MAIN.C(729): warning C280: 'dir': unreferenced local variable
+MAIN.C(730): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+Program Size: data=118.1 xdata=136 code=4523
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(701): warning C276: constant in condition expression
+MAIN.C(729): warning C280: 'dir': unreferenced local variable
+MAIN.C(730): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+Program Size: data=118.1 xdata=136 code=4526
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(694): warning C206: 'LedScan1': missing function-prototype
+MAIN.C(701): warning C276: constant in condition expression
+MAIN.C(729): warning C280: 'dir': unreferenced local variable
+MAIN.C(730): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=118.1 xdata=136 code=4529
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(676): warning C206: 'LedScan1': missing function-prototype
+MAIN.C(683): warning C276: constant in condition expression
+MAIN.C(711): warning C280: 'dir': unreferenced local variable
+MAIN.C(712): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSCAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0319H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSCAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0CC2H
+Program Size: data=118.1 xdata=136 code=4404
+creating hex file from "1"...
+"1" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C206: 'Ledsan1': missing function-prototype
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0319H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0BBEH
+Program Size: data=118.1 xdata=136 code=4426
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C206: 'Ledsan1': missing function-prototype
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0304H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0BA7H
+Program Size: data=118.1 xdata=136 code=4403
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(686): warning C206: 'Ledsan1': missing function-prototype
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED7?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED8?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED9?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0AC4H
+Program Size: data=118.1 xdata=136 code=4176
+creating hex file from "1"...
+"1" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(692): error C141: syntax error near 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED7?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED8?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED9?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=118.1 xdata=136 code=4156
+creating hex file from "1"...
+"1" - 0 Error(s), 11 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0304H
+Program Size: data=118.1 xdata=136 code=4383
+creating hex file from "1"...
+"1" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0304H
+Program Size: data=118.1 xdata=136 code=4383
+creating hex file from "1"...
+"1" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(727): warning C206: 'Ledsan1': missing function-prototype
+MAIN.C(714): warning C280: 'dir': unreferenced local variable
+MAIN.C(715): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0304H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0BA6H
+Program Size: data=118.1 xdata=136 code=4450
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(684): warning C206: 'Ledsan1': missing function-prototype
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0BB4H
+Program Size: data=118.1 xdata=136 code=4416
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(684): warning C206: 'Ledsan1': missing function-prototype
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0327H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0B5FH
+Program Size: data=118.1 xdata=136 code=4446
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0327H
+Program Size: data=118.1 xdata=136 code=4446
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+Program Size: data=118.1 xdata=136 code=4412
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+Program Size: data=118.1 xdata=136 code=4412
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+Program Size: data=118.1 xdata=136 code=4412
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+Program Size: data=118.1 xdata=136 code=4415
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+Program Size: data=118.1 xdata=136 code=4415
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(709): warning C280: 'dir': unreferenced local variable
+MAIN.C(710): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+Program Size: data=118.1 xdata=136 code=4406
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(709): warning C280: 'dir': unreferenced local variable
+MAIN.C(710): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0311H
+Program Size: data=118.1 xdata=136 code=4392
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(692): warning C280: 'dir': unreferenced local variable
+MAIN.C(693): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=118.1 xdata=136 code=4298
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(707): warning C280: 'dir': unreferenced local variable
+MAIN.C(708): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=119.1 xdata=136 code=4401
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=119.1 xdata=136 code=4401
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=119.1 xdata=136 code=4401
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(707): warning C280: 'dir': unreferenced local variable
+MAIN.C(708): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=119.1 xdata=136 code=4398
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(708): warning C280: 'dir': unreferenced local variable
+MAIN.C(709): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030DH
+Program Size: data=119.1 xdata=136 code=4400
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(703): warning C280: 'dir': unreferenced local variable
+MAIN.C(704): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0300H
+Program Size: data=119.1 xdata=136 code=4387
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(707): warning C280: 'dir': unreferenced local variable
+MAIN.C(708): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0309H
+Program Size: data=119.1 xdata=136 code=4396
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(707): warning C280: 'dir': unreferenced local variable
+MAIN.C(708): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0309H
+Program Size: data=119.1 xdata=136 code=4396
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(706): warning C280: 'dir': unreferenced local variable
+MAIN.C(707): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=119.1 xdata=136 code=4398
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(706): warning C280: 'dir': unreferenced local variable
+MAIN.C(707): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=119.1 xdata=136 code=4406
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=119.1 xdata=136 code=4414
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=119.1 xdata=136 code=4386
+creating hex file from "1"...
+"1" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=119.1 xdata=136 code=4386
+creating hex file from "1"...
+"1" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(730): warning C206: 'Ledsan1': missing function-prototype
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSAN1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0B53H
+Program Size: data=119.1 xdata=136 code=4390
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(713): warning C280: 'dir': unreferenced local variable
+MAIN.C(714): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4329
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(713): warning C280: 'dir': unreferenced local variable
+MAIN.C(714): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4325
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4325
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(715): warning C280: 'dir': unreferenced local variable
+MAIN.C(716): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4325
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(715): warning C280: 'dir': unreferenced local variable
+MAIN.C(716): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4325
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4325
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): error C202: 'm': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(715): warning C280: 'dir': unreferenced local variable
+MAIN.C(716): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4325
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(716): warning C280: 'dir': unreferenced local variable
+MAIN.C(717): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(721): warning C280: 'dir': unreferenced local variable
+MAIN.C(722): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(721): warning C280: 'dir': unreferenced local variable
+MAIN.C(722): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(721): warning C280: 'dir': unreferenced local variable
+MAIN.C(722): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(721): warning C280: 'dir': unreferenced local variable
+MAIN.C(722): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(721): warning C280: 'dir': unreferenced local variable
+MAIN.C(722): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(721): warning C280: 'dir': unreferenced local variable
+MAIN.C(722): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4319
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(722): warning C280: 'dir': unreferenced local variable
+MAIN.C(723): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4327
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(722): warning C280: 'dir': unreferenced local variable
+MAIN.C(723): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4331
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(722): warning C280: 'dir': unreferenced local variable
+MAIN.C(723): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0314H
+Program Size: data=120.1 xdata=136 code=4327
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(156): error C231: 'ENLED': redefinition
+MAIN.C(156): error C231: 'ENLED': redefinition
+MAIN.C(157): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(722): warning C280: 'dir': unreferenced local variable
+MAIN.C(723): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4314
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(690): warning C276: constant in condition expression
+MAIN.C(725): warning C280: 'dir': unreferenced local variable
+MAIN.C(726): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4312
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(650): error C237: 'LedScan': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(690): warning C276: constant in condition expression
+MAIN.C(725): warning C280: 'dir': unreferenced local variable
+MAIN.C(726): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4315
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(677): warning C276: constant in condition expression
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4312
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4306
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(677): warning C276: constant in condition expression
+MAIN.C(712): warning C280: 'dir': unreferenced local variable
+MAIN.C(713): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0307H
+Program Size: data=120.1 xdata=136 code=4312
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(161): error C141: syntax error near 'unsigned'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=120.1 xdata=136 code=4321
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0328H
+Program Size: data=120.1 xdata=136 code=4351
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=120.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=121.1 xdata=136 code=4326
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=121.1 xdata=136 code=4326
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=121.1 xdata=136 code=4326
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=121.1 xdata=136 code=4326
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0312H
+Program Size: data=121.1 xdata=136 code=4326
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030FH
+Program Size: data=121.1 xdata=136 code=4323
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030FH
+Program Size: data=121.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030FH
+Program Size: data=121.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+MAIN.C(710): warning C280: 'dir': unreferenced local variable
+MAIN.C(711): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030FH
+Program Size: data=121.1 xdata=136 code=4317
+creating hex file from "1"...
+"1" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  INTERRUPTTIMER1
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  _CONFIGTIMER1
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED5
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED4
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED3
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED6
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  000FH
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    001BH
+    TO:      001DH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  LEDD
+    SEGMENT: ?DT?LED
+Program Size: data=140.3 xdata=136 code=4969
+Target not created
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  INTERRUPTTIMER1
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  _CONFIGTIMER1
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED5
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED4
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED3
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED6
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  000FH
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    001BH
+    TO:      001DH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  LEDD
+    SEGMENT: ?DT?LED
+Program Size: data=140.3 xdata=136 code=4969
+Target not created
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  INTERRUPTTIMER1
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  _CONFIGTIMER1
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED5
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED4
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED3
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED6
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  000FH
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    001BH
+    TO:      001DH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  LEDD
+    SEGMENT: ?DT?LED
+Program Size: data=140.3 xdata=136 code=4969
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED5
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED4
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED3
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED6
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  000FH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  LEDD
+    SEGMENT: ?DT?LED
+Program Size: data=133.2 xdata=136 code=4796
+Target not created
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED5
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED4
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED3
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED6
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  000FH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  LEDD
+    SEGMENT: ?DT?LED
+Program Size: data=133.2 xdata=136 code=4796
+Target not created
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED5
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED4
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED3
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED6
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  000FH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  LEDD
+    SEGMENT: ?DT?LED
+Program Size: data=133.2 xdata=136 code=4796
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _CONFIGTIMER1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _CONFIGTIMER1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02B1H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030FH
+Program Size: data=118.0 xdata=136 code=4144
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED5
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED4
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED3
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED6
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED3?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  000FH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  LEDD
+    SEGMENT: ?DT?LED
+Program Size: data=133.2 xdata=136 code=4796
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(204): error C202: 't': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(193): warning C280: 'dir': unreferenced local variable
+LED.C(194): warning C280: 'index': unreferenced local variable
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?LED
+    LENGTH:  0008H
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030FH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RL
+    SEGMENT: ?DT?LED
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  T1RH
+    SEGMENT: ?DT?LED
+Program Size: data=126.2 xdata=136 code=4397
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(195): error C202: 'tmr1s': undefined identifier
+LED.C(196): error C202: 'tmr1s': undefined identifier
+LED.C(198): error C202: 'tmr1s': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED1
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?LED
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030FH
+Program Size: data=125.1 xdata=136 code=4392
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=125.1 xdata=136 code=4392
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(101): warning C206: 'ConfigTimer1': missing function-prototype
+MAIN.C(101): error C267: 'ConfigTimer1': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=125.1 xdata=136 code=4385
+Target not created
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RL
+    MODULE:  Led.obj (LED)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  T1RH
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=125.1 xdata=136 code=4385
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  FLAG1S
+    MODULE:  Led.obj (LED)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.1 xdata=136 code=4379
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(110): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4377
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4377
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4366
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4366
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4365
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4365
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4365
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4362
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4358
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4358
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4358
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1?MAIN
+Program Size: data=123.0 xdata=136 code=4340
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=123.0 xdata=136 code=4363
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED0?MAIN
+Program Size: data=123.0 xdata=136 code=4363
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+Program Size: data=123.0 xdata=136 code=4379
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=121.0 xdata=136 code=4242
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=121.0 xdata=136 code=4242
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=121.0 xdata=136 code=4243
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=121.0 xdata=136 code=4242
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=121.0 xdata=136 code=4243
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+Program Size: data=121.0 xdata=136 code=4244
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=121.0 xdata=136 code=4244
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+Program Size: data=121.0 xdata=136 code=4244
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02FAH
+Program Size: data=120.0 xdata=136 code=4221
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02FAH
+Program Size: data=120.0 xdata=136 code=4221
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 02FAH
+Program Size: data=120.0 xdata=136 code=4221
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=120.0 xdata=136 code=4226
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+main.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=120.0 xdata=136 code=4226
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=120.0 xdata=136 code=4226
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=120.0 xdata=136 code=4226
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=120.0 xdata=136 code=4234
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=120.0 xdata=136 code=4233
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=120.0 xdata=136 code=4234
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=122.0 xdata=136 code=4440
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=122.0 xdata=136 code=4413
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=122.0 xdata=136 code=4417
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=122.0 xdata=136 code=4417
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=122.0 xdata=136 code=4417
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+main.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=123.0 xdata=136 code=4524
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=123.0 xdata=136 code=4517
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(663): warning C280: 'i': unreferenced local variable
+linking...
+Program Size: data=123.0 xdata=136 code=4423
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=123.0 xdata=136 code=4514
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=123.0 xdata=136 code=4517
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=123.0 xdata=136 code=4517
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=123.0 xdata=136 code=4528
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=123.0 xdata=136 code=4530
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(694): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4528
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=123.0 xdata=136 code=4528
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling DS1302.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GETREALTIME?DS1302
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITDS1302?DS1302
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_GETREALTIME?DS1302
+    LENGTH:  000BH
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?UART
+    LENGTH:  0003H
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_DS1302BURSTWRITE?DS1302
+    LENGTH:  0003H
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_DS1302BURSTREAD?DS1302
+    LENGTH:  0003H
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  CNTRXD
+    SEGMENT: ?DT?UART
+Program Size: data=148.0 xdata=136 code=5003
+Target not created
+Build target 'Target 1'
+linking...
+Program Size: data=123.0 xdata=136 code=4528
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(694): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4528
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(694): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4536
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(703): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4598
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(703): warning C276: constant in condition expression
+MAIN.C(662): warning C280: 'i': unreferenced local variable
+linking...
+Program Size: data=123.0 xdata=136 code=4442
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(704): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4598
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(705): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4604
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(705): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4604
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(698): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4592
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(700): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4559
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(700): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4559
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(700): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4559
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(692): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4457
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(692): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4457
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(691): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4457
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(691): warning C276: constant in condition expression
+linking...
+Program Size: data=123.0 xdata=136 code=4457
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(683): warning C276: constant in condition expression
+MAIN.C(662): warning C280: 'i': unreferenced local variable
+linking...
+Program Size: data=123.0 xdata=136 code=4442
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(683): warning C276: constant in condition expression
+MAIN.C(662): warning C280: 'i': unreferenced local variable
+linking...
+Program Size: data=123.0 xdata=136 code=4434
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(680): warning C276: constant in condition expression
+MAIN.C(659): warning C280: 'i': unreferenced local variable
+linking...
+Program Size: data=123.0 xdata=136 code=4426
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=123.0 xdata=136 code=4426
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(680): warning C276: constant in condition expression
+MAIN.C(659): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=123.0 xdata=136 code=4421
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(680): warning C276: constant in condition expression
+MAIN.C(659): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=123.0 xdata=136 code=4421
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(680): warning C276: constant in condition expression
+MAIN.C(659): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+Program Size: data=123.0 xdata=136 code=4421
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 031EH
+Program Size: data=115.7 xdata=136 code=4180
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GETREALTIME?DS1302
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITDS1302?DS1302
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_GETREALTIME?DS1302
+    LENGTH:  000BH
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_DS1302BURSTREAD?DS1302
+    LENGTH:  0003H
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0382H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0395H
+Program Size: data=140.7 xdata=136 code=4655
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 031EH
+Program Size: data=115.7 xdata=136 code=4180
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling Infrared.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITINFRARED?INFRARED
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 031EH
+Program Size: data=120.0 xdata=136 code=4470
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(678): warning C276: constant in condition expression
+MAIN.C(659): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITINFRARED?INFRARED
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 031EH
+Program Size: data=120.0 xdata=136 code=4462
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITINFRARED?INFRARED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GETREALTIME?DS1302
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITDS1302?DS1302
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_GETREALTIME?DS1302
+    LENGTH:  000BH
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_DS1302BURSTWRITE?DS1302
+    LENGTH:  0003H
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_DS1302BURSTREAD?DS1302
+    LENGTH:  0003H
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0382H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0395H
+Program Size: data=145.0 xdata=136 code=4937
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GETREALTIME?DS1302
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITDS1302?DS1302
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_GETREALTIME?DS1302
+    LENGTH:  000BH
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA    
+    SEGMENT: ?DT?_DS1302BURSTREAD?DS1302
+    LENGTH:  0003H
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0382H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0395H
+Program Size: data=140.7 xdata=136 code=4647
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED1
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 030BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LED2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 031EH
+Program Size: data=115.7 xdata=136 code=4172
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).

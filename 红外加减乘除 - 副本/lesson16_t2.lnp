@@ -1,0 +1,6 @@
+"STARTUP.obj",
+"main.obj",
+"Infrared.obj",
+"Lcd1602.obj" 
+TO "lesson16_t2" 
+RAMSIZE(256) 

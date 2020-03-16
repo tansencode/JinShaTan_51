@@ -1,0 +1,316 @@
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 19:40:44 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          *******************************************************************************
+   3          *                     《手把手教你学51单片机(C语言版)》
+   4          *                    配套 KST-51 单片机开发板 示例源代码
+   5          *
+   6          *         (c) 版权所有 2014 金沙滩工作室/清华大学出版社 保留所有权利
+   7          *                 获取更多资料请访问：http://www.kingst.org
+   8          *
+   9          * 文件名：main.c
+  10          * 描  述：第16章 温度传感器DS18B20示例
+  11          * 版本号：v1.0.0
+  12          * 备  注：详情见第16章16.4节
+  13          *         控制DS18B20测量温度并将温度值显示到液晶上
+  14          *******************************************************************************
+  15          */
+  16          
+  17          #include <reg52.h>
+  18          
+  19          bit flag1s = 0;          //1s定时标志
+  20          unsigned char T0RH = 0;  //T0重载值的高字节
+  21          unsigned char T0RL = 0;  //T0重载值的低字节
+  22          
+  23          #define IR_CODE_0     20                  //发射码的0  
+  24          #define IR_CODE_1     50  
+  25          #define IR_CODE_START 240                 //发射码起始  
+  26          #define IR_CODE_SIZI  42                  //发射码个数 
+  27          
+  28          void ConfigTimer0(unsigned int ms);
+  29          unsigned char IntToString(unsigned char *str, int dat);
+  30          extern bit Start18B20();
+  31          extern bit Get18B20Temp(int *temp);
+  32          extern void InitLcd1602();
+  33          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  34          
+  35          void DataConversion(unsigned int num,unsigned char* irdata)  
+  36          {   unsigned char i=IR_CODE_SIZI-3,n=1,f=1;  
+  37   1          IrcodeReset();                        //存储区初始化  
+*** WARNING C206 IN LINE 37 OF MAIN.C: 'IrcodeReset': missing function-prototype
+  38   1          for(n=3;n<18;n+=2)                     //前8个存放校验码10101010 0xAA   
+  39   1          {   if(f)  
+  40   2                  {     
+  41   3                  irdata[n] = IR_CODE_1;  
+  42   3                  f=0;  
+  43   3                  }         
+  44   2              else  
+  45   2                  {   irdata[n] = IR_CODE_0;f=1;}       
+  46   2          }  
+  47   1          while(num!=0)                                 //数据码存放 十进制转二进制  
+  48   1          {  
+  49   2              if(num%2)   {  irdata[i] = IR_CODE_1; }                             
+  50   2                
+  51   2              else        {  irdata[i] = IR_CODE_0; }      
+  52   2            
+  53   2              num = num/2;  
+  54   2              i-=2;  
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 19:40:44 PAGE 2   
+
+  55   2          }     
+  56   1      }  
+  57          
+  58          /**************红外波发射函数**************  
+  59          ***函数名 ：SendIrWave()  
+  60          ***参 数  ：储存红外编码数据的首地址irdata  
+  61          ***功 能  ：以红外的方式发送irdata 的红外波形数据  
+  62          ***返回值 ：无  
+  63          *****************************************/  
+  64          void SendIrWave(unsigned char* irdata)  
+  65          {   unsigned char count=0;  
+  66   1          unsigned char i=0;  
+  67   1        
+  68   1          while(1)                                 //发射引导码 校验码 数据码   
+  69   1          {  
+  70   2              ON_CARR;  
+*** ERROR C202 IN LINE 70 OF MAIN.C: 'ON_CARR': undefined identifier
+  71   2              for(i=irdata[count]; i>0; i--)        //载波发射延时  
+  72   2                  {     
+  73   3                  CarrierWave_DELAY;    
+*** ERROR C202 IN LINE 73 OF MAIN.C: 'CarrierWave_DELAY': undefined identifier
+  74   3                  }                                 
+  75   2                      OFF_CARR;  
+*** ERROR C202 IN LINE 75 OF MAIN.C: 'OFF_CARR': undefined identifier
+  76   2                      IR_SEND_OFF;                         //低电平保持      
+*** ERROR C202 IN LINE 76 OF MAIN.C: 'IR_SEND_OFF': undefined identifier
+  77   2                      count++;  
+  78   2                                      
+  79   2              for(i=irdata[count]; i>0; i--)        //低电平延时  
+  80   2                  {     
+  81   3                  Low_DELAY;    
+*** ERROR C202 IN LINE 81 OF MAIN.C: 'Low_DELAY': undefined identifier
+  82   3        
+  83   3                  }  
+  84   2        
+  85   2              if(count == IR_CODE_SIZI-1)          //发射结束  
+  86   2                  {   break;       }    
+  87   2              count++;              
+  88   2          }  
+  89   1      }  
+  90          
+  91          void InitIrReceive(void)  
+  92          {  
+  93   1      /*------------------------------------------------  
+  94   1                      定时器0初始化  
+  95   1      ------------------------------------------------*/  
+  96   1          TMOD|= 0x02;//定时器0工作方式2，TH0是重装值，TL0是初值  
+  97   1          //8位自动重装  
+  98   1          TH0  = 0x00;//重载值  
+  99   1          TL0  = 0x00;//初始化值    
+ 100   1          ET0  = 1;   //开中断  
+ 101   1          TR0  = 1;   //定时器/计数器启动  
+ 102   1      /*------------------------------------------------  
+ 103   1                        外部中断0初始化  
+ 104   1      ------------------------------------------------*/  
+ 105   1          IT0  = 1;   //指定外部中断0下降沿触发，INT0 (P3.2)  
+ 106   1          EX0  = 1;   //使能外部中断  
+ 107   1          EA   = 1;  
+ 108   1      }
+ 109          void IRTimeCount() interrupt 1  
+ 110             {  Ir_Time_count++; }  
+*** ERROR C202 IN LINE 110 OF MAIN.C: 'Ir_Time_count': undefined identifier
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 19:40:44 PAGE 3   
+
+ 111          /*************红外码接收中断函数***********  
+ 112          ***函数名： IRReceive(void)  
+ 113          ***参 数：  无  
+ 114          ***功能描述：接收红外码，存入IR_CODE  
+ 115          ***返回值： 无  
+ 116          *****************************************/  
+ 117          void IRReceive() interrupt 0  
+ 118          {  
+ 119   1          static startflag=0,bitnum=0;  
+ 120   1          if(startflag)  
+ 121   1          {  if(Ir_Time_count<IR_START_TIEM_MAX && Ir_Time_count>IR_START_TIEM_MIN)   
+*** ERROR C202 IN LINE 121 OF MAIN.C: 'Ir_Time_count': undefined identifier
+ 122   2             //引导码判断  
+ 123   2               {bitnum=0;  }  
+ 124   2             IR_CODE[bitnum]=Ir_Time_count;  
+*** ERROR C202 IN LINE 124 OF MAIN.C: 'IR_CODE': undefined identifier
+ 125   2             //引导码 TC9012的头码，9ms+4.5ms  
+ 126   2             Ir_Time_count=0;    bitnum++;  
+*** ERROR C202 IN LINE 126 OF MAIN.C: 'Ir_Time_count': undefined identifier
+ 127   2                      
+ 128   2             if(bitnum==IR_CODE_SIZI)        //接收完成  
+ 129   2               {IR_RECEIVE_OK=1;  bitnum=0;}             
+*** ERROR C202 IN LINE 129 OF MAIN.C: 'IR_RECEIVE_OK': undefined identifier
+ 130   2          }    
+ 131   1        
+ 132   1          else                               //第一个触发信号  
+ 133   1          {Ir_Time_count=0;   startflag=1;    }         
+*** ERROR C202 IN LINE 133 OF MAIN.C: 'Ir_Time_count': undefined identifier
+ 134   1      } 
+ 135          
+ 136          /************红外码数据转换函数***********  
+ 137          ***函数名： DataConversion()  
+ 138          ***参 数：  无  
+ 139          ***功能描述：接收红外码，存入IR_CODE  
+ 140          ***返回值： 数据区的数据  
+ 141          *****************************************/  
+ 142          unsigned int DataConversion(void)  
+ 143          {  
+*** ERROR C231 IN LINE 143 OF MAIN.C: '_DataConversion': redefinition
+ 144   1            unsigned char i=9;  
+ 145   1            unsigned int num=0;  
+ 146   1            for(i=9;i<IR_CODE_SIZI-1;i++)  
+ 147   1            {  
+ 148   2              if(IR_CODE[i]>IR_CODE_1)  
+*** ERROR C202 IN LINE 148 OF MAIN.C: 'IR_CODE': undefined identifier
+ 149   2              {  
+ 150   3                  num+=pow(2,IR_CODE_SIZI-2-i);//二进制转十进制  
+ 151   3              }  
+ 152   2            }  
+ 153   1            return num;  
+ 154   1      }  
+ 155          /*************红外码数据校验***********  
+ 156          ***函数名： CheckSucceed()  
+ 157          ***参 数：  无  
+ 158          ***功能描述：转换IR_CODE 1——8的校验码，与事先设定值进行比较判断  
+ 159          ***返回值： 成功1 失败0  
+ 160          *****************************************/  
+ 161          unsigned char CheckSucceed(void)  
+ 162          {  
+ 163   1          unsigned char i=1;  
+ 164   1          unsigned int num=0;  
+ 165   1          for(i=1;i<9;i++)                  //校验码位于1——8  
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 19:40:44 PAGE 4   
+
+ 166   1              {     
+ 167   2                  if(IR_CODE[i]>IR_CODE_1)    
+ 168   2                  {     
+ 169   3                   num+=pow(2,8-i); //转换        
+ 170   3                  }      
+ 171   2              }             
+ 172   1        
+ 173   1          if(num==CHECK_NUM && IR_CODE[0]>IR_START_TIEM_MIN &&  IR_CODE[0]<IR_START_TIEM_MAX)  
+ 174   1          //校验码和引导码均校验  
+ 175   1           {    
+ 176   2            return 1;   
+ 177   2           }        
+ 178   1          else  
+ 179   1          {     
+ 180   2           return 0;   
+ 181   2          }     
+ 182   1      } 
+ 183          
+ 184          void main()
+ 185          {
+ 186   1          bit res;
+ 187   1          int temp;        //读取到的当前温度值
+ 188   1          int intT, decT;  //温度值的整数和小数部分
+ 189   1          unsigned char len;
+ 190   1          unsigned char str[12];
+ 191   1      
+ 192   1          EA = 1;            //开总中断
+ 193   1          ConfigTimer0(10);  //T0定时10ms
+ 194   1          Start18B20();      //启动DS18B20
+ 195   1          InitLcd1602();     //初始化液晶
+ 196   1          
+ 197   1          while (1)
+ 198   1          {
+ 199   2              if (flag1s)  //每秒更新一次温度
+ 200   2              {
+ 201   3                  flag1s = 0;
+ 202   3                  res = Get18B20Temp(&temp);  //读取当前温度
+ 203   3                  if (res)                    //读取成功时，刷新当前温度显示
+ 204   3                  {
+ 205   4                      intT = temp >> 4;             //分离出温度值整数部分
+ 206   4                      decT = temp & 0xF;            //分离出温度值小数部分
+ 207   4                      len = IntToString(str, intT); //整数部分转换为字符串
+ 208   4                      str[len++] = '.';             //添加小数点
+ 209   4                      decT = (decT*10) / 16;        //二进制的小数部分转换为1位十进制位
+ 210   4                      str[len++] = decT + '0';      //十进制小数位再转换为ASCII字符
+ 211   4                      while (len < 6)               //用空格补齐到6个字符长度
+ 212   4                      {
+ 213   5                          str[len++] = ' ';
+ 214   5                      }
+ 215   4                      str[len] = '\0';              //添加字符串结束符
+ 216   4                      LcdShowStr(0, 0, str);        //显示到液晶屏上
+ 217   4                  }
+ 218   3                  else                        //读取失败时，提示错误信息
+ 219   3                  {
+ 220   4                      LcdShowStr(0, 0, "error!");
+ 221   4                  }
+ 222   3                  Start18B20();               //重新启动下一次转换
+ 223   3              }
+ 224   2          }
+ 225   1      }
+ 226          /* 整型数转换为字符串，str-字符串指针，dat-待转换数，返回值-字符串长度 */
+ 227          unsigned char IntToString(unsigned char *str, int dat)
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 19:40:44 PAGE 5   
+
+ 228          {
+ 229   1          signed char i = 0;
+ 230   1          unsigned char len = 0;
+ 231   1          unsigned char buf[6];
+ 232   1          
+ 233   1          if (dat < 0)  //如果为负数，首先取绝对值，并在指针上添加负号
+ 234   1          {
+ 235   2              dat = -dat;
+ 236   2              *str++ = '-';
+ 237   2              len++;
+ 238   2          }
+ 239   1          do {          //先转换为低位在前的十进制数组
+ 240   2              buf[i++] = dat % 10;
+ 241   2              dat /= 10;
+ 242   2          } while (dat > 0);
+ 243   1          len += i;     //i最后的值就是有效字符的个数
+ 244   1          while (i-- > 0)   //将数组值转换为ASCII码反向拷贝到接收指针上
+ 245   1          {
+ 246   2              *str++ = buf[i] + '0';
+ 247   2          }
+ 248   1          *str = '\0';  //添加字符串结束符
+ 249   1          
+ 250   1          return len;   //返回字符串长度
+ 251   1      }
+ 252          /* 配置并启动T0，ms-T0定时时间 */
+ 253          void ConfigTimer0(unsigned int ms)
+ 254          {
+ 255   1          unsigned long tmp;  //临时变量
+ 256   1          
+ 257   1          tmp = 11059200 / 12;      //定时器计数频率
+ 258   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 259   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 260   1          tmp = tmp + 12;           //补偿中断响应延时造成的误差
+ 261   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 262   1          T0RL = (unsigned char)tmp;
+ 263   1          TMOD &= 0xF0;   //清零T0的控制位
+ 264   1          TMOD |= 0x01;   //配置T0为模式1
+ 265   1          TH0 = T0RH;     //加载T0重载值
+ 266   1          TL0 = T0RL;
+ 267   1          ET0 = 1;        //使能T0中断
+ 268   1          TR0 = 1;        //启动T0
+ 269   1      }
+ 270          /* T0中断服务函数，完成1秒定时 */
+ 271          void InterruptTimer0() interrupt 1
+ 272          {
+ 273   1          static unsigned char tmr1s = 0;
+ 274   1          
+ 275   1          TH0 = T0RH;  //重新加载重载值
+ 276   1          TL0 = T0RL;
+ 277   1          tmr1s++;
+ 278   1          if (tmr1s >= 100)  //定时1s
+ 279   1          {
+ 280   2              tmr1s = 0;
+ 281   2              flag1s = 1;
+ 282   2          }
+ 283   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  13 ERROR(S)

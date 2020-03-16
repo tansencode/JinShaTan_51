@@ -1,0 +1,111 @@
+C51 COMPILER V9.01   MAIN                                                                  04/18/2018 21:22:07 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          bit flag500ms = 0; //500ms 定时标志
+   3          unsigned char T0RH = 0; //T0 重载值的高字节
+   4          unsigned char T0RL = 0; //T0 重载值的低字节
+   5          //待显示的第一行字符串
+   6          unsigned char code str1[] = "Kingst Studio";
+   7          //待显示的第二行字符串，需保持与第一行字符串等长，较短的行可用空格补齐
+   8          unsigned char code str2[] = "Let's move...";
+   9          void ConfigTimer0(unsigned int ms);
+  10          extern void InitLcd1602();
+  11          extern void LcdShowStr(unsigned char x, unsigned char y,
+  12          unsigned char *str, unsigned char len);
+  13          void main()
+  14          {
+  15   1      unsigned char i;
+  16   1      unsigned char index = 0; //移动索引
+  17   1      unsigned char pdata bufMove1[16+sizeof(str1)+16]; //移动显示缓冲区 1
+  18   1      unsigned char pdata bufMove2[16+sizeof(str2)+16]; //移动显示缓冲区 2
+  19   1      EA = 1; //开总中断
+  20   1      ConfigTimer0(10); //配置 T0 定时 10ms
+  21   1      InitLcd1602(); //初始化液晶
+  22   1      //缓冲区开头一段填充为空格
+  23   1      for (i=0; i<16; i++)
+  24   1      {
+  25   2      bufMove1[i] = ' ';
+  26   2      bufMove2[i] = ' ';
+  27   2      }
+  28   1      //待显示字符串拷贝到缓冲区中间位置
+  29   1      for (i=0; i<(sizeof(str1)-1); i++)
+  30   1      {
+  31   2      bufMove1[16+i] = str1[i];
+  32   2      bufMove2[16+i] = str2[i];
+  33   2      }
+  34   1      //缓冲区结尾一段也填充为空格
+  35   1      for (i=(16+sizeof(str1)-1); i<sizeof(bufMove1); i++)
+  36   1      {
+  37   2      bufMove1[i] = ' ';
+  38   2      bufMove2[i] = ' ';
+  39   2      }
+  40   1      while (1)
+  41   1      {
+  42   2      if (flag500ms) //每 500ms 移动一次屏幕
+  43   2      {
+  44   3      flag500ms = 0;
+  45   3      //从缓冲区抽出需显示的一段字符显示到液晶上
+  46   3      LcdShowStr(0, 0, bufMove1+index, 16);
+  47   3      LcdShowStr(0, 1, bufMove2+index, 16);
+  48   3      //移动索引递增，实现左移
+  49   3      index++;
+  50   3      if (index >= (16+sizeof(str1)-1))
+  51   3      { //起始位置达到字符串尾部后即返回从头开始
+  52   4      index = 0;
+  53   4      }
+  54   3      }
+  55   2      }
+C51 COMPILER V9.01   MAIN                                                                  04/18/2018 21:22:07 PAGE 2   
+
+  56   1      }
+  57          /* 配置并启动 T0，ms-T0 定时时间 */
+  58          void ConfigTimer0(unsigned int ms)
+  59          {
+  60   1      unsigned long tmp; //临时变量
+  61   1      tmp = 11059200 / 12; //定时器计数频率
+  62   1      tmp = (tmp * ms) / 1000; //计算所需的计数值
+  63   1      tmp = 65536 - tmp; //计算定时器重载值
+  64   1      tmp = tmp + 12; //补偿中断响应延时造成的误差
+  65   1      T0RH = (unsigned char)(tmp>>8); //定时器重载值拆分为高低字节
+  66   1      T0RL = (unsigned char)tmp;
+  67   1      TMOD &= 0xF0; //清零 T0 的控制位
+  68   1      TMOD |= 0x01; //配置 T0 为模式 1
+  69   1      TH0 = T0RH; //加载 T0 重载值
+  70   1      TL0 = T0RL;
+  71   1      ET0 = 1; //使能 T0 中断
+  72   1      TR0 = 1; //启动 T0
+  73   1      }
+  74          /* T0 中断服务函数，定时 500ms */
+  75          void InterruptTimer0() interrupt 1
+  76          {
+  77   1      static unsigned char tmr500ms = 0;
+  78   1      TH0 = T0RH; //重新加载重载值
+  79   1      TL0 = T0RL;
+  80   1      tmr500ms++;
+  81   1      if (tmr500ms >= 50)
+  82   1      {
+  83   2      tmr500ms = 0;
+  84   2      flag500ms = 1;
+  85   2      }
+  86   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    288    ----
+   CONSTANT SIZE    =     28    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----      92
+   DATA SIZE        =      3       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

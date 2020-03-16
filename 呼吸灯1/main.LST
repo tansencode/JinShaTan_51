@@ -1,0 +1,150 @@
+C51 COMPILER V9.01   MAIN                                                                  04/16/2018 23:23:40 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          sbit PWMOUT = P0^0;
+   3          sbit ADDR0 = P1^0;
+   4          sbit ADDR1 = P1^1;
+   5          sbit ADDR2 = P1^2;
+   6          sbit ADDR3 = P1^3;
+   7          sbit ENLED = P1^4;
+   8          unsigned long PeriodCnt = 0; //PWM 周期计数值
+   9          unsigned char HighRH = 0; //高电平重载值的高字节
+  10          unsigned char HighRL = 0; //高电平重载值的低字节
+  11          unsigned char LowRH = 0; //低电平重载值的高字节
+  12          unsigned char LowRL = 0; //低电平重载值的低字节
+  13          unsigned char T1RH = 0; //T1 重载值的高字节
+  14          unsigned char T1RL = 0; //T1 重载值的低字节
+  15          void ConfigTimer1(unsigned int ms);
+  16          void ConfigPWM(unsigned int fr, unsigned char dc);
+  17          void main()
+  18          {
+  19   1      EA = 1; //开总中断
+  20   1      ENLED = 0; //使能独立 LED
+  21   1      ADDR3 = 1;
+  22   1      ADDR2 = 1;
+  23   1      ADDR1 = 1;
+  24   1      ADDR0 = 0;
+  25   1      ConfigPWM(100, 10); //配置并启动 PWM
+  26   1      ConfigTimer1(50); //用 T1 定时调整占空比
+  27   1      while (1);
+  28   1      }
+  29          /* 配置并启动 T1，ms-定时时间 */
+  30          void ConfigTimer1(unsigned int ms)
+  31          {
+  32   1      unsigned long tmp; //临时变量
+  33   1      tmp = 11059200 / 12; //定时器计数频率
+  34   1      tmp = (tmp * ms) / 1000; //计算所需的计数值
+  35   1      tmp = 65536 - tmp; //计算定时器重载值
+  36   1      tmp = tmp + 12; //补偿中断响应延时造成的误差
+  37   1      T1RH = (unsigned char)(tmp>>8); //定时器重载值拆分为高低字节
+  38   1      T1RL = (unsigned char)tmp;
+  39   1      TMOD &= 0x0F; //清零 T1 的控制位
+  40   1      TMOD |= 0x10; //配置 T1 为模式 1
+  41   1      TH1 = T1RH; //加载 T1 重载值
+  42   1      TL1 = T1RL;
+  43   1      ET1 = 1; //使能 T1 中断
+  44   1      TR1 = 1; //启动 T1
+  45   1      }
+  46          /* 配置并启动 PWM，fr-频率，dc-占空比 */
+  47          void ConfigPWM(unsigned int fr, unsigned char dc)
+  48          {
+  49   1      unsigned int high, low;
+  50   1      PeriodCnt = (11059200/12) / fr; //计算一个周期所需的计数值
+  51   1      high = (PeriodCnt*dc) / 100; //计算高电平所需的计数值
+  52   1      low = PeriodCnt - high; //计算低电平所需的计数值
+  53   1      high = 65536 - high + 12; //计算高电平的定时器重载值并补偿中断延时
+  54   1      low = 65536 - low + 12; //计算低电平的定时器重载值并补偿中断
+  55   1      HighRH = (unsigned char)(high>>8); //高电平重载值拆分为高低字节
+C51 COMPILER V9.01   MAIN                                                                  04/16/2018 23:23:40 PAGE 2   
+
+  56   1      HighRL = (unsigned char)high;
+  57   1      LowRH = (unsigned char)(low>>8); //低电平重载值拆分为高低字节
+  58   1      LowRL = (unsigned char)low;
+  59   1      TMOD &= 0xF0; //清零 T0 的控制位
+  60   1      TMOD |= 0x01; //配置 T0 为模式 1
+  61   1      TH0 = HighRH; //加载 T0 重载值
+  62   1      TL0 = HighRL;
+  63   1      ET0 = 1; //使能 T0 中断
+  64   1      TR0 = 1; //启动 T0
+  65   1      PWMOUT = 1; //输出高电平
+  66   1      }
+  67          /* 占空比调整函数，频率不变只调整占空比 */
+  68          void AdjustDutyCycle(unsigned char dc)
+  69          {
+  70   1      unsigned int high, low;
+  71   1      high = (PeriodCnt*dc) / 100; //计算高电平所需的计数值
+  72   1      low = PeriodCnt - high; //计算低电平所需的计数值
+  73   1      high = 65536 - high + 12; //计算高电平的定时器重载值并补偿中断延时
+  74   1      low = 65536 - low + 12; //计算低电平的定时器重载值并补偿中断延时
+  75   1      HighRH = (unsigned char)(high>>8); //高电平重载值拆分为高低字节
+  76   1      HighRL = (unsigned char)high;
+  77   1      LowRH = (unsigned char)(low>>8); //低电平重载值拆分为高低字节
+  78   1      LowRL = (unsigned char)low;
+  79   1      }
+  80          /* T0 中断服务函数，产生 PWM 输出 */
+  81          void InterruptTimer0() interrupt 1
+  82          {
+  83   1      if (PWMOUT == 1) //当前输出为高电平时，装载低电平值并输出低电平
+  84   1      {
+  85   2      TH0 = LowRH;
+  86   2      TL0 = LowRL;
+  87   2      PWMOUT = 0;
+  88   2      }
+  89   1      else //当前输出为低电平时，装载高电平值并输出高电平
+  90   1      {
+  91   2      TH0 = HighRH;
+  92   2      TL0 = HighRL;
+  93   2      PWMOUT = 1;
+  94   2      }
+  95   1      }
+  96          /* T1 中断服务函数，定时动态调整占空比 */
+  97          void InterruptTimer1() interrupt 3
+  98          {
+  99   1      static bit dir = 0;
+ 100   1      static unsigned char index = 0;
+ 101   1      unsigned char code table[13] = { //占空比调整表
+ 102   1      5, 18, 30, 41, 51, 60, 68, 75, 81, 86, 90, 93, 95
+ 103   1      };
+ 104   1      TH1 = T1RH; //重新加载 T1 重载值
+ 105   1      TL1 = T1RL;
+ 106   1      AdjustDutyCycle(table[index]); //调整 PWM 的占空比
+ 107   1      if (dir == 0) //逐步增大占空比
+ 108   1      {
+ 109   2      index++;
+ 110   2      if (index >= 12)
+ 111   2      {
+ 112   3      dir = 1;
+ 113   3      }
+ 114   2      }
+ 115   1      else //逐步减小占空比
+ 116   1      {
+ 117   2      index--;
+C51 COMPILER V9.01   MAIN                                                                  04/16/2018 23:23:40 PAGE 3   
+
+ 118   2      if (index == 0)
+ 119   2      {
+ 120   3      dir = 0;
+ 121   3      }
+ 122   2      }
+ 123   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    437    ----
+   CONSTANT SIZE    =     13    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

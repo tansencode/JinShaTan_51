@@ -1,0 +1,230 @@
+C51 COMPILER V9.01   MAIN                                                                  04/25/2018 19:26:21 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          sbit MC0 = P3^0;
+   4          sbit MC1 = P3^1;
+   5          sbit MC2 = P3^2;
+   6          sbit MC3 = P3^3;
+   7          
+   8          signed long beats = 0; //电机转动节拍总数
+   9          
+  10          flagmotor=0;
+  11          
+  12          unsigned char T0RH = 0; //T0 重载值的高字节
+  13          unsigned char T0RL = 0; //T0 重载值的低字节
+  14          
+  15          void ConfigTimer0(unsigned int ms);
+  16          extern void UartDriver();
+  17          extern void ConfigUART(unsigned int baud);
+  18          extern void UartRxMonitor(unsigned char ms);
+  19          extern void UartWrite(unsigned char *buf, unsigned char len);
+  20          extern void InitLcd1602();
+  21          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  22          extern void LcdAreaClear(unsigned char x, unsigned char y, unsigned char len);
+  23          extern void LcdWriteCmd(unsigned char cmd);
+  24          extern void StartMotor(unsigned long angle);
+  25          
+  26          
+  27          void StartMotor(signed long angle);
+*** WARNING C235 IN LINE 27 OF MAIN.C: parameter 1: different types
+  28          void StopMotor();
+  29          void main()
+  30          {
+  31   1      EA = 1; //开总中断
+  32   1      TMOD = 0x00; //设置 T0 为模式 0
+  33   1      TH0 = T0RH; //加载 T0 重载值
+  34   1      TL0 = T0RL;
+  35   1      ConfigTimer0(2); //配置 T0 定时 2ms
+  36   1      ConfigUART(9600); //配置波特率为 9600
+  37   1      InitLcd1602(); //初始化液晶
+  38   1      while (1)
+  39   1      {
+  40   2      UartDriver(); //调用串口驱动
+  41   2      }
+  42   1      }
+  43          
+  44          /* 内存比较函数，比较两个指针所指向的内存数据是否相同，
+  45          ptr1-待比较指针 1，ptr2-待比较指针 2，len-待比较长度
+  46          返回值-两段内存数据完全相同时返回 1，不同返回 0 */
+  47          bit CmpMemory(unsigned char *ptr1, unsigned char *ptr2, unsigned char len)
+  48          {
+  49   1      while (len--)
+  50   1      {
+  51   2      if (*ptr1++ != *ptr2++) //遇到不相等数据时即刻返回 0
+  52   2      {
+  53   3      return 0;
+  54   3      }
+C51 COMPILER V9.01   MAIN                                                                  04/25/2018 19:26:21 PAGE 2   
+
+  55   2      }
+  56   1      return 1; //比较完全部长度数据都相等则返回 1
+  57   1      }
+  58          
+  59          /* 串口动作函数，根据接收到的命令帧执行响应的动作
+  60          buf-接收到的命令帧指针，len-命令帧长度 */
+  61          void UartAction(unsigned char *buf, unsigned char len)
+  62          {
+  63   1      unsigned char i;
+  64   1      unsigned char code cmd0[] = "motorrun"; //电机转动命令
+  65   1      unsigned char code cmd1[] = "motorstop"; //电机停止命令
+  66   1      unsigned char code cmd2[] = "number"; //显示学号
+  67   1      unsigned char code cmd3[] = "zhuanye"; //显示专业
+  68   1      unsigned char code cmd4[] = "time"; //显示时间
+  69   1      
+  70   1      unsigned char code cmdLen[] = { //命令长度汇总表
+  71   1      sizeof(cmd0)-1, sizeof(cmd1)-1, sizeof(cmd2)-1,sizeof(cmd3)-1,sizeof(cmd4)-1,
+  72   1      };
+  73   1      unsigned char code *cmdPtr[] = { //命令指针汇总表
+  74   1      &cmd0[0], &cmd1[0], &cmd2[0],&cmd3[0],&cmd4[0],
+  75   1      };
+  76   1      
+  77   1      for (i=0; i<sizeof(cmdLen); i++) //遍历命令列表，查找相同命令
+  78   1      {
+  79   2      if (len >= cmdLen[i]) //首先接收到的数据长度要不小于命令长度
+  80   2      {
+  81   3      if (CmpMemory(buf, cmdPtr[i], cmdLen[i])) //比较相同时退出循环
+  82   3      {
+  83   4      break;
+  84   4      }
+  85   3      }
+  86   2      }
+  87   1      
+  88   1      switch (i) //循环退出时 i 的值即是当前命令的索引值
+  89   1      {
+  90   2      case 0:
+  91   2      LcdWriteCmd(0x01); //清屏
+  92   2      StartMotor(60); //开启步进电机
+  93   2      break;
+  94   2      
+  95   2      case 1:
+  96   2      StopMotor();//关闭步进电机
+  97   2      break;
+  98   2      
+  99   2      case 2:
+ 100   2      LcdShowStr(0,0,"0903160218"); //显示学号, 0,0第一行显示
+ 101   2      break;
+ 102   2      
+ 103   2      case 3:
+ 104   2      LcdWriteCmd(0x01); //清屏
+ 105   2      LcdShowStr(0, 1,"DianZiXinXi"); //显示专业， 0,1第二行显示
+ 106   2      break;
+ 107   2      
+ 108   2      case 4:
+ 109   2      LcdWriteCmd(0x01); //清屏
+ 110   2      buf[len] = '\0'; //为接收到的字符串添加结束符
+ 111   2      LcdShowStr(0, 1, buf+cmdLen[4]); //显示命令后的字符串， 0,1第二行显示
+ 112   2      break;
+ 113   2      
+ 114   2      default: //未找到相符命令时，给上机发送“错误命令”的提示
+ 115   2      UartWrite("bad command.\r\n", sizeof("bad command.\r\n")-1);
+ 116   2      return;
+C51 COMPILER V9.01   MAIN                                                                  04/25/2018 19:26:21 PAGE 3   
+
+ 117   2      }
+ 118   1      buf[len++] = '\r'; //有效命令被执行后，在原命令帧之后添加
+ 119   1      buf[len++] = '\n'; //回车换行符后返回给上位机，表示已执行
+ 120   1      UartWrite(buf, len);
+ 121   1      }
+ 122          
+ 123          
+ 124          /* 配置并启动 T0，ms-T0 定时时间 */
+ 125          void ConfigTimer0(unsigned int ms)
+ 126          {
+ 127   1      unsigned long tmp; //临时变量
+ 128   1      tmp = 11059200 / 12; //定时器计数频率
+ 129   1      tmp = (tmp * ms) / 1000; //计算所需的计数值
+ 130   1      tmp = 65536 - tmp; //计算定时器重载值
+ 131   1      tmp = tmp + 33; //补偿中断响应延时造成的误差
+ 132   1      T0RH = (unsigned char)(tmp>>8); //定时器重载值拆分为高低字节
+ 133   1      T0RL = (unsigned char)tmp;
+ 134   1      TMOD &= 0xF0; //清零 T0 的控制位
+ 135   1      TMOD |= 0x01; //配置 T0 为模式 1
+ 136   1      TH0 = T0RH; //加载 T0 重载值
+ 137   1      TL0 = T0RL;
+ 138   1      ET0 = 1; //使能 T0 中断
+ 139   1      TR0 = 1; //启动 T0
+ 140   1      }
+ 141          
+ 142          /* 步进电机启动函数，angle-需转过的角度 */
+ 143          void StartMotor(signed long angle)
+ 144          {
+*** WARNING C235 IN LINE 144 OF MAIN.C: parameter 1: different types
+ 145   1      //在计算前关闭中断，完成后再打开，以避免中断打断计算过程而造成错误
+ 146   1      EA = 0;
+ 147   1      beats = (angle * 4076)/360 ; //实测为 4076 拍转动一圈
+ 148   1      EA = 1;
+ 149   1      }
+ 150          
+ 151          /* 步进电机停止函数 */
+ 152          void StopMotor()
+ 153          {
+ 154   1      EA = 0;
+ 155   1      beats = 0;
+ 156   1      EA = 1;
+ 157   1      }
+ 158          
+ 159          void TurnMotor()
+ 160          {
+ 161   1      unsigned char tmp; //临时变量
+ 162   1      static unsigned char index = 0; //节拍输出索引
+ 163   1      unsigned char code BeatCode[8] = { //步进电机节拍对应的 IO 控制代码
+ 164   1      0xE, 0xC, 0xD, 0x9, 0xB, 0x3, 0x7, 0x6
+ 165   1      };
+ 166   1      if (beats != 0) //节拍数不为 0 则产生一个驱动节拍
+ 167   1      {
+ 168   2      if (beats > 0) //节拍数大于 0 时正转
+ 169   2      {
+ 170   3      index++; //正转时节拍输出索引递增
+ 171   3      index = index & 0x07; //用&操作实现到 8 归零
+ 172   3      beats--; //正转时节拍计数递减
+ 173   3      }
+ 174   2      else //节拍数小于 0 时反转
+ 175   2      {
+ 176   3      index--; //反转时节拍输出索引递减
+ 177   3      index = index & 0x07; //用&操作同样可以实现到-1 时归 7
+C51 COMPILER V9.01   MAIN                                                                  04/25/2018 19:26:21 PAGE 4   
+
+ 178   3      beats++; //反转时节拍计数递增
+ 179   3      }
+ 180   2      tmp = P3; //用 tmp 把 P1 口当前值暂存
+ 181   2      tmp = tmp & 0xF0; //用&操作清零低 4 位
+ 182   2      tmp = tmp | BeatCode[index]; //用|操作把节拍代码写到低 4 位
+ 183   2      P3= tmp; //把低 4 位的节拍代码和高 4 位的原值送回 P1
+ 184   2      }
+ 185   1      else //节拍数为 0 则关闭电机所有的相
+ 186   1      {
+ 187   2      P3 = P3 | 0x0F;
+ 188   2      }
+ 189   1      }
+ 190          /* T0 中断服务函数，执行串口接收监控和蜂鸣器驱动 */
+ 191          void InterruptTimer0() interrupt 1
+ 192          {
+ 193   1      static bit div = 0;
+ 194   1      TH0 = T0RH; //加载 T0 重载值
+ 195   1      TL0 = T0RL;
+ 196   1      div = ~div;
+ 197   1      TurnMotor();
+ 198   1      UartRxMonitor(1);
+ 199   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    692    ----
+   CONSTANT SIZE    =    100    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9      29
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

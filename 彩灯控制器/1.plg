@@ -1,0 +1,433 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\彩灯控制器\1.uvproj
+Project File Date:  07/06/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3231
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+Led.c(2): warning C318: can't open file 'at89x52.h'
+LED.C(180): warning C280: 'div': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3231
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+Led.c(2): warning C318: can't open file 'at89x52.h'
+LED.C(180): warning C280: 'div': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3229
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+Led.c(2): warning C318: can't open file 'at89x52.h'
+LED.C(181): warning C280: 'div': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3229
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+Led.c(2): warning C318: can't open file 'at89x52.h'
+LED.C(181): warning C280: 'div': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3232
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+Led.c(2): warning C318: can't open file 'at89x52.h'
+LED.C(21): warning C206: '_nop_': missing function-prototype
+LED.C(21): error C264: intrinsic '_nop_': declaration/activation error
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+Led.c(3): warning C318: can't open file 'at89x52.h'
+LED.C(198): warning C280: 'div': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3231
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+Led.c(3): warning C318: can't open file 'at89x52.h'
+LED.C(198): warning C280: 'div': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3228
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+Led.c(3): warning C318: can't open file 'at89x52.h'
+LED.C(198): warning C280: 'div': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.5 xdata=136 code=3226
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=68.4 xdata=136 code=3220
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(194): error C202: 'T1RH': undefined identifier
+LED.C(195): error C202: 'T1RL': undefined identifier
+LED.C(198): error C202: 'T1RH': undefined identifier
+LED.C(199): error C202: 'T1RL': undefined identifier
+LED.C(210): error C202: 'T1RH': undefined identifier
+LED.C(211): error C202: 'T1RL': undefined identifier
+LED.C(216): error C202: 'flag1s': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(218): error C202: 'flag1s': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(212): warning C280: 'dir': unreferenced local variable
+LED.C(213): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CONFIGTIMER1?LED
+Program Size: data=78.6 xdata=136 code=3401
+creating hex file from "1"...
+"1" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(212): warning C280: 'dir': unreferenced local variable
+LED.C(213): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3407
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(213): warning C280: 'dir': unreferenced local variable
+LED.C(214): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3410
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(212): warning C280: 'dir': unreferenced local variable
+LED.C(213): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3410
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3448
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3448
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(213): warning C280: 'dir': unreferenced local variable
+LED.C(214): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3451
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(213): warning C280: 'dir': unreferenced local variable
+LED.C(214): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3460
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(219): warning C280: 'dir': unreferenced local variable
+LED.C(220): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=74.6 xdata=136 code=3481
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(215): warning C280: 'dir': unreferenced local variable
+LED.C(216): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=76.6 xdata=136 code=3475
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(215): warning C280: 'dir': unreferenced local variable
+LED.C(216): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED6?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED4?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED5?LED
+Program Size: data=76.6 xdata=136 code=3475
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(210): warning C206: 'Led4': missing function-prototype
+MAIN.C(215): warning C206: 'Led5': missing function-prototype
+MAIN.C(220): warning C206: 'Led6': missing function-prototype
+MAIN.C(225): warning C206: 'Led7': missing function-prototype
+MAIN.C(230): warning C206: 'Led8': missing function-prototype
+MAIN.C(235): warning C206: 'Led9': missing function-prototype
+compiling Led.c...
+LED.C(63): error C141: syntax error near 'else'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(210): warning C206: 'Led4': missing function-prototype
+MAIN.C(215): warning C206: 'Led5': missing function-prototype
+MAIN.C(220): warning C206: 'Led6': missing function-prototype
+compiling Led.c...
+LED.C(63): error C141: syntax error near 'else'
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(212): warning C280: 'dir': unreferenced local variable
+LED.C(213): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3527
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(213): warning C280: 'dir': unreferenced local variable
+LED.C(214): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3542
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(223): error C202: 'i': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(213): warning C280: 'dir': unreferenced local variable
+LED.C(214): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3546
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(214): warning C280: 'dir': unreferenced local variable
+LED.C(215): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3547
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=76.6 xdata=136 code=3547
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(94): error C218: void-type in controlling expression
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(94): error C202: 'keycode': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(94): error C202: 'keycode': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(94): error C202: 'keycode': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Led.c...
+LED.C(218): warning C280: 'dir': unreferenced local variable
+LED.C(219): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?KEYDRIVER?KEYBOARD
+    CALLER:  ?PR?LED2?LED
+Program Size: data=76.6 xdata=136 code=3563
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(217): warning C280: 'dir': unreferenced local variable
+LED.C(218): warning C280: 'index': unreferenced local variable
+linking...
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?KEYDRIVER?KEYBOARD
+    CALLER:  ?PR?LED2?LED
+Program Size: data=76.6 xdata=136 code=3562
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(216): warning C280: 'dir': unreferenced local variable
+LED.C(217): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3546
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(216): warning C280: 'dir': unreferenced local variable
+LED.C(217): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3546
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(216): warning C280: 'dir': unreferenced local variable
+LED.C(217): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3546
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Led.c...
+LED.C(216): warning C280: 'dir': unreferenced local variable
+LED.C(217): warning C280: 'index': unreferenced local variable
+linking...
+Program Size: data=76.6 xdata=136 code=3541
+creating hex file from "1"...
+"1" - 0 Error(s), 2 Warning(s).

@@ -1,0 +1,6 @@
+"STARTUP.obj",
+"main.obj",
+"Lcd1602.obj",
+"I2C.obj" 
+TO "lesson17_1" 
+RAMSIZE(256) 

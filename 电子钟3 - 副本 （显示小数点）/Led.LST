@@ -1,0 +1,101 @@
+C51 COMPILER V9.01   LED                                                                   05/06/2018 00:00:10 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LED
+OBJECT MODULE PLACED IN Led.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE Led.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<at89x52.h>
+*** WARNING C318 IN LINE 1 OF Led.c: can't open file 'at89x52.h'
+   2          #define  _LED_BUZZER_C
+   3          sbit ADDR0 = P1^0;
+*** ERROR C202 IN LINE 3 OF LED.C: 'P1': undefined identifier
+   4          sbit ADDR1 = P1^1;
+*** ERROR C202 IN LINE 4 OF LED.C: 'P1': undefined identifier
+   5          sbit ADDR2 = P1^2;
+*** ERROR C202 IN LINE 5 OF LED.C: 'P1': undefined identifier
+   6          sbit ADDR3 = P1^3;
+*** ERROR C202 IN LINE 6 OF LED.C: 'P1': undefined identifier
+   7          sbit ENLED = P1^4;
+*** ERROR C202 IN LINE 7 OF LED.C: 'P1': undefined identifier
+   8          unsigned char code LedChar[] = {  //数码管显示字符转换表
+   9              0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8,
+  10              0x80, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E
+  11          };
+  12          
+  13          struct sLedBuff ledBuff; //LED显示缓冲区，默认初值全0，正好达到上电全亮的效果
+  14          
+  15          /* LED初始化函数，初始化IO、配置定时器 */
+  16          void InitLed()
+  17          {
+  18   1          //初始化IO口
+  19   1          P0 = 0xFF;
+*** ERROR C202 IN LINE 19 OF LED.C: 'P0': undefined identifier
+  20   1          ENLED = 0;
+*** ERROR C202 IN LINE 20 OF LED.C: 'ENLED': undefined identifier
+  21   1          //配置T2作为动态扫描定时
+  22   1         T2MOD = 0x00; //设置 T2 为模式 0
+*** ERROR C202 IN LINE 22 OF LED.C: 'T2MOD': undefined identifier
+  23   1         T2CON=0x00;
+*** ERROR C202 IN LINE 23 OF LED.C: 'T2CON': undefined identifier
+  24   1         TH2 = 0xFC; //为 T2 赋初值 0xFC67，定时 1ms
+*** ERROR C202 IN LINE 24 OF LED.C: 'TH2': undefined identifier
+  25   1         TL2 = 0x67;
+*** ERROR C202 IN LINE 25 OF LED.C: 'TL2': undefined identifier
+  26   1         RCAP2H=0xFC;
+*** ERROR C202 IN LINE 26 OF LED.C: 'RCAP2H': undefined identifier
+  27   1         RCAP2L=0x67;
+*** ERROR C202 IN LINE 27 OF LED.C: 'RCAP2L': undefined identifier
+  28   1         ET2 = 1; //使能 T2 中断
+*** ERROR C202 IN LINE 28 OF LED.C: 'ET2': undefined identifier
+  29   1         TR2 = 1; //启动 T2
+*** ERROR C202 IN LINE 29 OF LED.C: 'TR2': undefined identifier
+  30   1      }
+  31          
+  32          /* 数码管上显示一位数字，index-数码管位索引(从右到左对应0～5)，
+  33          **     num-待显示的数字，point-代表是否显示此位上的小数点 */
+  34          void ShowLedNumber(unsigned int index, unsigned int num, unsigned int point)
+  35          {
+  36   1          ledBuff.number[index] = LedChar[num];  //输入数字转换为数码管字符0～F
+*** ERROR C230 IN LINE 36 OF LED.C: 'sLedBuff': unknown struct/union/enum tag
+*** ERROR C204 IN LINE 36 OF LED.C: 'number': undefined member
+  37   1          if (point != 0)
+C51 COMPILER V9.01   LED                                                                   05/06/2018 00:00:10 PAGE 2   
+
+  38   1          {
+  39   2              ledBuff.number[index] &= 0x7F;  //point不为0时点亮当前位的小数点
+*** ERROR C230 IN LINE 39 OF LED.C: 'sLedBuff': unknown struct/union/enum tag
+*** ERROR C204 IN LINE 39 OF LED.C: 'number': undefined member
+  40   2          }
+  41   1      }
+  42          
+  43          /* T2中断服务函数，LED动态扫描、蜂鸣器控制 */
+  44          void InterruptTimer2() interrupt 5
+  45          {
+  46   1          static i = 0;  //LED位选索引
+  47   1          
+  48   1          TF2 = 0;  //清零T2中断标志
+*** ERROR C202 IN LINE 48 OF LED.C: 'TF2': undefined identifier
+  49   1          //全部LED动态扫描显示
+  50   1          if (ENLED == 0)  //LED使能时才进行动态扫描
+*** ERROR C202 IN LINE 50 OF LED.C: 'ENLED': undefined identifier
+  51   1          {
+  52   2              P0 = 0xFF;                       //关闭所有段选位，显示消隐
+*** ERROR C202 IN LINE 52 OF LED.C: 'P0': undefined identifier
+  53   2              P1 = (P1 & 0xF0) | i;            //位选索引值赋值到P1口低4位
+*** ERROR C202 IN LINE 53 OF LED.C: 'P1': undefined identifier
+  54   2              P0 = *((data*)&ledBuff+i); //缓冲区中索引位置的数据送到P0口
+*** ERROR C202 IN LINE 54 OF LED.C: 'P0': undefined identifier
+*** ERROR C141 IN LINE 54 OF LED.C: syntax error near 'data'
+*** ERROR C141 IN LINE 54 OF LED.C: syntax error near ')'
+*** ERROR C141 IN LINE 54 OF LED.C: syntax error near ')'
+  55   2              if (i < (sizeof(ledBuff)-1))     //索引递增循环，遍历整个缓冲区
+  56   2                  i++;
+  57   2              else
+  58   2                  i = 0;
+  59   2          }
+  60   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  27 ERROR(S)

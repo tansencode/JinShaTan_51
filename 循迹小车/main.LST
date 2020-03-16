@@ -1,0 +1,417 @@
+C51 COMPILER V9.01   MAIN                                                                  06/17/2018 14:31:19 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*****************ZY08-CÖÇÄÜÑ­¼£¡¢Ò£¿Ø¡¢±ÜÕÏ¡¢Ñ°¹â»úÆ÷ÈË*****************
+   2          //=====================================================================//
+   3                             ZY08-CÑ­¼£¡¢ºìÍâ±ÜÕÏ¡¢Ò£¿Ø×ÛºÏ³ÌÐòÑÝÊ¾                         //
+   4          //  ±¾³ÌÐòÖ÷Òª½«Ñ­¼£³ÌÐò¡¢ºìÍâ±ÜÕÏ³ÌÐò¡¢Ò£¿ØÆ÷³ÌÐò×ÛºÏÔÚÒ»Æð£¬Í¨¹ýÖ÷°å°´¼üÇÐ»»
+   5          £¬À¶É«Ð¡Ö÷°åÊÇÓÒ±ß°´¼üS4ÇÐ»»£¬Èç¹û¿Í»§ÂòµÄÊÇÂÌÉ«´óÖ÷°å £¬ÄÇÃ´¾ÍÊÇÖ÷°å×ó±ßµÄ°´¼üS1
+   6          ÇÐ»»£¬ÊýÂë¹ÜÏÔÊ¾1£¬¾ÍÊÇÑ­¼£Ä£Ê½£¬°´Ò»ÏÂ°´¼üÊýÂë¹ÜÏÔÊ¾2£¬¾ÍÊÇ±ÜÕÏÄ£Ê½£¬°´Ò»ÏÂ°´¼ü
+   7          ÊýÂë¹ÜÏÔÊ¾3£¬¾ÍÊÇºìÍâÒ£¿Ø³ÌÐò£¬ÖÜ¶ø¸´Ê¼ÇÐ»»Ä£Ê½¡£
+   8          //---------------------------------------------------------------------//
+   9          
+  10          *  Æ½Ì¨£ºZY08-CÖÇÄÜÑ­¼£¡¢Ò£¿Ø¡¢±ÜÕÏ¡¢Ñ°¹â»úÆ÷ÈË + Keil U4 + STC89C52
+  11          *  ³ÌÐòÃû³Æ£º5¡¢ZY08-CÑ­¼£¡¢ºìÍâ±ÜÕÏ¡¢Ò£¿Ø×ÛºÏ³ÌÐò
+  12          *  ¹«Ë¾£ººþÄÏÖÇÓî¿Æ½ÌÉè±¸ÓÐÏÞ¹«Ë¾
+  13          *  ±àÐ´£ºÖÇÓî¹«Ë¾ÑÐ·¢Ò»²¿
+  14          *  ½»Á÷:ÖÇÄÜ³µQQ:1018973181 
+  15          *  ¾§Õñ:11.0592MHZ
+  16          *  ÊÛºó¼¼ÊõËµÃ÷£ºÃâ·Ñ¿ªÔ´£¬²»Ö§³Ö¿Í»§×Ô¼ºÐÞ¸Ä³ÌÐò·ÖÎöÓë¸ÄÕý£¬¿ÉÒÔÌá¹©ÎÒ¹«Ë¾³ÌÐòËµÃ÷
+  17          *  ÊÓÆµ½Ì³Ì£º±¾Ð¡³µÅäÌ×Ñ§Ï°CÓïÑÔÏêÏ¸ÊÓÆµ½Ì³Ì£¬×ÊÁÏÍ³Ò»ÍøÅÌÏÂÔØ
+  18          ******************************************************************/  
+  19          
+  20          #include <reg52.h> //°üº¬51µ¥Æ¬»úÏà¹ØµÄÍ·ÎÄ¼þ
+  21          #include <intrins.h>
+  22          sbit LeftLed=P2^0;                        //¶¨ÒåÇ°·½×ó²àÖ¸Ê¾µÆ¶Ë¿Ú
+  23          sbit RightLed=P0^7;                       //¶¨ÒåÇ°·½ÓÒ²àÖ¸Ê¾µÆ¶Ë¿Ú
+  24          sbit FontLled=P1^7;
+  25          
+  26          sbit LeftIR=P3^5;                         //¶¨ÒåÇ°·½×ó²àºìÍâÌ½Í·¶Ë¿Ú
+  27          sbit RightIR=P3^6;                        //¶¨ÒåÇ°·½ÓÒ²àºìÍâÌ½Í·¶Ë¿Ú
+  28          sbit FontIR=P3^7;                         //¶¨ÒåÇ°·½ÕýÇ°·½ºìÍâÌ½Í·¶Ë¿Ú
+  29          
+  30          sbit M1A=P0^0;                            //¶¨Òå×ó²àµç»úÇý¶¯A¶Ë
+  31          sbit M1B=P0^1;                            //¶¨Òå×ó²àµç»úÇý¶¯B¶Ë
+  32          
+  33          sbit M2A=P0^2;                            //¶¨ÒåÓÒ²àµç»úÇý¶¯A¶Ë
+  34          sbit M2B=P0^3;                            //¶¨ÒåÓÒ²àµç»úÇý¶¯B¶Ë
+  35          
+  36          sbit B1=P0^4;                             //¶¨ÒåÓïÒôÊ¶Ê¶±ð´«¸ÐÆ÷¶Ë¿Ú
+  37          sbit SB1=P0^6;                            //¶¨Òå·äÃùÆ÷¶Ë¿Ú
+  38          sbit IRIN=P3^3;                                       //¶¨ÒåºìÍâ½ÓÊÕ¶Ë¿Ú
+  39          
+  40          unsigned char code  LedShowData[]={0x03,0x9F,0x25,0x0D,0x99,  //¶¨ÒåÊýÂë¹ÜÏÔÊ¾Êý¾Ý
+  41                                             0x49,0x41,0x1F,0x01,0x19};//0,1,2,3,4,5,6,7,8,9
+  42          unsigned char code  RecvData[]={0x19,0x46,0x15,0x43,0x44,0x40,0x0D,0x0E,0x00,0x0F};
+  43          unsigned char IRCOM[7];
+  44          static unsigned int LedFlash;                         //¶¨ÒåÉÁ¶¯ÆµÂÊ¼ÆÊý±äÁ¿
+  45          bit EnableLight=0;                                    //¶¨ÒåÖ¸Ê¾µÆÊ¹ÄÜÎ»
+  46          #define ShowPort P2                                   //¶¨ÒåÊýÂë¹ÜÏÔÊ¾¶Ë¿Ú
+  47          unsigned char temp = 1;
+  48          void tingzhi()
+  49          {
+  50   1         M1A=0;                                   //½«M1µç»úA¶Ë³õÊ¼»¯Îª0
+  51   1         M1B=0;                                   //½«M1µç»úB¶Ë³õÊ¼»¯Îª0
+  52   1         M2A=0;                                   //½«M2µç»úA¶Ë³õÊ¼»¯Îª0
+  53   1         M2B=0;
+  54   1      
+  55   1      }
+C51 COMPILER V9.01   MAIN                                                                  06/17/2018 14:31:19 PAGE 2   
+
+  56          
+  57          void qianjin()
+  58          {
+  59   1         M1A=1;                                   
+  60   1         M1B=0;                                   
+  61   1         M2A=1;                                   
+  62   1         M2B=0;
+  63   1      }
+  64          
+  65          void houtui()
+  66          {
+  67   1         M1A=0;                                   
+  68   1         M1B=1;                                   
+  69   1         M2A=0;                                   
+  70   1         M2B=1;
+  71   1      }
+  72          
+  73          void zuozhuan()
+  74          {
+  75   1         M1A=0;                                   
+  76   1         M1B=1;                                   
+  77   1         M2A=1;                                   
+  78   1         M2B=0;
+  79   1      }
+  80          
+  81          void youzhuan()
+  82          {
+  83   1         M1A=1;                                   
+  84   1         M1B=0;                                   
+  85   1         M2A=0;                                   
+  86   1         M2B=1;
+  87   1      }
+  88          
+  89          void Delay1ms(unsigned int i) 
+  90          { 
+  91   1      unsigned char j,k; 
+  92   1      do{ 
+  93   2        j = 10; 
+  94   2        do{ 
+  95   3         k = 50; 
+  96   3         do{ 
+  97   4          _nop_(); 
+  98   4         }while(--k);     
+  99   3        }while(--j); 
+ 100   2      }while(--i); 
+ 101   1      
+ 102   1      } 
+ 103          
+ 104          void delay_nus(unsigned int i)  //ÑÓÊ±:i>=12 ,iµÄ×îÐ¡ÑÓÊ±µ¥12 us
+ 105          { 
+ 106   1        i=i/10;
+ 107   1        while(--i);
+ 108   1      }   
+ 109          void delay_nms(unsigned int n)  //ÑÓÊ±n ms
+ 110          { 
+ 111   1        n=n+1;
+ 112   1        while(--n)  
+ 113   1        delay_nus(900);         //ÑÓÊ± 1ms,Í¬Ê±½øÐÐ²¹³¥
+ 114   1        
+ 115   1      }  
+ 116          
+ 117          void delayms(unsigned char x)                         //0.14mSÑÓÊ±³ÌÐò
+C51 COMPILER V9.01   MAIN                                                                  06/17/2018 14:31:19 PAGE 3   
+
+ 118          {
+ 119   1        unsigned char i;                                    //¶¨ÒåÁÙÊ±±äÁ¿
+ 120   1        while(x--)                                          //ÑÓÊ±Ê±¼äÑ­»·
+ 121   1        {
+ 122   2          for (i = 0; i<13; i++) {}                         //14mSÑÓÊ±
+ 123   2        }
+ 124   1      }
+ 125          
+ 126          void Delay()                                          //¶¨ÒåÑÓÊ±×Ó³ÌÐò
+ 127          { 
+ 128   1        unsigned int DelayTime=30000;                       //¶¨ÒåÑÓÊ±Ê±¼ä±äÁ¿
+ 129   1        while(DelayTime--);                                 //¿ªÊ¼½øÐÐÑÓÊ±Ñ­»·
+ 130   1        return;                                             //×Ó³ÌÐò·µ»Ø
+ 131   1      }
+ 132          void ControlCar(unsigned char ConType)    //¶¨Òåµç»ú¿ØÖÆ×Ó³ÌÐò
+ 133          {
+ 134   1       
+ 135   1        tingzhi();
+ 136   1       switch(ConType)                          //ÅÐ¶ÏÓÃ»§Éè¶¨µç»úÐÎÊ½
+ 137   1       {
+ 138   2        case 1:  //Ç°½ø                         //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½1
+ 139   2        { 
+ 140   3          //tingzhi();                                                      //½øÈëÇ°½øÖ®Ç° ÏÈÍ£Ö¹Ò»¶ÎÊ±¼ä  ·ÀÖ¹µ
+             -ç»ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 141   3              //Delay1ms(50);
+ 142   3              LeftLed = 0 ;
+ 143   3              qianjin();
+ 144   3          break;
+ 145   3        }
+ 146   2        case 2: //ºóÍË                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½2
+ 147   2        { 
+ 148   3         // tingzhi();                                                              //½øÈëºóÍËÖ®Ç° ÏÈÍ£Ö¹Ò»¶ÎÊ±¼
+             -ä  ·ÀÖ¹µç»ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 149   3         // Delay1ms(50);
+ 150   3          LeftLed = 1 ;          
+ 151   3              houtui();                                //M2µç»ú·´×ª
+ 152   3          break;
+ 153   3        }
+ 154   2        case 3: //×ó×ª                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½3
+ 155   2        { 
+ 156   3           //tingzhi();                                                                  //½øÈë×ó×ªÖ®Ç° ÏÈÍ£Ö¹Ò»
+             -¶ÎÊ±¼ä  ·ÀÖ¹µç»ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 157   3              // Delay1ms(50); 
+ 158   3               zuozhuan();                               //M2µç»úÕý×ª
+ 159   3               break;
+ 160   3        }
+ 161   2        case 4: //ÓÒ×ª                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½4
+ 162   2        { 
+ 163   3         // tingzhi();                                                                  //½øÈëÓÒ×ªÖ®Ç° ÏÈÍ£Ö¹Ò»¶
+             -ÎÊ±¼ä  ·ÀÖ¹µç»ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 164   3      //        Delay1ms(50);
+ 165   3              youzhuan();                                //M1µç»úÕý×ª
+ 166   3                                                //M2µç»ú·´×ª
+ 167   3              break;
+ 168   3        }
+ 169   2        case 8: //Í£Ö¹                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½8
+ 170   2        {
+ 171   3          tingzhi();
+ 172   3              break;                                //ÍË³öµ±Ç°Ñ¡Ôñ
+ 173   3        }
+ 174   2       }
+ 175   1      }
+C51 COMPILER V9.01   MAIN                                                                  06/17/2018 14:31:19 PAGE 4   
+
+ 176          
+ 177          void ControlCar_yaokong(unsigned char ConType)    //¶¨Òåµç»ú¿ØÖÆ×Ó³ÌÐò        (ºìÍâÒ£¿Øµ¥¶ÀÉèÖÃÒ»¸ö switch
+             -  case  Óï¾ä  )
+ 178          {
+ 179   1       
+ 180   1        tingzhi();
+ 181   1       switch(ConType)                          //ÅÐ¶ÏÓÃ»§Éè¶¨µç»úÐÎÊ½
+ 182   1       {
+ 183   2        case 1:  //Ç°½ø                         //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½1
+ 184   2        { 
+ 185   3          tingzhi();                                                      //½øÈëÇ°½øÖ®Ç° ÏÈÍ£Ö¹Ò»¶ÎÊ±¼ä  ·ÀÖ¹µç»
+             -ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 186   3              Delay1ms(150);
+ 187   3              LeftLed = 0 ;
+ 188   3              qianjin();
+ 189   3          break;
+ 190   3        }
+ 191   2        case 2: //ºóÍË                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½2
+ 192   2        { 
+ 193   3          tingzhi();                                                              //½øÈëºóÍËÖ®Ç° ÏÈÍ£Ö¹Ò»¶ÎÊ±¼ä 
+             - ·ÀÖ¹µç»ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 194   3          Delay1ms(150);
+ 195   3          LeftLed = 1 ;          
+ 196   3              houtui();                                //M2µç»ú·´×ª
+ 197   3          break;
+ 198   3        }
+ 199   2        case 3: //×ó×ª                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½3
+ 200   2        { 
+ 201   3           tingzhi();                                                                  //½øÈë×ó×ªÖ®Ç° ÏÈÍ£Ö¹Ò»¶Î
+             -Ê±¼ä  ·ÀÖ¹µç»ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 202   3               Delay1ms(150); 
+ 203   3               zuozhuan();                               //M2µç»úÕý×ª
+ 204   3               break;
+ 205   3        }
+ 206   2        case 4: //ÓÒ×ª                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½4
+ 207   2        { 
+ 208   3           tingzhi();                                                                  //½øÈëÓÒ×ªÖ®Ç° ÏÈÍ£Ö¹Ò»¶Î
+             -Ê±¼ä  ·ÀÖ¹µç»ú·´ÏòµçÑ¹³å»÷Ö÷°å µ¼ÖÂÏµÍ³¸´Î»
+ 209   3               Delay1ms(150);
+ 210   3           youzhuan();                                //M1µç»úÕý×ª  //M2µç»ú·´×ª
+ 211   3                break;
+ 212   3        }
+ 213   2        case 8: //Í£Ö¹                          //ÅÐ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÐÎÊ½8
+ 214   2        {
+ 215   3          tingzhi();
+ 216   3              break;                                //ÍË³öµ±Ç°Ñ¡Ôñ
+ 217   3        }
+ 218   2       }
+ 219   1      }
+ 220          void Robot_Avoidance()                   //»úÆ÷ÈË±ÜÕÏ×Ó³ÌÐò
+ 221          {
+ 222   1      
+ 223   1         LeftLed=LeftIR;                        //Ç°·½×ó²àÖ¸Ê¾µÆÖ¸Ê¾³öÇ°·½×ó²àºìÍâÌ½Í·×´Ì¬
+ 224   1         RightLed=RightIR;                      //Ç°·½ÓÒ²àÖ¸Ê¾µÆÖ¸Ê¾³öÇ°·½ÓÒ²àºìÍâÌ½Í·×´Ì¬
+ 225   1         FontLled= FontIR; 
+ 226   1         SB1=FontIR;
+ 227   1      
+ 228   1          if(FontIR == 0)                          //Èç¹ûÇ°Ãæ±ÜÕÏ´«¸ÐÆ÷¼ì²âµ½ÕÏ°­Îï
+ 229   1         {
+ 230   2            ControlCar(8);                       //Í£Ö¹
+ 231   2            delay_nms (300);                                           //Í£Ö¹300MS   ·ÀÖ¹µç»ú·´ÏàµçÑ¹³å»÷  µ¼ÖÂÏ
+             -µÍ³¸´Î»
+C51 COMPILER V9.01   MAIN                                                                  06/17/2018 14:31:19 PAGE 5   
+
+ 232   2                ControlCar(2);                                           //ºóÍË  
+ 233   2                delay_nms (1000);                                           //ºóÍË1500MS  
+ 234   2                ControlCar(3);                                           //
+ 235   2                delay_nms (1800);        
+ 236   2        }
+ 237   1         else
+ 238   1         {
+ 239   2            ControlCar(1);                      //ÓÒ²àÃ»ÓÐÐÅºÅÊ±,¿ªÊ¼Ïò×ó×ªÒ»¶¨µÄ½Ç¶È
+ 240   2            delay_nms (10);
+ 241   2         }
+ 242   1          ControlCar(1);
+ 243   1      }
+ 244          //»úÆ÷ÈËÑ­¼£×Ó³ÌÐò
+ 245          void Robot_Traction()                     //»úÆ÷ÈËÑ­¼£×Ó³ÌÐò
+ 246          {
+ 247   1         LeftLed=LeftIR;                        //Ç°·½×ó²àÖ¸Ê¾µÆÖ¸Ê¾³öÇ°·½×ó²àºìÍâÌ½Í·×´Ì¬
+ 248   1         RightLed=RightIR;                      //Ç°·½ÓÒ²àÖ¸Ê¾µÆÖ¸Ê¾³öÇ°·½ÓÒ²àºìÍâÌ½Í·×´Ì¬
+ 249   1         FontLled= FontIR; 
+ 250   1         SB1=LeftIR;
+ 251   1         if(LeftIR == 0 && RightIR == 0)    //Èý¸öºìÍâ¼ì²âµ½ºÚÏß£¬¾ÍÇ°½ø
+ 252   1         {
+ 253   2            ControlCar(1);                      //×ó²àÃ»ÓÐÐÅºÅÊ±£¬¿ªÊ¼ÏòÓÒ×ªÒ»¶¨µÄ½Ç¶È
+ 254   2            delay_nms (10);
+ 255   2         }
+ 256   1         
+ 257   1         else if(LeftIR == 0 && RightIR == 1)
+ 258   1         {
+ 259   2            ControlCar(3);                      //ÓÒ²àÃ»ÓÐÐÅºÅÊ±,¿ªÊ¼Ïò×ó×ªÒ»¶¨µÄ½Ç¶È
+ 260   2            delay_nms (10);
+ 261   2         }
+ 262   1      
+ 263   1         else if(LeftIR == 1 && RightIR == 0)
+ 264   1         {
+ 265   2            ControlCar(4);                      //ÓÒ²àÃ»ÓÐÐÅºÅÊ±,¿ªÊ¼Ïò×ó×ªÒ»¶¨µÄ½Ç¶È
+ 266   2            delay_nms (10);
+ 267   2         }
+ 268   1          ControlCar(8);
+ 269   1      }
+ 270          
+ 271          void main()                               //Ö÷³ÌÐòÈë¿Ú
+ 272          {
+ 273   1        
+ 274   1        bit RunFlag=0;                          //¶¨ÒåÐ¡³µÔËÐÐ±êÖ¾Î»
+ 275   1        LedFlash=3000;                                       //¶ÔÉÁµÆÊý¾Ý½øÐÐ³õÊ¼»¯
+ 276   1        //EX1=1;                                               //Í¬Òâ¿ªÆôÍâ²¿ÖÐ¶Ï1
+ 277   1        IT1=1;                                               //Éè¶¨Íâ²¿ÖÐ¶Ï1ÎªµÍ±ßÔµ´¥·¢ÀàÐÍ
+ 278   1        EA=1;                                                //×ÜÖÐ¶Ï¿ªÆô
+ 279   1        ControlCar(8);                          //³õÊ¼»¯Ð¡³µÔËÐÐ×´Ì¬
+ 280   1        while(1)                                //³ÌÐòÖ÷Ñ­»·
+ 281   1        {
+ 282   2                   if(P3^2 == 0)
+ 283   2                {
+ 284   3                 delay_nms(10);
+ 285   3                 if(P3^2 == 0)
+ 286   3                 {
+ 287   4                           temp++;
+ 288   4                        while(!P3^2);
+ 289   4                 }
+ 290   3                }
+ 291   2                if(temp > 3)
+ 292   2                {
+ 293   3                temp = 1;
+C51 COMPILER V9.01   MAIN                                                                  06/17/2018 14:31:19 PAGE 6   
+
+ 294   3                }
+ 295   2                switch(temp)
+ 296   2                {
+ 297   3                         case 1:        ShowPort = LedShowData[1];Robot_Traction();EX1 = 0;break;
+ 298   3                      case 2: ShowPort = LedShowData[2];Robot_Avoidance();EX1 = 0;break;
+ 299   3                      case 3: ShowPort = LedShowData[3];EX1 = 1;break;
+ 300   3                }
+ 301   2        }
+ 302   1      }
+ 303          //----------ºìÍâÒ£¿Ø-------------------------------------------------------------
+ 304          void IR_IN() interrupt 2 using 0                      //¶¨ÒåINT2Íâ²¿ÖÐ¶Ïº¯Êý
+ 305          {
+ 306   1        unsigned char j,k,N=0;                              //¶¨ÒåÁÙÊ±½ÓÊÕ±äÁ¿
+ 307   1         
+ 308   1        EX1 = 0;                                            //¹Ø±ÕÍâ²¿ÖÐ¶Ï,·ÀÖ¹ÔÙÓÐÐÅºÅµ½´ï   
+ 309   1        delayms(15);                                        //ÑÓÊ±Ê±¼ä£¬½øÐÐºìÍâÏû¶¶
+ 310   1        if (IRIN==1)                                        //ÅÐ¶ÏºìÍâÐÅºÅÊÇ·ñÏûÊ§
+ 311   1        {  
+ 312   2           EX1 =1;                                          //Íâ²¿ÖÐ¶Ï¿ª
+ 313   2               return;                                          //·µ»Ø
+ 314   2        } 
+ 315   1                                 
+ 316   1        while (!IRIN)                                       //µÈIR±äÎª¸ßµçÆ½£¬Ìø¹ý9msµÄÇ°µ¼µÍµçÆ½ÐÅºÅ¡£
+ 317   1        {
+ 318   2            delayms(1);                                     //ÑÓÊ±µÈ´ý
+ 319   2        }
+ 320   1      
+ 321   1        for (j=0;j<4;j++)                                   //²É¼¯ºìÍâÒ£¿ØÆ÷Êý¾Ý
+ 322   1        { 
+ 323   2          for (k=0;k<8;k++)                                 //·Ö´Î²É¼¯8Î»Êý¾Ý
+ 324   2          {
+ 325   3             while (IRIN)                                   //µÈ IR ±äÎªµÍµçÆ½£¬Ìø¹ý4.5msµÄÇ°µ¼¸ßµçÆ½ÐÅºÅ¡£
+ 326   3             {
+ 327   4               delayms(1);                                  //ÑÓÊ±µÈ´ý
+ 328   4             }
+ 329   3             
+ 330   3             while (!IRIN)                                  //µÈ IR ±äÎª¸ßµçÆ½
+ 331   3             {
+ 332   4               delayms(1);                                  //ÑÓÊ±µÈ´ý
+ 333   4             }
+ 334   3         
+ 335   3             while (IRIN)                                   //¼ÆËãIR¸ßµçÆ½Ê±³¤
+ 336   3             {
+ 337   4               delayms(1);                                  //ÑÓÊ±µÈ´ý
+ 338   4               N++;                                         //¼ÆÊýÆ÷¼Ó¼Ó
+ 339   4               if (N>=30)                                   //ÅÐ¶Ï¼ÆÊýÆ÷ÀÛ¼ÓÖµ
+ 340   4                   { 
+ 341   5                 EX1=1;                                     //´ò¿ªÍâ²¿ÖÐ¶Ï¹¦ÄÜ
+ 342   5                     return;                                    //·µ»Ø
+ 343   5               }                   
+ 344   4             }
+ 345   3                                             
+ 346   3            IRCOM[j]=IRCOM[j] >> 1;                         //½øÐÐÊý¾ÝÎ»ÒÆ²Ù×÷²¢×Ô¶¯²¹Áã
+ 347   3           
+ 348   3            if (N>=8)                                       //ÅÐ¶ÏÊý¾Ý³¤¶È 
+ 349   3            {
+ 350   4               IRCOM[j] = IRCOM[j] | 0x80;                  //Êý¾Ý×î¸ßÎ»²¹1
+ 351   4            } 
+ 352   3            N=0;                                            //ÇåÁãÎ»Êý¼ÆÂ¼Æ÷
+ 353   3          }
+ 354   2        }
+ 355   1         
+C51 COMPILER V9.01   MAIN                                                                  06/17/2018 14:31:19 PAGE 7   
+
+ 356   1        if (IRCOM[2]!=~IRCOM[3])                            //ÅÐ¶ÏµØÖ·ÂëÊÇ·ñÏàÍ¬
+ 357   1        { 
+ 358   2           EX1=1;                                           //´ò¿ªÍâ²¿ÖÐ¶Ï
+ 359   2           return;                                          //·µ»Ø
+ 360   2        }
+ 361   1      
+ 362   1        for(j=0;j<10;j++)                                   //Ñ­»·½øÐÐ¼üÂë½âÎö
+ 363   1         {
+ 364   2            if(IRCOM[2]==RecvData[j])                       //½øÐÐ¼üÎ»¶ÔÓ¦
+ 365   2            {
+ 366   3             // ControlCar(j);
+ 367   3                      ControlCar_yaokong(j);                               //ÊýÂë¹ÜÏÔÊ¾ÏàÓ¦ÊýÂë
+ 368   3            }
+ 369   2         } 
+ 370   1         EX1 = 1;                                           //Íâ²¿ÖÐ¶Ï¿ª 
+ 371   1      } 
+ 372          //------------------------------------------------------------------------------------------------------- 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    666    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

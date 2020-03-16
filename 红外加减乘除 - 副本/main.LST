@@ -1,0 +1,525 @@
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c COMPACT BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          unsigned char T0RH = 0;  //T0重载值的高字节
+   4          unsigned char T0RL = 0;  //T0重载值的低字节
+   5          
+   6          sbit BUZZ=P1^6;
+   7          bit flagBuzzOn=0;
+   8          unsigned char step = 0;  //操作步骤
+   9          unsigned char oprt = 0;  //运算类型
+  10          //static signed long num1 = 0;    //操作数1
+  11          //static signed long num2 = 0;    //操作数2
+  12          static float result2 = 0;  //运算结果
+  13          static float result = 0.000000;  //运算结果
+  14          static signed long res = 0;  //运算结果
+  15          //signed char result[16];
+  16          
+  17          static  float num1 = 0;    //操作数1
+  18          static  float num2 = 0;    //操作数2
+  19          //static  float result = 0;  //运算结果
+  20          
+  21          extern void InitLcd1602();
+  22          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  23          extern void LcdAreaClear(unsigned char x, unsigned char y, unsigned char len);
+  24          extern void LcdFullClear();
+  25          extern void LcdWriteDat(unsigned char dat);
+  26          extern bit irflag;
+  27          extern unsigned char ircode[16];
+  28          extern void InitInfrared();
+  29          void NumKeyAction1();
+  30          void ConfigTimer0(unsigned int ms);
+  31          void OprtKeyAction(unsigned char type);
+  32          void Reset();
+  33          void GetResult();
+  34          void NumKeyAction(unsigned char n);
+  35          void NumKeyAction2();
+  36          static unsigned char len;
+  37          static unsigned char str[16];
+  38          static int j=0;
+  39          
+  40          void main()
+  41          {
+  42   1          static signed int i=0;
+  43   1          EA = 1;      //开总中断
+  44   1          InitInfrared();   //初始化红外功能
+  45   1          ConfigTimer0(2);  //配置T0定时2ms
+  46   1          InitLcd1602();    //初始化液晶
+  47   1          LcdShowStr(15, 1, "0");  //初始显示一个数字0
+  48   1          while (1)
+  49   1          {
+  50   2              if (irflag)  //接收到红外数据时刷新显示
+  51   2              {
+  52   3                  irflag = 0;
+  53   3                  // if ((ircode[2] >= '0')&&(ircode[2] <= '9'))   //0x09为+键码，正转1圈
+  54   3                      //      {
+  55   3                    //    NumKeyAction(ircode[2] - '0');
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 2   
+
+  56   3                  //}
+  57   3                              if (ircode[2] == 0x16) //  0
+  58   3                              {
+  59   4                                 //num=ircode[2];
+  60   4                                 NumKeyAction(0x00);
+  61   4                              }
+  62   3                               else if (ircode[2] == 0x0C) //  1
+  63   3                              {
+  64   4                                 //num=0;
+  65   4                                 NumKeyAction(0x01);
+  66   4                              }
+  67   3                              else if (ircode[2] == 0x18)       //  2
+  68   3                              {
+  69   4                                 NumKeyAction(0x02);
+  70   4                              }
+  71   3                                      else if (ircode[2] == 0x5E)             //  3
+  72   3                              {
+  73   4                                 NumKeyAction(0x03);
+  74   4                              }
+  75   3                                      else if (ircode[2] == 0x08)             //  4
+  76   3                              {
+  77   4                                 NumKeyAction(0x04);
+  78   4                              }
+  79   3                                      else if (ircode[2] == 0x1C)        //  5
+  80   3                              {
+  81   4                                 NumKeyAction(0x05);
+  82   4                              }
+  83   3                                      else if (ircode[2] == 0x5A)        //  6
+  84   3                              {
+  85   4                                 NumKeyAction(0x06);
+  86   4                              }
+  87   3                                      else if (ircode[2] == 0x42)             //  7
+  88   3                              {
+  89   4                                 NumKeyAction(0x07);
+  90   4                              }
+  91   3                                      else if (ircode[2] == 0x52)       //  8
+  92   3                              {
+  93   4                                 NumKeyAction(0x08);
+  94   4                              }
+  95   3                              else if (ircode[2] == 0x4A)             //  9
+  96   3                              {
+  97   4                                 NumKeyAction(0x09);
+  98   4                              }
+  99   3                              else if (ircode[2] == 0x07)             //  -1
+ 100   3                              {
+ 101   4                                      //OprtKeyAction(1);
+ 102   4                                      //NumKeyAction(-0x01);
+ 103   4                                       NumKeyAction2();
+ 104   4                                       //LcdWriteDat(0x2E);
+ 105   4                                       //LcdShowStr(15, 1, ".");     //显示到液晶第二行上
+ 106   4                              }
+ 107   3                              else if(ircode[2] == 0x09)      // '+' ，加号
+ 108   3                  {
+ 109   4                       OprtKeyAction(0);
+ 110   4                  }
+ 111   3                  else if (ircode[2] == 0x15)  //     '-' ，减号
+ 112   3                  {
+ 113   4                      OprtKeyAction(1);
+ 114   4                  }
+ 115   3                              else if (ircode[2] == 0x0D)  // '*'     ，乘号
+ 116   3                  {
+ 117   4                      OprtKeyAction(2);
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 3   
+
+ 118   4                              }
+ 119   3                              else if (ircode[2] == 0x19)  // '/'      ，除号
+ 120   3                  {
+ 121   4                      OprtKeyAction(3);
+ 122   4                              }
+ 123   3      
+ 124   3                      else if (ircode[2] == 0x43)   //回车键，得出结果
+ 125   3                  {
+ 126   4                      GetResult();
+ 127   4                              }
+ 128   3                              else if(ircode[2] == 0x44)
+ 129   3                              {
+ 130   4                                  NumKeyAction1();
+ 131   4                              }        
+ 132   3                              else if ((ircode[2] == 0x40)|| (ircode[2] == 0x45)) //Ens清零键
+ 133   3                  {
+ 134   4                     Reset();
+ 135   4                     LcdShowStr(15, 1, "0");
+ 136   4                              }
+ 137   3                          else if (ircode[2] == 0x46)  //  蜂鸣器开启
+ 138   3                  {  
+ 139   4                                   flagBuzzOn=1;
+ 140   4                              }
+ 141   3                              else if (ircode[2] == 0x47)  //  蜂鸣器关闭
+ 142   3                  {  
+ 143   4                                   flagBuzzOn=0;
+ 144   4                              }
+ 145   3              }
+ 146   2          }
+ 147   1      }
+*** WARNING C280 IN LINE 42 OF MAIN.C: 'i': unreferenced local variable
+ 148          
+ 149          /* 长整型数转换为字符串，str-字符串指针，dat-待转换数，返回值-字符串长度 */
+ 150          unsigned char LongToString(unsigned char *str, signed long dat)
+ 151          {
+ 152   1          signed char i = 0;
+ 153   1          unsigned char len = 0;
+ 154   1          unsigned char buf[16];
+ 155   1          
+ 156   1          if (dat < 0)  //如果为负数，首先取绝对值，并在指针上添加负号
+ 157   1          {
+ 158   2              dat = -dat;
+ 159   2              *str++ = '-';
+ 160   2              len++;
+ 161   2          }
+ 162   1          do {          //先转换为低位在前的十进制数组
+ 163   2              buf[i++] = dat % 10;
+ 164   2              dat /= 10;
+ 165   2          } while (dat > 0);
+ 166   1          len += i;     //i最后的值就是有效字符的个数
+ 167   1          while (i-- > 0)   //将数组值转换为ASCII码反向拷贝到接收指针上
+ 168   1          {
+ 169   2              *str++ = buf[i] + '0';
+ 170   2          }
+ 171   1          *str = '\0';  //添加字符串结束符
+ 172   1          
+ 173   1          return len;   //返回字符串长度
+ 174   1      }
+ 175          
+ 176          /* 显示运算符，显示位置y，运算符类型type */
+ 177          void ShowOprt(unsigned char y, unsigned char type)
+ 178          {
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 4   
+
+ 179   1          switch (type)
+ 180   1          {
+ 181   2              case 0: LcdShowStr(0, y, "+"); break;  //0代表+
+ 182   2              case 1: LcdShowStr(0, y, "-"); break;  //1代表-
+ 183   2              case 2: LcdShowStr(0, y, "*"); break;  //2代表*
+ 184   2              case 3: LcdShowStr(0, y, "/"); break;  //3代表/
+ 185   2              default: break;
+ 186   2          }
+ 187   1      }
+ 188          /* 计算器复位，清零变量值，清除屏幕显示 */
+ 189          void Reset()
+ 190          {
+ 191   1          num1 = 0;
+ 192   1          num2 = 0;
+ 193   1          step = 0;
+ 194   1          LcdFullClear();
+ 195   1      }
+ 196          /* 数字键动作函数，n-按键输入的数值 */
+ 197          void NumKeyAction(signed char n)
+ 198          {
+ 199   1         // unsigned char len;
+ 200   1          //unsigned char str[16];
+ 201   1          
+ 202   1          if (step > 1)  //如计算已完成，则重新开始新的计算
+ 203   1          {
+ 204   2              Reset();
+ 205   2          }
+ 206   1          if (step == 0)  //输入第一操作数
+ 207   1          {
+ 208   2                  if(j=0)
+*** WARNING C276 IN LINE 208 OF MAIN.C: constant in condition expression
+ 209   2                      {
+ 210   3              num1 = num1*(10.0) + n;             //输入数值累加到原操作数上
+ 211   3              str[len]=num1+'0';
+ 212   3                      len = LongToString(str, num1);  //新数值转换为字符串
+ 213   3              
+ 214   3              LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 215   3                      }
+ 216   2                      else if(j=1)
+*** WARNING C276 IN LINE 216 OF MAIN.C: constant in condition expression
+ 217   2                      {
+ 218   3              num1 = num1*(10.0) + n;             //输入数值累加到原操作数上
+ 219   3                      str[0]=num1/10+'0';
+ 220   3                  str[1]='.';
+ 221   3                      str[2]=num1 / 10+'0';
+ 222   3              //len = LongToString(str, num1);  //新数值转换为字符串
+ 223   3              
+ 224   3              LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 225   3                      j=0;
+ 226   3                      }
+ 227   2      
+ 228   2              
+ 229   2          }
+ 230   1          else            //输入第二操作数
+ 231   1          {
+ 232   2              num2 = num2*(10.0) + n;             //输入数值累加到原操作数上
+ 233   2              len = LongToString(str, num2);  //新数值转换为字符串
+ 234   2              LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 235   2          }
+ 236   1      }
+ 237          
+ 238          void NumKeyAction1()
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 5   
+
+ 239          {
+ 240   1          //unsigned char len;
+ 241   1          //unsigned char str[16];
+ 242   1          
+ 243   1          if (step > 1)  //如计算已完成，则重新开始新的计算
+ 244   1          {
+ 245   2              Reset();
+ 246   2          }
+ 247   1          if (step == 0)  //输入第一操作数
+ 248   1          {
+ 249   2              num1 = num1/10;             //输入数值累加到原操作数上
+ 250   2              len = LongToString(str, num1);  //新数值转换为字符串
+ 251   2                       LcdAreaClear(1, 1, str);        //清除第二行中间的字符位
+*** WARNING C214 IN LINE 251 OF MAIN.C: 'Argument': conversion: pointer to non-pointer
+ 252   2              LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 253   2          }
+ 254   1          else            //输入第二操作数
+ 255   1          {
+ 256   2              num2 = num2/10;             //输入数值累加到原操作数上
+ 257   2              len = LongToString(str, num2);  //新数值转换为字符串
+ 258   2                       LcdAreaClear(1, 1,str);        //清除第二行中间的字符位
+*** WARNING C214 IN LINE 258 OF MAIN.C: 'Argument': conversion: pointer to non-pointer
+ 259   2              LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 260   2          }
+ 261   1      }
+ 262          
+ 263          void NumKeyAction2()
+ 264          {
+ 265   1          //unsigned char len;
+ 266   1          //unsigned char str[16];
+ 267   1          
+ 268   1          if (step > 1)  //如计算已完成，则重新开始新的计算
+ 269   1          {
+ 270   2              Reset();
+ 271   2          }
+ 272   1          if (step == 0)  //输入第一操作数
+ 273   1          {
+ 274   2              //num1 = num1/10;             //输入数值累加到原操作数上
+ 275   2              len = LongToString(str, num1);  //新数值转换为字符串
+ 276   2                      str[len++]='.';
+ 277   2              LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 278   2                      j=1;
+ 279   2                      //len=len+1;
+ 280   2                      //num1=num1*100;
+ 281   2          }
+ 282   1          else            //输入第二操作数
+ 283   1          {
+ 284   2              //num2 = num2/10;             //输入数值累加到原操作数上
+ 285   2                              str[len++]='.';
+ 286   2              len = LongToString(str, num2);  //新数值转换为字符串
+ 287   2              //      str[len++]='.';
+ 288   2                      LcdAreaClear(1, 1,str);        //清除第二行中间的字符位
+*** WARNING C214 IN LINE 288 OF MAIN.C: 'Argument': conversion: pointer to non-pointer
+ 289   2              LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 290   2                      //len=len+1;
+ 291   2          }
+ 292   1      }
+ 293          
+ 294          
+ 295          /*unsigned char LongToString1(unsigned char *str, signed long dat)
+ 296          {
+ 297              signed char i = 0;
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 6   
+
+ 298              unsigned char len = 0;
+ 299              unsigned char buf[16];
+ 300              
+ 301              if (dat < 0)  //如果为负数，首先取绝对值，并在指针上添加负号
+ 302              {
+ 303                  dat = -dat;
+ 304                  *str++ = '-';
+ 305                  len++;
+ 306              }  
+ 307              return len;   //返回字符串长度
+ 308          }                */
+ 309          
+ 310          /*void NumKeyAction1(signed char n)
+ 311          {
+ 312              unsigned char len;
+ 313              unsigned char str[16];
+ 314              static unsigned int i=0;
+ 315              if (step > 1)  //如计算已完成，则重新开始新的计算
+ 316              {
+ 317                  Reset();
+ 318              }
+ 319              if (step == 0)  //输入第一操作数
+ 320              {
+ 321                      switch(i)
+ 322                          {
+ 323                          case 0:num1=n;break;
+ 324                          case 1:
+ 325                    num1 = num1*n;             //输入数值累加到原操作数上
+ 326                            break;
+ 327                          }
+ 328                  len = LongToString1(str, num1);  //新数值转换为字符串
+ 329                  LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 330              }
+ 331              else            //输入第二操作数
+ 332              {
+ 333                  num2 = num2*10 + n;             //输入数值累加到原操作数上
+ 334                  len = LongToString1(str, num2);  //新数值转换为字符串
+ 335                  LcdShowStr(16-len, 1, str);     //显示到液晶第二行上
+ 336              }
+ 337          }                */
+ 338          
+ 339          /* 运算符按键动作函数，运算符类型type */
+ 340          void OprtKeyAction(unsigned char type)
+ 341          {
+ 342   1          unsigned char len;
+ 343   1          unsigned char str[16];
+ 344   1          
+ 345   1          if (step == 0)  //第二操作数尚未输入时响应，即不支持连续操作
+ 346   1          {
+ 347   2              len = LongToString(str, num1); //第一操作数转换为字符串
+ 348   2              LcdAreaClear(0, 0, 16-len);    //清除第一行左边的字符位
+ 349   2              LcdShowStr(16-len, 0, str);    //字符串靠右显示在第一行
+ 350   2              ShowOprt(1, type);             //在第二行显示操作符
+ 351   2              LcdAreaClear(1, 1, 14);        //清除第二行中间的字符位
+ 352   2              LcdShowStr(15, 1, "0");        //在第二行最右端显示0
+ 353   2              oprt = type;                   //记录操作类型
+ 354   2              step = 1;
+ 355   2          }
+ 356   1      }
+ 357          
+ 358          /* 计算结果函数 */
+ 359          void GetResult()
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 7   
+
+ 360          {
+ 361   1          unsigned char len;
+ 362   1          unsigned char str[16];
+ 363   1          
+ 364   1          if (step == 1) //第二操作数已输入时才执行计算
+ 365   1          {
+ 366   2              step = 2;
+ 367   2              switch (oprt)  //根据运算符类型计算结果，未考虑溢出问题
+ 368   2              {
+ 369   3                  case 0: result = num1 + num2; break;
+ 370   3                  case 1: result = num1 - num2; break;
+ 371   3                  case 2: result = num1 * num2; break;
+ 372   3                  case 3: result = num1 / num2; break;
+ 373   3                  default: break;
+ 374   3              }
+ 375   2           /* result1 =result1*1000000;
+ 376   2            res=result1;
+ 377   2                result[1]=' ';
+ 378   2            result[2]=' ';
+ 379   2                result[3]=' ';
+ 380   2                result[4]=res/10000000000+0x30;
+ 381   2                result[5]=res/1000000000%10+0x30;
+ 382   2                result[6]=res/100000000%10+0x30;
+ 383   2                result[7]=res/10000000%10+0x30;
+ 384   2                result[8]=res/1000000%10+0x30;
+ 385   2                result[9]='.';                  
+ 386   2                result[10]=res/100000%10+0x30;
+ 387   2                result[11]=res/10000%10+0x30;
+ 388   2                result[12]=res/1000%10+0x30;
+ 389   2                result[13]=res/100%10+0x30;
+ 390   2                result[14]=res/10%10+0x30;
+ 391   2                result[15]=res%10+0x30;  */
+ 392   2      
+ 393   2              len = LongToString(str, num2);  //原第二操作数和运算符显示到第一行
+ 394   2              ShowOprt(0, oprt);
+ 395   2              LcdAreaClear(1, 0, 16-1-len);
+ 396   2              LcdShowStr(16-len, 0, str);
+ 397   2              len = LongToString(str, result);  //计算结果和等号显示在第二行
+ 398   2              LcdShowStr(0, 1, "=");
+ 399   2              LcdAreaClear(1, 1, 16-1-len);
+ 400   2              LcdShowStr(16-len, 1, str);
+ 401   2          }
+ 402   1      }
+ 403          
+ 404          /* 步进电机启动函数，angle-需转过的角度 */
+ 405          /*void StartMotor(signed long angle)
+ 406          {
+ 407              //在计算前关闭中断，完成后再打开，以避免中断打断计算过程而造成错误
+ 408              EA = 0;
+ 409              beats = (angle * 4076) / 360; //实测为4076拍转动一圈
+ 410              EA = 1;
+ 411          }        */
+ 412          /* 步进电机停止函数 */
+ 413          /*void StopMotor()
+ 414          {
+ 415              EA = 0;
+ 416              beats = 0;
+ 417              EA = 1;
+ 418          }  */
+ 419          /* 电机转动控制函数 */
+ 420          /*void TurnMotor()
+ 421          {
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 8   
+
+ 422              unsigned char tmp;  //临时变量
+ 423              static unsigned char index = 0;  //节拍输出索引
+ 424              unsigned char code BeatCode[8] = {  //步进电机节拍对应的IO控制代码
+ 425                  0xE, 0xC, 0xD, 0x9, 0xB, 0x3, 0x7, 0x6
+ 426              };
+ 427              
+ 428              if (beats != 0)  //节拍数不为0则产生一个驱动节拍
+ 429              {
+ 430                  if (beats > 0)  //节拍数大于0时正转
+ 431                  {
+ 432                      index++;               //正转时节拍输出索引递增
+ 433                      index = index & 0x07;  //用&操作实现到8归零
+ 434                      beats--;               //正转时节拍计数递减
+ 435                  }
+ 436                  else            //节拍数小于0时反转
+ 437                  {
+ 438                      index--;               //反转时节拍输出索引递减
+ 439                      index = index & 0x07;  //用&操作同样可以实现到-1时归7
+ 440                      beats++;               //反转时节拍计数递增
+ 441                  }
+ 442                  tmp = P1;                    //用tmp把P1口当前值暂存
+ 443                  tmp = tmp & 0xF0;            //用&操作清零低4位
+ 444                  tmp = tmp | BeatCode[index]; //用|操作把节拍代码写到低4位
+ 445                  P1  = tmp;                   //把低4位的节拍代码和高4位的原值送回P1
+ 446              }
+ 447              else  //节拍数为0则关闭电机所有的相
+ 448              {
+ 449                  P1 = P1 | 0x0F;
+ 450              }
+ 451          }        */
+ 452          /* 配置并启动T0，ms-T0定时时间 */
+ 453          void ConfigTimer0(unsigned int ms)
+ 454          {
+ 455   1          unsigned long tmp;  //临时变量
+ 456   1          
+ 457   1          tmp = 11059200 / 12;      //定时器计数频率
+ 458   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 459   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 460   1          tmp = tmp + 13;           //补偿中断响应延时造成的误差
+ 461   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 462   1          T0RL = (unsigned char)tmp;
+ 463   1          TMOD &= 0xF0;   //清零T0的控制位
+ 464   1          TMOD |= 0x01;   //配置T0为模式1
+ 465   1          TH0 = T0RH;     //加载T0重载值
+ 466   1          TL0 = T0RL;
+ 467   1          ET0 = 1;        //使能T0中断
+ 468   1          TR0 = 1;        //启动T0
+ 469   1      }
+ 470          /* T0中断服务函数，执行数码管扫描显示 */
+ 471          void InterruptTimer0() interrupt 1
+ 472          {
+ 473   1          TH0 = T0RH;  //重新加载重载值
+ 474   1          TL0 = T0RL;
+ 475   1              if(flagBuzzOn)
+ 476   1                 BUZZ=~BUZZ;
+ 477   1              else
+ 478   1                BUZZ=1;
+ 479   1          //TurnMotor(); //执行电机驱动
+ 480   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.01   MAIN                                                                  06/14/2018 16:11:12 PAGE 9   
+
+   CODE SIZE        =   1736    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =     45      66
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  6 WARNING(S),  0 ERROR(S)

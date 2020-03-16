@@ -1,0 +1,46 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\lesson16_2\lesson16_2.uvproj
+Project File Date:  10/18/2013
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+MAIN.C(37): warning C206: 'IrcodeReset': missing function-prototype
+MAIN.C(70): error C202: 'ON_CARR': undefined identifier
+MAIN.C(73): error C202: 'CarrierWave_DELAY': undefined identifier
+MAIN.C(75): error C202: 'OFF_CARR': undefined identifier
+MAIN.C(76): error C202: 'IR_SEND_OFF': undefined identifier
+MAIN.C(81): error C202: 'Low_DELAY': undefined identifier
+MAIN.C(110): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(121): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(124): error C202: 'IR_CODE': undefined identifier
+MAIN.C(126): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(129): error C202: 'IR_RECEIVE_OK': undefined identifier
+MAIN.C(133): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(143): error C231: '_DataConversion': redefinition
+MAIN.C(148): error C202: 'IR_CODE': undefined identifier
+compiling Lcd1602.c...
+compiling DS18B20.c...
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(37): warning C206: 'IrcodeReset': missing function-prototype
+MAIN.C(70): error C202: 'ON_CARR': undefined identifier
+MAIN.C(73): error C202: 'CarrierWave_DELAY': undefined identifier
+MAIN.C(75): error C202: 'OFF_CARR': undefined identifier
+MAIN.C(76): error C202: 'IR_SEND_OFF': undefined identifier
+MAIN.C(81): error C202: 'Low_DELAY': undefined identifier
+MAIN.C(110): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(121): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(124): error C202: 'IR_CODE': undefined identifier
+MAIN.C(126): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(129): error C202: 'IR_RECEIVE_OK': undefined identifier
+MAIN.C(133): error C202: 'Ir_Time_count': undefined identifier
+MAIN.C(143): error C231: '_DataConversion': redefinition
+MAIN.C(148): error C202: 'IR_CODE': undefined identifier
+Target not created

@@ -1,0 +1,8 @@
+"STARTUP.obj",
+"main.obj",
+"Lcd1602.obj",
+"DS18B20.obj",
+"keyboard.obj",
+"Infrared.obj" 
+TO "lesson16_2" 
+RAMSIZE(256) 

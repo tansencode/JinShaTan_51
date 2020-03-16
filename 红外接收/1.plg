@@ -1,0 +1,100 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\红外接收\1.uvproj
+Project File Date:  05/26/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: data=23.0 xdata=0 code=553
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(14): error C129: missing ';' before 'i'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(121): error C202: 'LED': undefined identifier
+MAIN.C(124): error C202: 'LED': undefined identifier
+MAIN.C(127): error C141: syntax error near '}'
+MAIN.C(135): error C202: 'LED1': undefined identifier
+MAIN.C(138): error C202: 'LED': undefined identifier
+MAIN.C(141): error C141: syntax error near '}'
+MAIN.C(150): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(123): error C202: 'LED': undefined identifier
+MAIN.C(126): error C202: 'LED': undefined identifier
+MAIN.C(129): error C141: syntax error near '}'
+MAIN.C(140): error C202: 'LED': undefined identifier
+MAIN.C(143): error C141: syntax error near '}'
+MAIN.C(152): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(129): error C141: syntax error near '}'
+MAIN.C(143): error C141: syntax error near '}'
+MAIN.C(152): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(143): error C141: syntax error near '}'
+MAIN.C(152): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(152): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(151): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(151): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(152): error C141: syntax error near ''
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(50): warning C290: missing return value
+MAIN.C(61): warning C290: missing return value
+MAIN.C(71): warning C290: missing return value
+MAIN.C(75): warning C290: missing return value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LOOP?MAIN
+Program Size: data=31.0 xdata=0 code=527
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(50): warning C290: missing return value
+MAIN.C(61): warning C290: missing return value
+MAIN.C(71): warning C290: missing return value
+MAIN.C(75): warning C290: missing return value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LOOP?MAIN
+Program Size: data=31.0 xdata=0 code=527
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(50): warning C290: missing return value
+MAIN.C(61): warning C290: missing return value
+MAIN.C(71): warning C290: missing return value
+MAIN.C(75): warning C290: missing return value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LOOP?MAIN
+Program Size: data=31.0 xdata=0 code=527
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).

@@ -1,0 +1,125 @@
+C51 COMPILER V9.01   KEYBOARD                                                              05/01/2018 23:30:35 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE KEYBOARD
+OBJECT MODULE PLACED IN keyboard.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE keyboard.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          *******************************************************************************
+   3          *                     《手把手教你学51单片机(C语言版)》
+   4          *                    配套 KST-51 单片机开发板 示例源代码
+   5          *
+   6          *         (c) 版权所有 2014 金沙滩工作室/清华大学出版社 保留所有权利
+   7          *                 获取更多资料请访问：http://www.kingst.org
+   8          *
+   9          * 文件名：keyboard.c
+  10          * 描  述：4*4矩阵按键驱动模块
+  11          * 版本号：v1.0.0
+  12          * 备  注：
+  13          *******************************************************************************
+  14          */
+  15          
+  16          #include <reg52.h>
+  17          
+  18          sbit KEY_IN_1  = P2^4;
+  19          sbit KEY_IN_2  = P2^5;
+  20          sbit KEY_IN_3  = P2^6;
+  21          sbit KEY_IN_4  = P2^7;
+  22          sbit KEY_OUT_1 = P2^3;
+  23          sbit KEY_OUT_2 = P2^2;
+  24          sbit KEY_OUT_3 = P2^1;
+  25          sbit KEY_OUT_4 = P2^0;
+  26          
+  27          unsigned char code KeyCodeMap[4][4] = { //矩阵按键编号到标准键盘键码的映射表
+  28              { '1',  '2',  '3', 0x26 }, //数字键1、数字键2、数字键3、向上键
+  29              { '4',  '5',  '6', 0x25 }, //数字键4、数字键5、数字键6、向左键
+  30              { '7',  '8',  '9', 0x28 }, //数字键7、数字键8、数字键9、向下键
+  31              { '0', 0x1B, 0x0D, 0x27 }  //数字键0、ESC键、  回车键、 向右键
+  32          };
+  33          unsigned char pdata KeySta[4][4] = {  //全部矩阵按键的当前状态
+  34              {1, 1, 1, 1},  {1, 1, 1, 1},  {1, 1, 1, 1},  {1, 1, 1, 1}
+  35          };
+  36          
+  37          extern void KeyAction(unsigned char keycode);
+  38          
+  39          /* 按键驱动函数，检测按键动作，调度相应动作函数，需在主循环中调用 */
+  40          void KeyDriver()
+  41          {
+  42   1          unsigned char i, j;
+  43   1          static unsigned char pdata backup[4][4] = {  //按键值备份，保存前一次的值
+  44   1              {1, 1, 1, 1},  {1, 1, 1, 1},  {1, 1, 1, 1},  {1, 1, 1, 1}
+  45   1          };
+  46   1          
+  47   1          for (i=0; i<4; i++)  //循环检测4*4的矩阵按键
+  48   1          {
+  49   2              for (j=0; j<4; j++)
+  50   2              {
+  51   3                  if (backup[i][j] != KeySta[i][j])    //检测按键动作
+  52   3                  {
+  53   4                      if (backup[i][j] != 0)           //按键按下时执行动作
+  54   4                      {
+  55   5                          KeyAction(KeyCodeMap[i][j]); //调用按键动作函数
+C51 COMPILER V9.01   KEYBOARD                                                              05/01/2018 23:30:35 PAGE 2   
+
+  56   5                      }
+  57   4                      backup[i][j] = KeySta[i][j];     //刷新前一次的备份值
+  58   4                  }
+  59   3              }
+  60   2          }
+  61   1      }
+  62          /* 按键扫描函数，需在定时中断中调用，推荐调用间隔1ms */
+  63          void KeyScan()
+  64          {
+  65   1          unsigned char i;
+  66   1          static unsigned char keyout = 0;   //矩阵按键扫描输出索引
+  67   1          static unsigned char keybuf[4][4] = {  //矩阵按键扫描缓冲区
+  68   1              {0xFF, 0xFF, 0xFF, 0xFF},  {0xFF, 0xFF, 0xFF, 0xFF},
+  69   1              {0xFF, 0xFF, 0xFF, 0xFF},  {0xFF, 0xFF, 0xFF, 0xFF}
+  70   1          };
+  71   1      
+  72   1          //将一行的4个按键值移入缓冲区
+  73   1          keybuf[keyout][0] = (keybuf[keyout][0] << 1) | KEY_IN_1;
+  74   1          keybuf[keyout][1] = (keybuf[keyout][1] << 1) | KEY_IN_2;
+  75   1          keybuf[keyout][2] = (keybuf[keyout][2] << 1) | KEY_IN_3;
+  76   1          keybuf[keyout][3] = (keybuf[keyout][3] << 1) | KEY_IN_4;
+  77   1          //消抖后更新按键状态
+  78   1          for (i=0; i<4; i++)  //每行4个按键，所以循环4次
+  79   1          {
+  80   2              if ((keybuf[keyout][i] & 0x0F) == 0x00)
+  81   2              {   //连续4次扫描值为0，即4*4ms内都是按下状态时，可认为按键已稳定的按下
+  82   3                  KeySta[keyout][i] = 0;
+  83   3              }
+  84   2              else if ((keybuf[keyout][i] & 0x0F) == 0x0F)
+  85   2              {   //连续4次扫描值为1，即4*4ms内都是弹起状态时，可认为按键已稳定的弹起
+  86   3                  KeySta[keyout][i] = 1;
+  87   3              }
+  88   2          }
+  89   1          //执行下一次的扫描输出
+  90   1          keyout++;         //输出索引递增
+  91   1          keyout &= 0x03;   //索引值加到4即归零
+  92   1          switch (keyout)   //根据索引，释放当前输出引脚，拉低下次的输出引脚
+  93   1          {
+  94   2              case 0: KEY_OUT_4 = 1; KEY_OUT_1 = 0; break;
+  95   2              case 1: KEY_OUT_1 = 1; KEY_OUT_2 = 0; break;
+  96   2              case 2: KEY_OUT_2 = 1; KEY_OUT_3 = 0; break;
+  97   2              case 3: KEY_OUT_3 = 1; KEY_OUT_4 = 0; break;
+  98   2              default: break;
+  99   2          }
+ 100   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    327    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =     32    ----
+   DATA SIZE        =     17       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

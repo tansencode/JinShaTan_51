@@ -1,0 +1,764 @@
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          
+   4          sbit ADDR0=P1^0;
+   5          sbit ADDR1=P1^1;
+   6          sbit ADDR2=P1^2;
+   7          
+   8          sbit ADDR3=P1^3;
+   9          sbit ENLED=P1^4;
+  10          sbit BUZZ = P1^6; //蜂鸣器控制引脚
+  11          bit flag300ms = 1;       //300ms定时标志
+  12          unsigned char T0RH = 0;  //T0重载值的高字节
+  13          unsigned char T0RL = 0;  //T0重载值的低字节
+  14          
+  15          bit flagUart=0;
+  16          unsigned int t=0;
+  17          
+  18          static unsigned char m=1;  //模式控制变量
+  19          
+  20          static unsigned char c=0;
+  21          static unsigned char v=0;
+  22          
+  23          static unsigned char p=0;
+  24          unsigned char RxdByte = 0;  //串口接收到的字节
+  25          
+  26          void ConfigTimer0(unsigned int ms);
+  27          unsigned char GetADCValue(unsigned char chn);
+  28          void ValueToString(unsigned char *str, unsigned long val);
+  29          extern void KeyScan();
+  30          extern void KeyDriver();
+  31          
+  32          extern void I2CStart();
+  33          extern void I2CStop();
+  34          extern unsigned char I2CReadACK();
+  35          extern unsigned char I2CReadNAK();
+  36          extern bit I2CWrite(unsigned char dat);
+  37          
+  38          extern void Led1();        //流水灯子程序
+  39          extern void Led2();
+  40          extern void Led3();
+  41          extern void Led4();
+  42          extern void Led5();
+  43          extern void Led6();
+  44          extern void Led7();
+  45          extern void Led8();
+  46          extern void Led9();
+  47          extern void Led0();
+  48          extern void InitLcd1602();
+  49          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  50          extern void UartDriver();
+  51          extern void ConfigUART(unsigned int baud);
+  52          extern void UartRxMonitor(unsigned char ms);
+  53          extern void UartWrite(unsigned char *buf, unsigned char len);
+  54          void UsartConfiguration();
+  55          unsigned char code L1[7]={0xE7,0xDB,0xBD,0x7E,0xBD,0xDB};
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 2   
+
+  56              //其实就是定义了一个亮灯状态表,由中间到两边，再由两边倒中间,然后P0循环此数组
+  57              //1110 0111  ,  1101 1011 , 1011 1101  ,0111 1110, 1011 1101, 1101 1011, 1110 0111
+  58          unsigned char code L2[30]={0xE7,0xDB,0xBD,0x7E,0xBD,0xDB,
+  59                                   0x7F,0xBF,0xDF,0xEF,0xF7,0xFB,0xFD,0xFE,
+  60                                                           0xFD,0xFB,0xF7,0xEF,0xDF,0xBF,0x7F,0xEF}; //22
+  61          unsigned char code L3[50]={0xEF,0xDF,0xBF,0x7F, 0xF7,0xFB,0xFD,0xFE,
+  62                                   0xEF,0xDF,0xBF,0x7F,0xBF,0xDF,0xEF,0xF7,0xFB,0xFD,0xFE,
+  63                                   0xFD,0xFB,0xF7,0xEF,0xDF,0xBF,0x7F,0xBF,0xDF};  //28   
+  64          unsigned char ledd3[20]={0xFC,0xF9,0xE7,0xCF,0x9F,0x3F,0x7F,0x3F,0x9F,0xCF,0xE7,0xF9,0xFC,0xFE}; //14 
+  65          unsigned char code ledd4[25]={0x7F,0x3F,0x1F,0x0F,0x87,0xC3,0xE1,
+  66                                   0xF0,0xF8,0xFC,0xFE,0xFC,0xF8,0xF0,0xE1,0xC3,
+  67                                                           0x87,0x0F,0x1F,0x3F,0x7F}; //   21     
+  68          unsigned char code ledd5[20]={0xFA,0xFD,0xF5,0xF4,0xEB,0xF7,0xD7,0xEF,0xAF,0xDF,0x5F,0xBF}; 
+  69          //unsigned char val;
+  70          
+  71          unsigned char code image[11][8] = {
+  72              {0xC3, 0x81, 0x99, 0x99, 0x99, 0x99, 0x81, 0xC3},  //数字0
+  73              {0xEF, 0xE7, 0xE3, 0xE7, 0xE7, 0xE7, 0xE7, 0xC3},  //数字1
+  74              {0xC3, 0x81, 0x9D, 0x87, 0xC3, 0xF9, 0xC1, 0x81},  //数字2
+  75              {0xC3, 0x81, 0x9D, 0xC7, 0xC7, 0x9D, 0x81, 0xC3},  //数字3
+  76              {0xCF, 0xC7, 0xC3, 0xC9, 0xC9, 0x81, 0xCF, 0xCF},  //数字4
+  77              {0x81, 0xC1, 0xF9, 0xC3, 0x87, 0x9D, 0x81, 0xC3},  //数字5
+  78              {0xC3, 0x81, 0xF9, 0xC1, 0x81, 0x99, 0x81, 0xC3},  //数字6
+  79              {0x81, 0x81, 0x9F, 0xCF, 0xCF, 0xE7, 0xE7, 0xE7},  //数字7
+  80              {0xC3, 0x81, 0x99, 0xC3, 0xC3, 0x99, 0x81, 0xC3},  //数字8
+  81              {0xC3, 0x81, 0x99, 0x81, 0x83, 0x9F, 0x83, 0xC1},  //数字9
+  82              {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},  //全亮
+  83          };
+  84          static char str[10]={0,0,0,0,0,0,0,0};
+  85          
+  86          unsigned int code NoteFrequ[] = { //中音 1-7 和高音 1-7 对应频率列表
+  87          523, 587, 659, 698, 784, 880, 988, //中音 1-7
+  88          1047, 1175, 1319, 1397, 1568, 1760, 1976 //高音 1-7
+  89          };
+  90          unsigned int code NoteReload[] = { //中音 1-7 和高音 1-7 对应的定时器重载值
+  91          65536 - (11059200/12) / (523*2), //中音 1
+  92          65536 - (11059200/12) / (587*2), //2
+  93          65536 - (11059200/12) / (659*2), //3
+  94          65536 - (11059200/12) / (698*2), //4
+  95          65536 - (11059200/12) / (784*2), //5
+  96          65536 - (11059200/12) / (880*2), //6
+  97          65536 - (11059200/12) / (988*2), //7
+  98          65536 - (11059200/12) / (1047*2), //高音 1
+  99          65536 - (11059200/12) / (1175*2), //2
+ 100          65536 - (11059200/12) / (1319*2), //3
+ 101          65536 - (11059200/12) / (1397*2), //4
+ 102          65536 - (11059200/12) / (1568*2), //5
+ 103          65536 - (11059200/12) / (1760*2), //6
+ 104          65536 - (11059200/12) / (1976*2), //7
+ 105          0,
+ 106          };
+ 107          bit flagBuzz = 0; //蜂鸣器发声使能标志
+ 108          bit tmrflag = 0; //定时器中断完成标志
+ 109          void PlayTwoTiger();
+ 110          unsigned char val;
+ 111          void main()
+ 112          {
+ 113   1          unsigned int i;
+ 114   1          //unsigned char val;
+ 115   1          EA = 1;            //开总中断
+ 116   1              ENLED=0;
+ 117   1              
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 3   
+
+ 118   1          ConfigTimer0(1);  //配置T0定时10ms
+ 119   1              ConfigUART(9600);   //配置波特率为9600
+ 120   1          InitLcd1602();     //初始化液晶
+ 121   1              P0=0xFF;  
+ 122   1          while (1)
+ 123   1          {
+ 124   2              switch(m)       //彩灯模式选择
+ 125   2                              {
+ 126   3                                   case 1:    LcdShowStr(5, 0,"1");Led1();c=0;break;
+ 127   3      
+ 128   3                                       case 2:    LcdShowStr(5, 0,"2");Led2();c=0;break;
+ 129   3                                       case 3:    LcdShowStr(5, 0,"3");Led3();c=0;break;
+ 130   3                                       case 4:    LcdShowStr(5, 0,"4");Led4();c=0;break;
+ 131   3                                       case 5:    LcdShowStr(5, 0,"5");Led5();c=0;break;
+ 132   3                                       case 6:    LcdShowStr(5, 0,"6");Led6();c=0;break;
+ 133   3                                       case 7:    LcdShowStr(5, 0,"7");Led7();c=0;break;
+ 134   3                                       case 8:    LcdShowStr(5, 0,"8");Led8();c=0;break;
+ 135   3                                       case 9:    LcdShowStr(5, 0,"9");Led9();c=0;break;
+ 136   3                                       case 10:   LcdShowStr(5, 0,"*");c=0;break;
+ 137   3                                       case 0:    LcdShowStr(5, 0,"0");Led0();c=0;PlayTwoTiger();Led9();break;
+ 138   3                                       default:
+ 139   3                                       P0=0xFF;break;
+ 140   3                           }
+ 141   2               ENLED=1;         //关闭LED使能端，防止闪烁
+ 142   2               KeyDriver();  //调用按键驱动
+ 143   2               UartDriver();  //调用串口驱动  
+ 144   2              if (flag300ms)
+ 145   2              {
+ 146   3                  flag300ms = 0;
+ 147   3                              //显示通道0的电压
+ 148   3                              LcdShowStr(9, 0, "TJ 50");  //显示通道指示
+ 149   3                  val=GetADCValue(0);  //获取ADC通道0的转换值
+ 150   3                              LcdShowStr(0, 0, "Mode=");  //显示通道指示
+ 151   3                              ADDR2=1;
+ 152   3                  ADDR1=1;
+ 153   3                  ADDR0=0;
+ 154   3                              P0=0xFF;
+ 155   3                  ValueToString(str, val);  //转为字符串格式的电压值                   
+ 156   3                              LcdShowStr(0, 1, "Voltage=");    //显示到液晶上
+ 157   3                  LcdShowStr(8, 1, str);    //显示到液晶
+ 158   3                              TI=1;
+ 159   3                              if(flagUart)
+ 160   3                              {
+ 161   4                                    UartWrite(str,8);
+ 162   4                                        //UartWrite('\n',1);
+ 163   4      
+ 164   4                              }
+ 165   3                      }       
+ 166   2            }
+ 167   1            ENLED=0;    //打开LED使能端
+ 168   1      }
+*** WARNING C280 IN LINE 113 OF MAIN.C: 'i': unreferenced local variable
+ 169          /* 读取当前的ADC转换值，chn-ADC通道号0~3 */
+ 170          unsigned char GetADCValue(unsigned char chn)
+ 171          {
+ 172   1          signed long val;
+ 173   1          
+ 174   1          I2CStart();
+ 175   1          if (!I2CWrite(0x48<<1))  //寻址PCF8591，如未应答，则停止操作并返回0
+ 176   1          {
+ 177   2              I2CStop();
+ 178   2              return 0;
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 4   
+
+ 179   2          }
+ 180   1          I2CWrite(0x40|chn);        //写入控制字节，选择转换通道
+ 181   1          I2CStart();
+ 182   1          I2CWrite((0x48<<1)|0x01);  //寻址PCF8591，指定后续为读操作    
+ 183   1          I2CReadACK();              //先空读一个字节，提供采样转换时间
+ 184   1          val = I2CReadNAK();        //读取刚刚转换完的值
+ 185   1          I2CStop();
+ 186   1          
+ 187   1          return val;
+ 188   1      }
+ 189          /* ADC转换值转为实际电压值的字符串形式，str-字符串指针，val-AD转换值 */
+ 190          void ValueToString(unsigned char *str, unsigned long val)
+ 191          {
+ 192   1          //电压值=转换结果*2.5V/255，式中的25隐含了一位十进制小数
+ 193   1          val = (val*2500) / 255;
+ 194   1              t=val*6;
+ 195   1          str[0] = (val/1000)%10 + '0';  //整数位字符
+ 196   1      
+ 197   1          str[1] = '.';             //小数点
+ 198   1      
+ 199   1          str[2] = (val/100)%10 + '0';  //小数位字符
+ 200   1              
+ 201   1              str[3] = (val/10)%10 +'0';
+ 202   1              
+ 203   1              str[4] = (val%10) + '0';
+ 204   1      
+ 205   1          str[5] = 'V';             //电压单位
+ 206   1      
+ 207   1          str[6] = '\0';            //结束符
+ 208   1      }
+ 209          
+ 210          /* 内存比较函数，比较两个指针所指向的内存数据是否相同，
+ 211             ptr1-待比较指针1，ptr2-待比较指针2，len-待比较长度
+ 212             返回值-两段内存数据完全相同时返回1，不同返回0 */
+ 213          bit CmpMemory(unsigned char *ptr1, unsigned char *ptr2, unsigned char len)
+ 214          {
+ 215   1          while (len--)
+ 216   1          {
+ 217   2              if (*ptr1++ != *ptr2++)  //遇到不相等数据时即刻返回0
+ 218   2              {
+ 219   3                  return 0;
+ 220   3              }
+ 221   2          }
+ 222   1          return 1;  //比较完全部长度数据都相等则返回1
+ 223   1      }
+ 224          /* 串口动作函数，根据接收到的命令帧执行响应的动作
+ 225             buf-接收到的命令帧指针，len-命令帧长度 */
+ 226          void UartAction(unsigned char *buf, unsigned char len)
+ 227          {
+ 228   1          unsigned char i;
+ 229   1          unsigned char code cmd0[] = "1";   //开蜂鸣器命令
+ 230   1          unsigned char code cmd1[] = "2";  //关蜂鸣器命令
+ 231   1          unsigned char code cmd2[] = "3";  //字符串显示命令
+ 232   1              unsigned char code cmd3[] = "4";  //字符串显示命令
+ 233   1              unsigned char code cmd4[] = "5";  //字符串显示命令
+ 234   1              unsigned char code cmd5[] = "6";  //字符串显示命令
+ 235   1              unsigned char code cmd6[] = "7";  //字符串显示命令
+ 236   1              unsigned char code cmd7[] = "8";  //字符串显示命令
+ 237   1              unsigned char code cmd8[] = "9";  //字符串显示命令
+ 238   1              unsigned char code cmd9[] = "0";  //字符串显示命令
+ 239   1          unsigned char code cmdLen[] = {          //命令长度汇总表
+ 240   1              sizeof(cmd0)-1, sizeof(cmd1)-1, sizeof(cmd2)-1,  sizeof(cmd3)-1, sizeof(cmd4)-1, sizeof(cmd5)-1,
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 5   
+
+ 241   1                      sizeof(cmd6)-1,sizeof(cmd7)-1,sizeof(cmd8)-1,sizeof(cmd8)-1,
+ 242   1          };
+ 243   1          unsigned char code *cmdPtr[] = {         //命令指针汇总表
+ 244   1              &cmd0[0],  &cmd1[0],  &cmd2[0], &cmd3[0],&cmd4[0],&cmd5[0],&cmd6[0],&cmd7[0],&cmd8[0],&cmd9[0],
+ 245   1          };
+ 246   1      
+ 247   1          for (i=0; i<sizeof(cmdLen); i++)  //遍历命令列表，查找相同命令
+ 248   1          {
+ 249   2              if (len >= cmdLen[i])  //首先接收到的数据长度要不小于命令长度
+ 250   2              {
+ 251   3                  if (CmpMemory(buf, cmdPtr[i], cmdLen[i]))  //比较相同时退出循环
+ 252   3                  {
+ 253   4                      break;
+ 254   4                  }
+ 255   3              }
+ 256   2          }
+ 257   1          switch (i)  //循环退出时i的值即是当前命令的索引值
+ 258   1          {
+ 259   2              case 0:
+ 260   2                  //flagBuzzOn = 1; //开启蜂鸣器
+ 261   2                          m=1;
+ 262   2                  break;
+ 263   2              case 1:
+ 264   2                  //flagBuzzOn = 0; //关闭蜂鸣器
+ 265   2                              m=2;
+ 266   2                  break;
+ 267   2              case 2:
+ 268   2                  m=3;
+ 269   2                  break;
+ 270   2                      case 3:
+ 271   2                  m=4;
+ 272   2                  break;
+ 273   2                      case 4:
+ 274   2                  m=5;
+ 275   2                  break;
+ 276   2                      case 5:
+ 277   2                  m=6;
+ 278   2                  break;
+ 279   2                      case 6:
+ 280   2                  m=7;
+ 281   2                  break;
+ 282   2                      case 7:
+ 283   2                  m=8;
+ 284   2                  break;
+ 285   2                      case 8:
+ 286   2                  m=9;
+ 287   2                  break;
+ 288   2                         case 9:
+ 289   2                  m=0;
+ 290   2                  break;
+ 291   2              default:   //未找到相符命令时，给上机发送“错误命令”的提示
+ 292   2                  UartWrite("bad command.\r\n", sizeof("bad command.\r\n")-1);
+ 293   2                  return;
+ 294   2          }
+ 295   1          buf[len++] = '\r';  //有效命令被执行后，在原命令帧之后添加
+ 296   1          buf[len++] = '\n';  //回车换行符后返回给上位机，表示已执行
+ 297   1          UartWrite(buf, len);
+ 298   1      }
+ 299          
+ 300          void Led1()
+ 301          {
+ 302   1        unsigned int i=0;
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 6   
+
+ 303   1        unsigned char cnt=0;
+ 304   1        ENLED=0;
+ 305   1        ADDR3=1;
+ 306   1      
+ 307   1        ADDR2=1;
+ 308   1        ADDR1=1;
+ 309   1        ADDR0=0;
+ 310   1        P0=0xFF;
+ 311   1        //while(1)
+ 312   1        {
+ 313   2               for(cnt=0;cnt<8;cnt++)    //移位判断，向左移7位，第一个不记做移位
+ 314   2           {
+ 315   3              P0=~(0x01<<cnt);                //逻辑左移,取反，0000 0011——1111 1100
+ 316   3                      for(i=0;i<t;i++);         //延时函数，不断执行空循环
+ 317   3                      if(c==1)
+ 318   3                      break;
+ 319   3           }
+ 320   2               P0=0xFF;
+ 321   2        }
+ 322   1      }
+ 323          
+ 324          
+ 325          
+ 326          void Led2()
+ 327          {
+ 328   1        unsigned int i=0;
+ 329   1        unsigned char cnt=0;
+ 330   1        ENLED=0;
+ 331   1        ADDR3=1;
+ 332   1      
+ 333   1        ADDR2=1;
+ 334   1        ADDR1=1;
+ 335   1        ADDR0=0;
+ 336   1        P0=0xFF;
+ 337   1        //while(1)
+ 338   1        {
+ 339   2               for(cnt=0;cnt<8;cnt++)     //移位判断，向右移7位，第一个不记做移位
+ 340   2               {
+ 341   3                  P0=~(0x80>>cnt);            //逻辑右移,取反，1100 0000——0011 1111
+ 342   3                      if(c==1)
+ 343   3                      break;
+ 344   3                      for(i=0;i<t;i++);         //延时函数，不断执行空循环
+ 345   3                }
+ 346   2        }
+ 347   1      }
+ 348          
+ 349          void Led3()
+ 350          {
+ 351   1        unsigned int i=0;
+ 352   1        unsigned char cnt=0;
+ 353   1        ENLED=0;
+ 354   1        ADDR3=1;
+ 355   1        ADDR2=1;
+ 356   1        ADDR1=1;
+ 357   1        ADDR0=0;
+ 358   1        //while(1)
+ 359   1        {
+ 360   2               for(cnt=0;cnt<7;cnt++)    //移位判断，向左移7位，第一个不记做移位
+ 361   2           {
+ 362   3              P0=~(0x01<<cnt);                //逻辑左移,取反，0000 0001——1111 1110
+ 363   3                      for(i=0;i<t;i++);         //延时函数，不断执行空循环
+ 364   3                      if(c==1)
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 7   
+
+ 365   3                      break;
+ 366   3           }
+ 367   2               for(cnt=0;cnt<7;cnt++)     //移位判断，向右移7位，第一个不记做移位
+ 368   2               {
+ 369   3                  P0=~(0x80>>cnt);            //逻辑右移,取反，1000 0000——0111 1111
+ 370   3                      if(c==1)
+ 371   3                      break;
+ 372   3                      for(i=0;i<t;i++);         //延时函数，不断执行空循环
+ 373   3                }
+ 374   2        }
+ 375   1      }
+ 376          void Led4()
+ 377          {
+ 378   1          unsigned int i=0;
+ 379   1              unsigned int cnt=0;
+ 380   1              ENLED=0;
+ 381   1          ADDR3=1;
+ 382   1      
+ 383   1          ADDR2=1;
+ 384   1          ADDR1=1;
+ 385   1          ADDR0=0;
+ 386   1         
+ 387   1          //while(1)
+ 388   1          {
+ 389   2              for(cnt=0;cnt<6;cnt++)
+ 390   2                      {
+ 391   3                  P0=L1[cnt];
+ 392   3                              for(i=0;i<t;i++);
+ 393   3                      }
+ 394   2        }
+ 395   1      }
+ 396          void Led5()
+ 397          {
+ 398   1          unsigned int i=0;
+ 399   1              unsigned int cnt=0;
+ 400   1              ENLED=0;
+ 401   1          ADDR3=1;
+ 402   1      
+ 403   1          ADDR2=1;
+ 404   1          ADDR1=1;
+ 405   1          ADDR0=0;
+ 406   1         
+ 407   1          //while(1)
+ 408   1          {
+ 409   2              for(cnt=0;cnt<22;cnt++)
+ 410   2                      {
+ 411   3                  P0=L2[cnt];
+ 412   3                              if(c==1)
+ 413   3                          break;
+ 414   3                              for(i=0;i<t;i++);
+ 415   3                      }
+ 416   2        }
+ 417   1      }
+ 418          void Led6()
+ 419          {
+ 420   1          unsigned int i=0;
+ 421   1              unsigned int cnt=0;
+ 422   1              ENLED=0;
+ 423   1          ADDR3=1;
+ 424   1      
+ 425   1          ADDR2=1;
+ 426   1          ADDR1=1;
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 8   
+
+ 427   1          ADDR0=0;
+ 428   1         
+ 429   1          //while(1)
+ 430   1          {
+ 431   2              for(cnt=0;cnt<8;cnt++)
+ 432   2                      {
+ 433   3                  P0=L3[cnt];
+ 434   3                              if(c==1)
+ 435   3                          break;
+ 436   3                              for(i=0;i<t;i++);
+ 437   3                      }
+ 438   2        }
+ 439   1      }        
+ 440          void Led7()
+ 441          {
+ 442   1          unsigned int i=0;
+ 443   1              unsigned int cnt=0;
+ 444   1              ENLED=0;
+ 445   1          ADDR3=1;
+ 446   1      
+ 447   1          ADDR2=1;
+ 448   1          ADDR1=1;
+ 449   1          ADDR0=0;
+ 450   1         
+ 451   1          //while(1)
+ 452   1          {
+ 453   2              for(cnt=0;cnt<14;cnt++)
+ 454   2                      {
+ 455   3                  P0=ledd3[cnt];
+ 456   3                              if(c==1)
+ 457   3                          break;
+ 458   3                              for(i=0;i<t;i++);
+ 459   3                      }
+ 460   2        }
+ 461   1      }
+ 462          
+ 463          void Led8()
+ 464          {
+ 465   1          unsigned int i=0;
+ 466   1              unsigned int cnt=0;
+ 467   1              ENLED=0;
+ 468   1          ADDR3=1;
+ 469   1      
+ 470   1          ADDR2=1;
+ 471   1          ADDR1=1;
+ 472   1          ADDR0=0;
+ 473   1         
+ 474   1          //while(1)
+ 475   1          {
+ 476   2              for(cnt=0;cnt<11;cnt++)
+ 477   2                      {
+ 478   3                  P0=ledd5[cnt];
+ 479   3                              if(c==1)
+ 480   3                          break;
+ 481   3                              for(i=0;i<t;i++);
+ 482   3                      }
+ 483   2        }
+ 484   1      }
+ 485          void Led9()
+ 486          {
+ 487   1          unsigned int i=0;
+ 488   1              unsigned int cnt=0;
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 9   
+
+ 489   1              ENLED=0;
+ 490   1          ADDR3=1;
+ 491   1      
+ 492   1          ADDR2=1;
+ 493   1          ADDR1=1;
+ 494   1          ADDR0=0;
+ 495   1         
+ 496   1          //while(1)
+ 497   1          {
+ 498   2              for(cnt=0;cnt<11;cnt++)
+ 499   2                      {
+ 500   3                  P0=ledd4[cnt];
+ 501   3                              if(c==1)
+ 502   3                          break;
+ 503   3                              for(i=0;i<t;i++);
+ 504   3                      }
+ 505   2        }
+ 506   1      }
+ 507          void Led0()
+ 508          {
+ 509   1         unsigned int i=0;
+ 510   1         unsigned int cnt=0;
+ 511   1          ENLED=0;
+ 512   1          ADDR3=1;
+ 513   1      
+ 514   1          ADDR2=1;
+ 515   1          ADDR1=0;
+ 516   1          ADDR0=1;
+ 517   1          P0=0xC0;
+ 518   1      }
+ 519          
+ 520          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+ 521          void KeyAction(unsigned char keycode)
+ 522          {
+ 523   1          static unsigned char u=0;
+ 524   1          if  (keycode == 0x31)   // 1
+ 525   1          {
+ 526   2                      m=1;
+ 527   2          }
+ 528   1               else if (keycode == 0x32)  //2
+ 529   1          {
+ 530   2                      m=2;
+ 531   2          }
+ 532   1               else if (keycode == 0x33)  //3
+ 533   1          {
+ 534   2                      m=3;
+ 535   2          }
+ 536   1              else if (keycode == 0x34)  //4
+ 537   1          {
+ 538   2                      m=4;
+ 539   2          }
+ 540   1              else if (keycode == 0x35)  // 5
+ 541   1          {
+ 542   2                      m=5;
+ 543   2          }
+ 544   1              else if (keycode == 0x36)  //6
+ 545   1          {
+ 546   2                      //LcdShowStr(5, 0,"6");
+ 547   2             // Led6();
+ 548   2                 m=6;
+ 549   2          }
+ 550   1              else if (keycode == 0x37)  //7
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 10  
+
+ 551   1          {
+ 552   2                      m=7;
+ 553   2          }
+ 554   1              else if (keycode == 0x38)  //8
+ 555   1          {
+ 556   2                 
+ 557   2                      m=8;
+ 558   2          }
+ 559   1                      else if (keycode == 0x39)  //9
+ 560   1          {
+ 561   2                      
+ 562   2                      m=9;
+ 563   2          } 
+ 564   1              
+ 565   1                      else if (keycode == 0x30)  //0
+ 566   1          {
+ 567   2                 flagBuzz=1;
+ 568   2                 m=0;
+ 569   2          } 
+ 570   1          else if (keycode == 0x26)    //上
+ 571   1          {
+ 572   2              //OprtKeyAction(0);
+ 573   2                   t=val;
+ 574   2          }
+ 575   1          else if (keycode == 0x28)     //下
+ 576   1          {
+ 577   2             
+ 578   2                    t=val*10;
+ 579   2          }
+ 580   1          else if (keycode == 0x25)  //左
+ 581   1          {
+ 582   2              
+ 583   2                      p++;
+ 584   2          }
+ 585   1          else if (keycode == 0x27)  //右
+ 586   1          {
+ 587   2            
+ 588   2                 p--;
+ 589   2          }
+ 590   1          else if (keycode == 0x0D)  //回车键，计算结果
+ 591   1          {
+ 592   2                 switch(u)
+ 593   2                              {
+ 594   3                    case  0:flagUart=1;u++;break;
+ 595   3                                case  1:flagUart=0;u=0;break;
+ 596   3                                default:break;
+ 597   3                              }
+ 598   2      
+ 599   2          }
+ 600   1          else if (keycode == 0x1B)  //Esc键，清除
+ 601   1          {
+ 602   2                  m=10;
+ 603   2                      v=0;
+ 604   2                      c=1;
+ 605   2                      flagBuzz=0;
+ 606   2          }
+ 607   1      }
+ 608          
+ 609          void PlayTwoTiger()
+ 610          {
+ 611   1      unsigned char beat; //当前节拍索引
+ 612   1      unsigned char note; //当前节拍对应的音符
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 11  
+
+ 613   1      unsigned int time = 0; //当前节拍计时
+ 614   1      unsigned int beatTime = 0; //当前节拍总时间
+ 615   1      unsigned int soundTime = 0; //当前节拍需发声时间
+ 616   1      //千与千寻音符表
+ 617   1      unsigned char code TwoTigerNote[] = {
+ 618   1      8,9,10,8,12,     10,9,12,9,8,  6,10,   8,7   ,7,6,7,8,9,5,  8,9,10,11, 11,10,9,8,9,
+ 619   1      8,9,10,8,12,     10,9,12,9,8,  6,6,7,  8,5,   5,6,7,8,9,5,  8,9,10,11, 11,10,9,8,8,
+ 620   1      10,11,12,12,12,   12,12,13,12,11,  10,10,10,10,10,  11,10,9,8,8, 8,7,6,7,7,8,9,  9,10,9,10,9,
+ 621   1      10,11,12,12,12,   12,12,13,12,11, 10,10,10,10,11,10,9,  8,7,6,7,6,7,8,9,5, 8,9,10,9,9,9,8,8,15,
+ 622   1      
+ 623   1      8,9,10,8,12,     10,9,12,9,8,  6,10,   8,7   ,7,6,7,8,9,5,  8,9,10,11, 11,10,9,8,9,
+ 624   1      8,9,10,8,12,     10,9,12,9,8,  6,6,7,  8,5,   5,6,7,8,9,5,  8,9,10,11, 11,10,9,8,8
+ 625   1      
+ 626   1      };
+ 627   1      //千与千寻节拍表，4 表示一拍，1 就是 1/4 拍，8 就是 2 拍
+ 628   1      unsigned char code TwoTigerBeat[] = {
+ 629   1      2,2,2,2,6 ,2,4,4,4,  2,2,6,2,8,   4,4,4,  2,2,4,4,2,2,  4,2,2,2,2,8,
+ 630   1      2,2,2,2,6 ,2,4,4,4,  2,2,4,2,2,   6,   2,4,4,2,2,4,4,  2,2,4,2,2,2,2,8,
+ 631   1      
+ 632   1      2,2,4,4,4,   4,2,2,2,2,4,4,4,4,  2,2,2,2,4,  4,2,2,4,4, 2,2,4,2,2,2,2,8,
+ 633   1      2,2,4,4,4,4,   2,2,2,2,4,4,4,  2,2,2,2,2,2,4,  2,2,2,2,4,4,2,2,6,2,2,2,16,
+ 634   1      
+ 635   1      2,2,2,2,6 ,2,4,4,4,  2,2,6,2,8,   4,4,4,  2,2,4,4,2,2,  4,2,2,2,2,8,
+ 636   1      2,2,2,2,6 ,2,4,4,4,  2,2,4,2,2,   6,   2,4,4,2,2,4,4,  2,2,4,2,2,2,2,8
+ 637   1      
+ 638   1      };
+ 639   1      for (beat=0; beat<sizeof(TwoTigerNote); ) //用节拍索引作为循环变量
+ 640   1      {
+ 641   2      while (!tmrflag); //每次定时器中断完成后，检测并处理节拍
+ 642   2      tmrflag = 0;
+ 643   2      if (time == 0) //当前节拍播完则启动一个新节拍
+ 644   2      {
+ 645   3      note = TwoTigerNote[beat] - 1;
+ 646   3      T0RH = NoteReload[note] >> 8;
+ 647   3      T0RL = NoteReload[note];
+ 648   3      //计算节拍总时间，右移 2 位相当于除 4，移位代替除法可以加快执行速度
+ 649   3      beatTime = (TwoTigerBeat[beat] * NoteFrequ[note]) >> 2;
+ 650   3      //计算发声时间，为总时间的 0.75，移位原理同上
+ 651   3      soundTime = beatTime - (beatTime >> 2);
+ 652   3      flagBuzz = 1; //指示蜂鸣器开始发声
+ 653   3      time++;
+ 654   3      }
+ 655   2      else //当前节拍未播完则处理当前节拍
+ 656   2      {
+ 657   3      if (time >= beatTime) //当前持续时间到达节拍总时间时归零，
+ 658   3      { //并递增节拍索引，以准备启动新节拍
+ 659   4      time = 0;
+ 660   4      beat++;
+ 661   4      }
+ 662   3      else //当前持续时间未达到总时间时，
+ 663   3      {
+ 664   4      time++; //累加时间计数
+ 665   4      if (time == soundTime) //到达发声时间后，指示关闭蜂鸣器，
+ 666   4      { //插入 0.25*总时间的静音间隔，
+ 667   5      flagBuzz = 0; //用以区分连续的两个节拍
+ 668   5      }
+ 669   4      }
+ 670   3      }
+ 671   2      }
+ 672   1      }
+ 673          
+ 674          /* 配置并启动T0，ms-T0定时时间 */
+C51 COMPILER V9.01   MAIN                                                                  07/12/2018 13:35:15 PAGE 12  
+
+ 675          void ConfigTimer0(unsigned int ms)
+ 676          {
+ 677   1          unsigned long tmp;  //临时变量
+ 678   1          
+ 679   1          tmp = 11059200 / 12;      //定时器计数频率
+ 680   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 681   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 682   1          tmp = tmp + 12;           //补偿中断响应延时造成的误差
+ 683   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 684   1          T0RL = (unsigned char)tmp;
+ 685   1          TMOD &= 0xF0;   //清零T0的控制位
+ 686   1          TMOD |= 0x01;   //配置T0为模式1
+ 687   1          TH0 = T0RH;     //加载T0重载值
+ 688   1          TL0 = T0RL;
+ 689   1          ET0 = 1;        //使能T0中断
+ 690   1          TR0 = 1;        //启动T0
+ 691   1      }
+ 692          
+ 693          /* T0中断服务函数，执行300ms定时 */
+ 694          void InterruptTimer0() interrupt 1
+ 695          {
+ 696   1          static unsigned char tmr300ms = 0;
+ 697   1               unsigned int i=0;
+ 698   1              unsigned int cnt=0;
+ 699   1          TH0 = T0RH;  //重新加载重载值
+ 700   1          TL0 = T0RL;
+ 701   1              tmrflag = 1;    
+ 702   1          if (flagBuzz) //使能时反转蜂鸣器控制电平
+ 703   1              {
+ 704   2          BUZZ = ~BUZZ;
+ 705   2              ADDR3 = 1; ADDR2=1; ADDR1=1; ADDR0=0; i++; P0=0x00;  
+ 706   2              }
+ 707   1          else //未使能时关闭蜂鸣器
+ 708   1          BUZZ = 1;
+ 709   1              KeyScan();   //按键扫描
+ 710   1              //LedScan();
+ 711   1              UartRxMonitor(1);  //串口接收监控
+ 712   1          tmr300ms++;
+ 713   1          if (tmr300ms >= 1)  //定时300ms
+ 714   1          {
+ 715   2              tmr300ms = 0;
+ 716   2              flag300ms = 1;
+ 717   2          }
+ 718   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2134    ----
+   CONSTANT SIZE    =    754    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     42      56
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      4    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

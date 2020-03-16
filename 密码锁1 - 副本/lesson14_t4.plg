@@ -1,0 +1,1721 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\密码锁1 - 副本\lesson14_t4.uvproj
+Project File Date:  02/20/2014
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3243
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(503): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3213
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(406): warning C209: '_ShowNumber1': too few actual parameters
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(501): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3209
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(501): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3217
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(505): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3232
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(507): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3230
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(508): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3230
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(501): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3217
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(441): error C171: 'break': missing enclosing loop
+MAIN.C(442): error C172: 'case': missing enclosing switch
+MAIN.C(447): error C171: 'break': missing enclosing loop
+MAIN.C(448): error C172: 'case': missing enclosing switch
+MAIN.C(455): error C171: 'break': missing enclosing loop
+MAIN.C(456): error C172: 'default': missing enclosing switch
+MAIN.C(457): error C171: 'break': missing enclosing loop
+MAIN.C(459): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(441): error C171: 'break': missing enclosing loop
+MAIN.C(442): error C172: 'case': missing enclosing switch
+MAIN.C(447): error C171: 'break': missing enclosing loop
+MAIN.C(448): error C172: 'case': missing enclosing switch
+MAIN.C(455): error C171: 'break': missing enclosing loop
+MAIN.C(456): error C172: 'default': missing enclosing switch
+MAIN.C(457): error C171: 'break': missing enclosing loop
+MAIN.C(459): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(440): error C171: 'break': missing enclosing loop
+MAIN.C(441): error C172: 'case': missing enclosing switch
+MAIN.C(446): error C171: 'break': missing enclosing loop
+MAIN.C(447): error C172: 'case': missing enclosing switch
+MAIN.C(454): error C171: 'break': missing enclosing loop
+MAIN.C(455): error C172: 'default': missing enclosing switch
+MAIN.C(456): error C171: 'break': missing enclosing loop
+MAIN.C(458): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(496): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3193
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(336): warning C280: 'i': unreferenced local variable
+MAIN.C(429): warning C280: 'i': unreferenced local variable
+MAIN.C(498): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3189
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(79): warning C206: 'ShowNumber1': missing function-prototype
+MAIN.C(79): error C267: 'ShowNumber1': requires ANSI-style prototype
+MAIN.C(312): error C231: 'ShowNumber1': redefinition
+MAIN.C(332): error C231: 'ShowNumber1': redefinition
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3181
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3164
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3192
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3192
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3169
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3165
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3161
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3167
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3164
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3164
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3164
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3164
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(336): warning C280: 'i': unreferenced local variable
+MAIN.C(429): warning C280: 'i': unreferenced local variable
+MAIN.C(498): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3176
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(336): warning C280: 'i': unreferenced local variable
+MAIN.C(429): warning C280: 'i': unreferenced local variable
+MAIN.C(498): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3176
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3192
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3188
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3157
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3164
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(290): error C141: syntax error near 'else'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(342): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(338): warning C280: 'i': unreferenced local variable
+MAIN.C(431): warning C280: 'i': unreferenced local variable
+MAIN.C(500): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3171
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3192
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(285): error C141: syntax error near 'else'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(433): warning C280: 'i': unreferenced local variable
+MAIN.C(502): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(433): warning C280: 'i': unreferenced local variable
+MAIN.C(502): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(433): warning C280: 'i': unreferenced local variable
+MAIN.C(502): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(433): warning C280: 'i': unreferenced local variable
+MAIN.C(502): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(339): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(335): warning C280: 'i': unreferenced local variable
+MAIN.C(428): warning C280: 'i': unreferenced local variable
+MAIN.C(497): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3185
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3191
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(342): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(338): warning C280: 'i': unreferenced local variable
+MAIN.C(431): warning C280: 'i': unreferenced local variable
+MAIN.C(500): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3194
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(85): error C187: not an lvalue
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(433): warning C280: 'i': unreferenced local variable
+MAIN.C(502): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3215
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(336): warning C280: 'i': unreferenced local variable
+MAIN.C(429): warning C280: 'i': unreferenced local variable
+MAIN.C(498): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3197
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(342): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(338): warning C280: 'i': unreferenced local variable
+MAIN.C(431): warning C280: 'i': unreferenced local variable
+MAIN.C(500): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3199
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(345): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(341): warning C280: 'i': unreferenced local variable
+MAIN.C(434): warning C280: 'i': unreferenced local variable
+MAIN.C(503): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3199
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3224
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(341): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(337): warning C280: 'i': unreferenced local variable
+MAIN.C(430): warning C280: 'i': unreferenced local variable
+MAIN.C(499): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3223
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(343): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(432): warning C280: 'i': unreferenced local variable
+MAIN.C(501): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3227
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(88): warning C206: 'Ledscan': missing function-prototype
+MAIN.C(344): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(433): warning C280: 'i': unreferenced local variable
+MAIN.C(502): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=75.2 xdata=50 code=3230
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(326): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(415): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(543): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=74.2 xdata=50 code=3098
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(326): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(415): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(543): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=74.2 xdata=50 code=3104
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(323): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(481): warning C280: 'i': unreferenced local variable
+MAIN.C(540): warning C276: constant in condition expression
+MAIN.C(547): warning C276: constant in condition expression
+MAIN.C(554): warning C276: constant in condition expression
+MAIN.C(561): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=74.2 xdata=50 code=3134
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 10 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(314): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(403): warning C280: 'i': unreferenced local variable
+MAIN.C(472): warning C280: 'i': unreferenced local variable
+MAIN.C(531): warning C276: constant in condition expression
+MAIN.C(535): warning C276: constant in condition expression
+MAIN.C(542): warning C276: constant in condition expression
+MAIN.C(549): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3123
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(315): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(404): warning C280: 'i': unreferenced local variable
+MAIN.C(473): warning C280: 'i': unreferenced local variable
+MAIN.C(532): warning C276: constant in condition expression
+MAIN.C(539): warning C276: constant in condition expression
+MAIN.C(546): warning C276: constant in condition expression
+MAIN.C(553): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3126
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 10 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(315): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(404): warning C280: 'i': unreferenced local variable
+MAIN.C(473): warning C280: 'i': unreferenced local variable
+MAIN.C(532): warning C276: constant in condition expression
+MAIN.C(539): warning C276: constant in condition expression
+MAIN.C(546): warning C276: constant in condition expression
+MAIN.C(553): warning C276: constant in condition expression
+MAIN.C(560): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3138
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 11 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(315): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+MAIN.C(474): warning C280: 'i': unreferenced local variable
+MAIN.C(533): warning C276: constant in condition expression
+MAIN.C(540): warning C276: constant in condition expression
+MAIN.C(547): warning C276: constant in condition expression
+MAIN.C(554): warning C276: constant in condition expression
+MAIN.C(561): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3150
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 11 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3150
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(315): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+MAIN.C(474): warning C280: 'i': unreferenced local variable
+MAIN.C(533): warning C276: constant in condition expression
+MAIN.C(540): warning C276: constant in condition expression
+MAIN.C(547): warning C276: constant in condition expression
+MAIN.C(554): warning C276: constant in condition expression
+MAIN.C(561): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3147
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 11 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(543): warning C276: constant in condition expression
+MAIN.C(550): warning C276: constant in condition expression
+MAIN.C(557): warning C276: constant in condition expression
+MAIN.C(564): warning C276: constant in condition expression
+MAIN.C(571): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3186
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 11 Warning(s).
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(543): warning C276: constant in condition expression
+MAIN.C(550): warning C276: constant in condition expression
+MAIN.C(560): warning C276: constant in condition expression
+MAIN.C(570): warning C276: constant in condition expression
+MAIN.C(577): warning C276: constant in condition expression
+main.c - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TURNMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3117
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(569): warning C276: constant in condition expression
+MAIN.C(576): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(568): warning C276: constant in condition expression
+MAIN.C(575): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3202
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(569): warning C276: constant in condition expression
+MAIN.C(576): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(570): warning C276: constant in condition expression
+MAIN.C(577): warning C276: constant in condition expression
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=74.2 xdata=50 code=3221
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=74.2 xdata=50 code=3210
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=77.2 xdata=59 code=3210
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=77.2 xdata=59 code=3210
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=77.2 xdata=59 code=3210
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=74.2 xdata=50 code=3210
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=74.2 xdata=50 code=3210
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(318): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(414): warning C280: 'i': unreferenced local variable
+MAIN.C(486): warning C280: 'i': unreferenced local variable
+MAIN.C(541): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3179
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=53 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=53 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEYSCAN?KEYBOARD
+Program Size: data=73.2 xdata=53 code=3198
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEYSCAN?KEYBOARD
+Program Size: data=73.2 xdata=53 code=3198
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEYSCAN?KEYBOARD
+Program Size: data=73.2 xdata=53 code=3198
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=53 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(316): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(412): warning C280: 'i': unreferenced local variable
+MAIN.C(484): warning C280: 'i': unreferenced local variable
+MAIN.C(539): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=72.2 xdata=50 code=3204
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(333): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(429): warning C280: 'i': unreferenced local variable
+MAIN.C(501): warning C280: 'i': unreferenced local variable
+MAIN.C(556): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDSCAN1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3356
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(333): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(429): warning C280: 'i': unreferenced local variable
+MAIN.C(501): warning C280: 'i': unreferenced local variable
+MAIN.C(556): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=73.2 xdata=50 code=3350
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(399): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(495): warning C280: 'i': unreferenced local variable
+MAIN.C(567): warning C280: 'i': unreferenced local variable
+MAIN.C(622): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=77.2 xdata=50 code=3830
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=77.2 xdata=50 code=3830
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(399): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(495): warning C280: 'i': unreferenced local variable
+MAIN.C(567): warning C280: 'i': unreferenced local variable
+MAIN.C(622): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=77.2 xdata=50 code=3804
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(399): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(495): warning C280: 'i': unreferenced local variable
+MAIN.C(567): warning C280: 'i': unreferenced local variable
+MAIN.C(622): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=78.2 xdata=53 code=3804
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(400): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(496): warning C280: 'i': unreferenced local variable
+MAIN.C(568): warning C280: 'i': unreferenced local variable
+MAIN.C(623): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=80.2 xdata=53 code=3830
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(400): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(496): warning C280: 'i': unreferenced local variable
+MAIN.C(568): warning C280: 'i': unreferenced local variable
+MAIN.C(623): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=80.2 xdata=53 code=3830
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(400): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(496): warning C280: 'i': unreferenced local variable
+MAIN.C(568): warning C280: 'i': unreferenced local variable
+MAIN.C(623): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=80.2 xdata=53 code=3830
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(400): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(496): warning C280: 'i': unreferenced local variable
+MAIN.C(568): warning C280: 'i': unreferenced local variable
+MAIN.C(623): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=80.2 xdata=53 code=3830
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(323): warning C280: 'n': unreferenced local variable
+MAIN.C(400): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(496): warning C280: 'i': unreferenced local variable
+MAIN.C(568): warning C280: 'i': unreferenced local variable
+MAIN.C(623): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=80.2 xdata=53 code=3804
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(323): warning C280: 'n': unreferenced local variable
+MAIN.C(400): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(496): warning C280: 'i': unreferenced local variable
+MAIN.C(568): warning C280: 'i': unreferenced local variable
+MAIN.C(623): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=82.2 xdata=59 code=3804
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(323): warning C280: 'n': unreferenced local variable
+MAIN.C(400): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(504): warning C280: 'i': unreferenced local variable
+MAIN.C(576): warning C280: 'i': unreferenced local variable
+MAIN.C(631): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=82.2 xdata=59 code=3817
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(322): warning C280: 'n': unreferenced local variable
+MAIN.C(398): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(502): warning C280: 'i': unreferenced local variable
+MAIN.C(574): warning C280: 'i': unreferenced local variable
+MAIN.C(629): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=82.2 xdata=59 code=3811
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(321): warning C280: 'n': unreferenced local variable
+MAIN.C(397): warning C206: 'LcdClearScreen': missing function-prototype
+MAIN.C(501): warning C280: 'i': unreferenced local variable
+MAIN.C(573): warning C280: 'i': unreferenced local variable
+MAIN.C(628): warning C280: 'n': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LEDON1?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STOPMOTOR?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+Program Size: data=82.2 xdata=59 code=3811
+creating hex file from "lesson14_t4"...
+"lesson14_t4" - 0 Error(s), 8 Warning(s).

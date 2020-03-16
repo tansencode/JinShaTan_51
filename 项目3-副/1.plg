@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\项目3-副\1.uvproj
+Project File Date:  05/08/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(61): warning C206: 'UartDriver': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  UARTDRIVER
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  UARTDRIVER
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 04B0H
+Program Size: data=72.1 xdata=64 code=1300
+"1" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  UARTDRIVER
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  UARTDRIVER
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 04B0H
+Program Size: data=72.1 xdata=64 code=1300
+creating hex file from "1"...
+"1" - 0 Error(s), 3 Warning(s).

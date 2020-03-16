@@ -1,0 +1,135 @@
+C51 COMPILER V9.01   MAIN                                                                  04/16/2018 23:19:40 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          sbit ADDR3 = P1^3;
+   3          sbit ENLED = P1^4;
+   4          unsigned char code LedChar[] = { //数码管显示字符转换表
+   5          0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8,
+   6          0x80, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E
+   7          };
+   8          unsigned char LedBuff[7] = { //数码管+独立 LED 显示缓冲区
+   9          0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  10          };
+  11          bit flag1s = 1; //1 秒定时标志
+  12          unsigned char T0RH = 0; //T0 重载值的高字节
+  13          unsigned char T0RL = 0; //T0 重载值的低字节
+  14          void ConfigTimer0(unsigned int ms);
+  15          void TrafficLight();
+  16          void main()
+  17          {
+  18   1      EA = 1; //开总中断
+  19   1      ENLED = 0; //使能数码管和 LED
+  20   1      ADDR3 = 1;
+  21   1      ConfigTimer0(1); //配置 T0 定时 1ms
+  22   1      while (1)
+  23   1      {
+  24   2      if (flag1s) //每秒执行一次交通灯刷新
+  25   2      {
+  26   3      flag1s = 0;
+  27   3      TrafficLight();
+  28   3      }
+  29   2      }
+  30   1      }
+  31          /* 配置并启动 T0，ms-T0 定时时间 */
+  32          void ConfigTimer0(unsigned int ms)
+  33          {
+  34   1      unsigned long tmp; //临时变量
+  35   1      tmp = 11059200 / 12; //定时器计数频率
+  36   1      tmp = (tmp * ms) / 1000; //计算所需的计数值
+  37   1      tmp = 65536 - tmp; //计算定时器重载值
+  38   1      tmp = tmp + 13; //补偿中断响应延时造成的误差
+  39   1      T0RH = (unsigned char)(tmp>>8); //定时器重载值拆分为高低字节
+  40   1      T0RL = (unsigned char)tmp;
+  41   1      TMOD &= 0xF0; //清零 T0 的控制位
+  42   1      TMOD |= 0x01; //配置 T0 为模式 1
+  43   1      TH0 = T0RH; //加载 T0 重载值
+  44   1      TL0 = T0RL;
+  45   1      ET0 = 1; //使能 T0 中断
+  46   1      TR0 = 1; //启动 T0
+  47   1      }
+  48          /* 交通灯显示刷新函数 */
+  49          void TrafficLight()
+  50          {
+  51   1      static unsigned char color = 2; //颜色索引：0-绿色/1-黄色/2-红色
+  52   1      static unsigned char timer = 0; //倒计时定时器
+  53   1      if (timer == 0) //倒计时到 0 时，切换交通灯
+  54   1      {
+  55   2      switch (color) //LED8/9 代表绿灯，LED5/6 代表黄灯，LED2/3 代表红灯
+C51 COMPILER V9.01   MAIN                                                                  04/16/2018 23:19:40 PAGE 2   
+
+  56   2      {
+  57   3      case 0: //切换到黄色，亮 3 秒
+  58   3      color = 1;
+  59   3      timer = 2;
+  60   3      LedBuff[6] = 0xE7;
+  61   3      break;
+  62   3      case 1: //切换到红色，亮 30 秒
+  63   3      color = 2;
+  64   3      timer = 29;
+  65   3      LedBuff[6] = 0xFC;
+  66   3      break;
+  67   3      case 2: //切换到绿色，亮 40 秒
+  68   3      color = 0;
+  69   3      timer = 39;
+  70   3      LedBuff[6] = 0x3F;
+  71   3      break;
+  72   3      default:
+  73   3      break;
+  74   3      }
+  75   2      }
+  76   1      else //倒计时未到 0 时，递减其计数值
+  77   1      {
+  78   2      timer--;
+  79   2      }
+  80   1      LedBuff[0] = LedChar[timer%10]; //倒计时数值个位显示
+  81   1      LedBuff[1] = LedChar[timer/10]; //倒计时数值十位显示
+  82   1      }
+  83          /* LED 动态扫描刷新函数，需在定时中断中调用 */
+  84          void LedScan()
+  85          {
+  86   1      static unsigned char i = 0; //动态扫描索引
+  87   1      P0 = 0xFF; //关闭所有段选位，显示消隐
+  88   1      P1 = (P1 & 0xF8) | i; //位选索引值赋值到 P1 口低 3 位
+  89   1      P0 = LedBuff[i]; //缓冲区中索引位置的数据送到 P0 口
+  90   1      if (i < 6) //索引递增循环，遍历整个缓冲区
+  91   1      i++;
+  92   1      else
+  93   1      i = 0;
+  94   1      }
+  95          /* T0 中断服务函数，完成 LED 扫描和秒定时 */
+  96          void InterruptTimer0() interrupt 1
+  97          {
+  98   1      static unsigned int tmr1s = 0; //1 秒定时器
+  99   1      TH0 = T0RH; //重新加载重载值
+ 100   1      TL0 = T0RL;
+ 101   1      LedScan(); //LED 扫描显示
+ 102   1      tmr1s++; //1 秒定时的处理
+ 103   1      if (tmr1s >= 1000)
+ 104   1      {
+ 105   2      tmr1s = 0;
+ 106   2      flag1s = 1; //设置秒定时标志
+ 107   2      }
+ 108   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    302    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14       4
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   MAIN                                                                  04/16/2018 23:19:40 PAGE 3   
+
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

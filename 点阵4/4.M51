@@ -1,0 +1,177 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/13/2018  09:12:06  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL4\C51\BIN\BL51.EXE STARTUP.obj, main.obj TO 4 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  main.obj (MAIN)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  4 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?MAIN
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00DBH     UNIT         ?PR?INTERRUPTTIMER0?MAIN
+            CODE    00E9H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0175H     0078H     UNIT         ?CO?MAIN
+            CODE    01EDH     0015H     UNIT         ?PR?MAIN?MAIN
+            CODE    0202H     000AH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   4 (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+*** NEW ROOT ***************************************************
+
+?PR?INTERRUPTTIMER0?MAIN
+  +--> ?CO?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  4 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2018  09:12:06  PAGE 2
+
+
+  -------         MODULE        ?C_STARTUP
+  C:00E9H         SEGMENT       ?C_C51STARTUP
+  I:000BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:00ECH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:00E9H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:00E9H         LINE#         133
+  C:00EBH         LINE#         134
+  C:00ECH         LINE#         135
+  C:00EDH         LINE#         136
+  C:00EFH         LINE#         185
+  C:00F2H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:0175H         PUBLIC        image
+  B:00A8H.7       PUBLIC        EA
+  C:000EH         PUBLIC        InterruptTimer0
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:01EDH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  B:0090H.0       PUBLIC        ADDR0
+  D:008CH         PUBLIC        TH0
+  B:0090H.1       PUBLIC        ADDR1
+  B:0090H.2       PUBLIC        ADDR2
+  B:0090H.3       PUBLIC        ADDR3
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2018  09:12:06  PAGE 3
+
+
+  B:0090H.4       PUBLIC        ENLED
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:01EDH         LINE#         25
+  C:01EDH         LINE#         26
+  C:01EDH         LINE#         27
+  C:01EFH         LINE#         28
+  C:01F1H         LINE#         29
+  C:01F3H         LINE#         30
+  C:01F6H         LINE#         31
+  C:01F9H         LINE#         32
+  C:01FCH         LINE#         33
+  C:01FEH         LINE#         34
+  C:0200H         LINE#         35
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPTTIMER0
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:0009H         SYMBOL        tmr
+  D:000AH         SYMBOL        index
+  -------         ENDDO         
+  C:000EH         LINE#         38
+  C:001BH         LINE#         43
+  C:001EH         LINE#         44
+  C:0021H         LINE#         46
+  C:0024H         LINE#         47
+  C:004DH         LINE#         48
+  C:004DH         LINE#         49
+  C:005CH         LINE#         50
+  C:006BH         LINE#         51
+  C:007AH         LINE#         52
+  C:0089H         LINE#         53
+  C:0098H         LINE#         54
+  C:00A7H         LINE#         55
+  C:00B6H         LINE#         56
+  C:00C7H         LINE#         57
+  C:00C7H         LINE#         58
+  C:00C7H         LINE#         60
+  C:00C9H         LINE#         61
+  C:00D0H         LINE#         62
+  C:00D0H         LINE#         63
+  C:00D3H         LINE#         64
+  C:00D5H         LINE#         65
+  C:00DBH         LINE#         66
+  C:00DBH         LINE#         67
+  C:00DEH         LINE#         68
+  C:00DEH         LINE#         69
+  C:00DEH         LINE#         70
+  -------         ENDPROC       INTERRUPTTIMER0
+  -------         ENDMOD        MAIN
+
+Program Size: data=12.0 xdata=0 code=516
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

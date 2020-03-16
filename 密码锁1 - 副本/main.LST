@@ -1,0 +1,729 @@
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          *******************************************************************************
+   3          * 1、用0～9的数字键输入密码，允许的密码最大位数由PSW_MAX_LEN宏定义给出
+   4          * 2、用户设定的密码由EEPROM保存，并且用“累加和”校验来保证数据的有效性
+   5          * 3、程序首次运行时EEPROM中的数据无效，此时会提示“设置密码”
+   6          * 4、设置密码时需要用户输入两次相同的密码，以保证设置成功，设置后密码自动保存
+   7          * 5、两次输入密码不相同时，将导致密码设置失败，按回车键重新设置
+   8          * 6、密码设置成功后，每次开机都会要求用户输入密码，用户键入密码后，按回车键，
+   9               系统将键入的密码与EEPROM中保存的密码做对比，相同则系统解锁，否则继续锁定
+  10          * 7、密码输入错误系统锁定时，按回车键可以重新开始输入密码
+  11          * 8、密码输入正确系统解锁时，按回车键可以进入修改密码的操作
+  12          * 9、当忘记密码时，可通过修改PSW_MAX_LEN或PSW_SAVE_ADDR宏定义的值来重置密码
+  13          *******************************************************************************
+  14          */
+  15          
+  16          #include <reg52.h>
+  17          
+  18          #define PSW_MAX_LEN    9    //用宏定义出密码最大长度（最大不超过16）
+  19          #define PSW_SAVE_ADDR  0x20  //用宏定义出密码在EEPROM中的保存地址
+  20          
+  21          sbit ADDR0 = P1^0;
+  22          sbit ADDR1 = P1^1;
+  23          sbit ADDR2 = P1^2;
+  24          sbit ADDR3 = P1^3;
+  25          sbit ENLED = P1^4;
+  26          
+  27          sbit MC0 = P3^0;
+  28          sbit MC1 = P3^1;
+  29          sbit MC2 = P3^2;
+  30          sbit MC3 = P3^3;
+  31          
+  32          unsigned char code LedChar[] = { //数码管显示字符转换表
+  33          0x89, 0x89, 0x89, 0x89, 0x89,0x89,0x89, 0x89,
+  34          0x89, 0x89, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  35          };
+  36          unsigned char LedBuff[6] = { //数码管显示缓冲区
+  37          0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  38          };
+  39          
+  40          signed long beats = 0; //电机转动节拍总数
+  41          unsigned char status;  //系统状态字：0-输入密码，1-设置密码，2-设置密码确认，
+  42                                 //3-密码设置失败，4-输入的密码正确，5-输入的密码错误
+  43          static unsigned long num=0; //用于保存输入的数
+  44          unsigned char PswCnt;  //当前输入密码位数的计数器
+  45          unsigned char pdata PswSet[PSW_MAX_LEN];   //已设定的密码数据
+  46          unsigned char pdata PswBuf1[PSW_MAX_LEN];  //密码输入缓冲区1
+  47          unsigned char pdata PswBuf2[PSW_MAX_LEN];  //密码输入缓冲区2
+  48          
+  49          unsigned char T0RH = 0;  //T0重载值的高字节
+  50          unsigned char T0RL = 0;  //T0重载值的低字节
+  51          
+  52          static unsigned char j ; //动态扫描的索引
+  53          void ledon();
+  54          extern void KeyScan();
+  55          extern void KeyDriver();
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 2   
+
+  56          extern void InitLcd1602();
+  57          //extern void LcdClearScreen();
+  58          //extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  59          extern void E2Read(unsigned char *buf, unsigned char addr, unsigned char len);
+  60          extern void E2Write(unsigned char *buf, unsigned char addr, unsigned char len);
+  61          
+  62          void FillMemory(unsigned char *dest, unsigned char byt, unsigned char len);
+  63          void ConfigTimer0(unsigned int ms);
+  64          void ShowNumber(unsigned long num);
+  65          bit  ReadPassword();
+  66          
+  67          void main()
+  68          {
+  69   1          EA = 1;           //开总中断
+  70   1              ENLED = 0; //选择数码管进行显示
+  71   1          ADDR3 = 1;
+  72   1                      
+  73   1              TMOD = 0x01; //设置 T0 为模式 1
+  74   1          TH0 = 0xFC; //为 T0 赋初值 0xFC67，定时 1ms
+  75   1          TL0 = 0x67;
+  76   1          ET0 = 1; //使能 T0 中断
+  77   1          TR0 = 1; //启动 T0
+  78   1          ConfigTimer0(1);  //配置T0定时1ms
+  79   1              LedBuff[0] = LedChar[10]; //上电无显示，等待输入密码
+  80   1          InitLcd1602();    //初始化液晶
+  81   1          if (ReadPassword())  //读取密码并判断是否有效
+  82   1          {
+  83   2                  j=2;
+  84   2              //      LcdShowStr(0, 0, "Enter Password");  //有效时提示输入密码
+  85   2              status = 0;
+  86   2                      //      LedBuff[0] = LedChar[10]; //上电显示 0
+  87   2                      //LedBuff[0] = LedChar[10]; //上电显示 0
+  88   2                      //ledon();
+  89   2                      
+  90   2          }
+  91   1          else
+  92   1          {
+  93   2             // LcdShowStr(0, 0, "Set Password");  //无效时提示设置密码
+  94   2                 j=0;
+  95   2              status = 1;
+  96   2              //      LedBuff[0] = LedChar[10]; //上电显示 0
+  97   2          }
+  98   1          FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+  99   1          FillMemory(PswBuf2, '\0', PSW_MAX_LEN);
+ 100   1          PswCnt = 0;
+ 101   1          
+ 102   1          while (1)
+ 103   1          {
+ 104   2              KeyDriver();
+ 105   2          }
+ 106   1      }
+ 107          
+ 108          void ledon1()
+ 109          {
+ 110   1          ADDR2=1;
+ 111   1              ADDR1=1;
+ 112   1              ADDR0=0;
+ 113   1          P0=0xFC;
+ 114   1      
+ 115   1      } 
+ 116          /* 步进电机启动函数，angle-需转过的角度 */
+ 117          void StartMotor(signed long angle)
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 3   
+
+ 118          {
+ 119   1      //在计算前关闭中断，完成后再打开，以避免中断打断计算过程而造成错误
+ 120   1      EA = 0;
+ 121   1      beats = (angle * 4076)/360 ; //实测为 4076 拍转动一圈
+ 122   1      EA = 1;
+ 123   1      }
+ 124          /* 步进电机停止函数 */
+ 125          void StopMotor()
+ 126          {
+ 127   1      EA = 0;
+ 128   1      beats = 0;
+ 129   1      EA = 1;
+ 130   1      }
+ 131          
+ 132          
+ 133          /* 将一段内存数据拷贝到另一处，dest-目的地址，src-源地址，len-数据长度 */
+ 134          void CopyMemory(unsigned char *dest, unsigned char *src, unsigned char len)
+ 135          {
+ 136   1          while (len--)
+ 137   1          {
+ 138   2              *dest++ = *src++;
+ 139   2          }
+ 140   1      }
+ 141          /* 用一个指定字节填充一段内存，dest-目的地址，byt-填充用字节，len-数据长度 */
+ 142          void FillMemory(unsigned char *dest, unsigned char byt, unsigned char len)
+ 143          {
+ 144   1          while (len--)
+ 145   1          {
+ 146   2              *dest++ = byt;
+ 147   2          }
+ 148   1      }
+ 149          /* 内存比较函数，比较两个指针所指向的内存数据是否相同，
+ 150             ptr1-待比较指针1，ptr2-待比较指针2，len-待比较长度
+ 151             返回值-两段内存数据完全相同时返回1，不同返回0 */
+ 152          bit CmpMemory(unsigned char *ptr1, unsigned char *ptr2, unsigned char len)
+ 153          {
+ 154   1          while (len--)
+ 155   1          {
+ 156   2              if (*ptr1++ != *ptr2++)  //遇到不相等数据时即刻返回0
+ 157   2              {
+ 158   3                  return 0;
+ 159   3              }
+ 160   2          }
+ 161   1          return 1;  //比较完全部长度数据都相等则返回1
+ 162   1      }
+ 163          /* 将一段数据按字节累加，返回获得的累加和，dat-数据指针，len-数据长度 */
+ 164          unsigned char GetChkSum(unsigned char *dat, unsigned char len)
+ 165          {
+ 166   1          unsigned char sum = 0;
+ 167   1          
+ 168   1          while (len--)
+ 169   1          {
+ 170   2              sum += *dat++;
+ 171   2          }
+ 172   1          return sum;
+ 173   1      }
+ 174          /* 从EEPROM中读取保存的密码数据，并对密码进行“累加和”校验，
+ 175             返回值-校验通过返回1，否则返回0 */
+ 176          bit ReadPassword()
+ 177          {
+ 178   1          unsigned char sum;
+ 179   1          unsigned char buf[PSW_MAX_LEN+1];
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 4   
+
+ 180   1          
+ 181   1          E2Read(buf, PSW_SAVE_ADDR, PSW_MAX_LEN+1);  //读取密码数据和校验字节
+ 182   1          sum = GetChkSum(buf, PSW_MAX_LEN); //计算密码数据的累加和
+ 183   1          if (buf[PSW_MAX_LEN] == ~sum)      //校验通过，即密码有效时，拷贝密码
+ 184   1          {
+ 185   2              CopyMemory(PswSet, buf, PSW_MAX_LEN);
+ 186   2              return 1;
+ 187   2          }
+ 188   1          else  //密码数据无效时，缓冲区默认成全0
+ 189   1          {
+ 190   2              FillMemory(PswSet, '\0', PSW_MAX_LEN);
+ 191   2              return 0;
+ 192   2          }
+ 193   1      }
+ 194          /* 将当前的密码数据保存到EEPROM中，同时添加校验字节 */
+ 195          void SavePassword()
+ 196          {
+ 197   1          unsigned char buf[PSW_MAX_LEN+1];
+ 198   1          
+ 199   1          CopyMemory(buf, PswSet, PSW_MAX_LEN);  //复制密码数据到缓冲区中
+ 200   1          buf[PSW_MAX_LEN] = ~GetChkSum(buf, PSW_MAX_LEN);  //填充最后的累加和校验字节
+ 201   1          E2Write(buf, PSW_SAVE_ADDR, PSW_MAX_LEN+1);  //将密码数据保存到EEPROM中
+ 202   1      }
+ 203          /* 在液晶上显示与当前输入密码位数相同的*，以指示当前输入的密码位数 */
+ 204          void ShowPswCnt()
+ 205          {
+ 206   1          unsigned char buf[PSW_MAX_LEN+1];
+ 207   1          
+ 208   1          FillMemory(buf, '*', PswCnt);
+ 209   1          FillMemory(buf+PswCnt, '\0', sizeof(buf)-PswCnt);
+ 210   1        //  LcdShowStr(0, 1, buf);
+ 211   1      }
+ 212          /* 数字键动作函数，keycode-数字按键的ASCII值 */
+ 213          void KeyNumAction(unsigned char keycode)
+ 214          {
+ 215   1          switch (status)
+ 216   1          {
+ 217   2              case 0: //输入密码状态时，将输入字符填充到PswBuf1
+ 218   2                  if (PswCnt < PSW_MAX_LEN)
+ 219   2                  {
+ 220   3                      PswBuf1[PswCnt] = keycode;
+ 221   3                      PswCnt++;
+ 222   3                      ShowPswCnt();
+ 223   3                  }
+ 224   2                  break;
+ 225   2              case 1: //设置密码状态时，将输入字符填充到PswBuf1
+ 226   2                  if (PswCnt < PSW_MAX_LEN)
+ 227   2                  {
+ 228   3                      PswBuf1[PswCnt] = keycode;
+ 229   3                      PswCnt++;
+ 230   3                      ShowPswCnt();
+ 231   3                  }
+ 232   2                  break;
+ 233   2              case 2: //设置密码确认状态时，将输入字符填充到PswBuf2
+ 234   2                  if (PswCnt < PSW_MAX_LEN)
+ 235   2                  {
+ 236   3                      PswBuf2[PswCnt] = keycode;
+ 237   3                      PswCnt++;
+ 238   3                      ShowPswCnt();
+ 239   3                  }
+ 240   2                  break;
+ 241   2              default: //其它状态不予响应
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 5   
+
+ 242   2                  break;
+ 243   2          }
+ 244   1      }
+ 245          
+ 246          /* 将一个无符号长整型的数字显示到数码管上，num-待显示数字 */
+ 247          void ShowNumber(unsigned long num)
+ 248          {
+ 249   1          signed char i;
+ 250   1          unsigned char buf[6];
+ 251   1          for (i=0; i<6; i++) //把长整型数转换为 6 位十进制的数组
+ 252   1          {
+ 253   2             buf[i] = num % 10;
+ 254   2             num = num / 10;
+ 255   2          }
+ 256   1          for (i=5; i>=1; i--) //从最高位起，遇到 0 转换为空格，遇到非 0 则退出循环
+ 257   1          {
+ 258   2            if (buf[i] == 0)
+ 259   2            LedBuff[i] = 0xFF;
+ 260   2            else
+ 261   2            break;
+ 262   2           }
+ 263   1           for ( ; i>=0; i--) //剩余低位都如实转换为数码管显示字符
+ 264   1           {
+ 265   2              LedBuff[i] = LedChar[buf[i]];
+ 266   2           }
+ 267   1      }
+ 268          /* 数码管动态扫描刷新函数，需在定时中断中调用 */
+ 269          void LedScan()
+ 270          {
+ 271   1        static unsigned char i = 0; //动态扫描的索引
+ 272   1        P0 = 0xFF; //显示消隐
+ 273   1        switch (i)
+ 274   1        {
+ 275   2          case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 276   2          case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 277   2          case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 278   2          case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 279   2          case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 280   2          case 5: ADDR2=1; ADDR1=0; ADDR0=1; i=0; P0=LedBuff[5]; break;
+ 281   2          default: break;
+ 282   2        }
+ 283   1      }
+ 284          
+ 285          void LedScan1()
+ 286          {
+ 287   1         static unsigned char i = 0; //动态扫描的索引
+ 288   1         P0 = 0xFF; //显示消隐
+ 289   1        switch (i)
+ 290   1        {
+ 291   2          case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 292   2          case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 293   2          case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 294   2          case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 295   2              case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 296   2              case 5: ADDR2=1; ADDR1=0; ADDR0=1; i++; P0=LedBuff[5]; break;
+ 297   2              case 6: ADDR2=1; ADDR1=1; ADDR0=0; i=0; P0=0x7F; break;
+ 298   2              default: break;
+ 299   2        }
+ 300   1      }
+ 301          
+ 302          void LedScan2()
+ 303          {
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 6   
+
+ 304   1      static unsigned char i = 0; //动态扫描的索引
+ 305   1      P0 = 0xFF; //显示消隐
+ 306   1      switch (i)
+ 307   1      {
+ 308   2      case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 309   2      case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 310   2      case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 311   2      case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 312   2      case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 313   2      case 5: ADDR2=1; ADDR1=0; ADDR0=1; i++; P0=LedBuff[5]; break;
+ 314   2      case 6: ADDR2=1; ADDR1=1; ADDR0=0; i=0; P0=0xBF; break;
+ 315   2      default: break;
+ 316   2      }
+ 317   1      }
+ 318          void LedScan3()
+ 319          {
+ 320   1      static unsigned char i = 0; //动态扫描的索引
+ 321   1      static unsigned int n; //动态扫描的索引
+ 322   1      P0 = 0xFF; //显示消隐
+ 323   1      switch (i)
+ 324   1      {
+ 325   2      case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 326   2      case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 327   2      case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 328   2      case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 329   2      case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 330   2      case 5: ADDR2=1; ADDR1=0; ADDR0=1; i++; P0=LedBuff[5]; break;
+ 331   2      case 6: ADDR2=1; ADDR1=1; ADDR0=0; i=0; P0=0xCF; break;
+ 332   2      default: break;
+ 333   2      }
+ 334   1      }
+*** WARNING C280 IN LINE 321 OF MAIN.C: 'n': unreferenced local variable
+ 335          
+ 336          void LedScan4()
+ 337          {
+ 338   1      static unsigned char i = 0; //动态扫描的索引
+ 339   1      P0 = 0xFF; //显示消隐
+ 340   1      switch (i)
+ 341   1      {
+ 342   2      case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 343   2      case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 344   2      case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 345   2      case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 346   2      case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 347   2      case 5: ADDR2=1; ADDR1=0; ADDR0=1; i++; P0=LedBuff[5]; break;
+ 348   2      case 6: ADDR2=1; ADDR1=1; ADDR0=0; i=0; P0=0xF3; break;
+ 349   2      default: break;
+ 350   2      }
+ 351   1      }
+ 352          void LedScan5()
+ 353          {
+ 354   1      static unsigned char i = 0; //动态扫描的索引
+ 355   1      P0 = 0xFF; //显示消隐
+ 356   1      switch (i)
+ 357   1      {
+ 358   2      case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 359   2      case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 360   2      case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 361   2      case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 362   2      case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 363   2      case 5: ADDR2=1; ADDR1=0; ADDR0=1; i++; P0=LedBuff[5]; break;
+ 364   2      case 6: ADDR2=1; ADDR1=1; ADDR0=0; i=0; P0=0xFC; break;
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 7   
+
+ 365   2      default: break;
+ 366   2      }
+ 367   1      }
+ 368          
+ 369          void ShowNumber1(unsigned long num)
+ 370          {
+ 371   1          signed char i;
+ 372   1          unsigned char buf[6];
+ 373   1          for (i=0; i<6; i++) //把长整型数转换为 6 位十进制的数组
+ 374   1          {
+ 375   2             buf[i] = num % 10;
+ 376   2             num = num / 10;
+ 377   2          }
+ 378   1          for (i=5; i>=1; i--) //从最高位起，遇到 0 转换为空格，遇到非 0 则退出循环
+ 379   1          {
+ 380   2             if (buf[i] == 0)
+ 381   2             LedBuff[i] = 0xFF;
+ 382   2             else
+ 383   2             LedBuff[i] = 0xFF;
+ 384   2              }
+ 385   1          for ( ; i>=0; i--) //剩余低位都如实转换为数码管显示字符
+ 386   1          {
+ 387   2              LedBuff[i] =0xFF; 
+ 388   2           } 
+ 389   1      }
+ 390          /* 回车键动作函数 */
+ 391          void KeyEnterAction()
+ 392          {
+ 393   1          
+ 394   1          switch (status)
+ 395   1          {
+ 396   2              case 0: //检查输入的密码是否正确
+ 397   2                  LcdClearScreen();
+*** WARNING C206 IN LINE 397 OF MAIN.C: 'LcdClearScreen': missing function-prototype
+ 398   2                  if (CmpMemory(PswSet, PswBuf1, PSW_MAX_LEN))
+ 399   2                  {   //正确时显示解锁的提示
+ 400   3                                      StartMotor(90);
+ 401   3                                      j=3;
+ 402   3                              //      ledon();
+ 403   3                              
+ 404   3                    //  LcdShowStr(0, 0, "Password Correct");
+ 405   3                    //  LcdShowStr(0, 1, "system unlock");
+ 406   3                      status = 4;  //进入解锁状态
+ 407   3                              
+ 408   3                  }
+ 409   2                  else
+ 410   2                  {   //错误时显示已锁定的提示
+ 411   3                                              StartMotor(-90);
+ 412   3                                              j=4;
+ 413   3                                      //      ledon();
+ 414   3                                      //      LedScan1();
+ 415   3                    //  LcdShowStr(0, 0, "Password Wrong");
+ 416   3                     // LcdShowStr(0, 1, "system locked");
+ 417   3                      status = 5;  //进入锁定状态
+ 418   3                              
+ 419   3                  }
+ 420   2                  break;
+ 421   2              case 1: //进入密码设置的确认步骤，即再输入一次密码
+ 422   2                //  LcdClearScreen();
+ 423   2                //  LcdShowStr(0, 0, "Confirm Password");
+ 424   2                         num=0;
+ 425   2                         ShowNumber1(num);
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 8   
+
+ 426   2                          j=1;
+ 427   2                  PswCnt = 0;
+ 428   2                  status = 2;
+ 429   2                  break;
+ 430   2              case 2: //检查两次输入的密码是否一致
+ 431   2                 // LcdClearScreen();
+ 432   2                  if (CmpMemory(PswBuf1, PswBuf2, PSW_MAX_LEN))
+ 433   2                  {   //一致时保存设置的密码
+ 434   3      
+ 435   3                                      num=0;
+ 436   3                              ShowNumber1(num);
+ 437   3                     // LcdShowStr(0, 0, "Enter Password");
+ 438   3                      CopyMemory(PswSet, PswBuf1, PSW_MAX_LEN);
+ 439   3                      SavePassword();
+ 440   3                      FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+ 441   3                                      j=2;
+ 442   3                      PswCnt = 0;
+ 443   3                      status = 0;  //进入密码输入状态
+ 444   3                  }
+ 445   2                  else
+ 446   2                  {   //不一致时提示密码设置失败
+ 447   3                     // LcdShowStr(0, 0, "Confirm Password");
+ 448   3                     // LcdShowStr(0, 1, "Failed");
+ 449   3                                 j=1;
+ 450   3                      status = 3;  //进入密码设置失败状态
+ 451   3                  }
+ 452   2                  break;
+ 453   2              case 3: //重新提示设置密码，进入密码设置状态
+ 454   2                //  LcdClearScreen();
+ 455   2                 // LcdShowStr(0, 0, "Set Password");
+ 456   2                          num=0;
+ 457   2                         ShowNumber1(num);
+ 458   2                         j=0;
+ 459   2                  FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+ 460   2                  FillMemory(PswBuf2, '\0', PSW_MAX_LEN);
+ 461   2                  PswCnt = 0;
+ 462   2                  status = 1;
+ 463   2                  break;
+ 464   2              case 4: //重新设置即修改密码
+ 465   2                       num=0;
+ 466   2                         ShowNumber1(num);
+ 467   2                 // LcdClearScreen();
+ 468   2                 // LcdShowStr(0, 0, "Set Password");
+ 469   2                  FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+ 470   2                  FillMemory(PswBuf2, '\0', PSW_MAX_LEN);
+ 471   2                              j=0;
+ 472   2                  PswCnt = 0;
+ 473   2                  status = 1;
+ 474   2                  break;
+ 475   2              case 5: //重新输入密码
+ 476   2                 // LcdClearScreen();
+ 477   2                         num=0;
+ 478   2                         ShowNumber1(num);
+ 479   2                         
+ 480   2                               //FillMemory(PswSet, '\0', PSW_MAX_LEN);
+ 481   2                              /*for(i=0;i<6;i++)
+ 482   2                              {
+ 483   2                                  
+ 484   2                              LedBuff[i] = LedChar[i+10]; //上电显示 0
+ 485   2                                      
+ 486   2                              //      P0=0xFF;
+ 487   2                                      }*/
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 9   
+
+ 488   2                 // LcdShowStr(0, 0, "Enter Password");
+ 489   2                  FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+ 490   2                              j=2;
+ 491   2                  PswCnt = 0;
+ 492   2                  status = 0;
+ 493   2                  break;
+ 494   2              default: //不予响应
+ 495   2                  break;
+ 496   2          }
+ 497   1      }
+ 498          /* Esc键动作函数 */
+ 499          void KeyEscAction()
+ 500          {
+ 501   1           static unsigned char i = 0; //动态扫描的索引
+ 502   1          switch (status)
+ 503   1          {
+ 504   2              case 0: //输入密码状态时，清空当前输入以重新开始
+ 505   2                 // LcdClearScreen();
+ 506   2                            num=0;
+ 507   2                                ShowNumber1(num);
+ 508   2                      
+ 509   2                 // LcdShowStr(0, 0, "Enter Password");
+ 510   2                  FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+ 511   2                              j=2;
+ 512   2                  PswCnt = 0;
+ 513   2                  break;
+ 514   2              case 1: //设置密码状态时，清空当前输入以重新开始
+ 515   2                  LcdClearScreen();
+ 516   2                //  LcdShowStr(0, 0, "Set Password");
+ 517   2                        j=0;
+ 518   2                  FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+ 519   2                  PswCnt = 0;
+ 520   2                  break;
+ 521   2              case 2: //设置密码确认状态时，清空输入并返回密码设置状态
+ 522   2                  LcdClearScreen();
+ 523   2                //  LcdShowStr(0, 0, "Set Password");
+ 524   2                  FillMemory(PswBuf1, '\0', PSW_MAX_LEN);
+ 525   2                  FillMemory(PswBuf2, '\0', PSW_MAX_LEN);
+ 526   2                              j=0;
+ 527   2                  PswCnt = 0;
+ 528   2                  status = 1;
+ 529   2                  break;
+ 530   2              default: //其它状态不予响应
+ 531   2                  break;
+ 532   2          }
+ 533   1      }
+*** WARNING C280 IN LINE 501 OF MAIN.C: 'i': unreferenced local variable
+ 534          
+ 535          /* 电机转动控制函数 */
+ 536          void TurnMotor()
+ 537          {
+ 538   1      unsigned char tmp; //临时变量
+ 539   1      static unsigned char index = 0; //节拍输出索引
+ 540   1      unsigned char code BeatCode[8] = { //步进电机节拍对应的 IO 控制代码
+ 541   1      0xE, 0xC, 0xD, 0x9, 0xB, 0x3, 0x7, 0x6
+ 542   1      };
+ 543   1      if (beats != 0) //节拍数不为 0 则产生一个驱动节拍
+ 544   1      {
+ 545   2      if (beats > 0) //节拍数大于 0 时正转
+ 546   2      {
+ 547   3      index++; //正转时节拍输出索引递增
+ 548   3      index = index & 0x07; //用&操作实现到 8 归零
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 10  
+
+ 549   3      beats--; //正转时节拍计数递减
+ 550   3      }
+ 551   2      else //节拍数小于 0 时反转
+ 552   2      {
+ 553   3      index--; //反转时节拍输出索引递减
+ 554   3      index = index & 0x07; //用&操作同样可以实现到-1 时归 7
+ 555   3      beats++; //反转时节拍计数递增
+ 556   3      }
+ 557   2      tmp = P3; //用 tmp 把 P1 口当前值暂存
+ 558   2      tmp = tmp & 0xF0; //用&操作清零低 4 位
+ 559   2      tmp = tmp | BeatCode[index]; //用|操作把节拍代码写到低 4 位
+ 560   2      P3= tmp; //把低 4 位的节拍代码和高 4 位的原值送回 P1
+ 561   2      }
+ 562   1      else //节拍数为 0 则关闭电机所有的相
+ 563   1      {
+ 564   2      P3 = P3 | 0x0F;
+ 565   2      }
+ 566   1      }
+ 567          
+ 568          
+ 569          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+ 570          void KeyAction(unsigned char keycode)
+ 571          {
+ 572   1          
+ 573   1              static unsigned int i=0;
+ 574   1          if  ((keycode>='0') && (keycode<='9'))  //输入字符
+ 575   1          {
+ 576   2              KeyNumAction(keycode);
+ 577   2                      num = (num*10)+(keycode-0x30); //整体十进制左移，新数字进入个位
+ 578   2                      ShowNumber(num); //运算结果显示到数码管
+ 579   2          }
+ 580   1          else if (keycode == 0x0D)  //回车键
+ 581   1          {
+ 582   2                  
+ 583   2              KeyEnterAction();
+ 584   2              /*      switch(i)
+ 585   2                      {
+ 586   2                        case 0:
+ 587   2                        //EA=1;
+ 588   2                        ShowNumber(num); //运算结果显示到数码管
+ 589   2                        i++; break;
+ 590   2                        case 1:
+ 591   2                        num=0;
+ 592   2                      
+ 593   2                       P0=0xFF; //上电显示 0
+ 594   2              
+ 595   2                        //ShowNumber(num);
+ 596   2                        i=0; break;
+ 597   2                        default:break;
+ 598   2                      }
+ 599   2              //      EA=1;*/
+ 600   2          }
+ 601   1          else if (keycode == 0x1B)  //Esc键
+ 602   1          {
+ 603   2              KeyEscAction();
+ 604   2          }
+ 605   1      }
+*** WARNING C280 IN LINE 573 OF MAIN.C: 'i': unreferenced local variable
+ 606          /* 配置并启动T0，ms-T0定时时间 */
+ 607          void ConfigTimer0(unsigned int ms)
+ 608          {
+ 609   1          unsigned long tmp;  //临时变量
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 11  
+
+ 610   1          
+ 611   1          tmp = 11059200 / 12;      //定时器计数频率
+ 612   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 613   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 614   1          tmp = tmp + 28;           //补偿中断响应延时造成的误差
+ 615   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 616   1          T0RL = (unsigned char)tmp;
+ 617   1          TMOD &= 0xF0;   //清零T0的控制位
+ 618   1          TMOD |= 0x01;   //配置T0为模式1
+ 619   1          TH0 = T0RH;     //加载T0重载值
+ 620   1          TL0 = T0RL;
+ 621   1          ET0 = 1;        //使能T0中断
+ 622   1          TR0 = 1;        //启动T0
+ 623   1      }
+ 624          /* T0中断服务函数，执行按键扫描 */
+ 625          void InterruptTimer0() interrupt 1
+ 626          {
+ 627   1          static bit div=0;
+ 628   1              static int n=90000;
+ 629   1          TH0 = T0RH;  //重新加载重载值
+ 630   1          TL0 = T0RL;
+ 631   1              LedScan(); //调用数码管显示扫描函数
+ 632   1          KeyScan();   //按键扫描
+ 633   1              switch(j)
+ 634   1              {
+ 635   2                 case 0:
+ 636   2             // ADDR2 = 1;
+ 637   2                //  ADDR1 = 1;
+ 638   2          //  ADDR0 = 0;  
+ 639   2             // P0=0x7F;
+ 640   2                 LedScan1();
+ 641   2              break;
+ 642   2            case 1:
+ 643   2          //  ADDR2 = 1;
+ 644   2          //  ADDR1 = 1;
+ 645   2          //  ADDR0 = 0;
+ 646   2                //  P0=0xBF;
+ 647   2                 LedScan2();
+ 648   2                      break;
+ 649   2             case 2:
+ 650   2              //      ADDR2 = 1;
+ 651   2          //  ADDR1 = 1;
+ 652   2          //  ADDR0 = 0;
+ 653   2                LedScan3();   
+ 654   2                 // P0=0xCF;
+ 655   2                      
+ 656   2                      break;
+ 657   2                      case 3:
+ 658   2          //  ADDR2 = 1;
+ 659   2          //  ADDR1 = 1;
+ 660   2          //  ADDR0 = 0;  
+ 661   2                //  P0=0xF3;
+ 662   2                 LedScan4();
+ 663   2                      break;
+ 664   2              case 4:
+ 665   2          
+ 666   2          //  ADDR2 = 1;
+ 667   2          //  ADDR1 = 1;
+ 668   2          //  ADDR0 = 0;  
+ 669   2                //  P0=0xFC;
+ 670   2                 LedScan5();
+ 671   2                      break;
+C51 COMPILER V9.01   MAIN                                                                  05/13/2018 12:52:00 PAGE 12  
+
+ 672   2                      default:break;
+ 673   2                      }
+ 674   1              div = ~div;
+ 675   1         if (div == 1)
+ 676   1         {
+ 677   2            TurnMotor();
+ 678   2         }
+ 679   1      }
+*** WARNING C280 IN LINE 628 OF MAIN.C: 'n': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2253    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =     27    ----
+   DATA SIZE        =     33      83
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  5 WARNING(S),  0 ERROR(S)

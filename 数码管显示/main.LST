@@ -1,0 +1,44 @@
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 13:14:59 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit ADDR0=P1^0;
+   4          sbit ADDR1=P1^1;
+   5          sbit ADDR2=P1^2;
+   6          
+   7          sbit ADDR3=P1^3;
+   8          sbit ENLED=P1^4;
+   9          
+  10          void main()
+  11          {
+  12   1         ENLED=0;      //EA使能端，取0有效
+  13   1         ADDR3=1;       //EA使能端，取1有效
+  14   1      
+  15   1         ADDR2=1;        //R2、R1、R0相当于C、B、A端，000，第一个亮，001，第二个亮
+  16   1         ADDR1=0;
+  17   1         ADDR0=1;
+  18   1      
+  19   1         P0=0xC0;      //共阳，显示0
+  20   1         while(1);
+  21   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     15    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

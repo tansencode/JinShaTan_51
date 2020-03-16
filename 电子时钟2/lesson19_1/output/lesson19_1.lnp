@@ -1,0 +1,11 @@
+"..\output\Lcd1602.obj",
+"..\output\LedBuzzer.obj",
+"..\output\keyboard.obj",
+"..\output\DS1302.obj",
+"..\output\DS18B20.obj",
+"..\output\Infrared.obj",
+"..\output\Time.obj",
+"..\output\main.obj",
+"..\output\STARTUP.obj" 
+TO "..\output\lesson19_1" 
+PRINT("..\output\lesson19_1.m51") RAMSIZE(256) 

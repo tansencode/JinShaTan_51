@@ -1,0 +1,277 @@
+C51 COMPILER V9.01   MAIN                                                                  06/07/2018 16:05:15 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          bit flag300ms = 1;       //300ms定时标志
+   4          unsigned char T0RH = 0;  //T0重载值的高字节
+   5          unsigned char T0RL = 0;  //T0重载值的低字节
+   6          unsigned char RxdByte = 0;  //串口接收到的字节
+   7          
+   8          void ConfigTimer0(unsigned int ms);
+   9          unsigned char GetADCValue(unsigned char chn);
+  10          void ValueToString(unsigned char *str, unsigned long val);
+  11          extern void I2CStart();
+  12          extern void I2CStop();
+  13          extern unsigned char I2CReadACK();
+  14          extern unsigned char I2CReadNAK();
+  15          extern bit I2CWrite(unsigned char dat);
+  16          extern void InitLcd1602();
+  17          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  18          void UsartConfiguration();
+  19          unsigned char CNCHAR[10] = "V  ";
+  20          void ConfigUART(unsigned int baud);
+  21          
+  22          //unsigned char val;
+  23          static char str[10]={0,0,0,0,0,0,0,0};
+  24          void main()
+  25          {
+  26   1          unsigned char val;
+  27   1          //unsigned char str[10];
+  28   1          
+  29   1          EA = 1;            //开总中断
+  30   1          ConfigTimer0(10);  //配置T0定时10ms
+  31   1              ConfigUART(9600);   //配置波特率为9600
+  32   1          InitLcd1602();     //初始化液晶  
+  33   1          while (1)
+  34   1          {
+  35   2              if (flag300ms)
+  36   2              {
+  37   3                  flag300ms = 0;
+  38   3                              //显示通道0的电压
+  39   3                  val=GetADCValue(0);  //获取ADC通道0的转换值
+  40   3                              LcdShowStr(0, 0, "50  TJ");  //显示通道指示
+  41   3                  ValueToString(str, val);  //转为字符串格式的电压值                   
+  42   3                              LcdShowStr(0, 1, "Voltage=");    //显示到液晶上
+  43   3                  LcdShowStr(8, 1, str);    //显示到液晶
+  44   3                              TI=1;
+  45   3                              //ValueToString();
+  46   3      
+  47   3                  //显示通道1的电压
+  48   3                  //val = GetADCValue(1);
+  49   3                  //ValueToString(str, val);
+  50   3                  //LcdShowStr(6, 1, str);
+  51   3                  //显示通道3的电压
+  52   3                 // val = GetADCValue(3);
+  53   3                  //ValueToString(str, val);
+  54   3                  //LcdShowStr(12, 1, str);
+  55   3              }
+C51 COMPILER V9.01   MAIN                                                                  06/07/2018 16:05:15 PAGE 2   
+
+  56   2          }
+  57   1      }
+  58          /* 读取当前的ADC转换值，chn-ADC通道号0~3 */
+  59          unsigned char GetADCValue(unsigned char chn)
+  60          {
+  61   1          signed long val;
+  62   1          
+  63   1          I2CStart();
+  64   1          if (!I2CWrite(0x48<<1))  //寻址PCF8591，如未应答，则停止操作并返回0
+  65   1          {
+  66   2              I2CStop();
+  67   2              return 0;
+  68   2          }
+  69   1          I2CWrite(0x40|chn);        //写入控制字节，选择转换通道
+  70   1          I2CStart();
+  71   1          I2CWrite((0x48<<1)|0x01);  //寻址PCF8591，指定后续为读操作    
+  72   1          I2CReadACK();              //先空读一个字节，提供采样转换时间
+  73   1          val = I2CReadNAK();        //读取刚刚转换完的值
+  74   1          I2CStop();
+  75   1          
+  76   1          return val;
+  77   1      }
+  78          /* ADC转换值转为实际电压值的字符串形式，str-字符串指针，val-AD转换值 */
+  79          void ValueToString(unsigned char *str, unsigned long val)
+  80          {
+  81   1          //电压值=转换结果*2.5V/255，式中的25隐含了一位十进制小数
+  82   1          val = (val*2500) / 255;
+  83   1          str[0] = (val/1000)%10 + '0';  //整数位字符
+  84   1      
+  85   1          str[1] = '.';             //小数点
+  86   1      
+  87   1          str[2] = (val/100)%10 + '0';  //小数位字符
+  88   1              
+  89   1              str[3] = (val/10)%10 +'0';
+  90   1              
+  91   1              str[4] = (val%10) + '0';
+  92   1      
+  93   1          str[5] = 'V';             //电压单位
+  94   1      
+  95   1          str[6] = '\0';            //结束符
+  96   1      }
+  97          
+  98          /* ADC转换值转为实际电压值的字符串形式，str-字符串指针，val-AD转换值 */
+  99          /*void ValueToString(unsigned char *str, unsigned long val)
+ 100          {
+ 101              unsigned char i;
+ 102                  //unsigned char str1[]= {0, 0, 0, 0, 0, 0}; 
+ 103              //电压值=转换结果*2.5V/255，式中的25隐含了一位十进制小数
+ 104              val = (val*2500) / 255;
+ 105              str[0] = (val/1000)%10 + '0';  //整数位字符
+ 106                  //SBUF = str[0];//将接收到的数据放入到发送寄存器
+ 107                  //while (!TI);                           //等待发送数据完成
+ 108                  //TI = 0;
+ 109          
+ 110              str[1] = '.';             //小数点
+ 111                  //SBUF = '.';//将接收到的数据放入到发送寄存器
+ 112          //      while (!TI);                             //等待发送数据完成
+ 113          //      TI = 0;
+ 114          
+ 115              str[2] = (val/100)%10 + '0';  //小数位字符
+ 116                  //SBUF = str[2];//将接收到的数据放入到发送寄存器
+ 117                  //while (!TI);                           //等待发送数据完成
+C51 COMPILER V9.01   MAIN                                                                  06/07/2018 16:05:15 PAGE 3   
+
+ 118                  //TI = 0;
+ 119                  str[3] = (val/10)%10 +'0';
+ 120                  //SBUF = str[3];//将接收到的数据放入到发送寄存器
+ 121          //      while (!TI);                             //等待发送数据完成
+ 122          //      TI = 0;
+ 123                  str[4] = (val%10) + '0';
+ 124                  //SBUF = str[4];//将接收到的数据放入到发送寄存器
+ 125                  //while (!TI);                           //等待发送数据完成
+ 126                  //TI = 0;
+ 127              str[5] = 'V';             //电压单位
+ 128                  //SBUF = str[5];//将接收到的数据放入到发送寄存器
+ 129                  //while (!TI);                           //等待发送数据完成
+ 130                  //TI = 0;
+ 131              str[6] = '\0';            //结束符
+ 132          //      TI=1;
+ 133                  
+ 134                           
+ 135                  /*SBUF = str[0];//将接收到的数据放入到发送寄存器
+ 136                  while (!TI);                             //等待发送数据完成
+ 137                  TI = 0;
+ 138                  SBUF = '.';//将接收到的数据放入到发送寄存器
+ 139                  while (!TI);                             //等待发送数据完成
+ 140                  TI = 0;
+ 141                  SBUF = str[2];//将接收到的数据放入到发送寄存器
+ 142                  while (!TI);                             //等待发送数据完成
+ 143                  TI = 0;
+ 144                  SBUF = str[3];//将接收到的数据放入到发送寄存器
+ 145                  while (!TI);                             //等待发送数据完成
+ 146                  TI = 0;
+ 147                  SBUF = str[4];//将接收到的数据放入到发送寄存器
+ 148                  while (!TI);                             //等待发送数据完成
+ 149                  TI = 0;  */
+ 150          //      for(i=0; i<6; i++)
+ 151          //      {
+ 152          //              SBUF = CNCHAR[i];//将接收到的数据放入到发送寄存器
+ 153          //              while (!TI);                             //等待发送数据完成
+ 154          //              TI = 0;
+ 155          //      } 
+ 156          
+ 157          /* 配置并启动T0，ms-T0定时时间 */
+ 158          void ConfigTimer0(unsigned int ms)
+ 159          {
+ 160   1          unsigned long tmp;  //临时变量
+ 161   1          
+ 162   1          tmp = 11059200 / 12;      //定时器计数频率
+ 163   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 164   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 165   1          tmp = tmp + 12;           //补偿中断响应延时造成的误差
+ 166   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 167   1          T0RL = (unsigned char)tmp;
+ 168   1          TMOD &= 0xF0;   //清零T0的控制位
+ 169   1          TMOD |= 0x01;   //配置T0为模式1
+ 170   1          TH0 = T0RH;     //加载T0重载值
+ 171   1          TL0 = T0RL;
+ 172   1          ET0 = 1;        //使能T0中断
+ 173   1          TR0 = 1;        //启动T0
+ 174   1      }
+ 175          
+ 176          /* 串口配置函数，baud-通信波特率 */
+ 177          void ConfigUART(unsigned int baud)
+ 178          {
+ 179   1          SCON  = 0x50;  //配置串口为模式1
+C51 COMPILER V9.01   MAIN                                                                  06/07/2018 16:05:15 PAGE 4   
+
+ 180   1          TMOD &= 0x0F;  //清零T1的控制位
+ 181   1          TMOD |= 0x20;  //配置T1为模式2
+ 182   1          TH1 = 256 - (11059200/12/32)/baud;  //计算T1重载值
+ 183   1          TL1 = TH1;     //初值等于重载值
+ 184   1          ET1 = 0;       //禁止T1中断
+ 185   1          ES  = 1;       //使能串口中断
+ 186   1          TR1 = 1;       //启动T1
+ 187   1      } 
+ 188          
+ 189          /* T0中断服务函数，执行300ms定时 */
+ 190          void InterruptTimer0() interrupt 1
+ 191          {
+ 192   1          static unsigned char tmr300ms = 0;
+ 193   1          
+ 194   1          TH0 = T0RH;  //重新加载重载值
+ 195   1          TL0 = T0RL;
+ 196   1          tmr300ms++;
+ 197   1          if (tmr300ms >= 30)  //定时300ms
+ 198   1          {
+ 199   2              tmr300ms = 0;
+ 200   2              flag300ms = 1;
+ 201   2          }
+ 202   1      }
+ 203          
+ 204          void InterruptUART() interrupt 4
+ 205          {
+ 206   1               //unsigned char i;
+ 207   1               SBUF = ' ' ;//将接收到的数据放入到发送寄存器
+ 208   1               while (!TI);                            //等待发送数据完成
+ 209   1               TI = 0;
+ 210   1               SBUF = ' ' ;//将接收到的数据放入到发送寄存器
+ 211   1               while (!TI);                            //等待发送数据完成
+ 212   1               TI = 0;
+ 213   1               SBUF = str[0];//将接收到的数据放入到发送寄存器
+ 214   1               while (!TI);                            //等待发送数据完成
+ 215   1               TI = 0;
+ 216   1               SBUF =str[1];//将接收到的数据放入到发送寄存器
+ 217   1               while (!TI);                            //等待发送数据完成
+ 218   1               TI = 0;
+ 219   1               SBUF = str[2];//将接收到的数据放入到发送寄存器
+ 220   1               while (!TI);                            //等待发送数据完成
+ 221   1               TI = 0;
+ 222   1               SBUF = str[3];//将接收到的数据放入到发送寄存器
+ 223   1               while (!TI);                            //等待发送数据完成
+ 224   1               TI = 0;
+ 225   1               SBUF = str[4];//将接收到的数据放入到发送寄存器
+ 226   1               while (!TI);                            //等待发送数据完成
+ 227   1               TI = 0;
+ 228   1               SBUF = str[5];//将接收到的数据放入到发送寄存器
+ 229   1               while (!TI);                            //等待发送数据完成
+ 230   1               TI = 0;
+ 231   1               SBUF = ' ';//将接收到的数据放入到发送寄存器
+ 232   1               while (!TI);                            //等待发送数据完成
+ 233   1               TI = 0;                 
+ 234   1               //for(i=0; i<6; i++)
+ 235   1               //{
+ 236   1               //     SBUF = CNCHAR[i];//将接收到的数据放入到发送寄存器
+ 237   1              //      while (!TI);                             //等待发送数据完成
+ 238   1              //      TI = 0;
+ 239   1              // } 
+ 240   1          //SBUF ='0';  //接收到的数据又直接发回，叫作-"echo" 
+ 241   1              //SBUF = str;//将接收到的数据放入到发送寄存器                 
+C51 COMPILER V9.01   MAIN                                                                  06/07/2018 16:05:15 PAGE 5   
+
+ 242   1          //if (TI)  //字节发送完毕
+ 243   1          //{
+ 244   1             // TI = 0;  //手动清零发送中断标志位
+ 245   1          //}
+ 246   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    629    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     24      17
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

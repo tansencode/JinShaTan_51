@@ -1,0 +1,224 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/13/2018  10:37:58  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL4\C51\BIN\BL51.EXE STARTUP.obj, main.obj TO 1 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  main.obj (MAIN)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C?IMUL)
+  D:\KEIL4\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  1 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?MAIN
+            DATA    000AH     0001H     UNIT         _DATA_GROUP_
+                    000BH     0015H                  *** GAP ***
+            BIT     0020H.0   0000H.2   UNIT         ?BI?MAIN
+                    0020H.2   0000H.6                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00B6H     UNIT         ?CO?MAIN
+            CODE    00C4H     00AEH     UNIT         ?PR?PLAYTWOTIGER?MAIN
+            CODE    0172H     008CH     UNIT         ?C_C51STARTUP
+            CODE    01FEH     002BH     UNIT         ?PR?MAIN?MAIN
+            CODE    0229H     0028H     UNIT         ?C?LIB_CODE
+            CODE    0251H     0011H     UNIT         ?PR?INTERRUPTTIMER0?MAIN
+            CODE    0262H     000BH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   1 (?C_STARTUP)
+
+
+SEGMENT                            DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                    -----    -----
+  +--> ?PR?PLAYTWOTIGER?MAIN
+
+?PR?PLAYTWOTIGER?MAIN            000AH    0001H
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2018  10:37:58  PAGE 2
+
+
+  +--> ?CO?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  1 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0172H         SEGMENT       ?C_C51STARTUP
+  I:0021H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0175H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0172H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0172H         LINE#         133
+  C:0174H         LINE#         134
+  C:0175H         LINE#         135
+  C:0176H         LINE#         136
+  C:0178H         LINE#         185
+  C:017BH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:0251H         PUBLIC        InterruptTimer0
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0008H         PUBLIC        T0RH
+  C:000EH         PUBLIC        NoteFrequ
+  D:0009H         PUBLIC        T0RL
+  C:01FEH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2018  10:37:58  PAGE 3
+
+
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  B:0090H.6       PUBLIC        BUZZ
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  C:00C4H         PUBLIC        PlayTwoTiger
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  B:0020H.0       PUBLIC        enable
+  B:0020H.1       PUBLIC        tmrflag
+  C:002AH         PUBLIC        NoteReload
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:01FEH         LINE#         28
+  C:01FEH         LINE#         29
+  C:01FEH         LINE#         31
+  C:0200H         LINE#         32
+  C:0203H         LINE#         33
+  C:0206H         LINE#         34
+  C:0209H         LINE#         35
+  C:020BH         LINE#         36
+  C:020DH         LINE#         37
+  C:020DH         LINE#         38
+  C:020DH         LINE#         39
+  C:0210H         LINE#         40
+  -------         ENDPROC       MAIN
+  -------         PROC          PLAYTWOTIGER
+  -------         DO            
+  D:0001H         SYMBOL        beat
+  D:000AH         SYMBOL        note
+  D:0002H         SYMBOL        time
+  D:0004H         SYMBOL        beatTime
+  D:0006H         SYMBOL        soundTime
+  C:0046H         SYMBOL        TwoTigerNote
+  C:0085H         SYMBOL        TwoTigerBeat
+  -------         ENDDO         
+  C:00C4H         LINE#         44
+  C:00C4H         LINE#         45
+  C:00C4H         LINE#         48
+  C:00C7H         LINE#         49
+  C:00C9H         LINE#         50
+  C:00CBH         LINE#         65
+  C:00D5H         LINE#         66
+  C:00D5H         LINE#         67
+  C:00D8H         LINE#         68
+  C:00DAH         LINE#         69
+  C:00DEH         LINE#         70
+  C:00DEH         LINE#         71
+  C:00E6H         LINE#         72
+  C:00F5H         LINE#         73
+  C:0107H         LINE#         75
+  C:0133H         LINE#         77
+  C:0144H         LINE#         78
+  C:0146H         LINE#         79
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2018  10:37:58  PAGE 4
+
+
+  C:014BH         LINE#         80
+  C:014EH         LINE#         82
+  C:014EH         LINE#         83
+  C:0155H         LINE#         84
+  C:0155H         LINE#         85
+  C:0158H         LINE#         86
+  C:0159H         LINE#         87
+  C:015CH         LINE#         89
+  C:015CH         LINE#         90
+  C:0161H         LINE#         91
+  C:016CH         LINE#         92
+  C:016CH         LINE#         93
+  C:016EH         LINE#         94
+  C:016EH         LINE#         95
+  C:016EH         LINE#         96
+  C:016EH         LINE#         97
+  C:0171H         LINE#         98
+  -------         ENDPROC       PLAYTWOTIGER
+  -------         PROC          INTERRUPTTIMER0
+  C:0251H         LINE#         100
+  C:0251H         LINE#         102
+  C:0254H         LINE#         103
+  C:0257H         LINE#         104
+  C:0259H         LINE#         105
+  C:025CH         LINE#         106
+  C:025FH         LINE#         108
+  C:0261H         LINE#         109
+  -------         ENDPROC       INTERRUPTTIMER0
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?IMUL
+  C:0229H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SLCMP
+  C:023BH         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+Program Size: data=12.2 xdata=0 code=613
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

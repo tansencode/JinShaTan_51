@@ -1,0 +1,79 @@
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 15:04:28 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit ADDR0=P1^0;
+   4          sbit ADDR1=P1^1;
+   5          sbit ADDR2=P1^2;
+   6          
+   7          sbit ADDR3=P1^3;
+   8          sbit ENLED=P1^4;
+   9          
+  10          unsigned char code LedChar[]={
+  11          0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,
+  12          0x80,0x90,0x88,0x83,0xC6,0xA1,0x86,0x8E
+  13          }; //共阳数码管真值表，code可节省RAM空间
+  14          
+  15          void main()
+  16          {
+  17   1                unsigned char cnt=0;
+  18   1                unsigned char sec=9;
+  19   1      
+  20   1                ENLED=0;
+  21   1                ADDR3=1;
+  22   1      
+  23   1                ADDR2=0;
+  24   1                ADDR1=0;
+  25   1                ADDR0=0;       //000,第一个显示
+  26   1      
+  27   1                TMOD=0x01;
+  28   1                TH0=0xB8;
+  29   1                TL0=0x00;
+  30   1                TR0=1;
+  31   1      
+  32   1                while(1)
+  33   1                {
+  34   2                   if(TF0==1)
+  35   2                       {
+  36   3                          TF0=0;
+  37   3                              TH0=0xB8;
+  38   3                              TL0=0x00;
+  39   3                              cnt++;
+  40   3                              if(cnt>=50)
+  41   3                              {
+  42   4                                cnt=0;
+  43   4                                P0=LedChar[sec];
+  44   4                                sec--;
+  45   4                                if(sec==-1)
+  46   4                                { 
+  47   5                                    sec=9;
+  48   5                                        
+  49   5                                 }
+  50   4                              }
+  51   3                      }
+  52   2              }
+  53   1      }
+  54          
+
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 15:04:28 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     59    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

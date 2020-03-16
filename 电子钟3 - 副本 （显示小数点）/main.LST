@@ -1,0 +1,531 @@
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          //#define  _LED_BUZZER_C
+   3          #define _TIME_C
+   4          sbit ADDR0 = P1^0;
+   5          sbit ADDR1 = P1^1;
+   6          sbit ADDR2 = P1^2;
+   7          sbit ADDR3 = P1^3;
+   8          sbit ENLED = P1^4;
+   9          
+  10          unsigned char code LedChar[] = {  //数码管显示字符转换表
+  11              0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8,
+  12              0x80, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E
+  13          };
+  14          unsigned char LedBuff[] = { //数码管显示缓冲区
+  15          0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  16          };
+  17          /*unsigned char LedBuff1[] = { //数码管显示缓冲区
+  18          0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  19          };      */
+  20          unsigned char Leddp[]={
+  21          0x7F,0x7F,0x7F,0x7F,0x7F,0x7F};
+  22          
+  23          //struct sLedBuff ledBuff;
+  24          struct sTime CurTime;
+  25          struct sTime {  //日期时间结构体定义
+  26              unsigned int  year;
+  27              unsigned char mon;
+  28              unsigned char day;
+  29              unsigned char hour;
+  30              unsigned char min;
+  31              unsigned char sec;
+  32              unsigned char week;
+  33          };
+  34          
+  35          bit flag200ms = 1;  //200ms定时标志
+  36          struct sTime bufTime;  //日期时间缓冲区
+  37          unsigned char setIndex = 0;  //时间设置索引
+  38          unsigned char T0RH = 0;  //T0重载值的高字节
+  39          unsigned char T0RL = 0;  //T0重载值的低字节
+  40          unsigned int index;
+  41          unsigned int num;
+  42          unsigned int point;
+  43          
+  44          void ConfigTimer0(unsigned int ms);
+  45          void RefreshTimeShow();
+  46          void RefreshTime();
+  47          extern void InitDS1302();
+  48          extern void GetRealTime(struct sTime *time);
+  49          extern void SetRealTime(struct sTime *time);
+  50          extern void KeyScan();
+  51          extern void KeyDriver();
+  52          extern void InitLcd1602();
+  53          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  54          extern void LcdSetCursor(unsigned char x, unsigned char y);
+  55          extern void LcdOpenCursor();
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 2   
+
+  56          extern void LcdCloseCursor();
+  57          
+  58          
+  59          /* 数码管上显示一位数字，index-数码管位索引(从右到左对应0～5)，
+  60          **     num-待显示的数字，point-代表是否显示此位上的小数点 */
+  61          void ShowLedNumber(unsigned int index, unsigned int num,unsigned int point)
+  62          {
+  63   1         P0=0xFF;
+  64   1         LedBuff[index] = LedChar[num];  //输入数字转换为数码管字符0～F
+  65   1          if (point != 0)
+  66   1          {
+  67   2             LedBuff[index] &= 0x7F;  //point不为0时点亮当前位的小数点
+  68   2          }
+  69   1      }
+  70          
+  71          void main()
+  72          {
+  73   1          unsigned char psec=0xAA;  //秒备份，初值AA确保首次读取时间后会刷新显示
+  74   1          EA = 1;           //开总中断
+  75   1              ENLED = 0; //选择数码管进行显示
+  76   1          ADDR3 = 1;
+  77   1              ET0 = 1; //使能 T0 中断
+  78   1              TR0 = 1; //启动 T0
+  79   1          ConfigTimer0(1);  //T0定时1ms
+  80   1              P0=0xFF;
+  81   1          InitDS1302();     //初始化实时时钟
+  82   1          InitLcd1602();    //初始化液晶
+  83   1               RefreshTime();
+  84   1          
+  85   1          //初始化屏幕上固定不变的内容
+  86   1          //LcdShowStr(3, 0, "20  -  -  ");
+  87   1          
+  88   1          while (1)
+  89   1          {
+  90   2              KeyDriver();  //调用按键驱动
+  91   2              if (flag200ms && (setIndex == 0))
+  92   2              {                             //每隔200ms且未处于设置状态时，
+  93   3                  flag200ms = 0;
+  94   3                              
+  95   3                              RefreshTime();
+  96   3                              P0=0xFF;
+  97   3                  GetRealTime(&bufTime);    //获取当前时间
+  98   3                  if (psec != bufTime.sec)  //检测到时间有变化时刷新显示
+  99   3                  {
+ 100   4                     // RefreshTimeShow();
+ 101   4                                      RefreshTime();
+ 102   4                      psec = bufTime.sec;   //用当前值更新上次秒数
+ 103   4                              
+ 104   4                  }
+ 105   3              }
+ 106   2          }
+ 107   1      }
+ 108          
+ 109          /* 将一个BCD码字节显示到屏幕上，(x,y)-屏幕起始坐标，bcd-待显示BCD码 */
+ 110          /*void ShowBcdByte(unsigned char x, unsigned char y, unsigned char bcd)
+ 111          {
+ 112              unsigned char str[4];
+ 113              
+ 114              str[0] = (bcd >> 4) ;
+ 115              str[1] = (bcd&0x0F);
+ 116              ShowLedNumber(index,str,0);
+ 117                  RefreshTime();
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 3   
+
+ 118          
+ 119          }        */
+ 120          
+ 121          /* 获取当前日期时间，并刷新时间和星期的显示 */
+ 122          void RefreshTime()
+ 123          {
+ 124   1          GetRealTime(&bufTime);                  //获取当前日期时间
+ 125   1          ShowLedNumber(5,bufTime.hour>>4, 0);   //时
+ 126   1          ShowLedNumber(4, bufTime.hour&0xF,1);
+ 127   1          ShowLedNumber(3, bufTime.min>>4,  0);   //分
+ 128   1          ShowLedNumber(2, bufTime.min&0xF, 1);
+ 129   1          ShowLedNumber(1, bufTime.sec>>4,  0);   //秒
+ 130   1          ShowLedNumber(0, bufTime.sec&0xF, 0);
+ 131   1      } 
+ 132          
+ 133          void RefreshTime0()
+ 134          {
+ 135   1         // GetRealTime(&bufTime);                  //获取当前日期时间
+ 136   1          ShowLedNumber(5,bufTime.hour>>4, 0);   //时
+ 137   1          ShowLedNumber(4, bufTime.hour&0xF,0);
+ 138   1          ShowLedNumber(3, bufTime.min>>4,  0);   //分
+ 139   1          ShowLedNumber(2, bufTime.min&0xF, 0);
+ 140   1          ShowLedNumber(1, bufTime.sec>>4,  0);   //秒
+ 141   1          ShowLedNumber(0, bufTime.sec&0xF, 0);
+ 142   1      } 
+ 143          /* 日期刷新函数，ops-刷新选项：为0时只当日期变化才刷新，非0则立即刷新 */
+ 144          /*void RefreshDate(uint8 ops)
+ 145          {
+ 146              uint8 pdata str[12];
+ 147              static uint8 backup = 0;
+ 148              
+ 149              if ((backup!=CurTime.day) || (ops!=0))
+ 150              {
+ 151                  str[0] = ((CurTime.year>>12) & 0xF) + '0';  //4位数年份
+ 152                  str[1] = ((CurTime.year>>8) & 0xF) + '0';
+ 153                  str[2] = ((CurTime.year>>4) & 0xF) + '0';
+ 154                  str[3] = (CurTime.year & 0xF) + '0';
+ 155                  str[4] = '-';                        //分隔符
+ 156                  str[5] = (CurTime.mon >> 4) + '0';   //月份
+ 157                  str[6] = (CurTime.mon & 0xF) + '0';
+ 158                  str[7] = '-';                        //分隔符
+ 159                  str[8] = (CurTime.day >> 4) + '0';   //日期
+ 160                  str[9] = (CurTime.day & 0xF) + '0';
+ 161                  str[10] = '\0';         //字符串结束符
+ 162                  LcdShowStr(0, 0, str);  //显示到液晶上
+ 163                  backup = CurTime.day;   //刷新上次日期值
+ 164              }
+ 165          } */
+ 166          /* 刷新日期时间的显示 */
+ 167          /*void RefreshTimeShow()
+ 168          {
+ 169              ShowBcdByte(5,  0, bufTime.year);
+ 170              ShowBcdByte(8,  0, bufTime.mon);
+ 171              ShowBcdByte(11, 0, bufTime.day);
+ 172              ShowBcdByte(4,  1, bufTime.hour);
+ 173              ShowBcdByte(7,  1, bufTime.min);
+ 174              ShowBcdByte(10, 1, bufTime.sec);
+ 175          } */
+ 176          /*void RefreshTimeShow()
+ 177          {
+ 178              ShowBcdByte(5,  0, bufTime.year);
+ 179              ShowBcdByte(8,  0, bufTime.mon);
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 4   
+
+ 180              ShowBcdByte(11, 0, bufTime.day);
+ 181              ShowBcdByte(4,  1, bufTime.hour);
+ 182              ShowBcdByte(7,  1, bufTime.min);
+ 183              ShowBcdByte(10, 1, bufTime.sec);
+ 184          } */  
+ 185          
+ 186          /* 数码管动态扫描刷新函数，需在定时中断中调用 */
+ 187          void LedScan()
+ 188          {
+ 189   1         static unsigned char i = 0; //动态扫描的索引
+ 190   1         P0 = 0xFF; //显示消隐
+ 191   1         P1=(P1&0xF8)|i;               //重点，P1口低三位是定义ADDR0~R2的，进行位选
+ 192   1         P0=LedBuff[i];
+ 193   1         if(i<5)
+ 194   1           i++;
+ 195   1         else
+ 196   1           i=0;
+ 197   1      }
+ 198          
+ 199          
+ 200          /* 刷新当前设置位的光标指示 */
+ 201          /*void RefreshSetShow()
+ 202          {
+ 203              switch (setIndex)
+ 204              {
+ 205                  case 1:  LcdSetCursor(5,  0); break;
+ 206                  case 2:  LcdSetCursor(6,  0); break;
+ 207                  case 3:  LcdSetCursor(8,  0); break;
+ 208                  case 4:  LcdSetCursor(9,  0); break;
+ 209                  case 5:  LcdSetCursor(11, 0); break;
+ 210                  case 6:  LcdSetCursor(12, 0); break;
+ 211                  case 7:  LcdSetCursor(4,  1); break;
+ 212                  case 8:  LcdSetCursor(5,  1); break;
+ 213                          case 9:  LcdSetCursor(7,  1); break;
+ 214                          case 10: LcdSetCursor(8,  1); break;
+ 215                          case 11: LcdSetCursor(10,  1); break;
+ 216                          case 12: LcdSetCursor(11,  1); break;
+ 217                  default:  break;
+ 218              }
+ 219          }  */
+ 220          /* 递增一个BCD码的高位 */
+ 221          unsigned char IncBcdHigh(unsigned char bcd)
+ 222          {
+ 223   1          if ((bcd&0xF0) < 0x90)
+ 224   1              bcd += 0x10;
+ 225   1          else
+ 226   1              bcd &= 0x0F;
+ 227   1          
+ 228   1          return bcd;
+ 229   1      }
+ 230          /* 递增一个BCD码的低位 */
+ 231          unsigned char IncBcdLow(unsigned char bcd)
+ 232          {
+ 233   1          if ((bcd&0x0F) < 0x09)
+ 234   1              bcd += 0x01;
+ 235   1          else
+ 236   1              bcd &= 0xF0;
+ 237   1          
+ 238   1          return bcd;
+ 239   1      }
+ 240          /* 递减一个BCD码的高位 */
+ 241          unsigned char DecBcdHigh(unsigned char bcd)
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 5   
+
+ 242          {
+ 243   1          if ((bcd&0xF0) > 0x00)
+ 244   1              bcd -= 0x10;
+ 245   1          else
+ 246   1              bcd |= 0x90;
+ 247   1          
+ 248   1          return bcd;
+ 249   1      }
+ 250          /* 递减一个BCD码的低位 */
+ 251          unsigned char DecBcdLow(unsigned char bcd)
+ 252          {
+ 253   1          if ((bcd&0x0F) > 0x00)
+ 254   1              bcd -= 0x01;
+ 255   1          else
+ 256   1              bcd |= 0x09;
+ 257   1          
+ 258   1          return bcd;
+ 259   1      }
+ 260          /* 递增时间当前设置位的值 */
+ 261          void IncSetTime()
+ 262          {
+ 263   1          switch (setIndex)
+ 264   1          {
+ 265   2              //case 1:  bufTime.year = IncBcdHigh(bufTime.year); break;
+ 266   2              //case 2:  bufTime.year = IncBcdLow(bufTime.year);  break;
+ 267   2              //case 3:  bufTime.mon  = IncBcdHigh(bufTime.mon);  break;
+ 268   2              //case 4:  bufTime.mon  = IncBcdLow(bufTime.mon);   break;
+ 269   2              //case 5:  bufTime.day  = IncBcdHigh(bufTime.day);  break;
+ 270   2              //case 6:  bufTime.day  = IncBcdLow(bufTime.day);   break;
+ 271   2              case 1:  bufTime.hour = IncBcdHigh(bufTime.hour); ShowLedNumber(5,bufTime.hour>>4, 1);  break;
+ 272   2              case 2:  bufTime.hour = IncBcdLow(bufTime.hour); ShowLedNumber(4, bufTime.hour&0xF,1); break;
+ 273   2              case 3:  bufTime.min  = IncBcdHigh(bufTime.min); ShowLedNumber(3, bufTime.min>>4,  1);  break;
+ 274   2              case 4:  bufTime.min  = IncBcdLow(bufTime.min); ShowLedNumber(2, bufTime.min&0xF, 1);  break;
+ 275   2              case 5:  bufTime.sec  = IncBcdHigh(bufTime.sec);ShowLedNumber(1, bufTime.sec>>4,  1);   break;
+ 276   2              case 6:  bufTime.sec  = IncBcdLow(bufTime.sec); ShowLedNumber(0, bufTime.sec&0xF, 1);  break;
+ 277   2              default:  break;
+ 278   2          }
+ 279   1          //RefreshTimeShow();
+ 280   1              //RefreshTimeShow();
+ 281   1          // RefreshTime();
+ 282   1      }
+ 283          /* 递减时间当前设置位的值 */
+ 284          void DecSetTime()
+ 285          {
+ 286   1          switch (setIndex)
+ 287   1          {
+ 288   2              //case 1:  bufTime.year = DecBcdHigh(bufTime.year); break;
+ 289   2              //case 2:  bufTime.year = DecBcdLow(bufTime.year);  break;
+ 290   2              //case 3:  bufTime.mon  = DecBcdHigh(bufTime.mon);  break;
+ 291   2              //case 4:  bufTime.mon  = DecBcdLow(bufTime.mon);   break;
+ 292   2              //case 5:  bufTime.day  = DecBcdHigh(bufTime.day);  break;
+ 293   2              //case 6:  bufTime.day  = DecBcdLow(bufTime.day);   break;
+ 294   2              case 1:  bufTime.hour = DecBcdHigh(bufTime.hour);ShowLedNumber(5,bufTime.hour>>4, 1); break;
+ 295   2              case 2:  bufTime.hour = DecBcdLow(bufTime.hour); ShowLedNumber(4, bufTime.hour&0xF,1); break;
+ 296   2              case 3:  bufTime.min  = DecBcdHigh(bufTime.min); ShowLedNumber(3, bufTime.min>>4,  1); break;
+ 297   2              case 4:  bufTime.min  = DecBcdLow(bufTime.min);   ShowLedNumber(2, bufTime.min&0xF, 1); break;
+ 298   2              case 5:  bufTime.sec  = DecBcdHigh(bufTime.sec); ShowLedNumber(1, bufTime.sec>>4,  1);  break;
+ 299   2              case 6:  bufTime.sec  = DecBcdLow(bufTime.sec);   ShowLedNumber(0, bufTime.sec&0xF, 1); break;
+ 300   2              default:  break;
+ 301   2          }
+ 302   1          //RefreshTimeShow();
+ 303   1              //RefreshTimeShow();
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 6   
+
+ 304   1         //   RefreshTime();
+ 305   1      }
+ 306          /* 右移时间设置位 */
+ 307          void RightShiftTimeSet()
+ 308          {
+ 309   1              unsigned char *p;
+ 310   1              if(setIndex!=0)
+ 311   1                        {
+ 312   2              if (setIndex <6)
+ 313   2               setIndex++;
+ 314   2                        
+ 315   2              else
+ 316   2                  setIndex = 1;
+ 317   2                      }
+ 318   1                              switch(setIndex)
+ 319   1                      { 
+ 320   2                      case 1: RefreshTime0(); ShowLedNumber(5,bufTime.hour>>4, 1); break;
+ 321   2              case 2: RefreshTime0();ShowLedNumber(4, bufTime.hour&0xF,1); break;
+ 322   2              case 3: RefreshTime0();ShowLedNumber(3, bufTime.min>>4,  1); break;
+ 323   2              case 4: RefreshTime0(); ShowLedNumber(2, bufTime.min&0xF, 1); break;
+ 324   2              case 5: RefreshTime0();ShowLedNumber(1, bufTime.sec>>4,  1);  break;
+ 325   2              case 6: RefreshTime0();ShowLedNumber(0, bufTime.sec&0xF, 1);break;
+ 326   2                 // setIndex--;
+ 327   2                        }
+ 328   1              //RefreshSetShow();
+ 329   1                      //RefreshTime();
+ 330   1      }
+*** WARNING C280 IN LINE 309 OF MAIN.C: 'p': unreferenced local variable
+ 331          
+ 332          /* 左移时间设置位 */
+ 333          void LeftShiftTimeSet()
+ 334          {
+ 335   1              if(setIndex!=0)
+ 336   1                      {
+ 337   2              if (setIndex >1)
+ 338   2                      {
+ 339   3              
+ 340   3                      setIndex--;     
+ 341   3              
+ 342   3                        }
+ 343   2              else
+ 344   2                  setIndex = 6;
+ 345   2                              switch(setIndex)
+ 346   2                      { 
+ 347   3                      case 1:  RefreshTime0();ShowLedNumber(5,bufTime.hour>>4, 1); break;
+ 348   3              case 2:  RefreshTime0();ShowLedNumber(4, bufTime.hour&0xF,1); break;
+ 349   3              case 3:  RefreshTime0();ShowLedNumber(3, bufTime.min>>4,  1); break;
+ 350   3              case 4:  RefreshTime0(); ShowLedNumber(2, bufTime.min&0xF, 1); break;
+ 351   3              case 5:  RefreshTime0();ShowLedNumber(1, bufTime.sec>>4,  1);  break;
+ 352   3              case 6:  RefreshTime0(); ShowLedNumber(0, bufTime.sec&0xF, 1);break;
+ 353   3                 // setIndex--;
+ 354   3                        }
+ 355   2                      }
+ 356   1             // RefreshSetShow();
+ 357   1                 //RefreshTime();
+ 358   1      }
+ 359          /* 进入时间设置状态 */
+ 360          void EnterTimeSet()
+ 361          {
+ 362   1          //static unsigned char i = 5; //动态扫描的索引
+ 363   1          setIndex = 1;       //把设置索引设置为5，即可进入设置状态
+ 364   1              ShowLedNumber(4, bufTime.hour&0xF,0);
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 7   
+
+ 365   1              ShowLedNumber(2, bufTime.min&0xF, 0);
+ 366   1              ShowLedNumber(5,bufTime.hour>>4, 1);   //时
+ 367   1              //ShowLedNumber(5,bufTime.hour>>4, 1);
+ 368   1              //ShowLedNumber(5,bufTime.hour>>4, 1);   //时
+ 369   1          //RightShiftTimeSet(); //再利用现成的左移操作移到位置1并完成显示刷新
+ 370   1          //LcdOpenCursor();    //打开光标闪烁效果
+ 371   1      }
+ 372          /* 退出时间设置状态，save-是否保存当前设置的时间值 */
+ 373          void ExitTimeSet(bit save)
+ 374          {
+ 375   1          setIndex = 0;     //把设置索引设置为0，即可退出设置状态
+ 376   1          if (save)         //需保存时即把当前设置时间写入DS1302
+ 377   1          {
+ 378   2              SetRealTime(&bufTime);
+ 379   2          }
+ 380   1          //LcdCloseCursor(); //关闭光标显示
+ 381   1      }
+ 382          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+ 383          void KeyAction(unsigned char keycode)
+ 384          {
+ 385   1          static unsigned char i = 0; //动态扫描的索引
+ 386   1          if  ((keycode>='0') && (keycode<='9'))  //本例中不响应字符键
+ 387   1          {
+ 388   2          }
+ 389   1          else if (keycode == 0x26)  //向上键，递增当前设置位的值
+ 390   1          {
+ 391   2              IncSetTime();
+ 392   2                      //RefreshTime();
+ 393   2          }
+ 394   1          else if (keycode == 0x28)  //向下键，递减当前设置位的值
+ 395   1          {
+ 396   2              DecSetTime();
+ 397   2                      //RefreshTime();
+ 398   2          }
+ 399   1          else if (keycode == 0x25)  //向左键，向左切换设置位
+ 400   1          {
+ 401   2              LeftShiftTimeSet();
+ 402   2          }
+ 403   1          else if (keycode == 0x27)  //向右键，向右切换设置位
+ 404   1          {
+ 405   2                  
+ 406   2              RightShiftTimeSet();
+ 407   2          }
+ 408   1          else if (keycode == 0x0D)  //回车键，进入设置模式/启用当前设置值
+ 409   1          {
+ 410   2              if (setIndex == 0)  //不处于设置状态时，进入设置状态
+ 411   2              {
+ 412   3                  EnterTimeSet();
+ 413   3              }
+ 414   2              else                //已处于设置状态时，保存时间并退出设置状态
+ 415   2              {
+ 416   3                  ExitTimeSet(1);
+ 417   3              }
+ 418   2          }
+ 419   1          else if (keycode == 0x1B)  //Esc键，取消当前设置
+ 420   1          {
+ 421   2              ExitTimeSet(0);
+ 422   2          }
+ 423   1      }
+*** WARNING C280 IN LINE 385 OF MAIN.C: 'i': unreferenced local variable
+ 424          /* 配置并启动T0，ms-T0定时时间 */
+ 425          void ConfigTimer0(unsigned int ms)
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 8   
+
+ 426          {
+ 427   1          unsigned long tmp;  //临时变量
+ 428   1          
+ 429   1          tmp = 11059200 / 12;      //定时器计数频率
+ 430   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 431   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 432   1          tmp = tmp + 28;           //补偿中断响应延时造成的误差
+ 433   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 434   1          T0RL = (unsigned char)tmp;
+ 435   1          TMOD &= 0xF0;   //清零T0的控制位
+ 436   1          TMOD |= 0x01;   //配置T0为模式1
+ 437   1          TH0 = T0RH;     //加载T0重载值
+ 438   1          TL0 = T0RL;
+ 439   1          ET0 = 1;        //使能T0中断
+ 440   1          TR0 = 1;        //启动T0
+ 441   1      }
+ 442          /* T0中断服务函数，执行按键扫描和200ms定时 */
+ 443          void InterruptTimer0() interrupt 1
+ 444          {
+ 445   1          static unsigned char tmr200ms = 0;
+ 446   1              static int i=0;
+ 447   1      
+ 448   1          TH0 = T0RH;  //重新加载重载值
+ 449   1          TL0 = T0RL;
+ 450   1      /*      if(ENLED==0)
+ 451   1              {
+ 452   1                P0=0xff;
+ 453   1                P1=(P1&0xF0)|i;
+ 454   1                P0=*((int data*)&LedBuff+i);
+ 455   1                if(i<(sizeof(LedBuff)-1))
+ 456   1                i++;
+ 457   1                else
+ 458   1                i=0;
+ 459   1              }
+ 460   1              */
+ 461   1              KeyScan();   //按键扫描
+ 462   1              LedScan(); //调用数码管显示扫描函数
+ 463   1          tmr200ms++;
+ 464   1          if (tmr200ms >= 200)  //定时200ms
+ 465   1          {
+ 466   2              tmr200ms = 0;
+ 467   2              flag200ms = 1;
+ 468   2          }
+ 469   1      
+ 470   1      }
+*** WARNING C280 IN LINE 446 OF MAIN.C: 'i': unreferenced local variable
+ 471          
+ 472          /* T2中断服务函数，LED动态扫描、蜂鸣器控制 */
+ 473          /*void InterruptTimer2() interrupt 5
+ 474          {
+ 475              static i = 0;  //LED位选索引
+ 476              
+ 477              TF2 = 0;  //清零T2中断标志
+ 478              //全部LED动态扫描显示
+ 479              if (ENLED == 0)  //LED使能时才进行动态扫描
+ 480              {
+ 481                  P0 = 0xFF;                       //关闭所有段选位，显示消隐
+ 482                  P1 = (P1 & 0xF0) | i;            //位选索引值赋值到P1口低4位
+ 483                  P0 = *((data*)&ledBuff+i); //缓冲区中索引位置的数据送到P0口
+ 484                  if (i < (sizeof(ledBuff)-1))     //索引递增循环，遍历整个缓冲区
+ 485                      i++;
+ 486                  else
+C51 COMPILER V9.01   MAIN                                                                  05/07/2018 12:44:07 PAGE 9   
+
+ 487                      i = 0;
+ 488              }
+ 489          }  */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1348    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     42      11
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)

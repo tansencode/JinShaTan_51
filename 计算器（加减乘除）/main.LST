@@ -1,0 +1,249 @@
+C51 COMPILER V9.01   MAIN                                                                  04/13/2018 12:54:06 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          sbit ADDR0 = P1^0;
+   4          sbit ADDR1 = P1^1;
+   5          sbit ADDR2 = P1^2;
+   6          sbit ADDR3 = P1^3;
+   7          sbit ENLED = P1^4;
+   8          
+   9          sbit KEY_IN_1 = P2^4;
+  10          sbit KEY_IN_2 = P2^5;
+  11          sbit KEY_IN_3 = P2^6;
+  12          sbit KEY_IN_4 = P2^7;
+  13          sbit KEY_OUT_1 = P2^3;
+  14          sbit KEY_OUT_2 = P2^2;
+  15          sbit KEY_OUT_3 = P2^1;
+  16          sbit KEY_OUT_4 = P2^0;
+  17          
+  18          unsigned char code LedChar[] = { //数码管显示字符转换表
+  19          0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8,
+  20          0x80, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E
+  21          };
+  22          unsigned char LedBuff[6] = { //数码管显示缓冲区
+  23          0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  24          };
+  25          unsigned char code KeyCodeMap[4][4] = { //矩阵按键编号到标准键盘键码的映射表
+  26          { 0x31, 0x32, 0x33, 0x26 }, //数字键 1、数字键 2、数字键 3、向上键
+  27          { 0x34, 0x35, 0x36, 0x25 }, //数字键 4、数字键 5、数字键 6、向左键
+  28          { 0x37, 0x38, 0x39, 0x28 }, //数字键 7、数字键 8、数字键 9、向下键
+  29          { 0x30, 0x1B, 0x0D, 0x27 } //数字键 0、ESC 键、 回车键、 向右键
+  30          };
+  31          unsigned char KeySta[4][4] = { //全部矩阵按键的当前状态
+  32          {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}
+  33          };
+  34          void KeyDriver();
+  35          void main()
+  36          {
+  37   1      EA = 1; //使能总中断
+  38   1      ENLED = 0; //选择数码管进行显示
+  39   1      ADDR3 = 1;
+  40   1      TMOD = 0x01; //设置 T0 为模式 1
+  41   1      TH0 = 0xFC; //为 T0 赋初值 0xFC67，定时 1ms
+  42   1      TL0 = 0x67;
+  43   1      ET0 = 1; //使能 T0 中断
+  44   1      TR0 = 1; //启动 T0
+  45   1      LedBuff[0] = LedChar[0]; //上电显示 0
+  46   1      while (1)
+  47   1      {
+  48   2      KeyDriver(); //调用按键驱动函数
+  49   2      }
+  50   1      }
+  51          /* 将一个无符号长整型的数字显示到数码管上，num-待显示数字 */
+  52          void ShowNumber(unsigned long num)
+  53          {
+  54   1      signed char i;
+  55   1      unsigned char buf[6];
+C51 COMPILER V9.01   MAIN                                                                  04/13/2018 12:54:06 PAGE 2   
+
+  56   1      for (i=0; i<6; i++) //把长整型数转换为 6 位十进制的数组
+  57   1      {
+  58   2      buf[i] = num % 10;
+  59   2      num = num / 10;
+  60   2      }
+  61   1      for (i=5; i>=1; i--) //从最高位起，遇到 0 转换为空格，遇到非 0 则退出循环
+  62   1      {
+  63   2      if (buf[i] == 0)
+  64   2      LedBuff[i] = 0xFF;
+  65   2      else
+  66   2      break;
+  67   2      }
+  68   1      for ( ; i>=0; i--) //剩余低位都如实转换为数码管显示字符
+  69   1      {
+  70   2      LedBuff[i] = LedChar[buf[i]];
+  71   2      }
+  72   1      }
+  73          
+  74          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+  75          void KeyAction(unsigned char keycode)
+  76          {
+  77   1      
+  78   1      static unsigned long result=0; //用于保存运算结果
+  79   1      static unsigned long num=0,num1=0,num2=0; //用于保存输入的数
+  80   1      static int i=0;
+  81   1      {
+  82   2      if ((keycode>=0x30) && (keycode<=0x39)) //输入 0-9 的数字
+  83   2      {
+  84   3      num = (num*10)+(keycode-0x30); //整体十进制左移，新数字进入个位
+  85   3      ShowNumber(num); //运算结果显示到数码管
+  86   3      }
+  87   2      
+  88   2      else if (keycode == 0x26) //用作加号，执行加法或连加运算
+  89   2      {
+  90   3      i=1;
+  91   3      num1=num;
+  92   3      num=0;
+  93   3      }
+  94   2      
+  95   2      else if (keycode == 0x28) //用作减号，执行减法或连减运算
+  96   2      {
+  97   3      i=2;
+  98   3      num1=num;
+  99   3      num=0;
+ 100   3      }
+ 101   2      
+ 102   2      else if (keycode == 0x25) //用作乘号，执行乘法或连乘运算
+ 103   2      {
+ 104   3      i=3;
+ 105   3      num1=num;
+ 106   3      num=0;
+ 107   3      }
+ 108   2      else if (keycode == 0x27) //用作除号，执行除法或连除运算
+ 109   2      {
+ 110   3      i=4;
+ 111   3      num1=num;
+ 112   3      num=0;
+ 113   3      }
+ 114   2      else if(keycode==0x0D)
+ 115   2      {
+ 116   3          num2=num;
+ 117   3              switch(i)
+C51 COMPILER V9.01   MAIN                                                                  04/13/2018 12:54:06 PAGE 3   
+
+ 118   3              {
+ 119   4              case 1:result=num1+num2;ShowNumber(result);break;
+ 120   4              case 2:result=num1-num2;ShowNumber(result);break;
+ 121   4              case 3:result=num1*num2;ShowNumber(result);break;
+ 122   4              case 4:result=num1/num2;ShowNumber(result);break;
+ 123   4              default:
+ 124   4              break;
+ 125   4              }
+ 126   3      }
+ 127   2      else if (keycode == 0x1B) //Esc 键，执行清零结果
+ 128   2      {
+ 129   3      num = 0;
+ 130   3      result = 0;
+ 131   3      ShowNumber(num); //清零后的加数显示到数码管
+ 132   3      }
+ 133   2      }
+ 134   1      }
+ 135          
+ 136          /* 按键驱动函数，检测按键动作，调度相应动作函数，需在主循环中调用 */
+ 137          void KeyDriver()
+ 138          {
+ 139   1      unsigned char i, j;
+ 140   1      static unsigned char backup[4][4] = { //按键值备份，保存前一次的值
+ 141   1      {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}
+ 142   1      };
+ 143   1      for (i=0; i<4; i++) //循环检测 4*4 的矩阵按键
+ 144   1      {
+ 145   2      for (j=0; j<4; j++)
+ 146   2      {
+ 147   3      if (backup[i][j] != KeySta[i][j]) //检测按键动作
+ 148   3      {
+ 149   4      if (backup[i][j] != 0) //按键按下时执行动作
+ 150   4      {
+ 151   5      KeyAction(KeyCodeMap[i][j]); //调用按键动作函数
+ 152   5      }
+ 153   4      backup[i][j] = KeySta[i][j]; //刷新前一次的备份值
+ 154   4      }
+ 155   3      }
+ 156   2      }
+ 157   1      }
+ 158          /* 按键扫描函数，需在定时中断中调用，推荐调用间隔 1ms */
+ 159          void KeyScan()
+ 160          {
+ 161   1      unsigned char i;
+ 162   1      static unsigned char keyout = 0; //矩阵按键扫描输出索引
+ 163   1      static unsigned char keybuf[4][4] = { //矩阵按键扫描缓冲区
+ 164   1      {0xFF, 0xFF, 0xFF, 0xFF}, {0xFF, 0xFF, 0xFF, 0xFF},
+ 165   1      {0xFF, 0xFF, 0xFF, 0xFF}, {0xFF, 0xFF, 0xFF, 0xFF}
+ 166   1      };
+ 167   1      //将一行的 4 个按键值移入缓冲区
+ 168   1      keybuf[keyout][0] = (keybuf[keyout][0] << 1) | KEY_IN_1;
+ 169   1      keybuf[keyout][1] = (keybuf[keyout][1] << 1) | KEY_IN_2;
+ 170   1      keybuf[keyout][2] = (keybuf[keyout][2] << 1) | KEY_IN_3;
+ 171   1      keybuf[keyout][3] = (keybuf[keyout][3] << 1) | KEY_IN_4;
+ 172   1      //消抖后更新按键状态
+ 173   1      for (i=0; i<4; i++) //每行 4 个按键，所以循环 4 次
+ 174   1      {
+ 175   2      if ((keybuf[keyout][i] & 0x0F) == 0x00)
+ 176   2      { //连续 4 次扫描值为 0，即 4*4ms 内都是按下状态时，可认为按键已稳定的按下
+ 177   3      KeySta[keyout][i] = 0;
+ 178   3      }
+ 179   2      else if ((keybuf[keyout][i] & 0x0F) == 0x0F)
+C51 COMPILER V9.01   MAIN                                                                  04/13/2018 12:54:06 PAGE 4   
+
+ 180   2      { //连续 4 次扫描值为 1，即 4*4ms 内都是弹起状态时，可认为按键已稳定的弹起
+ 181   3      KeySta[keyout][i] = 1;
+ 182   3      }
+ 183   2      }
+ 184   1      //执行下一次的扫描输出
+ 185   1      keyout++; //输出索引递增
+ 186   1      keyout = keyout & 0x03; //索引值加到 4 即归零
+ 187   1      switch (keyout) //根据索引，释放当前输出引脚，拉低下次的输出引脚
+ 188   1      {
+ 189   2      case 0: KEY_OUT_4 = 1; KEY_OUT_1 = 0; break;
+ 190   2      case 1: KEY_OUT_1 = 1; KEY_OUT_2 = 0; break;
+ 191   2      case 2: KEY_OUT_2 = 1; KEY_OUT_3 = 0; break;
+ 192   2      case 3: KEY_OUT_3 = 1; KEY_OUT_4 = 0; break;
+ 193   2      default: break;
+ 194   2      }
+ 195   1      }
+ 196          /* 数码管动态扫描刷新函数，需在定时中断中调用 */
+ 197          void LedScan()
+ 198          {
+ 199   1      static unsigned char i = 0; //动态扫描的索引
+ 200   1      P0 = 0xFF; //显示消隐
+ 201   1      switch (i)
+ 202   1      {
+ 203   2      case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+ 204   2      case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+ 205   2      case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+ 206   2      case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+ 207   2      case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+ 208   2      case 5: ADDR2=1; ADDR1=0; ADDR0=1; i=0; P0=LedBuff[5]; break;
+ 209   2      default: break;
+ 210   2      }
+ 211   1      }
+ 212          /* T0 中断服务函数，用于数码管显示扫描与按键扫描 */
+ 213          
+ 214          void InterruptTimer0() interrupt 1
+ 215          {
+ 216   1      TH0 = 0xFC; //重新加载初值
+ 217   1      TL0 = 0x67;
+ 218   1      LedScan(); //调用数码管显示扫描函数
+ 219   1      KeyScan(); //调用按键扫描函数
+ 220   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    967    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     74      14
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

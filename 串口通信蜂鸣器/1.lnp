@@ -1,0 +1,6 @@
+"STARTUP.obj",
+"Uart.obj",
+"main.obj",
+"Lcd1602.obj" 
+TO "1" 
+RAMSIZE(256) 

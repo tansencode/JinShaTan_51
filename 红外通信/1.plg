@@ -1,0 +1,116 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\红外通信\1.uvproj
+Project File Date:  05/26/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MATRIXKEYSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSCAN
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  SEND
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  SEND
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0680H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSCAN
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05BDH
+Program Size: data=36.0 xdata=32 code=1718
+creating hex file from "1"...
+"1" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(100): error C202: 'key': undefined identifier
+MAIN.C(102): error C202: 'key': undefined identifier
+MAIN.C(103): error C202: 'key': undefined identifier
+MAIN.C(104): error C202: 'key': undefined identifier
+MAIN.C(105): error C202: 'key': undefined identifier
+MAIN.C(106): error C202: 'key': undefined identifier
+MAIN.C(107): error C202: 'key': undefined identifier
+MAIN.C(108): error C202: 'key': undefined identifier
+MAIN.C(109): error C202: 'key': undefined identifier
+MAIN.C(110): error C202: 'key': undefined identifier
+MAIN.C(111): error C202: 'key': undefined identifier
+MAIN.C(112): error C202: 'key': undefined identifier
+MAIN.C(113): error C202: 'key': undefined identifier
+MAIN.C(114): error C202: 'key': undefined identifier
+MAIN.C(115): error C202: 'key': undefined identifier
+MAIN.C(116): error C202: 'key': undefined identifier
+MAIN.C(117): error C202: 'key': undefined identifier
+MAIN.C(131): error C202: 'key': undefined identifier
+MAIN.C(132): error C202: 'key': undefined identifier
+MAIN.C(133): error C202: 'key': undefined identifier
+MAIN.C(134): error C202: 'key': undefined identifier
+MAIN.C(139): error C202: 'key': undefined identifier
+MAIN.C(152): error C202: 'key': undefined identifier
+MAIN.C(152): error C202: 'key': undefined identifier
+MAIN.C(152): error C202: 'key': undefined identifier
+MAIN.C(152): error C202: 'key': undefined identifier
+MAIN.C(158): error C202: 'key': undefined identifier
+MAIN.C(166): error C202: 'key': undefined identifier
+MAIN.C(167): error C202: 'key': undefined identifier
+MAIN.C(168): error C202: 'key': undefined identifier
+MAIN.C(169): error C202: 'key': undefined identifier
+MAIN.C(175): error C202: 'key': undefined identifier
+MAIN.C(191): error C202: 'key': undefined identifier
+MAIN.C(192): error C202: 'key': undefined identifier
+MAIN.C(193): error C202: 'key': undefined identifier
+MAIN.C(194): error C202: 'key': undefined identifier
+MAIN.C(198): error C202: 'key': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(214): warning C206: 'send': missing function-prototype
+MAIN.C(243): warning C206: 'LedScan': missing function-prototype
+MAIN.C(42): warning C290: missing return value
+MAIN.C(96): warning C290: missing return value
+MAIN.C(120): warning C290: missing return value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MATRIXKEYSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  LEDSCAN
+    MODULE:  main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  SEND
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  SEND
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0680H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  LEDSCAN
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05BDH
+Program Size: data=36.0 xdata=32 code=1718
+creating hex file from "1"...
+"1" - 0 Error(s), 10 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(214): warning C206: 'send': missing function-prototype
+MAIN.C(42): warning C290: missing return value
+MAIN.C(96): warning C290: missing return value
+MAIN.C(120): warning C290: missing return value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MATRIXKEYSCAN?MAIN
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  SEND
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  SEND
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 067DH
+Program Size: data=36.0 xdata=32 code=1715
+creating hex file from "1"...
+"1" - 0 Error(s), 7 Warning(s).

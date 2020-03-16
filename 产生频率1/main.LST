@@ -1,0 +1,268 @@
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 12:57:42 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include<intrins.h>
+   3          #define uchar unsigned char 
+   4          #define uint unsigned int
+   5          sbit ADDR0 = P1^0;
+   6          sbit ADDR1 = P1^1;
+   7          sbit ADDR2 = P1^2;
+   8          sbit ADDR3 = P1^3;
+   9          sbit ENLED = P1^4;
+  10          sbit led=P2^0;
+  11          unsigned char T0RH=0;
+  12          unsigned char T0RL=0;
+  13          void delay()
+  14          {
+  15   1         
+  16   1             _nop_();
+  17   1                 _nop_();
+  18   1                 _nop_();
+  19   1                 _nop_();
+  20   1                // _nop_();
+  21   1                 //_nop_();
+  22   1                 //_nop_();
+  23   1                 //_nop_();
+  24   1      }
+  25          
+  26          void delay1(unsigned char t)
+  27          {
+  28   1         do{
+  29   2             _nop_();
+  30   2                 _nop_();
+  31   2                 _nop_();
+  32   2                 _nop_();
+  33   2                 _nop_();
+  34   2                 _nop_();
+  35   2                 _nop_();
+  36   2                 _nop_();
+  37   2                }while(--t);
+  38   1      }
+  39          
+  40          void delay2()
+  41          {
+  42   1             _nop_();
+  43   1                 _nop_();
+  44   1                 _nop_();
+  45   1                 _nop_();
+  46   1                 _nop_();
+  47   1                 _nop_();
+  48   1                 _nop_();
+  49   1                 _nop_();
+  50   1                 //_nop_();
+  51   1                 
+  52   1      }
+  53          void delay3()
+  54          {
+  55   1             delay2();
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 12:57:42 PAGE 2   
+
+  56   1                 delay2();
+  57   1                 delay2();
+  58   1                 delay2();
+  59   1                 delay2();
+  60   1                 delay2();
+  61   1                 delay2();
+  62   1                 delay2();
+  63   1                 delay2();
+  64   1                 //delay2();     
+  65   1      }
+  66          
+  67          void delay4()
+  68          {
+  69   1              delay3();
+  70   1              delay3();
+  71   1              delay3();
+  72   1              delay3();
+  73   1              delay3();
+  74   1              delay3();
+  75   1              delay3();
+  76   1              delay3();
+  77   1              delay3();
+  78   1              delay3();
+  79   1              delay3();
+  80   1      }
+  81          
+  82          void delay5()
+  83          {
+  84   1              delay4();
+  85   1              delay4();
+  86   1              delay4();
+  87   1              delay4();
+  88   1              delay4();
+  89   1              delay4();
+  90   1              delay4();
+  91   1          delay4();
+  92   1      }
+  93          
+  94          void delay6()
+  95          {
+  96   1         delay5();
+  97   1         delay5();
+  98   1         delay5();
+  99   1         delay5();
+ 100   1         delay5();
+ 101   1         delay5();
+ 102   1         delay5();
+ 103   1         delay5();
+ 104   1         delay5();
+ 105   1         delay5();
+ 106   1      }
+ 107          
+ 108          void delay7()
+ 109          {
+ 110   1         delay6();
+ 111   1         delay6();
+ 112   1         delay6();
+ 113   1         delay6();
+ 114   1         delay6();
+ 115   1         delay6();
+ 116   1         delay6();
+ 117   1         delay6();
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 12:57:42 PAGE 3   
+
+ 118   1         delay6();
+ 119   1      }
+ 120          /*void main()                   //1
+ 121          {
+ 122            //EA=1;
+ 123            //ConfigTimer0(50);
+ 124             //led=1;
+ 125            while(1)
+ 126             {
+ 127             led=1;
+ 128             delay7();
+ 129             led=0;
+ 130              //delay(1);
+ 131             } 
+ 132          } */
+ 133          void main()                     //1 0
+ 134          {
+ 135   1        //EA=1;
+ 136   1        //ConfigTimer0(50);
+ 137   1         //led=1;
+ 138   1        while(1)
+ 139   1         {
+ 140   2         led=1;
+ 141   2         delay7();
+ 142   2         led=0;
+ 143   2         } 
+ 144   1      }
+ 145          /*void main()                   //1 00
+ 146          {
+ 147            //EA=1;
+ 148            //ConfigTimer0(50);
+ 149             //led=1;
+ 150            while(1)
+ 151             {
+ 152             led=1;
+ 153             delay5();
+ 154             led=0;
+ 155              //delay(1);
+ 156             } 
+ 157          }  */
+ 158          
+ 159          /*void main()                   //1 000
+ 160          {
+ 161            led=1;
+ 162            while(1)
+ 163             {
+ 164             led=1;
+ 165                  delay1(100);
+ 166                  //delay4();
+ 167              led=0;
+ 168             } 
+ 169          }  */
+ 170          /*void main()                   //1 0000
+ 171          {
+ 172            // unsigned int i;
+ 173            //EA=1;
+ 174            //ConfigTimer0(50);
+ 175            //led=1;
+ 176            while(1)
+ 177             {
+ 178             led=1;
+ 179                   delay1(10);
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 12:57:42 PAGE 4   
+
+ 180            // delay2();
+ 181             //_nop_();
+ 182             
+ 183              led=0;
+ 184              //delay(1);
+ 185             } 
+ 186          }  */
+ 187                  
+ 188          /*void main()                   //10 0000
+ 189          {
+ 190            // unsigned int i;
+ 191            //EA=1;
+ 192            //ConfigTimer0(50);
+ 193            //led=1;
+ 194            while(1)
+ 195             {
+ 196             led=1;
+ 197              _nop_();
+ 198                  _nop_();
+ 199                  _nop_();
+ 200              _nop_();
+ 201                  _nop_();
+ 202                  _nop_();
+ 203                  _nop_();
+ 204              led=0;
+ 205             } 
+ 206          }          */
+ 207          
+ 208          
+ 209          /*void main()      //20 0000
+ 210          {
+ 211            // unsigned int i;
+ 212            //EA=1;
+ 213            //ConfigTimer0(50);
+ 214            //led=1;
+ 215            while(1)
+ 216             {
+ 217             led=1;
+ 218             _nop_();
+ 219              led=0;
+ 220              //delay(1);
+ 221             } 
+ 222          }*/     
+ 223          
+ 224          /*void time() interrupt 1
+ 225          {
+ 226             static int i=0;
+ 227             TH0=T0RH;
+ 228             TL0=T0RL;
+ 229             //i++;
+ 230            // if(i>=100)
+ 231            // {
+ 232               //  i=0;
+ 233                     led=~led;
+ 234              //}
+ 235          }  */
+ 236          
+ 237                
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    130    ----
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 12:57:42 PAGE 5   
+
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

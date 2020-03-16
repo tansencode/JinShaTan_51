@@ -1,0 +1,333 @@
+C51 COMPILER V9.01   MAIN                                                                  04/28/2018 21:49:52 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          sbit ADDR0 = P1^0;
+   4          sbit ADDR1 = P1^1;
+   5          sbit ADDR2 = P1^2;
+   6          sbit ADDR3 = P1^3;
+   7          sbit ENLED = P1^4;
+   8          
+   9          sbit KEY_IN_1 = P2^4;
+  10          sbit KEY_IN_2 = P2^5;
+  11          sbit KEY_IN_3 = P2^6;
+  12          sbit KEY_IN_4 = P2^7;
+  13          sbit KEY_OUT_1 = P2^3;
+  14          sbit KEY_OUT_2 = P2^2;
+  15          sbit KEY_OUT_3 = P2^1;
+  16          sbit KEY_OUT_4 = P2^0;
+  17          
+  18          sbit BUZZ = P1^6;  //蜂鸣器控制引脚
+  19          unsigned char T0RH = 0;  //T0重载值的高字节
+  20          unsigned char T0RL = 0;  //T0重载值的低字节
+  21          
+  22          //void OpenBuzz(unsigned int frequ);
+  23          //void StopBuzz();
+  24          
+  25          void buzz()
+  26          {
+  27   1          unsigned int i;
+  28   1              unsigned int j=10;
+  29   1              while(1)
+  30   1              {
+  31   2                  
+  32   2                 BUZZ =0; //反转蜂鸣器控制电平
+  33   2             for(i=0;i<50;i++);
+  34   2                 BUZZ=1;
+  35   2                 for(i=0;i<50;i++);
+  36   2              }
+  37   1      }
+  38                  
+  39          
+  40          /* 蜂鸣器启动函数，frequ-工作频率 */
+  41          /*void OpenBuzz(unsigned int frequ)
+  42          {
+  43              unsigned int reload;    //计算所需的定时器重载值
+  44              
+  45              reload = 65536 - (11059200/12)/(frequ*2);  //由给定频率计算定时器重载值
+  46              T0RH = (unsigned char)(reload >> 8);  //16位重载值分解为高低两个字节
+  47              T0RL = (unsigned char)reload;
+  48              TH0  = 0xFF;  //设定一个接近溢出的初值，以使定时器马上投入工作
+  49              TL0  = 0xFE;
+  50              ET0  = 1;     //使能T0中断
+  51              TR0  = 1;     //启动T0
+  52          }
+  53          
+  54          void StopBuzz()
+  55          {
+C51 COMPILER V9.01   MAIN                                                                  04/28/2018 21:49:52 PAGE 2   
+
+  56              ET0 = 0;   //禁用T0中断
+  57              TR0 = 0;   //停止T0
+  58          } */
+  59          
+  60          void liushuideng1()
+  61          {
+  62   1         unsigned int i=0;
+  63   1         unsigned char cnt=0;
+  64   1         ENLED=0;
+  65   1         ADDR3=1;
+  66   1         ADDR2=1;
+  67   1         ADDR1=1;
+  68   1         ADDR0=0;
+  69   1         while(1)
+  70   1         {
+  71   2               for(cnt=0;cnt<7;cnt++)    //移位判断，向左移7位，第一个不记做移位
+  72   2           {
+  73   3              P0=~(0x01<<cnt);                //逻辑左移,取反，0000 0001——1111 1110
+  74   3                      for(i=0;i<20000;i++);     //延时函数，不断执行空循环
+  75   3           }
+  76   2               for(cnt=0;cnt<7;cnt++)     //移位判断，向右移7位，第一个不记做移位
+  77   2               {
+  78   3                  P0=~(0x80>>cnt);            //逻辑右移,取反，1000 0000——0111 1111
+  79   3                      for(i=0;i<20000;i++);     //延时函数，不断执行空循环
+  80   3                }
+  81   2        }
+  82   1      }
+  83          
+  84          void liushuideng2()
+  85          {
+  86   1        unsigned int i=0;
+  87   1        unsigned char cnt=0;
+  88   1        ENLED=0;
+  89   1        ADDR3=1;
+  90   1      
+  91   1        ADDR2=1;
+  92   1        ADDR1=1;
+  93   1        ADDR0=0;
+  94   1        while(1)
+  95   1        {
+  96   2               for(cnt=0;cnt<7;cnt++)    //移位判断，向左移7位，第一个不记做移位
+  97   2           {
+  98   3              P0=~(0x03<<cnt);                //逻辑左移,取反，0000 0011——1111 1100
+  99   3                      for(i=0;i<30000;i++);     //延时函数，不断执行空循环
+ 100   3           }
+ 101   2               for(cnt=0;cnt<7;cnt++)     //移位判断，向右移7位，第一个不记做移位
+ 102   2               {
+ 103   3                  P0=~(0xC0>>cnt);            //逻辑右移,取反，1100 0000——0011 1111
+ 104   3                      for(i=0;i<30000;i++);     //延时函数，不断执行空循环
+ 105   3                }
+ 106   2        }
+ 107   1      }
+ 108          
+ 109          void liushuideng3()
+ 110          {
+ 111   1        unsigned int i=0;
+ 112   1        unsigned char cnt=0;
+ 113   1        ENLED=0;
+ 114   1        ADDR3=1;
+ 115   1      
+ 116   1        ADDR2=1;
+ 117   1        ADDR1=1;
+C51 COMPILER V9.01   MAIN                                                                  04/28/2018 21:49:52 PAGE 3   
+
+ 118   1        ADDR0=0;
+ 119   1        while(1)
+ 120   1        {
+ 121   2               for(cnt=0;cnt<7;cnt++)    //移位判断，向左移7位，第一个不记做移位
+ 122   2           {
+ 123   3              P0=~(0x0F<<cnt);                //逻辑左移,取反，0000 1111——1111 0000
+ 124   3                      for(i=0;i<20000;i++);     //延时函数，不断执行空循环
+ 125   3           }
+ 126   2               for(cnt=0;cnt<7;cnt++)     //移位判断，向右移7位，第一个不记做移位
+ 127   2               {
+ 128   3                  P0=~(0xF0>>cnt);            //逻辑右移,取反，1111 0000——0000 1111
+ 129   3                      for(i=0;i<20000;i++);     //延时函数，不断执行空循环
+ 130   3                }
+ 131   2        }
+ 132   1      }
+ 133          
+ 134          void liushuideng4()
+ 135          {
+ 136   1        unsigned int i=0;
+ 137   1        unsigned char cnt=0;
+ 138   1        ENLED=0;
+ 139   1        ADDR3=1;
+ 140   1      
+ 141   1        ADDR2=1;
+ 142   1        ADDR1=1;
+ 143   1        ADDR0=0;
+ 144   1        while(1)
+ 145   1        {
+ 146   2               for(cnt=0;cnt<7;cnt=cnt+2)    //移位判断，向左移7位，第一个不记做移位
+ 147   2           {
+ 148   3              P0=~(0x08<<cnt);                //逻辑左移,取反，0000 1000——1111 0111
+ 149   3                      for(i=0;i<30000;i++);     //延时函数，不断执行空循环
+ 150   3           }
+ 151   2               for(cnt=0;cnt<7;cnt=cnt+2)         //移位判断，向右移7位，第一个不记做移位
+ 152   2               {
+ 153   3                  P0=~(0x10>>cnt);            //逻辑右移,取反，0001 0000——1110 1111
+ 154   3                      for(i=0;i<30000;i++);     //延时函数，不断执行空循环
+ 155   3                }
+ 156   2        }
+ 157   1      }
+ 158          
+ 159          unsigned char code KeyCodeMap[4][4] = { //矩阵按键编号到标准键盘键码的映射表
+ 160              { 0x31, 0x32, 0x33, 0x26 }, //数字键 1、数字键 2、数字键 3、向上键
+ 161              { 0x34, 0x35, 0x36, 0x25 }, //数字键 4、数字键 5、数字键 6、向左键
+ 162              { 0x37, 0x38, 0x39, 0x28 }, //数字键 7、数字键 8、数字键 9、向下键
+ 163              { 0x30, 0x1B, 0x0D, 0x27 } //数字键 0、ESC 键、 回车键、 向右键
+ 164          };
+ 165          unsigned char KeySta[4][4] = { //全部矩阵按键的当前状态
+ 166               {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}
+ 167          };
+ 168          
+ 169          void KeyDriver();
+ 170          
+ 171          void main()
+ 172          {
+ 173   1         EA = 1; //使能总中断
+ 174   1         
+ 175   1         TMOD = 0x01; //设置 T0 为模式 1
+ 176   1         TH0 = 0xFC; //为 T0 赋初值 0xFC67，定时 1ms
+ 177   1         TL0 = 0x67;
+ 178   1         ET0 = 1; //使能 T0 中断
+ 179   1         TR0 = 1; //启动 T0
+C51 COMPILER V9.01   MAIN                                                                  04/28/2018 21:49:52 PAGE 4   
+
+ 180   1         while (1)
+ 181   1         {
+ 182   2            KeyDriver(); //调用按键驱动函数
+ 183   2         }
+ 184   1      }
+ 185          
+ 186          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+ 187          void KeyAction(unsigned char keycode)
+ 188          {
+ 189   1             if ((keycode>=0x30) && (keycode<=0x39)) //输入 0-9 的数字
+ 190   1             {
+ 191   2                ;
+ 192   2                }
+ 193   1      
+ 194   1                else if (keycode == 0x26) //流水灯1
+ 195   1                {
+ 196   2                    liushuideng1();
+ 197   2                }
+ 198   1      
+ 199   1                else if (keycode == 0x28) //流水灯2
+ 200   1                {
+ 201   2                   liushuideng2();
+ 202   2                }
+ 203   1      
+ 204   1                else if (keycode == 0x25) //流水灯3
+ 205   1                {
+ 206   2                    liushuideng3();
+ 207   2                }
+ 208   1                else if (keycode == 0x27) //流水灯4
+ 209   1                {
+ 210   2                     liushuideng4();
+ 211   2                 }
+ 212   1               else if(keycode==0x0D) //蜂鸣器响
+ 213   1               {
+ 214   2                          buzz();
+ 215   2                    }
+ 216   1                    
+ 217   1              
+ 218   1                else if (keycode == 0x1B) //Esc 键，暂停，此功能暂时还未实现，可用复位键代替
+ 219   1               {
+ 220   2                          BUZZ=1;
+ 221   2                  EA=0;
+ 222   2                              ENLED=0;
+ 223   2                              ET0=1;
+ 224   2                              TR0=0;   
+ 225   2                }
+ 226   1      }
+ 227          
+ 228          /* 按键驱动函数，检测按键动作，调度相应动作函数，需在主循环中调用 */
+ 229          void KeyDriver()
+ 230          {
+ 231   1          unsigned char i, j;
+ 232   1          static unsigned char backup[4][4] = { //按键值备份，保存前一次的值
+ 233   1          {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}
+ 234   1          };
+ 235   1          for (i=0; i<4; i++) //循环检测 4*4 的矩阵按键
+ 236   1          {
+ 237   2              for (j=0; j<4; j++)
+ 238   2              {
+ 239   3                  if (backup[i][j] != KeySta[i][j]) //检测按键动作
+ 240   3                  {
+ 241   4                      if (backup[i][j] != 0) //按键按下时执行动作
+C51 COMPILER V9.01   MAIN                                                                  04/28/2018 21:49:52 PAGE 5   
+
+ 242   4                      {
+ 243   5                           KeyAction(KeyCodeMap[i][j]); //调用按键动作函数
+ 244   5                      }
+ 245   4                      backup[i][j] = KeySta[i][j]; //刷新前一次的备份值
+ 246   4                   }
+ 247   3                }
+ 248   2            }
+ 249   1      }
+ 250          
+ 251          /* 按键扫描函数，需在定时中断中调用，推荐调用间隔 1ms */
+ 252          void KeyScan()
+ 253          {
+ 254   1           unsigned char i;
+ 255   1           static unsigned char keyout = 0; //矩阵按键扫描输出索引
+ 256   1           static unsigned char keybuf[4][4] = { //矩阵按键扫描缓冲区
+ 257   1           {0xFF, 0xFF, 0xFF, 0xFF}, {0xFF, 0xFF, 0xFF, 0xFF},
+ 258   1           {0xFF, 0xFF, 0xFF, 0xFF}, {0xFF, 0xFF, 0xFF, 0xFF}
+ 259   1           };  //将一行的 4 个按键值移入缓冲区
+ 260   1            
+ 261   1           keybuf[keyout][0] = (keybuf[keyout][0] << 1) | KEY_IN_1;
+ 262   1           keybuf[keyout][1] = (keybuf[keyout][1] << 1) | KEY_IN_2;
+ 263   1           keybuf[keyout][2] = (keybuf[keyout][2] << 1) | KEY_IN_3;
+ 264   1           keybuf[keyout][3] = (keybuf[keyout][3] << 1) | KEY_IN_4;
+ 265   1           //消抖后更新按键状态
+ 266   1           for (i=0; i<4; i++) //每行 4 个按键，所以循环 4 次
+ 267   1           {
+ 268   2              if ((keybuf[keyout][i] & 0x0F) == 0x00)
+ 269   2              { //连续 4 次扫描值为 0，即 4*4ms 内都是按下状态时，可认为按键已稳定的按下
+ 270   3                   KeySta[keyout][i] = 0;
+ 271   3              }
+ 272   2              else if ((keybuf[keyout][i] & 0x0F) == 0x0F)
+ 273   2              { //连续 4 次扫描值为 1，即 4*4ms 内都是弹起状态时，可认为按键已稳定的弹起
+ 274   3                  KeySta[keyout][i] = 1;
+ 275   3              }
+ 276   2            }           //执行下一次的扫描输出
+ 277   1             
+ 278   1            keyout++; //输出索引递增
+ 279   1            keyout = keyout & 0x03; //索引值加到 4 即归零
+ 280   1            switch (keyout) //根据索引，释放当前输出引脚，拉低下次的输出引脚
+ 281   1            {
+ 282   2                case 0: KEY_OUT_4 = 1; KEY_OUT_1 = 0; break;
+ 283   2                case 1: KEY_OUT_1 = 1; KEY_OUT_2 = 0; break;
+ 284   2                case 2: KEY_OUT_2 = 1; KEY_OUT_3 = 0; break;
+ 285   2                case 3: KEY_OUT_3 = 1; KEY_OUT_4 = 0; break;
+ 286   2                default: break;
+ 287   2             }
+ 288   1      }
+ 289          
+ 290          
+ 291          /* T0 中断服务函数，用于按键扫描 */
+ 292          
+ 293          void InterruptTimer0() interrupt 1
+ 294          {
+ 295   1          TH0 = T0RH;   //重新加载重载值
+ 296   1          TL0 = T0RL;
+ 297   1          KeyScan(); //调用按键扫描函数
+ 298   1      }
+ 299          
+ 300             
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.01   MAIN                                                                  04/28/2018 21:49:52 PAGE 6   
+
+   CODE SIZE        =    807    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     51       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

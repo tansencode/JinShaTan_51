@@ -1,0 +1,180 @@
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 20:31:43 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          *******************************************************************************
+   3          *                     《手把手教你学51单片机(C语言版)》
+   4          *                    配套 KST-51 单片机开发板 示例源代码
+   5          *
+   6          *         (c) 版权所有 2014 金沙滩工作室/清华大学出版社 保留所有权利
+   7          *                 获取更多资料请访问：http://www.kingst.org
+   8          *
+   9          * 文件名：main.c
+  10          * 描  述：第16章 温度传感器DS18B20示例
+  11          * 版本号：v1.0.0
+  12          * 备  注：详情见第16章16.4节
+  13          *         控制DS18B20测量温度并将温度值显示到液晶上
+  14          *******************************************************************************
+  15          */
+  16          
+  17          #include <reg52.h>
+  18          
+  19          bit flag1s = 0;          //1s定时标志
+  20          unsigned char T0RH = 0;  //T0重载值的高字节
+  21          unsigned char T0RL = 0;  //T0重载值的低字节
+  22          
+  23          void ConfigTimer0(unsigned int ms);
+  24          extern bit irflag;
+  25          extern unsigned char ircode[4];
+  26          extern void InitInfrared();
+  27          unsigned char IntToString(unsigned char *str, int dat);
+  28          extern bit Start18B20();
+  29          extern bit Get18B20Temp(int *temp);
+  30          extern void InitLcd1602();
+  31          extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+  32          extern void KeyScan();
+  33          extern void KeyDriver();
+  34          
+  35          bit res;
+  36          int temp;        //读取到的当前温度值
+  37          int intT, decT;  //温度值的整数和小数部分
+  38          unsigned char len;
+  39          unsigned char str[12];
+  40          
+  41          void main()
+  42          {
+  43   1          EA = 1;            //开总中断
+  44   1          ConfigTimer0(10);  //T0定时10ms
+  45   1          Start18B20();      //启动DS18B20
+  46   1              InitInfrared();   //初始化红外功能
+  47   1          InitLcd1602();     //初始化液晶
+  48   1          
+  49   1          while (1)
+  50   1          {
+  51   2                  KeyDriver();  //调用按键驱动
+  52   2              if (flag1s)  //每秒更新一次温度
+  53   2              {
+  54   3                  flag1s = 0;
+  55   3                  res = Get18B20Temp(&temp);  //读取当前温度
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 20:31:43 PAGE 2   
+
+  56   3                  if (res)                    //读取成功时，刷新当前温度显示
+  57   3                  {
+  58   4                      intT = temp >> 4;             //分离出温度值整数部分
+  59   4                      decT = temp & 0xF;            //分离出温度值小数部分
+  60   4                      len = IntToString(str, intT); //整数部分转换为字符串
+  61   4                      str[len++] = '.';             //添加小数点
+  62   4                      decT = (decT*10) / 16;        //二进制的小数部分转换为1位十进制位
+  63   4                      str[len++] = decT + '0';      //十进制小数位再转换为ASCII字符
+  64   4                      while (len < 6)               //用空格补齐到6个字符长度
+  65   4                      {
+  66   5                          str[len++] = ' ';
+  67   5                      }
+  68   4                      str[len] = '\0';              //添加字符串结束符
+  69   4                                       if (irflag)  //接收到红外数据时刷新显示
+  70   4                      irflag = 0;
+  71   4                      if (ircode[2] == 0x09)  //0x09为+键码，正转1圈
+  72   4                      {
+  73   5                           LcdShowStr(0, 0, str);        //显示到液晶屏上
+  74   5                      }
+  75   4                     
+  76   4                  }
+  77   3                  else                        //读取失败时，提示错误信息
+  78   3                  {
+  79   4                      LcdShowStr(0, 0, "error!");
+  80   4                  }
+  81   3                  Start18B20();               //重新启动下一次转换
+  82   3              }
+  83   2          }
+  84   1      }
+  85          /* 整型数转换为字符串，str-字符串指针，dat-待转换数，返回值-字符串长度 */
+  86          unsigned char IntToString(unsigned char *str, int dat)
+  87          {
+  88   1          signed char i = 0;
+  89   1          unsigned char len = 0;
+  90   1          unsigned char buf[6];
+  91   1          
+  92   1          if (dat < 0)  //如果为负数，首先取绝对值，并在指针上添加负号
+  93   1          {
+  94   2              dat = -dat;
+  95   2              *str++ = '-';
+  96   2              len++;
+  97   2          }
+  98   1          do {          //先转换为低位在前的十进制数组
+  99   2              buf[i++] = dat % 10;
+ 100   2              dat /= 10;
+ 101   2          } while (dat > 0);
+ 102   1          len += i;     //i最后的值就是有效字符的个数
+ 103   1          while (i-- > 0)   //将数组值转换为ASCII码反向拷贝到接收指针上
+ 104   1          {
+ 105   2              *str++ = buf[i] + '0';
+ 106   2          }
+ 107   1          *str = '\0';  //添加字符串结束符
+ 108   1          
+ 109   1          return len;   //返回字符串长度
+ 110   1      }
+ 111          
+ 112          /* 按键动作函数，根据键码执行相应的操作，keycode-按键键码 */
+ 113          /*void KeyAction(unsigned char keycode)
+ 114          {
+ 115            if (keycode == 0x31)  
+ 116              {
+ 117                 LcdShowStr(0, 0, str);        //显示到液晶屏上 
+C51 COMPILER V9.01   MAIN                                                                  05/20/2018 20:31:43 PAGE 3   
+
+ 118              }
+ 119          }*/
+ 120          /* 配置并启动T0，ms-T0定时时间 */
+ 121          void ConfigTimer0(unsigned int ms)
+ 122          {
+ 123   1          unsigned long tmp;  //临时变量
+ 124   1          
+ 125   1          tmp = 11059200 / 12;      //定时器计数频率
+ 126   1          tmp = (tmp * ms) / 1000;  //计算所需的计数值
+ 127   1          tmp = 65536 - tmp;        //计算定时器重载值
+ 128   1          tmp = tmp + 12;           //补偿中断响应延时造成的误差
+ 129   1          T0RH = (unsigned char)(tmp>>8);  //定时器重载值拆分为高低字节
+ 130   1          T0RL = (unsigned char)tmp;
+ 131   1          TMOD &= 0xF0;   //清零T0的控制位
+ 132   1          TMOD |= 0x01;   //配置T0为模式1
+ 133   1          TH0 = T0RH;     //加载T0重载值
+ 134   1          TL0 = T0RL;
+ 135   1          ET0 = 1;        //使能T0中断
+ 136   1          TR0 = 1;        //启动T0
+ 137   1      }
+ 138          /* T0中断服务函数，完成1秒定时 */
+ 139          void InterruptTimer0() interrupt 1
+ 140          {
+ 141   1          static unsigned char tmr1s = 0;
+ 142   1          
+ 143   1          TH0 = T0RH;  //重新加载重载值
+ 144   1          TL0 = T0RL;
+ 145   1               KeyScan();   //按键扫描
+ 146   1          tmr1s++;
+ 147   1          if (tmr1s >= 100)  //定时1s
+ 148   1          {
+ 149   2              tmr1s = 0;
+ 150   2              flag1s = 1;
+ 151   2          }
+ 152   1              
+ 153   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    552    ----
+   CONSTANT SIZE    =      7    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     22      17
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

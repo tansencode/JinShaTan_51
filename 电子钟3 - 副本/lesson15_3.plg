@@ -1,0 +1,985 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\金沙滩单片机开发\电子钟3 - 副本\lesson15_3.uvproj
+Project File Date:  10/09/2013
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(116): warning C214: 'Argument': conversion: pointer to non-pointer
+MAIN.C(110): warning C280: 'x': unreferenced local variable
+MAIN.C(110): warning C280: 'y': unreferenced local variable
+MAIN.C(339): warning C280: 'i': unreferenced local variable
+MAIN.C(400): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=95.2 xdata=32 code=2433
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(116): warning C214: 'Argument': conversion: pointer to non-pointer
+MAIN.C(110): warning C280: 'x': unreferenced local variable
+MAIN.C(110): warning C280: 'y': unreferenced local variable
+MAIN.C(339): warning C280: 'i': unreferenced local variable
+MAIN.C(400): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=95.2 xdata=32 code=2433
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(116): warning C214: 'Argument': conversion: pointer to non-pointer
+MAIN.C(110): warning C280: 'x': unreferenced local variable
+MAIN.C(110): warning C280: 'y': unreferenced local variable
+MAIN.C(339): warning C280: 'i': unreferenced local variable
+MAIN.C(400): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=95.2 xdata=32 code=2433
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(116): warning C214: 'Argument': conversion: pointer to non-pointer
+MAIN.C(110): warning C280: 'x': unreferenced local variable
+MAIN.C(110): warning C280: 'y': unreferenced local variable
+MAIN.C(339): warning C280: 'i': unreferenced local variable
+MAIN.C(400): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=95.2 xdata=32 code=2436
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(116): warning C214: 'Argument': conversion: pointer to non-pointer
+MAIN.C(110): warning C280: 'x': unreferenced local variable
+MAIN.C(110): warning C280: 'y': unreferenced local variable
+MAIN.C(339): warning C280: 'i': unreferenced local variable
+MAIN.C(400): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=95.2 xdata=32 code=2433
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(116): warning C214: 'Argument': conversion: pointer to non-pointer
+MAIN.C(110): warning C280: 'x': unreferenced local variable
+MAIN.C(110): warning C280: 'y': unreferenced local variable
+MAIN.C(132): error C141: syntax error near 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(132): error C141: syntax error near 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(177): warning C206: 'ShowBcdByte': missing function-prototype
+MAIN.C(177): error C267: 'ShowBcdByte': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(349): warning C280: 'i': unreferenced local variable
+MAIN.C(410): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2333
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2347
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2347
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2347
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2347
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2348
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2347
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2348
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2348
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2347
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(340): warning C280: 'i': unreferenced local variable
+MAIN.C(401): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2347
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2351
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2360
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2352
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 05DCH
+Program Size: data=89.2 xdata=32 code=2351
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+Program Size: data=89.2 xdata=32 code=2349
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  REFRESHTIMESHOW
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 058FH
+Program Size: data=89.2 xdata=32 code=2348
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2345
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2345
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2343
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2345
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2345
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2343
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2349
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2349
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2349
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2349
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2349
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2335
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+main.c - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2340
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2340
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=89.2 xdata=32 code=2342
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2335
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2335
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(344): warning C280: 'i': unreferenced local variable
+MAIN.C(405): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2335
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(345): warning C280: 'i': unreferenced local variable
+MAIN.C(406): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2353
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(305): error C202: 'i': undefined identifier
+MAIN.C(306): error C141: syntax error near 'else'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(306): error C141: syntax error near 'else'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(350): warning C280: 'i': unreferenced local variable
+MAIN.C(411): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2411
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(346): warning C280: 'i': unreferenced local variable
+MAIN.C(407): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2385
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(346): warning C280: 'i': unreferenced local variable
+MAIN.C(407): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCDSHOWSTR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDOPENCURSOR?LCD1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDCLOSECURSOR?LCD1602
+Program Size: data=86.2 xdata=32 code=2353
+creating hex file from "lesson15_3"...
+"lesson15_3" - 0 Error(s), 5 Warning(s).

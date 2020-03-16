@@ -1,0 +1,84 @@
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 15:42:37 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          sbit ADDR0 = P1^0;
+   3          sbit ADDR1 = P1^1;
+   4          sbit ADDR2 = P1^2;
+   5          sbit ADDR3 = P1^3;
+   6          sbit ENLED = P1^4;
+   7          unsigned char code LedChar[] = { //数码管显示字符转换表
+   8          0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8,
+   9          0x80, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E
+  10          };
+  11          unsigned char LedBuff[6] = { //数码管显示缓冲区，初值 0xFF 确保启动时都不亮
+  12          0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+  13          };
+  14          void main()
+  15          {
+  16   1      unsigned char i = 0; //动态扫描的索引
+  17   1      unsigned int cnt = 0; //记录 T0 中断次数
+  18   1      unsigned long sec = 0; //记录经过的秒数
+  19   1      ENLED = 0; //使能 U3，选择控制数码管
+  20   1      ADDR3 = 1; //因为需要动态改变 ADDR0-2 的值，所以不需要再初始化了
+  21   1      TMOD = 0x01; //设置 T0 为模式 1
+  22   1      TH0 = 0xFC; //为 T0 赋初值 0xFC67，定时 1ms
+  23   1      TL0 = 0x67;
+  24   1      TR0 = 1; //启动 T0
+  25   1      while (1)
+  26   1      {
+  27   2      if (TF0 == 1) //判断 T0 是否溢出
+  28   2      {
+  29   3      TF0 = 0; //T0 溢出后，清零中断标志
+  30   3      TH0 = 0xFC; //并重新赋初值
+  31   3      TL0 = 0x67;
+  32   3      cnt++; //计数值自加 1
+  33   3      if (cnt >= 1000) //判断 T0 溢出是否达到 1000 次
+  34   3      {
+  35   4      cnt = 0; //达到 1000 次后计数值清零
+  36   4      sec++; //秒计数自加 1
+  37   4      //以下代码将 sec 按十进制位从低到高依次提取并转为数码管显示字符
+  38   4      LedBuff[0] = LedChar[sec%10];
+  39   4      LedBuff[1] = LedChar[sec/10%10];
+  40   4      LedBuff[2] = LedChar[sec/100%10];
+  41   4      LedBuff[3] = LedChar[sec/1000%10];
+  42   4      LedBuff[4] = LedChar[sec/10000%10];
+  43   4      LedBuff[5] = LedChar[sec/100000%10];
+  44   4      }
+  45   3      P0=0xFF;   //消隐
+  46   3      //以下代码完成数码管动态扫描刷新
+  47   3      switch (i)
+  48   3      {
+  49   4      case 0: ADDR2=0; ADDR1=0; ADDR0=0; i++; P0=LedBuff[0]; break;
+  50   4      case 1: ADDR2=0; ADDR1=0; ADDR0=1; i++; P0=LedBuff[1]; break;
+  51   4      case 2: ADDR2=0; ADDR1=1; ADDR0=0; i++; P0=LedBuff[2]; break;
+  52   4      case 3: ADDR2=0; ADDR1=1; ADDR0=1; i++; P0=LedBuff[3]; break;
+  53   4      case 4: ADDR2=1; ADDR1=0; ADDR0=0; i++; P0=LedBuff[4]; break;
+  54   4      case 5: ADDR2=1; ADDR1=0; ADDR0=1; i=0; P0=LedBuff[5]; break;
+  55   4      default: break;
+C51 COMPILER V9.01   MAIN                                                                  04/11/2018 15:42:37 PAGE 2   
+
+  56   4      }
+  57   3      }
+  58   2      }
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    434    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

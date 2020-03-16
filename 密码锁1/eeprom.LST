@@ -1,0 +1,99 @@
+C51 COMPILER V9.01   EEPROM                                                                05/01/2018 23:30:35 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE EEPROM
+OBJECT MODULE PLACED IN eeprom.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE eeprom.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          *******************************************************************************
+   3          *                     《手把手教你学51单片机(C语言版)》
+   4          *                    配套 KST-51 单片机开发板 示例源代码
+   5          *
+   6          *         (c) 版权所有 2014 金沙滩工作室/清华大学出版社 保留所有权利
+   7          *                 获取更多资料请访问：http://www.kingst.org
+   8          *
+   9          * 文件名：eeprom.c
+  10          * 描  述：EEPROM芯片24C02读写驱动模块
+  11          * 版本号：v1.0.0
+  12          * 备  注：
+  13          *******************************************************************************
+  14          */
+  15          
+  16          #include <reg52.h>
+  17          
+  18          extern void I2CStart();
+  19          extern void I2CStop();
+  20          extern unsigned char I2CReadACK();
+  21          extern unsigned char I2CReadNAK();
+  22          extern bit I2CWrite(unsigned char dat);
+  23          
+  24          /* E2读取函数，buf-数据接收指针，addr-E2中的起始地址，len-读取长度 */
+  25          void E2Read(unsigned char *buf, unsigned char addr, unsigned char len)
+  26          {
+  27   1          do {                       //用寻址操作查询当前是否可进行读写操作
+  28   2              I2CStart();
+  29   2              if (I2CWrite(0x50<<1)) //应答则跳出循环，非应答则进行下一次查询
+  30   2              {
+  31   3                  break;
+  32   3              }
+  33   2              I2CStop();
+  34   2          } while(1);
+  35   1          I2CWrite(addr);            //写入起始地址
+  36   1          I2CStart();                //发送重复启动信号
+  37   1          I2CWrite((0x50<<1)|0x01);  //寻址器件，后续为读操作
+  38   1          while (len > 1)            //连续读取len-1个字节
+  39   1          {
+  40   2              *buf++ = I2CReadACK(); //最后字节之前为读取操作+应答
+  41   2              len--;
+  42   2          }
+  43   1          *buf = I2CReadNAK();       //最后一个字节为读取操作+非应答
+  44   1          I2CStop();
+  45   1      }
+  46          /* E2写入函数，buf-源数据指针，addr-E2中的起始地址，len-写入长度 */
+  47          void E2Write(unsigned char *buf, unsigned char addr, unsigned char len)
+  48          {
+  49   1          while (len > 0)
+  50   1          {
+  51   2              //等待上次写入操作完成
+  52   2              do {                       //用寻址操作查询当前是否可进行读写操作
+  53   3                  I2CStart();
+  54   3                  if (I2CWrite(0x50<<1)) //应答则跳出循环，非应答则进行下一次查询
+  55   3                  {
+C51 COMPILER V9.01   EEPROM                                                                05/01/2018 23:30:35 PAGE 2   
+
+  56   4                      break;
+  57   4                  }
+  58   3                  I2CStop();
+  59   3              } while(1);
+  60   2              //按页写模式连续写入字节
+  61   2              I2CWrite(addr);           //写入起始地址
+  62   2              while (len > 0)
+  63   2              {
+  64   3                  I2CWrite(*buf++);     //写入一个字节数据
+  65   3                  len--;                //待写入长度计数递减
+  66   3                  addr++;               //E2地址递增
+  67   3                  if ((addr&0x07) == 0) //检查地址是否到达页边界，24C02每页8字节，
+  68   3                  {                     //所以检测低3位是否为零即可
+  69   4                      break;            //到达页边界时，跳出循环，结束本次写操作
+  70   4                  }
+  71   3              }
+  72   2              I2CStop();
+  73   2          }
+  74   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    163    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

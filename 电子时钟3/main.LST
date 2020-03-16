@@ -1,0 +1,149 @@
+C51 COMPILER V9.01   MAIN                                                                  05/03/2018 17:08:05 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          *******************************************************************************
+   3          *                     《手把手教你学51单片机(C语言版)》
+   4          *                    配套 KST-51 单片机开发板 示例源代码
+   5          *
+   6          *         (c) 版权所有 2014 金沙滩工作室/清华大学出版社 保留所有权利
+   7          *                 获取更多资料请访问：http://www.kingst.org
+   8          *
+   9          * 文件名：main.c
+  10          * 描  述：第19章 多功能电子钟 工程主文件
+  11          * 版本号：v1.0.0
+  12          * 备  注：详情见第19章19.4节
+  13          *******************************************************************************
+  14          */
+  15          #include<reg52.h>
+  16          
+  17          extern void  InitLed();
+  18          extern void  InitDS1302();     //初始化实时时钟模块    
+  19          extern void  InitInfrared();   //初始化红外接收模块
+  20          extern void  InitLcd1602();    //初始化液晶模块
+  21          extern void  Start18B20();     //启动首次温度转换
+  22          extern void  KeyScan();   //执行按键扫描
+  23          extern void  RefreshTime();    //刷新当前时间
+  24          extern void  RefreshDate(1);   //立即刷新日期显示
+*** ERROR C141 IN LINE 24 OF MAIN.C: syntax error near '1'
+  25          bit flag2s = 0;    //2s定时标志位
+  26          bit flag200ms = 0; //200ms定时标志
+  27          uint8 T0RH = 0;    //T0重载值的高字节
+*** ERROR C129 IN LINE 27 OF MAIN.C: missing ';' before 'T0RH'
+  28          uint8 T0RL = 0;    //T0重载值的低字节
+  29          enum eStaSystem staSystem = E_NORMAL;  //系统运行状态
+  30          
+  31          void main()
+  32          {
+  33              EA = 1;           //开总中断
+  34              ConfigTimer0(1);  //配置T0定时1ms
+  35              InitLed();        //初始化LED模块
+  36              InitDS1302();     //初始化实时时钟模块
+  37              InitInfrared();   //初始化红外接收模块
+  38              InitLcd1602();    //初始化液晶模块
+  39              Start18B20();     //启动首次温度转换
+  40              
+  41              while (!flag2s);  //上电后延时2秒
+  42              flag2s = 0;
+  43              RefreshTime();    //刷新当前时间
+  44              RefreshDate(1);   //立即刷新日期显示
+  45              RefreshTemp(1);   //立即刷新温度显示
+  46              RefreshAlarm();   //闹钟设定值显示
+  47              
+  48              while (1)  //进入主循环
+  49              {
+  50                  KeyDriver();      //执行按键驱动
+  51                  InfraredDriver(); //执行红外接收驱动
+  52                  if (flag200ms)    //每隔200ms执行以下分支
+  53                  {
+C51 COMPILER V9.01   MAIN                                                                  05/03/2018 17:08:05 PAGE 2   
+
+  54                      flag200ms = 0;
+  55                      RefreshTime();   //刷新当前时间
+  56                     
+  57                      if (staSystem == E_NORMAL)  //正常运行时刷新日期显示
+  58                      {
+  59                          RefreshDate(0);
+  60                      }
+  61                  }
+  62                  if (flag2s)  //每隔2s执行以下分支
+  63                  {
+  64                      flag2s = 0;
+  65                      if (staSystem == E_NORMAL)  //正常运行时刷新温度显示
+  66                      {
+  67                          RefreshTemp(0);
+  68                      }
+  69                  }
+  70              }
+  71          }
+  72          /* 温度刷新函数，读取当前温度并根据需要刷新液晶显示，
+  73          ** ops-刷新选项：为0时只当温度变化才刷新，非0则立即刷新 */
+  74          void RefreshTemp(uint8 ops)
+  75          {
+  76              int16 temp;
+  77              uint8 pdata str[8];
+  78              static int16 backup = 0;
+  79              
+  80              Get18B20Temp(&temp); //获取当前温度值
+  81              Start18B20();        //启动下一次转换
+  82              temp >>= 4;          //舍弃4bit小数位
+  83              if ((backup!=temp) || (ops!=0)) //按需要刷新液晶显示
+  84              {
+  85                  str[0] = (temp/10) + '0';  //十位转为ASCII码
+  86                  str[1] = (temp%10) + '0';  //个位转为ASCII码
+  87                  str[2] = '\'';             //用'C代替℃
+  88                  str[3] = 'C';
+  89                  str[4] = '\0';             //字符串结束符
+  90                  LcdShowStr(12, 0, str);    //显示到液晶上
+  91                  backup = temp;             //刷新上次温度值
+  92              }
+  93          }
+  94          /* 配置并启动T0，ms-T0定时时间 */
+  95          void ConfigTimer0(uint16 ms)
+  96          {
+  97              uint32 tmp;
+  98              
+  99              tmp = (SYS_MCLK*ms)/1000; //计算所需的计数值
+ 100              tmp = 65536 - tmp;        //计算定时器重载值
+ 101              tmp = tmp + 33;           //补偿中断响应延时造成的误差   
+ 102              T0RH = (uint8)(tmp>>8);   //定时器重载值拆分为高低字节
+ 103              T0RL = (uint8)tmp;
+ 104              TMOD &= 0xF0;   //清零T0的控制位
+ 105              TMOD |= 0x01;   //配置T0为模式1
+ 106              TH0 = T0RH;     //加载T0重载值
+ 107              TL0 = T0RL;
+ 108              ET0 = 1;        //使能T0中断
+ 109              TR0 = 1;        //启动T0
+ 110          }
+ 111          /* T0中断服务函数，实现系统定时和按键扫描 */
+ 112          void InterruptTimer0() interrupt 1
+ 113          {
+ 114              static uint8 tmr2s = 0;
+ 115              static uint8 tmr200ms = 0;
+C51 COMPILER V9.01   MAIN                                                                  05/03/2018 17:08:05 PAGE 3   
+
+ 116              
+ 117              TH0 = T0RH;  //重新加载重载值
+ 118              TL0 = T0RL;
+ 119              tmr200ms++;  //定时200ms
+ 120              if (tmr200ms >= 200)
+ 121              {
+ 122                  tmr200ms = 0;
+ 123                  flag200ms = 1;
+ 124                  tmr2s++;  //定时2s
+ 125                  if (tmr2s >= 10)
+ 126                  {
+ 127                      tmr2s = 0;
+ 128                      flag2s = 1;
+ 129                  }
+ 130              }
+ 131              KeyScan();   //执行按键扫描
+ 132          }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  2 ERROR(S)

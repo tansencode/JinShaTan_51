@@ -1,0 +1,142 @@
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 20:49:16 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil4\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<REGX52.h>
+   2          sbit clk_out=P1^0;
+   3          
+   4          /*void pinlv()  //1 00   
+   5          {
+   6             C_T2=0;
+   7             T2MOD=0x02;
+   8             RCAP2H=0x94;
+   9             RCAP2L=0x00;
+  10             TR2=1;
+  11          } */
+  12          
+  13          /*void pinlv()  //1 000  
+  14          {
+  15             C_T2=0;
+  16             T2MOD=0x02;
+  17             RCAP2H=0xf5;
+  18             RCAP2L=0x33;
+  19             TR2=1;
+  20          }       */
+  21          
+  22          /*void pinlv()  //1 0000         
+  23          {
+  24             C_T2=0;
+  25             T2MOD=0x02;
+  26             RCAP2H=0xfe;
+  27             RCAP2L=0xeb;
+  28             TR2=1;
+  29          }  */
+  30          
+  31          /*void pinlv()  //10 0000        
+  32          {
+  33             C_T2=0;
+  34             T2MOD=0x02;
+  35             RCAP2H=0xff;
+  36             RCAP2L=0xe4;
+  37             TR2=1;
+  38          }        */
+  39          
+  40          /*void pinlv()  //20 0000        
+  41          {
+  42             C_T2=0;
+  43             T2MOD=0x02;
+  44             RCAP2H=0xff;
+  45             RCAP2L=0xf2;
+  46             TR2=1;
+  47          }  */
+  48          
+  49          /*void pinlv()  //30 0000        
+  50          {
+  51             C_T2=0;
+  52             T2MOD=0x02;
+  53             RCAP2H=0xff;
+  54             RCAP2L=0xf7;
+  55             TR2=1;
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 20:49:16 PAGE 2   
+
+  56          } */
+  57          
+  58          
+  59          
+  60          /*void pinlv()  //1 00   
+  61          {
+  62             C_T2=0;
+  63             T2MOD=0x02;
+  64             RCAP2H=0x8a;
+  65             RCAP2L=0xd0;
+  66             TR2=1;
+  67          }  */
+  68          
+  69          /*void pinlv()  //1 000  
+  70          {
+  71             C_T2=0;
+  72             T2MOD=0x02;
+  73             RCAP2H=0xf4;
+  74             RCAP2L=0x48;
+  75             TR2=1;
+  76          } */
+  77          
+  78          /*void pinlv()  //1 0000         
+  79          {
+  80             C_T2=0;
+  81             T2MOD=0x02;
+  82             RCAP2H=0xfe;
+  83             RCAP2L=0xd4;
+  84             TR2=1;
+  85          } */
+  86          /*void pinlv()  //10 0000        
+  87          {
+  88             C_T2=0;
+  89             T2MOD=0x02;
+  90             RCAP2H=0xff;
+  91             RCAP2L=0xe2;
+  92             TR2=1;
+  93          }       */
+  94          
+  95          /*void pinlv()  //20 0000        
+  96          {
+  97             C_T2=0;
+  98             T2MOD=0x02;
+  99             RCAP2H=0xff;
+ 100             RCAP2L=0xf1;
+ 101             TR2=1;
+ 102          } */
+ 103          void pinlv()    //30 0000        
+ 104          {
+ 105   1         C_T2=0;
+ 106   1         T2MOD=0x02;
+ 107   1         RCAP2H=0xff;
+ 108   1         RCAP2L=0xf6;
+ 109   1         TR2=1;
+ 110   1      }  
+ 111          void main()
+ 112          {
+ 113   1         pinlv();
+ 114   1         while(1);
+ 115   1      }
+
+
+C51 COMPILER V9.01   MAIN                                                                  05/24/2018 20:49:16 PAGE 3   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     19    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
